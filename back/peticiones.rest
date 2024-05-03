@@ -1,0 +1,44 @@
+
+
+
+    GET http://localhost:3000/api/artistAll/?artist=Marea
+
+###
+
+    GET http://localhost:3000/api/artist/?artist=Bizarrap
+
+###
+
+    GET http://localhost:3000/api/artistTopTracks/?artist=GuruJoshProject
+
+###
+
+    GET http://localhost:3000/api/artistGetInfo/?artist=Rosendo
+
+###
+
+    GET http://localhost:3000/api/artistAlbum/?artist=Extremoduro
+    
+### 
+    //Petición para playList
+    GET http://localhost:3000/api/topList/
+
+###
+    //Petición para las playlistId
+    GET http://localhost:3000/api/playList/1wHTv8RWK9MyyVGHzD7X0M
+
+###
+    //Petición para los albumIds
+
+     GET http://localhost:3000/api/albumId/31YXEro2hGtx3uTJD3OjlO
+
+
+###
+    //Petición para los artistIds
+    GET http://localhost:3000/api/artistId/716NhGYqD1jl2wI1Qkgq36
+   
+###
+    //Petición para los trackIds
+    GET http://localhost:3000/api/songsId/7stqrF7SI1Sca0OjkF7z3v
+
+

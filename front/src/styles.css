@@ -1,0 +1,29 @@
+:root {
+    --background-color-light: #ffffff;
+    --text-color-light: #000000;
+   
+    /* Agrega más variables según necesites */
+  }
+  
+
+  body {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+
+    
+    /* Otros estilos */
+  }
+  
+  body.dark-mode {
+    --background-color-dark: #000000;
+    --text-color-dark: #d3d3d3;
+  
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+    /* Otros estilos */
+  }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+  height: 100%;}
+
