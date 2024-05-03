@@ -3,7 +3,6 @@ import { SearchBarService } from '../../../services/search-bar.service';
 import { TakeIdsService } from '../../../services/take-ids.service';
 import { MusicPlayerService } from '../../../services/music-player.service';
 import { ArtistID } from '../../../models/artistId.model';
-import * as ColorThief from 'colorthief';
 import { ExtractColorService } from '../../../services/extract-color.service';
 
 
@@ -13,12 +12,15 @@ import { ExtractColorService } from '../../../services/extract-color.service';
   styleUrl: './artist-id.component.css'
 })
 export class ArtistIdComponent implements OnInit {
-  colorThief = new ColorThief.default();
+
   playListSearch = inject(SearchBarService)
   takeId = inject(TakeIdsService)
   musicPlayer = inject(MusicPlayerService)
   extractColor = inject(ExtractColorService)
 
+
+  colorDominanteArtist: number[] = [];
+  rgbaString: string = '';
   buscar: boolean = false;
   loading: boolean = false;
   globalVolume: number = 0.1;
@@ -58,6 +60,7 @@ export class ArtistIdComponent implements OnInit {
   buscarArtist(): void {
     this.loading = true;
 
+    this.colorDominanteArtist = [];
     this.nameAlbum = [];
     this.imageAlbum = [];
     this.releaseDate = [];
@@ -80,7 +83,9 @@ export class ArtistIdComponent implements OnInit {
       this.artistFollowers = response.artistInfo.followers.total;
       this.artistImage = response.artistInfo.images[0].url;
       this.artistPopularity = response.artistInfo.popularity;
-      this.obtenerPaletaDeColores(this.artistImage)
+      this.colorDominante(this.artistImage);
+      
+
 
 
 
@@ -150,14 +155,18 @@ export class ArtistIdComponent implements OnInit {
 
 //función para extraer el color de la imagen
 
-  async obtenerPaletaDeColores(imageUrl: string) {
-    try {
-      const palette = await this.extractColor.getColorPalette(imageUrl);
-      console.log('Paleta de colores:', palette);
-      // Aquí puedes hacer lo que quieras con la paleta de colores
-    } catch (error) {
-      console.error('Error al obtener la paleta de colores:', error);
-    }
+  async colorDominante(imageUrl: string) {
+    this.extractColor.getColorDominante(imageUrl)
+      .then(color => {
+        for(let colore of color) {
+          this.colorDominanteArtist.push(colore);
+        }
+        
+  })
+  .catch(error => {
+    console.error('Error al obtener el color dominante', error);
+    
+  })
   }
 
 }

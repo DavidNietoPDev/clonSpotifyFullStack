@@ -9,13 +9,13 @@ import * as ColorThief from 'colorthief';
 export class ExtractColorService {
 
   
-  async getColorPalette(imageUrl: string): Promise<number[][]> {
-    const colorThief = new ColorThief();
+  async getColorDominante(imageUrl: string): Promise<number[]> {
+    const colorThief = new ColorThief.default();
     return new Promise((resolve, reject) => {
       const image = new Image();
       image.crossOrigin = 'Anonymous'; // Ensure CORS is enabled
       image.onload = () => {
-        resolve(colorThief.getPalette(image));
+        resolve(colorThief.getColor(image));
       };
       image.onerror = (error) => {
         reject(error);

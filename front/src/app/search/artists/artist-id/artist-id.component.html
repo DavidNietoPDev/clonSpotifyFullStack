@@ -1,6 +1,8 @@
 <div class="container">
     <div class="primary">
-        <div class="fondo">
+        <div class="fondo" [ngStyle]="{
+            'background': 'linear-gradient(transparent 0, rgba(' + colorDominanteArtist[0] + ',' + colorDominanteArtist[1] + ',' + colorDominanteArtist[2] + ', 0.5) 100%)'
+          }">
             <div class="navsearch">
                 <button class="btonre">Registrarte</button>
                 <button class="btonis">Iniciar sesión</button>
