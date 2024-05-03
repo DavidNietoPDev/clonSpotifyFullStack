@@ -72,7 +72,6 @@ export class ArtistsComponent {
           } 
         }
         this.loading = false;
-        console.log('Successfully')
       });
     }
   }
