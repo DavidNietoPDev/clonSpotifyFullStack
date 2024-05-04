@@ -1,6 +1,8 @@
 <div class="container">
     <div class="primary">
-        <div class="fondo">
+        <div class="fondo" [ngStyle]="{
+            'background': 'linear-gradient(to top, transparent 0, rgba(' + colorDominanteTrack[0] + ',' + colorDominanteTrack[1] + ',' + colorDominanteTrack[2] + ', 1) 100%)'
+          }">
             <div class="navsearch">
                 <button class="btonre">Registrarte</button>
                 <button class="btonis">Iniciar sesión</button>
@@ -12,7 +14,7 @@
                 <div class="textHeader" *ngIf="buscar">
                     <p class="artistName">{{trackName}}</p>
                     <p><span class="sLista">{{ trackReleaseDate.split("-")[0] }} · Popularidad
-                            {{trackPopularity}} · {{trackType}}</span></p>
+                            {{trackPopularity}} · {{trackType.charAt(0).toUpperCase() + trackType.slice(1)}}</span></p>
                 </div>
             </div>
         </div>

@@ -34,11 +34,13 @@
   
   .fondo {
     background: linear-gradient(transparent 0, rgba(40, 41, 43, 0.5) 100%);
+    display: flex;
+    align-items: center;
     position: relative;
     min-width: 360px;
     top: 8px;
     width: 100%;
-    height: 300px;
+    height: 500px;
     border-radius: 10px;
   
   }
@@ -53,7 +55,7 @@
     left: 435px;
     height: 70px;
     position: fixed;
-    background-color: #0808083a;
+    background-color: #08080800;
     z-index: 1;
   
   
@@ -93,35 +95,41 @@
     position: relative;
     display: flex;
     flex-direction: row;
+    width: 100%;
   }
   
   .imgHeader {
     display: flex;
     justify-content: center;
     left: 50px;
-    width: 20%;
+    width: 40%;
     height: 100%;
     position: relative;
   }
   
   .imgImg {
+    border-radius: 10px;
     position: relative;
     width: 100%;
     height: auto;
     margin-right: 10px;
   }
+
+  .imgImg::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  }
   
   .textHeader {
-    align-items: center;
-    justify-content: center;
+    margin-top: 80px;
+    margin-left: 50px;
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 100%;
   }
 
   .artistName {
-    margin-left: 40px;
+    margin-left: 10px;
     font-size: 50px;
     font-weight: bold;
   }
@@ -133,6 +141,7 @@
 
   
   .sLista {
+    margin-left: 12px;
     font-size: 14px;
     color: rgb(177, 170, 170) !important;
   }
@@ -140,7 +149,7 @@
   .textTracks {
     margin-top: 40px;
     position: relative;
-    margin-left: 15px;  
+    margin-left: 10px;  
     font-size: 22px;
     font-weight: bold;
     color: white;

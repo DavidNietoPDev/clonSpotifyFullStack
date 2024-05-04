@@ -3,6 +3,7 @@ import { SearchBarService } from '../../../services/search-bar.service';
 import { TakeIdsService } from '../../../services/take-ids.service';
 import { MusicPlayerService } from '../../../services/music-player.service';
 import { TrackID } from '../../../models/trackId.model';
+import { ExtractColorService } from '../../../services/extract-color.service';
 @Component({
   selector: 'app-songs-id',
   templateUrl: './songs-id.component.html',
@@ -13,11 +14,13 @@ export class SongsIdComponent implements OnInit {
   playListSearch = inject(SearchBarService)
   takeId = inject(TakeIdsService)
   musicPlayer = inject(MusicPlayerService)
+  extractColor = inject(ExtractColorService)
 
   buscar: boolean = false;
   loading: boolean = false;
   globalVolume: number = 0.1;
   songId: string = this.takeId.getAlgoId();
+  colorDominanteTrack: number [] = [];
 
   artistTwoImage: string = '';
 
@@ -89,7 +92,7 @@ export class SongsIdComponent implements OnInit {
 
   buscarArtist(): void {
     this.loading = true;
-
+    this.colorDominanteTrack = [];
 
     this.trackRecomImage = [];
     this.trackRecomId = [];
@@ -144,6 +147,7 @@ export class SongsIdComponent implements OnInit {
       this.trackName = response.song.name;
       this.trackType = response.song.type;
       this.trackImage = response.song.album.images[0].url;
+      this.colorDominante(this.trackImage);
       this.trackPopularity = response.song.popularity;
       this.trackDuration = response.song.duration_ms;
       this.trackReleaseDate = response.song.album.release_date;
@@ -249,6 +253,21 @@ export class SongsIdComponent implements OnInit {
 
   ajustarVolume() {
     this.musicPlayer.setVolume(this.globalVolume);
+  }
+
+
+  //función para extraer el color de la imagen
+
+  async colorDominante(imageUrl: string) {
+    this.extractColor.getColorDominante(imageUrl)
+      .then(color => {
+        for (let colore of color) {
+          this.colorDominanteTrack.push(colore);
+        }
+      })
+      .catch(error => {
+        console.error('Error al obtener el color dominante', error);
+      })
   }
 }
 

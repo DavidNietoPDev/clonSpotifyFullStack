@@ -3,15 +3,16 @@
         <div class="navsearch">
             <div class="searcher">
                 <div class="icinp"><mat-icon class="icon">search</mat-icon><input class="insearch" type="text"
-                        [(ngModel)]="artistNameSongs" placeholder="¿Que quieres reproducir?" (keydown.enter)="buscarCanciones()"></div>
+                        [(ngModel)]="artistNameSongs" placeholder="¿Que quieres reproducir?"
+                        (keydown.enter)="buscarCanciones()"></div>
                 <div class="botonesRI">
                     <button class="btonre">Registrarte</button>
                     <button class="btonis">Iniciar sesión</button>
                 </div>
             </div>
-            <div class="listaBusquedas"> 
+            <div class="listaBusquedas">
                 <button #buttonTodo class="bsq" (click)="navegarAComponenteSearch()">Todo</button>
-                <button #buttonSongs name="buttonSongs" (click)="buscarCanciones()"  class="bsqSo" >Canciones</button>
+                <button #buttonSongs name="buttonSongs" (click)="buscarCanciones()" class="bsqSo">Canciones</button>
                 <button class="bsq" (click)="navegarAComponenteArtistas()">Artistas</button>
                 <button class="bsq" (click)="navegarAComponenteAlbumes()">Álbumes</button>
             </div>
@@ -24,83 +25,88 @@
                     <div class="dot"></div>
                 </div>
             </div>
-            <table *ngIf="buscar && !loading">
-                <thead>
-                    <tr class="columnall">
-                        <th class="column1">#</th>
-                        <th class="column2">Título</th>
-                        <th class="column3"></th>
-                        <th class="column4">Álbum</th>
-                        <th class="column5"><mat-icon>av_timer</mat-icon></th>
-                        <th class="column6"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <ng-container *ngFor="let track of topTrack; let i = index">
-                        <tr class="filasall" >
-                            <td class="fila1">{{ i + 1 }}</td>
-                            <td class="fila2"><img class="imgCanciones" src="{{topTrackArtistImage[i]}}" (click)="togglePlayBack(topTrackUrlSong[i])"></td>
-                            <td>
-                                <span class="fila31" (click)="takeIdAll(topTrackId[i])" [routerLink]="'/songsId'" >{{topTrack[i]}}</span> <br>
-                                <span class="fila32"  *ngIf="topTrackArtistTwo[i] !== ''">
-                                    <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistId[i])" 
-                                    [routerLink]="'/artistId'">{{ topTrackArtist[i] }} ,
-                                    </span>
-                                    <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistTwoId[i])"
-                                    [routerLink]="'/artistId'">{{ topTrackArtistTwo[i] }}
-                                    </span>
-                                </span> 
-                                <span class="fila32" *ngIf="topTrackArtistTwo[i] === ''">
-                                    <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistId[i])" 
-                                    [routerLink]="'/artistId'">{{ topTrackArtist[i] }}</span>
-                                </span>
-                            </td>
-                            <td class="fila4" (click)="takeIdAll(topTrackAlbumId[i])"  [routerLink]="'/albumDirect'">{{topTrackAlbum[i]}}</td>  
-                            <td class="fila4">{{topTrackDuration[i] | pipeDuracion}}</td>
-                            <td class="flila5">
-                                <input type="range" min="0" max="1" step="0.05" [(ngModel)]="globalVolume" (input)="ajustarVolume()">
-                            </td>
+            <div *ngIf="buscar && !loading">
+                <table >
+                    <thead>
+                        <tr class="columnall">
+                            <th class="column1">#</th>
+                            <th class="column2">Título</th>
+                            <th class="column3"></th>
+                            <th class="column4">Álbum</th>
+                            <th class="column5"><mat-icon>av_timer</mat-icon></th>
+                            <th class="column6"></th>
                         </tr>
-                    </ng-container>
-                </tbody>
-                
-            </table>
-            <div class="footerOne">
-                <div class="footerOneOne">
-                  <p class="titleFoot">Empresa</p>
-                  <p>Acerca de</p>
-                  <p>Empleo</p>
-                  <p>For the Record</p>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let track of topTrack; let i = index">
+                            <tr class="filasall">
+                                <td class="fila1">{{ i + 1 }}</td>
+                                <td class="fila2"><img class="imgCanciones" src="{{topTrackArtistImage[i]}}"
+                                        (click)="togglePlayBack(topTrackUrlSong[i])"></td>
+                                <td>
+                                    <span class="fila31" (click)="takeIdAll(topTrackId[i])"
+                                        [routerLink]="'/songsId'">{{topTrack[i]}}</span> <br>
+                                    <span class="fila32" *ngIf="topTrackArtistTwo[i] !== ''">
+                                        <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistId[i])"
+                                            [routerLink]="'/artistId'">{{ topTrackArtist[i] }} ,
+                                        </span>
+                                        <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistTwoId[i])"
+                                            [routerLink]="'/artistId'">{{ topTrackArtistTwo[i] }}
+                                        </span>
+                                    </span>
+                                    <span class="fila32" *ngIf="topTrackArtistTwo[i] === ''">
+                                        <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistId[i])"
+                                            [routerLink]="'/artistId'">{{ topTrackArtist[i] }}</span>
+                                    </span>
+                                </td>
+                                <td class="fila4" (click)="takeIdAll(topTrackAlbumId[i])" [routerLink]="'/albumDirect'">
+                                    {{topTrackAlbum[i]}}</td>
+                                <td class="fila4">{{topTrackDuration[i] | pipeDuracion}}</td>
+                                <td class="flila5">
+                                    <input type="range" min="0" max="1" step="0.05" [(ngModel)]="globalVolume"
+                                        (input)="ajustarVolume()">
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+
+                </table>
+                <div class="footerOne">
+                    <div class="footerOneOne">
+                        <p class="titleFoot">Empresa</p>
+                        <p>Acerca de</p>
+                        <p>Empleo</p>
+                        <p>For the Record</p>
+                    </div>
+                    <div class="footerOneOne">
+                        <p class="titleFoot">Comunidades</p>
+                        <p>Para artistas</p>
+                        <p>Desarrolladores</p>
+                        <p>Publicidad</p>
+                        <p>Inversores</p>
+                        <p>Proveedores</p>
+                    </div>
+                    <div class="footerOneOne">
+                        <p class="titleFoot">Enlaces útiles</p>
+                        <p>Asistencia</p>
+                        <p>App gratis para móvil</p>
+                    </div>
+                    <div class="footerOneOne">
+                        <p class="titleFoot">Planes de Spotify</p>
+                        <p>Premium Individual</p>
+                        <p>Premium Duo</p>
+                        <p>Premium Familiar</p>
+                        <p>Premium para Estudiantes</p>
+                        <p>Spotify Free</p>
+                    </div>
+                    <div class="iconosFoot">
+                        <a target="_blank" class="fa fa-facebook"></a>
+                        <a target="_blank" class="fa fa-instagram"></a>
+                        <a target="_blank" class="fa fa-twitter"></a>
+                    </div>
                 </div>
-                <div class="footerOneOne">
-                  <p class="titleFoot">Comunidades</p>
-                  <p>Para artistas</p>
-                  <p>Desarrolladores</p>
-                  <p>Publicidad</p>
-                  <p>Inversores</p>
-                  <p>Proveedores</p>
-                </div>
-                <div class="footerOneOne">
-                  <p class="titleFoot">Enlaces útiles</p>
-                  <p>Asistencia</p>
-                  <p>App gratis para móvil</p>
-                </div>
-                <div class="footerOneOne">
-                  <p class="titleFoot">Planes de Spotify</p>
-                  <p>Premium Individual</p>
-                  <p>Premium Duo</p>
-                  <p>Premium Familiar</p>
-                  <p>Premium para Estudiantes</p>
-                  <p>Spotify Free</p>
-                </div>
-                <div class="iconosFoot">
-                  <a target="_blank" class="fa fa-facebook"></a>
-                  <a target="_blank" class="fa fa-instagram"></a>
-                  <a target="_blank" class="fa fa-twitter"></a>
-                </div>
-              </div>
-              <hr class="finalFoot">
+                <hr class="finalFoot">
+            </div>
         </div>
-        
     </div>
 </div>
