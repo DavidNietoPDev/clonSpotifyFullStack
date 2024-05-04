@@ -3,6 +3,7 @@ import { SearchBarService } from '../../../services/search-bar.service';
 import { TakeIdsService } from '../../../services/take-ids.service';
 import { MusicPlayerService } from '../../../services/music-player.service';
 import { AlbumID } from '../../../models/albumId.model';
+import { ExtractColorService } from '../../../services/extract-color.service';
 
 @Component({
   selector: 'app-album-direct',
@@ -14,11 +15,13 @@ export class AlbumDirectComponent  implements OnInit  {
   playListSearch = inject(SearchBarService)
   takeId = inject(TakeIdsService)
   musicPlayer = inject(MusicPlayerService)
+  extractColor = inject(ExtractColorService)
 
   buscar: boolean = false;
   loading: boolean = false;
   globalVolume: number = 0.1;
   albumId: string = this.takeId.getAlgoId();
+  colorDominanteAlbum: number[] = [];
 
   trackUrl: string[] = [];
   trackId: string[] = [];
@@ -46,22 +49,27 @@ export class AlbumDirectComponent  implements OnInit  {
 
   buscarAlbum(): void {
     this.loading = true;
-    this.playListSearch.getAlbumId(this.albumId).subscribe((response: AlbumID) => {
-      this.trackUrl = [];
-      this.tracksList = [];
-      this.tracksDuration = [];
-      this.tracksArtist = [];
-      this.trackArtistTwo = [];
-      this.idArtistTracks = [];
-      this.idArtistTracksTwo = [];
-      this.trackId = [];
+    this.colorDominanteAlbum = [];
 
-      this.albumArtists = [];
+    this.trackUrl = [];
+    this.tracksList = [];
+    this.tracksDuration = [];
+    this.tracksArtist = [];
+    this.trackArtistTwo = [];
+    this.idArtistTracks = [];
+    this.idArtistTracksTwo = [];
+    this.trackId = [];
+
+    this.albumArtists = [];
+    this.playListSearch.getAlbumId(this.albumId).subscribe((response: AlbumID) => {
+
 
       this.releaseDate = response.release_date;
       this.typeAlbum = response.album_type;
       this.listImage = response.images[0].url;
+      this.colorDominante(this.listImage);
       this.listName = response.name;
+      
       for (let artist of response.artists) {
         this.albumArtists.push(artist.name)
       }
@@ -106,6 +114,21 @@ export class AlbumDirectComponent  implements OnInit  {
 
   ajustarVolume() {
     this.musicPlayer.setVolume(this.globalVolume);
+  }
+
+
+   //función para extraer el color de la imagen
+
+   async colorDominante(imageUrl: string) {
+    this.extractColor.getColorDominante(imageUrl)
+      .then(color => {
+        for (let colore of color) {
+          this.colorDominanteAlbum.push(colore);
+        }
+      })
+      .catch(error => {
+        console.error('Error al obtener el color dominante', error);
+      })
   }
 }
   

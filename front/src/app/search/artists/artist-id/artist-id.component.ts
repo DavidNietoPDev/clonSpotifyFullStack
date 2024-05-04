@@ -85,28 +85,6 @@ export class ArtistIdComponent implements OnInit {
       this.artistPopularity = response.artistInfo.popularity;
       this.colorDominante(this.artistImage);
 
-
-
-
-
-
-      // try { 
-      //   const img = new Image();
-      //   img.crossOrigin = "anonymous";
-      //   img.onload = () => {
-      //     const color = this.colorThief.getColor(img);
-      //     console.log('Color dominante:', color);
-      //   }
-
-      //   img.src = this.artistImage;
-      // } catch (error) {
-      //   console.error('Error al obtener el color dominante', error);
-      // }
-
-
-
-
-
       for (let album of response.albums.items) {
         this.releaseDate.push(album.release_date);
         this.typeAlbum.push(album.album_type);

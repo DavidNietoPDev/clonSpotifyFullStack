@@ -1,7 +1,9 @@
 <div class="container">
     <div class="primary">
-        <div class="fondo">
-            <div class="navsearch">
+        <div class="fondo" [ngStyle]="{
+            'background': 'linear-gradient(to top, transparent 0, rgba(' + colorDominanteAlbum[0] + ',' + colorDominanteAlbum[1] + ',' + colorDominanteAlbum[2] + ', 1) 100%)'
+          }">
+            <div class="navsearch" >
                 <button class="btonre">Registrarte</button>
                 <button class="btonis">Iniciar sesión</button>
             </div>
@@ -10,7 +12,7 @@
                     <img class="imgImg" src="{{listImage}}" alt="">
                 </div>
                 <div class="textHeader" *ngIf="buscar">
-                    <p>{{typeAlbum}}</p>
+                    <p class="albumType">{{typeAlbum.charAt(0).toUpperCase() + typeAlbum.slice(1)}}</p>
                     <p class="nLista">{{listName}}</p>
                     <p class="sLista"></p>
                     <p><span class="sLista">{{ albumArtists }}  ·  {{ releaseDate.split("-")[0] }}  ·  {{listCanciones}} canciones</span></p>

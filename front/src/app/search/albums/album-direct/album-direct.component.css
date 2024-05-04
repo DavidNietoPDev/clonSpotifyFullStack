@@ -33,13 +33,14 @@
   
   .fondo {
     background: linear-gradient(transparent 0, rgba(40, 41, 43, 0.5) 100%);
+    display: flex;
+    align-items: center;
     position: relative;
     min-width: 360px;
     top: 8px;
     width: 100%;
-    height: 300px;
+    height: 500px;
     border-radius: 10px;
-  
   }
   
   .navsearch {
@@ -52,20 +53,18 @@
     left: 435px;
     height: 70px;
     position: fixed;
-    background-color: #0808083a;
+    background-color: #08080800;
     z-index: 1;
   
   
   }
   
   .btonre {
-  
     border: none;
     color: #acabab;
     background-color: transparent;
     font-weight: 500;
     margin-right: 200px;
-  
   }
   
   .btonre:hover {
@@ -92,29 +91,41 @@
     position: relative;
     display: flex;
     flex-direction: row;
+    width: 100%;
   }
   
   .imgHeader {
     display: flex;
     justify-content: center;
-    top: 80px;
-    width: 20%;
+    left: 50px;
+    width: 40%;
     height: 100%;
     position: relative;
   }
   
   .imgImg {
-    width: 150px;
+    border-radius: 10px;
+    position: relative;
+    width: 100%;
     height: auto;
     margin-right: 10px;
   }
+
+  .imgImg::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  }
   
   .textHeader {
-    top: 80px;
+    margin-top: 50px;
+    margin-left: 50px;
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 100%;
+  }
+
+  .albumType {
+    margin-left: 10px;
   }
   
   .textHeader p {
@@ -128,11 +139,12 @@
   }
   
   .nLista {
-    font-size: 35px;
+    font-size: 100px;
     font-weight: bold;
   }
   
   .sLista {
+    margin-left: 10px;
     font-size: 14px;
     color: rgb(151, 146, 146) !important;
   }
