@@ -31,8 +31,8 @@ export class ArtistIdComponent implements OnInit {
   artistFollowers: number = 0;
   artistPopularity: number = 0;
 
-  releaseDate:string [] = [];
-  typeAlbum: string [] = [];
+  releaseDate: string[] = [];
+  typeAlbum: string[] = [];
   nameAlbum: string[] = [];
   imageAlbum: string[] = [];
   idsAlbum: string[] = [];
@@ -84,7 +84,7 @@ export class ArtistIdComponent implements OnInit {
       this.artistImage = response.artistInfo.images[0].url;
       this.artistPopularity = response.artistInfo.popularity;
       this.colorDominante(this.artistImage);
-      
+
 
 
 
@@ -103,10 +103,10 @@ export class ArtistIdComponent implements OnInit {
       //   console.error('Error al obtener el color dominante', error);
       // }
 
-       
-      
-      
-      
+
+
+
+
       for (let album of response.albums.items) {
         this.releaseDate.push(album.release_date);
         this.typeAlbum.push(album.album_type);
@@ -114,8 +114,8 @@ export class ArtistIdComponent implements OnInit {
         this.imageAlbum.push(album.images[0].url);
         this.idsAlbum.push(album.id);
       }
-      
-      for (let track of response.topTracks.tracks) { 
+
+      for (let track of response.topTracks.tracks) {
         this.trackId.push(track.id);
         this.trackUrl.push(track.preview_url);
         this.trackDuration.push(track.duration_ms);
@@ -153,22 +153,19 @@ export class ArtistIdComponent implements OnInit {
   }
 
 
-//función para extraer el color de la imagen
+  //función para extraer el color de la imagen
 
   async colorDominante(imageUrl: string) {
     this.extractColor.getColorDominante(imageUrl)
       .then(color => {
-        for(let colore of color) {
+        for (let colore of color) {
           this.colorDominanteArtist.push(colore);
         }
-        
-  })
-  .catch(error => {
-    console.error('Error al obtener el color dominante', error);
-    
-  })
+      })
+      .catch(error => {
+        console.error('Error al obtener el color dominante', error);
+      })
   }
-
 }
-  
+
 

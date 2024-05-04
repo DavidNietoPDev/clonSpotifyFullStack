@@ -1,6 +1,8 @@
 <div class="container">
     <div class="primary">
-        <div class="fondo">
+        <div class="fondo" [ngStyle]="{
+           'background': 'linear-gradient(to top, transparent 0, rgba(' + colorDominantePlayList[0] + ',' + colorDominantePlayList[1] + ',' + colorDominantePlayList[2] + ', 1) 100%)' 
+        }">
             <div class="navsearch">
                 <button class="btonre">Registrarte</button>
                 <button class="btonis">Iniciar sesión</button>
@@ -10,95 +12,104 @@
                     <img class="imgImg" src="{{listImage}}" alt="">
                 </div>
                 <div class="textHeader" *ngIf="buscar">
-                    <p>Lista</p>
+                    <p>{{listType.charAt(0).toUpperCase() + listType.slice(1)}}</p>
                     <p class="nLista">{{listName}}</p>
                     <p class="sLista">{{listDescription}}</p>
-                    <p> <span class="iconH"></span><span>SearchsMusics</span> <span class="sLista" *ngIf="listFollowers > 500"> · {{listFollowers | numberFormat}} seguidores</span> <span class="sLista" *ngIf="listFollowers < 500"> · {{listFollowers}} canciones</span></p>
+                    <p> <span class="iconH"></span><span>SearchsMusics</span> <span class="sLista"
+                            *ngIf="listFollowers > 500"> · {{listFollowers | numberFormat}} seguidores</span> <span
+                            class="sLista" *ngIf="listFollowers < 500"> · {{listFollowers}} canciones</span></p>
                 </div>
             </div>
         </div>
-        <div class="grid-container" >
-            <div *ngIf="loading"  style="font-size: 25px; font-weight: bold; position: absolute; top: 50%; left: 40%;">
+        <div class="grid-container">
+            <div *ngIf="loading" style="font-size: 25px; font-weight: bold; position: absolute; top: 50%; left: 40%;">
                 <div class="loader">
                     <div class="dot"></div>
                     <div class="dot"></div>
                     <div class="dot"></div>
                 </div>
             </div>
-            <table *ngIf="!loading && buscar">
-                <thead>
-                    <tr class="columnall">
-                        <th class="column1">#</th>
-                        <th class="column2">Título</th>
-                        <th class="column3"></th>
-                        <th class="column4">Álbum</th>
-                        <th class="column5"><mat-icon>av_timer</mat-icon></th>
-                        <th class="column6"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <ng-container *ngFor="let track of tracksList; let i = index">
-                        <tr class="filasall" >
-                            <td class="fila1">{{ i + 1 }}</td>
-                            <td class="fila2"><img class="imgCanciones" src="{{tracksImages[i]}}" (click)="togglePlayBack(trackUrl[i])"></td>
-                            <td>
-                                <span class="fila31" (click)="takeIdAll(artistId[i])" [routerLink]="'/songsId'">
-                                {{tracksList[i] }}</span> <br>
+            <div *ngIf="!loading && buscar">
+                <div>
+                    <table>
+                        <thead>
+                            <tr class="columnall">
+                                <th class="column1">#</th>
+                                <th class="column2">Título</th>
+                                <th class="column3"></th>
+                                <th class="column4">Álbum</th>
+                                <th class="column5"><mat-icon>av_timer</mat-icon></th>
+                                <th class="column6"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let track of tracksList; let i = index">
+                                <tr class="filasall">
+                                    <td class="fila1">{{ i + 1 }}</td>
+                                    <td class="fila2"><img class="imgCanciones" src="{{tracksImages[i]}}"
+                                            (click)="togglePlayBack(trackUrl[i])"></td>
+                                    <td>
+                                        <span class="fila31" (click)="takeIdAll(artistId[i])" [routerLink]="'/songsId'">
+                                            {{tracksList[i] }}</span> <br>
 
-                                <span class="fila32" *ngIf="trackArtistTwo[i] === ''">
-                                    <span class="linkArtist" (click)="takeIdAll(trackArtistId[i])"
-                                        [routerLink]="'/artistId'"> {{tracksArtist[i]}} </span></span>
+                                        <span class="fila32" *ngIf="trackArtistTwo[i] === ''">
+                                            <span class="linkArtist" (click)="takeIdAll(trackArtistId[i])"
+                                                [routerLink]="'/artistId'"> {{tracksArtist[i]}} </span></span>
 
-                                <span class="fila32" *ngIf="trackArtistTwo[i] !== ''">
-                                    <span class="linkArtist" (click)="takeIdAll(trackArtistId[i])"
-                                        [routerLink]="'/artistId'"> {{tracksArtist[i]}} </span> ,
-                                    <span class="linkArtist" (click)="takeIdAll(trackArtistTwoId[i])"
-                                        [routerLink]="'/artistId'">{{trackArtistTwo[i]}}</span> </span>
-                            </td>
-                            <td class="fila4"> <span (click)="takeIdAll(albumId[i])" [routerLink]="'/albumDirect'">{{tracksAlbum[i]}}</span> </td>  
-                            <td class="fila4">{{tracksDuration[i] | pipeDuracion}}</td>
-                            <td class="flila5">
-                                <input type="range" min="0" max="1" step="0.05" [(ngModel)]="globalVolume" (input)="ajustarVolume()">
-                            </td>
-                        </tr>
-                    </ng-container>
-                </tbody>
-            </table>
+                                        <span class="fila32" *ngIf="trackArtistTwo[i] !== ''">
+                                            <span class="linkArtist" (click)="takeIdAll(trackArtistId[i])"
+                                                [routerLink]="'/artistId'"> {{tracksArtist[i]}} </span> ,
+                                            <span class="linkArtist" (click)="takeIdAll(trackArtistTwoId[i])"
+                                                [routerLink]="'/artistId'">{{trackArtistTwo[i]}}</span> </span>
+                                    </td>
+                                    <td class="fila4"> <span (click)="takeIdAll(albumId[i])"
+                                            [routerLink]="'/albumDirect'">{{tracksAlbum[i]}}</span> </td>
+                                    <td class="fila4">{{tracksDuration[i] | pipeDuracion}}</td>
+                                    <td class="flila5">
+                                        <input type="range" min="0" max="1" step="0.05" [(ngModel)]="globalVolume"
+                                            (input)="ajustarVolume()">
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="footerOne">
+                    <div class="footerOneOne">
+                        <p class="titleFoot">Empresa</p>
+                        <p>Acerca de</p>
+                        <p>Empleo</p>
+                        <p>For the Record</p>
+                    </div>
+                    <div class="footerOneOne">
+                        <p class="titleFoot">Comunidades</p>
+                        <p>Para artistas</p>
+                        <p>Desarrolladores</p>
+                        <p>Publicidad</p>
+                        <p>Inversores</p>
+                        <p>Proveedores</p>
+                    </div>
+                    <div class="footerOneOne">
+                        <p class="titleFoot">Enlaces útiles</p>
+                        <p>Asistencia</p>
+                        <p>App gratis para móvil</p>
+                    </div>
+                    <div class="footerOneOne">
+                        <p class="titleFoot">Planes de Spotify</p>
+                        <p>Premium Individual</p>
+                        <p>Premium Duo</p>
+                        <p>Premium Familiar</p>
+                        <p>Premium para Estudiantes</p>
+                        <p>Spotify Free</p>
+                    </div>
+                    <div class="iconosFoot">
+                        <a target="_blank" class="fa fa-facebook"></a>
+                        <a target="_blank" class="fa fa-instagram"></a>
+                        <a target="_blank" class="fa fa-twitter"></a>
+                    </div>
+                </div>
+                <hr class="finalFoot">
+            </div>
         </div>
-        <div class="footerOne">
-            <div class="footerOneOne">
-                <p class="titleFoot">Empresa</p>
-                <p>Acerca de</p>
-                <p>Empleo</p>
-                <p>For the Record</p>
-            </div>
-            <div class="footerOneOne">
-                <p class="titleFoot">Comunidades</p>
-                <p>Para artistas</p>
-                <p>Desarrolladores</p>
-                <p>Publicidad</p>
-                <p>Inversores</p>
-                <p>Proveedores</p>
-            </div>
-            <div class="footerOneOne">
-                <p class="titleFoot">Enlaces útiles</p>
-                <p>Asistencia</p>
-                <p>App gratis para móvil</p>
-            </div>
-            <div class="footerOneOne">
-                <p class="titleFoot">Planes de Spotify</p>
-                <p>Premium Individual</p>
-                <p>Premium Duo</p>
-                <p>Premium Familiar</p>
-                <p>Premium para Estudiantes</p>
-                <p>Spotify Free</p>
-            </div>
-            <div class="iconosFoot">
-                <a target="_blank" class="fa fa-facebook"></a>
-                <a target="_blank" class="fa fa-instagram"></a>
-                <a target="_blank" class="fa fa-twitter"></a>
-            </div>
-        </div>
-        <hr class="finalFoot">
     </div>
 </div>

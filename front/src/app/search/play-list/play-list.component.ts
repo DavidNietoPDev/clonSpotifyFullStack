@@ -3,6 +3,7 @@ import { SearchBarService } from '../../services/search-bar.service';
 import { PlayList } from '../../models/playlist.model';
 import { TakeIdsService } from '../../services/take-ids.service';
 import { MusicPlayerService } from '../../services/music-player.service';
+import { ExtractColorService } from '../../services/extract-color.service';
 
 @Component({
   selector: 'app-play-list',
@@ -13,11 +14,13 @@ export class PlayListComponent implements OnInit {
   playListSearch = inject(SearchBarService)
   takeId = inject(TakeIdsService)
   musicPlayer = inject(MusicPlayerService)
+  extractColor = inject(ExtractColorService)
 
   buscar: boolean = false;
   loading: boolean = false;
   globalVolume: number = 0.1;
   playListId: string = this.takeId.getAlgoId();
+  colorDominantePlayList: number[] = [];
 
   trackUrl: string[] = [];
   tracksList: string[] = [];
@@ -33,9 +36,10 @@ export class PlayListComponent implements OnInit {
   artistId: string[] = [];
 
   listName: string = '';
-  listDescription : string [] = [];
+  listDescription: string = '';
   listFollowers: number = 0;
   listImage: string = '';
+  listType: string = '';
 
 
   takeIdAll(id: string) {
@@ -45,10 +49,11 @@ export class PlayListComponent implements OnInit {
 
   ngOnInit(): void {
     this.buscarPlayList();
-  } 
+  }
 
   buscarPlayList(): void {
     this.loading = true;
+    this.colorDominantePlayList = [];
 
     this.trackUrl = [];
     this.tracksList = [];
@@ -64,7 +69,6 @@ export class PlayListComponent implements OnInit {
     this.trackArtistId = [];
     this.artistId = [];
 
-    this.listDescription = [];
 
     this.playListSearch.getPlayList(this.playListId).subscribe((response: PlayList) => {
       for (let track of response.tracks.items) {
@@ -78,19 +82,23 @@ export class PlayListComponent implements OnInit {
         } else {
           this.artistId.push('');
         }
+        this.listType = response.type;
         this.listName = response.name;
-        if(response.description && response.description.length > 0) {
-          this.listDescription.push(response.description[0]);
+        if (response.description && response.description.length > 0) {
+          this.listDescription = (response.description);
         } else {
-          this.listDescription.push('');
+          this.listDescription = ('');
         }
-        if(response.followers && response.followers.total > 0) {
+        if (response.followers && response.followers.total > 0) {
           this.listFollowers = response.followers.total;
         } else {
           this.listFollowers = response.tracks.total;
         }
+
         this.listImage = response.images[0].url
-        if (track && track.track) {        
+        this.colorDominante(this.listImage);
+
+        if (track && track.track) {
           if (track.track.preview_url && track.track.preview_url.length > 0) {
             this.trackUrl.push(track.track.preview_url)
           } else {
@@ -144,6 +152,20 @@ export class PlayListComponent implements OnInit {
 
   ajustarVolume() {
     this.musicPlayer.setVolume(this.globalVolume);
+  }
+
+
+  //función para extraer el color de la imagen
+  async colorDominante(imageUrl: string) {
+    this.extractColor.getColorDominante(imageUrl)
+      .then(color => {
+        for (let colore of color) {
+          this.colorDominantePlayList.push(colore);
+        }
+      })
+      .catch(error => {
+        console.error('Error al obtener el color dominante', error);
+      })
   }
 }
 
