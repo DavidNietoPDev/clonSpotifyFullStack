@@ -9,7 +9,7 @@
           <button class="btonis">Iniciar sesión</button>
         </div>
       </div>
-      <div class="listaBusquedas">
+      <div class="listaBusquedas" *ngIf="buscar">
         <button #buttonTodo name="buttonTodo" class="bsqS" (click)="buscarArtista()">Todo</button>
         <button #buttonSongs class="bsq" (click)="navegarAComponenteSongs()">Canciones</button>
         <button class="bsq" (click)="navegarAComponenteArtists()">Artistas</button>
