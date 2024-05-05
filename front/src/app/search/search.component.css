@@ -183,6 +183,83 @@
       color: black
     }
 
+
+    .textListas {
+      position: relative;
+      left: 10px;
+      font-size: 26px;
+      font-weight: bold;
+      color: white; 
+    
+    }
+    
+    .cardL {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-row-gap:10px
+    
+    }
+    
+    .topList {
+      left: 10px;
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      height: 240px;
+    }
+    
+    .cardList {
+    
+      display: flex;
+      padding-left: 10px;
+      width: 210px;
+    
+    }
+    
+    .cardCuadAlbum {
+    
+      margin-top: 0px;
+      width: 180px;
+      height: 180px;
+      border: none;
+    }
+    
+    .cardImageList {
+      border-radius: 10px;
+      border: none;
+      position: relative;
+      border: none;
+      width: 180px;
+      height: 180px;
+    }
+    
+    .cardImageList::shadow{
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+      background-color: #292828;
+    }
+    
+    .cardImageList:hover {
+      cursor: pointer;
+    }
+    .texttt1 {
+    
+      width: 160px;
+      height: 10%;
+      position: relative;
+      left: -180px;
+      top: 180px;
+    }
+    
+    .artistt1 {
+      width: 160px;
+      height: 10%;
+      position: relative;
+      left: -180px;
+      top: 185px;
+      color: #424242;
+      
+    }
+
     .text {
       position: relative;
       top: 140px;

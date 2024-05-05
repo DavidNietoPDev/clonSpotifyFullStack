@@ -5,73 +5,24 @@ require('dotenv').config();
 
 
 
-//Para buscar un artista y en la respuesta sale una lista con lo que se 
-//ha buscado en el nombre, la coincidencia exacta saldrá primero
-router.get('/', async (req: any, res: any) => {
-    const { artist } = req.query;
-    const type = 'artist';
-        try {
-            
-            await handleSpotifyRequest(req, res, artist, type);
 
+router.get('/', async (req: any, res: any) => {
+        try {
+            await handleSpotifyRequest(req, res);
         } catch (error:any) {
-            console.log(error)                    
+            console.log(error)
         }
     });
 
-// async function getArtistImage(mbids: string[], artists: string[]) {
-//     const images: string[][] = [];
-//     const mbides: string[] = [];
-//     let count: number = 0;
-//     let url: any;
-//     for (const mbide of mbids) {
-//         mbides.push(mbide);
-//         count++;
-//     }
-//     for (const artist of artists) {
-//         try {
-//             const artistFormatted = artist.replace(/\s+/g, '+');
-//             url = `${process.env.baseUrlImage}${artistFormatted}${'/+images/'}${mbides[count]}`;
-//             const response = await axios.get(url);
-//             if (response.status === 200) {
-//                 const $ = cheerio.load(response.data);
-//                 const imageUrl = $('.js-gallery-image').attr('src');
-//                 if (imageUrl) {
-//                     images.push([imageUrl]); // Usar un array de una sola imagen
-//                 } else {
-//                     console.error('No se encontró la URL de la imagen en la página:', url);
-//                     images.push([]);
-//                 }
-//             } else {
-//                 console.error('La solicitud a la URL falló con el estado: ', response.status);
-//                 images.push([]);
-//             } // Añadir un array vacío en caso de no encontrar la imagen
-//         } catch (error: any) {
-//             if (error.response && error.response.status === 404) {
-//                 console.error('La URL solicitada no fue encontrada:', url);
-//                 images.push([]);
-//             } else if (error.code === 'ENOTFOUND') {
-//                 console.error('No se pudo conectar al servidor:', error);
-//                 images.push([]);
-//             } else {
-//                 console.error('Otro error durante la solicitud:', error);
-//                 images.push([]);
-//             }
-//         }
-//     }
-//     return images;
-// }
 
-export async function handleSpotifyRequest(req:any, res:any, artist:any, type:any) {
+export async function handleSpotifyRequest(req:any, res:any) {
     try { // Función para hacer la petición a spotify de búsqueda de artista
-        const baseUrlSpotify = process.env.baseUrlSpotify || '';
+        const urlSpotifyCategories = process.env.urlSpotifyCategories || '';
         const tokenSpotify = process.env.SPOTIFY_ACCESS_TOKEN || '';
 
-        const responseSpotify = await axios.get(baseUrlSpotify, {
+        const responseSpotify = await axios.get(urlSpotifyCategories, {
             params: {
-                q: artist,
-                type: type,
-                limit: 50
+                limit: 30
             },
             headers: {
                 'Authorization': `Bearer ${tokenSpotify}`
@@ -88,7 +39,7 @@ export async function handleSpotifyRequest(req:any, res:any, artist:any, type:an
                 await getNewToken(); // Método para refrescar el token
                 console.log('Token refrescado correctamente. Intentando de nuevo la solicitud a Spotify...');
                 // Volver a intentar la solicitud a Spotify
-                return handleSpotifyRequest(req, res, artist, type);
+                return handleSpotifyRequest(req, res);
             } catch (refreshError) {
                 console.error('Error al refrescar el token de acceso:', refreshError);
                 res.status(500).json({ error: 'Error al refrescar el token de acceso' });
@@ -134,7 +85,6 @@ export async function getNewToken() {
         });
 
 }
-
 
 
 module.exports = router;

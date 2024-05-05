@@ -24,10 +24,21 @@
         <div class="dot"></div>
       </div>
     </div>
+    <p class="textListas">Explorar todo</p>
+    <div class="cardL">
+      <div class="topList" *ngFor="let category of nameCategory; let i = index">
+        <div class="cardList">
+          <img src={{imageCategory[i]}} alt="Imagen del artista" class="cardImageList">
+          <div class="topTrackslist">
+            <p class="texttt1">{{ nameCategory [i] }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div *ngIf="buscar">
       <p class="text">Resultado principal</p>
       <p class="text2">Canciones</p>
-      <div class="cardP" >
+      <div class="cardP" (click)="takeId(idArtist)" [routerLink]="'/artistId'" >
         <div class="cardI">
           <img src={{imageUrl}} alt="Imagen del artista" class="card-image">
         </div>

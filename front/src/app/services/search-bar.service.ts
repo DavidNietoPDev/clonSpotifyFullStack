@@ -11,6 +11,7 @@ import { PlayList } from '../models/playlist.model';
 import { AlbumID } from '../models/albumId.model';
 import { ArtistID } from '../models/artistId.model';
 import { TrackID } from '../models/trackId.model';
+import { Categories } from '../models/categories.model';
 
 
 export interface ArtistResponse {
@@ -53,6 +54,11 @@ export class SearchBarService {
   getartistAlbum(): Observable<Album> {
     const searchArt = this.searchterm.getSearchTerm();
     return this.http.get<Album>(`${this.baseUrl}${'/artistAlbum'}`, { params: { artist: searchArt } })
+  }
+
+  
+  getCategories(): Observable<Categories> {
+    return this.http.get<Categories>(`${this.baseUrl}${'/categorys'}`)
   }
 
 

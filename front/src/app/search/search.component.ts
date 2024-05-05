@@ -5,6 +5,7 @@ import { SearchServiceService } from '../services/search-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TakeIdsService } from '../services/take-ids.service';
 import { MusicPlayerService } from '../services/music-player.service';
+import { Categories } from '../models/categories.model';
 
 
 
@@ -29,10 +30,14 @@ export class SearchComponent implements OnInit {
   buscar: boolean = false;
   globalVolume: number = 0.1;
 
-  displayedTracks: any[] = [];
+  imageCategory: string[] = [];
+  nameCategory: string[] = [];
+
   imageSimilar: string[] = [];
   artistSimilarList: string[] = [];
   artistSimilarId: string [] = []; 
+
+
   topTrackId: string[] = [];
   topTrackUrl: string[] = [];
   topTrack: string[] = [];
@@ -42,11 +47,15 @@ export class SearchComponent implements OnInit {
   topTrackArtistImage: string[] = [];
   idArtistTracks: string [] = [];
   idArtistTracksTwo: string [] = [];
+
+
   topAlbum: string[] = [];
   topAlbumImage: string[] = [];
   topAlbumArtist: string[] = [];
   topAlbumYear: string[] = [];
   idsAlbum: string[] = [];
+
+
   idsPlaylist: string[] = [];
   playList: string[] = [];
   playListImage: string[] = [];
@@ -60,10 +69,13 @@ export class SearchComponent implements OnInit {
     this.takeIdPlaylist.setAlgoId(id);
   }
   ngOnInit() {
+   
 
     this.route.queryParams.subscribe(params => {
       if (params.fromSongsComponent || params.fromArtistsComponent || params.fromAlbumsComponent) {
         this.buscarArtista();
+      } else {
+        this.categories();
       }
     });
   }
@@ -79,6 +91,19 @@ export class SearchComponent implements OnInit {
 
   navegarAComponenteAlbumes() {
     this.router.navigate(['/albums'], { queryParams: { fromSearchComponent: true } });
+  }
+
+  categories() {
+    this.nameCategory = [];
+    this.imageCategory = [];
+    this.loading = true;
+    this.artistSearch.getCategories().subscribe((response: Categories) => {
+      for (let category of response.categories.items) {
+        this.imageCategory.push(category.icons[0].url);
+        this.nameCategory.push(category.name);
+      }
+      this.loading = false;
+    })
   }
 
   buscarArtista(): void {
@@ -111,6 +136,8 @@ export class SearchComponent implements OnInit {
         this.topAlbumArtist = [];
         this.topAlbumYear = [];
         this.buscar = true;
+
+        
         this.idArtist = response.artists.items[0].id;
         this.artist = response.artists.items[0].name;
         this.imageUrl = response.artists.items[0].images[0].url;

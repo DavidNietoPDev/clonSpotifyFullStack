@@ -14,8 +14,6 @@ router.get('/', async (req: any, res: any) => {
 
         } catch (error:any) {
             console.log(error)
-            
-            
         }
     });
 

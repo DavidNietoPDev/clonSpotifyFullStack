@@ -19,6 +19,13 @@
 
     GET http://localhost:3000/api/artistAlbum/?artist=Extremoduro
     
+###
+    GET http://localhost:3000/api/categorys
+
+
+
+
+
 ### 
     //Petición para playList
     GET http://localhost:3000/api/topList/
