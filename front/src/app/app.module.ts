@@ -16,6 +16,7 @@ import { PlayListComponent } from './search/play-list/play-list.component';
 import { NumberFormatPipe } from './pipes/number-format.pipe';
 import { AlbumDirectComponent } from './search/albums/album-direct/album-direct.component';
 import { SongsIdComponent } from './search/songs/songs-id/songs-id.component';
+import { CategoriesComponent } from './search/categories/categories.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { SongsIdComponent } from './search/songs/songs-id/songs-id.component';
     NumberFormatPipe,
     AlbumDirectComponent,
     SongsIdComponent,
+    CategoriesComponent,
     
   ],
   imports: [

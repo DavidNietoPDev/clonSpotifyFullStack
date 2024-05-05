@@ -1,0 +1,889 @@
+.primary {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    left: 435px;
+    bottom: 85px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-color: #121212;
+    border-radius: 10px;
+    min-width: 360px;
+    scrollbar-gutter: stable;
+  }
+
+
+  .primary:hover {
+    overflow-y: auto;
+  }
+
+
+  .primary::-webkit-scrollbar {
+    width: 10px;
+    height: 20px;
+    background-color: transparent;
+
+  }
+
+  .primary::-webkit-scrollbar-thumb {
+    background-color: rgb(76, 76, 77);
+
+  }
+
+  .fondo {
+    background: linear-gradient(transparent 0, rgba(40, 41, 43, 0.5) 100%);
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-width: 360px;
+    top: 8px;
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+  
+  }
+  .navsearch {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    min-width: 360px;
+    top: 8px;
+    right: 8px;
+    left: 435px;
+    height: 70px;
+    position: fixed;
+    background-color: #08080800;
+    z-index: 1;
+  }
+
+ 
+  .btonre {
+    right: 15px;
+    position: relative;
+    border: none;
+    color: #acabab;
+    background-color: transparent;
+    font-weight: 500;
+
+  }
+
+  .btonre:hover {
+    scale: 103%;
+    color: white;
+  }
+
+  .btonis {
+    margin-right: 25px;
+    position: relative;
+    border-radius: 50px;
+    border: none;
+    font-weight: 650;
+    width: 160px;
+    height: 50px;
+
+
+  }
+
+  .btonis:hover {
+    scale: 103%;
+  }
+
+  .listaBusquedas {
+    background-color: #121212;
+    margin-right: 10px;
+    position: relative;
+    display: flex;
+    left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+  }
+ 
+  .header {
+
+    position: relative;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .imgHeader {
+    display: flex;
+    justify-content: center;
+    left: 50px;
+    width: 40%;
+    height: 100%;
+    position: relative;
+
+  }
+  
+  .imgImg {
+    border-radius: 10px;
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-right: 10px;
+  }
+
+  .imgImg::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  }
+  
+  .textHeader {
+    margin-left: 80px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .artistName {
+ 
+    font-size: 100px;
+    font-weight: bold;
+  }
+  
+  .textHeader p {
+    margin-bottom: 0px;
+    color: white;
+  }
+
+  .textListas {
+    position: relative;
+    left: 10px;
+    font-size: 26px;
+    font-weight: bold;
+    color: white; 
+  
+  }
+  
+  .cardL {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-row-gap:10px
+  
+  }
+  
+  .topList {
+    left: 10px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    height: 240px;
+  }
+  
+  .cardList {
+  
+    display: flex;
+    padding-left: 10px;
+    width: 210px;
+  
+  }
+  
+  .cardCuadAlbum {
+  
+    margin-top: 0px;
+    width: 180px;
+    height: 180px;
+    border: none;
+  }
+  
+  .cardImageList {
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    border: none;
+    width: 180px;
+    height: 180px;
+  }
+  
+  .cardImageList::shadow{
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    background-color: #292828;
+  }
+  
+  .cardImageList:hover {
+    cursor: pointer;
+  }
+  .texttt11 {
+  
+    width: 160px;
+    height: 10%;
+    position: relative;
+    left: -180px;
+    top: 180px;
+  }
+  
+
+  .text {
+    position: relative;
+    top: 140px;
+    margin-left: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .text2 {
+    position: relative;
+    top: 90px;
+    margin-left: 410px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+  } 
+
+  .cardP {
+
+    position: relative;
+    top: 105px;
+    margin-left: 15px;
+    width: 380px;
+    height: 220px;
+    border-radius: 10px;
+    background-color: #181717;
+  }
+
+  .cardP:hover {
+    background-color: #242424;
+    cursor: pointer;
+  }
+
+  .cardI {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    top: 20px;
+    margin-left: 20px;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .cardI::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    background-color: #181717;
+  }
+
+  .cancarti {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nombrecanc {
+    position: relative;
+    top: 25px;
+    font-weight: bold;
+    font-size: 28px;
+    color: white;
+    margin-left: 20px;
+  }
+
+  .result {
+    position: relative;
+    bottom: 5px;
+    top: 30px;
+    font-size: 15px;
+    margin-left: 20px;
+    color: #a09f9f;
+  }
+
+
+  .cardC {
+    top: -115px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 415px;
+    right: 10px;
+    height: 225px;
+    width: 70%;
+  }
+
+  .toptrack {
+    position: relative;
+    height: 25%;
+    border-radius: 5px;
+  }
+
+  .toptrack:hover {
+    background-color: rgba(112, 109, 109, 0.226);
+  }
+
+  .cardItt {
+    display: flex;
+    margin-left: 10px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .card-imagett {
+    width: 40px;
+    height: 40px;
+  }
+
+  .card-imagett::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    background-color: #181717;
+  }
+
+  .card-imagett {
+    cursor: pointer;
+  }
+
+  .topTrackslist {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .texttt1 {
+    position: relative;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    margin-left: 10px;
+
+  }
+
+  .texttt1:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .artistt1 {
+    position: relative;
+    margin-top: -20px;
+    margin-left: 10px;
+    font-size: 15px;
+    color: #a09f9f;
+  }
+
+  .artistt2 {
+    position: relative;
+    margin-top: -20px;
+    margin-left: 10px;
+    font-size: 15px;
+    color: #a09f9f;
+  }
+
+  .artistt2:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .artistTrackLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+ 
+
+  .timett {
+    right: 100px;
+    top: 15px;
+    position: absolute;
+    color: #a09f9f;
+  }
+
+  .artista {
+    color: white;
+    margin-left: 3px;
+  }
+
+  .card-image {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .textArtist {
+    top: -80px;
+    position: relative;
+    margin-left: 15px;  
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  
+  .cardArtist {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: -40px;
+    height: 240px;
+  }
+
+
+  .cardImageArtista {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    width: 200px;
+    height: 100%;
+
+  }
+
+  .cardImageArtista:hover {
+    background-color: rgba(112, 109, 109, 0.226);
+  }
+
+  .cardRedSimilar {
+    border-radius: 100%;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .imageSimilar {
+    position: relative;
+    border-radius: 100%;
+    border: none;
+    width: 170px;
+    height: 170px;
+  }
+
+  .imageSimilar::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 100%;
+    background-color: #181717;
+  }
+
+  .imageSimilar:Hover {
+    cursor: pointer;
+  }
+
+  .artistSimilar {
+    position: relative;
+
+
+  }
+
+  .textAlbumes {
+    position: relative;
+    margin-left: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .cardAlbum {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 20px;
+    height: 240px;
+
+  }
+
+  .cardImageAlbum {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    width: 200px;
+    height: 100%;
+
+  }
+
+  .cardImageAlbum:hover {
+    background-color: rgba(112, 109, 109, 0.226);
+  }
+
+
+  .cardCuadAlbum {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+
+  }
+
+  .imageAlbum {
+    border: none;
+    position: relative;
+    border: none;
+    width: 170px;
+    height: 170px;
+  }
+
+  .imageAlbum::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    background-color: #181717;
+  }
+
+  .imageAlbum:hover {
+    cursor: pointer;
+  }
+
+  .artistAlbum {
+    position: relative;
+  }
+
+  .yearArtist {
+    top: -20px;
+    position: relative;
+    font-size: 13px;
+    color: #747171;
+  }
+
+  .artistAlbumLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+
+
+  .textListas {
+    margin-top: 120px;
+    position: relative;
+    margin-left: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .cardListas {
+    
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 20px;
+    height: 240px;
+
+  }
+
+  .cardImagenListas {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    width: 200px;
+    height: 100%;
+  }
+
+  .cardImagenListas:hover {
+    background-color: rgba(112, 109, 109, 0.226);
+  }
+
+  .cardCuadListas {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .imageListas {
+    border: none;
+    position: relative;
+    border: none;
+    width: 170px;
+    height: 170px;
+  }
+
+  .imageListas::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    background-color: #181717;
+  }
+
+  .imageListas:hover {
+    cursor: pointer;
+  }
+
+  .textListBottom {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+  }
+
+  .artistListas {
+    position: relative;
+
+  }
+
+  .nameListas {
+    top: -20px;
+    position: relative;
+    font-size: 13px;
+    color: #747171;
+  }
+
+  .footerOne {
+    left: 30px;
+    top: 100px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+  }
+
+  .footerOneOne {
+    display: flex;
+    flex-direction: column;
+    color: #858484;
+  }
+
+  .footerOneOne p {
+    margin-bottom: 2px;
+  }
+
+  .iconosFoot a{
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 100%;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: #f8f6f6;
+    margin-right: 10px;
+    background-color: #2f3131;
+    text-align: center;
+    transition: all 300ms ease;
+
+}
+.iconosFoot a:hover{
+    background-color: #999898;
+}
+
+.titleFoot {
+  font-weight: bold;
+  color: white;
+}
+
+.finalFoot {
+  position: relative;
+  margin-top: 200px;
+}
+  @media screen and (max-height: 600px) {  
+    .tercero {
+      min-height: 320px;
+    }
+    .primary {
+      min-height: 485px;
+    }
+    .foot {
+      top: 500px ;
+      height: 80px;
+    }
+  
+  }
+  @media screen and (max-width: 1600px) {
+    .cardImageAlbum:nth-child(n+6) {
+      display: none;
+    }
+    .cardImageArtista:nth-child(n+6) {
+      display: none;
+    }
+    .cardImagenListas:nth-child(n+6) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1400px) {
+    .cardImageAlbum:nth-child(n+5) {
+      display: none;
+    }
+    .cardImageArtista:nth-child(n+5) {
+      display: none;
+    }
+    .cardImagenListas:nth-child(n+5) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .cardImageAlbum:nth-child(n+4) {
+      display: none;
+    }
+    .cardImageArtista:nth-child(n+4) {
+      display: none;
+    }
+    .cardImagenListas:nth-child(n+4) {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .cardImageAlbum:nth-child(n+3) {
+      display: none;
+    }
+    .cardImageArtista:nth-child(n+3) {
+      display: none;
+    }
+    .cardImagenListas:nth-child(n+3) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 855px) {
+    .searcher {
+      width: 25%;
+    }
+
+    .navsearch {
+      left: 51%;
+    }
+
+    .primary {
+      left: 51%;
+    }
+  }
+
+  @media screen and (max-width: 755px) {
+    .navsearch {
+      left: 385px;
+    }
+
+
+    /* .btonre {
+      left: 470px;
+    }
+    
+    .btonis {
+      left: 650px;
+    } */
+
+    /* .searcher {
+      width: 70px;
+    } */
+
+    .primary {
+      left: 380px;
+      
+    }
+    .icon31 {
+      left: 340px;
+    }
+  }
+
+
+
+
+
+
+
+
+  /* The loader container */
+  .loader {
+    width: 200px;
+    height: 200px;
+    perspective: 200px;
+  }
+
+
+  /* The dot */
+  .dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    margin-top: -60px;
+    margin-left: -60px;
+    border-radius: 100px;
+    border: 40px outset #1e3f57;
+    transform-origin: 50% 50%;
+    transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+    background-color: transparent;
+    animation: dot1 1000ms cubic-bezier(.49, .06, .43, .85) infinite;
+  }
+
+  .dot:nth-child(2) {
+    width: 140px;
+    height: 140px;
+    margin-top: -70px;
+    margin-left: -70px;
+    border-width: 30px;
+    border-color: #447891;
+    animation-name: dot2;
+    animation-delay: 75ms;
+    box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.1);
+    transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+  }
+
+  .dot:nth-child(3) {
+    width: 160px;
+    height: 160px;
+    margin-top: -80px;
+    margin-left: -80px;
+    border-width: 20px;
+    border-color: #6bb2cd;
+    animation-name: dot3;
+    animation-delay: 150ms;
+    box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.1);
+    transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+  }
+
+  @keyframes dot1 {
+    0% {
+      border-color: #1e3f57;
+      transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+    }
+
+    50% {
+      border-color: #1e574f;
+      transform: rotateX(20deg) rotateY(20deg) rotateZ(50deg) translateZ(0px);
+    }
+
+    100% {
+      border-color: #1e3f57;
+      transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+    }
+  }
+
+  @keyframes dot2 {
+    0% {
+      border-color: #447891;
+      box-shadow: inset 0 0 15px 0 rgba(255, 255, 255, 0.2);
+      transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+    }
+
+    50% {
+      border-color: #449180;
+      box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.8);
+      transform: rotateX(20deg) rotateY(20deg) rotateZ(50deg) translateZ(0px);
+    }
+
+    100% {
+      border-color: #447891;
+      box-shadow: inset 0 0 15px 0 rgba(255, 255, 255, 0.2);
+      transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+    }
+  }
+
+  @keyframes dot3 {
+    0% {
+      border-color: #6bb2cd;
+      box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.1);
+      transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+    }
+
+    50% {
+      border-color: #6bcdb2;
+      box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.8);
+      transform: rotateX(20deg) rotateY(20deg) rotateZ(50deg) translateZ(0px);
+    }
+
+    100% {
+      border-color: #6bb2cd;
+      box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.1);
+      transform: rotateX(24deg) rotateY(20deg) rotateZ(0deg) translateZ(-25px);
+    }
+  }

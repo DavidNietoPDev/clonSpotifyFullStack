@@ -1,0 +1,143 @@
+<div class="container">
+    <div class="primary">
+        <div class="fondo" [ngStyle]="{
+           'background': 'linear-gradient(to top, transparent 0, rgba(' + colorDominanteCategory[0] + ',' + colorDominanteCategory[1] + ',' + colorDominanteCategory[2] + ', 1) 100%)' 
+        }">
+            <div class="navsearch">
+                <button class="btonre">Registrarte</button>
+                <button class="btonis">Iniciar sesión</button>
+            </div>
+            <div class="header">
+                <div class="imgHeader">
+                    <img class="imgImg" src="{{imageCategory}}" alt="">
+                </div>
+                <div class="textHeader">
+                    <p class="artistName">{{nameCategory}}</p>
+                </div>
+            </div>
+        </div>
+      <div *ngIf="loading"
+        style="font-size: 25px; font-weight: bold; position: absolute; top: 50%; left: 40%; z-index: 999">
+        <div class="loader">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+      <p class="textListas" *ngIf="!buscar">Explorar todo</p>
+      <div class="cardL" *ngIf="!buscar">
+        <!-- <div class="topList" *ngFor="let category of nameCategory; let i = index">
+          <div class="cardList">
+            <img src={{imageCategory[i]}} alt="Imagen del artista" class="cardImageList">
+            <div class="topTrackslist">
+              <p class="texttt11">{{ nameCategory [i] }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="buscar">
+        <p class="text">Resultado principal</p>
+        <p class="text2">Canciones</p>
+        <div class="cardP" (click)="takeId(idArtist)" [routerLink]="'/artistId'" >
+          <div class="cardI">
+            <img src={{imageUrl}} alt="Imagen del artista" class="card-image">
+          </div>
+          <div class="cancarti">
+            <p class="nombrecanc" >{{artist}}</p>
+            <p class="result">Artista<span class="artista"></span></p>
+          </div>
+        </div>
+        <div class="cardC">
+          <div class="toptrack" *ngFor="let track of topTrack.slice(0, 4); let i = index">
+            <div class="cardItt">
+              <img src={{topTrackArtistImage[i]}} alt="Imagen del artista" class="card-imagett"
+                (click)="togglePlayBack(topTrackUrl[i])">
+              <div class="topTrackslist">
+                <p class="texttt1" (click)="takeId(topTrackId[i])" [routerLink]="'/songsId'">{{ topTrack[i] }}</p>
+                <p class="artistt1" *ngIf="topTrackArtistTwo[i] !== ''">
+                  <span class="artistTrackLink" (click)="takeId(idArtistTracks[i])" [routerLink]="'/artistId'">{{ topTrackArtist[i] }}</span>, 
+                  <span class="artistTrackLink" (click)="takeId(idArtistTracksTwo[i])" [routerLink]="'/artistId'">{{topTrackArtistTwo[i]}}</span></p>
+                <p class="artistt2" *ngIf="topTrackArtistTwo[i] === ''" (click)="takeId(idArtistTracks[i])" [routerLink]="'/artistId'" >{{ topTrackArtist[i] }}</p>
+              </div>
+              <div>
+                <p class="timett">{{topTrackDuration[i] | pipeDuracion}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="textArtist">Artistas</p>
+        <div class="cardArtist" >
+          <div class="cardImageArtista" *ngFor="let artista of artistSimilarList.slice(0, 7); let i = index">
+            <div class="cardRedSimilar">
+              <img class="imageSimilar" (click)="takeId(artistSimilarId[i])" [routerLink]="'/artistId'" src="{{imageSimilar[i]}}" alt="">
+              <div class="textListBottom">
+                <p class="artistSimilar">{{artistSimilarList[i]}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="textAlbumes">Álbumes</p>
+        <div class="cardAlbum">
+          <div class="cardImageAlbum" *ngFor="let album of topAlbum.slice(0, 7); let i = index">
+            <div class="cardCuadAlbum">
+              <img class="imageAlbum" src="{{topAlbumImage[i]}}" (click)="takeId(idsAlbum[i])"
+                [routerLink]="'/albumDirect'" alt="">
+              <div class="textListBottom">
+                <p class="artistAlbum">{{ topAlbum [i] | pipeTruncate}}</p>
+                <p class="yearArtist">{{topAlbumYear[i].split("-")[0]}} · <span class="artistAlbumLink"
+                   (click)="takeId(idArtists[i])" [routerLink]="'/artistId'">{{topAlbumArtist[i]}}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="textListas">Listas</p>
+        <div class="cardListas">
+          <div class="cardImagenListas" *ngFor="let lista of playList.slice(0, 7); let i = index">
+            <div class="cardCuadListas">
+              <img class="imageListas" src="{{playListImage[i]}}" (click)="takeId(idsPlaylist[i])"
+                [routerLink]="'/playListId'" alt="">
+              <div class="textListBottom">
+                <p class="artistListas">{{ playList[i] | pipeTruncate}}</p>
+                <p class="nameListas">{{playListName[i]}}</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <div class="footerOne">
+          <div class="footerOneOne">
+            <p class="titleFoot">Empresa</p>
+            <p>Acerca de</p>
+            <p>Empleo</p>
+            <p>For the Record</p>
+          </div>
+          <div class="footerOneOne">
+            <p class="titleFoot">Comunidades</p>
+            <p>Para artistas</p>
+            <p>Desarrolladores</p>
+            <p>Publicidad</p>
+            <p>Inversores</p>
+            <p>Proveedores</p>
+          </div>
+          <div class="footerOneOne">
+            <p class="titleFoot">Enlaces útiles</p>
+            <p>Asistencia</p>
+            <p>App gratis para móvil</p>
+          </div>
+          <div class="footerOneOne">
+            <p class="titleFoot">Planes de Spotify</p>
+            <p>Premium Individual</p>
+            <p>Premium Duo</p>
+            <p>Premium Familiar</p>
+            <p>Premium para Estudiantes</p>
+            <p>Spotify Free</p>
+          </div>
+          <div class="iconosFoot">
+            <a target="_blank" class="fa fa-facebook"></a>
+            <a target="_blank" class="fa fa-instagram"></a>
+            <a target="_blank" class="fa fa-twitter"></a>
+          </div>
+        </div>
+        <hr class="finalFoot">
+      </div>
+    </div>
+  </div>

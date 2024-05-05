@@ -241,7 +241,7 @@
     .cardImageList:hover {
       cursor: pointer;
     }
-    .texttt1 {
+    .texttt11 {
     
       width: 160px;
       height: 10%;
@@ -250,15 +250,6 @@
       top: 180px;
     }
     
-    .artistt1 {
-      width: 160px;
-      height: 10%;
-      position: relative;
-      left: -180px;
-      top: 185px;
-      color: #424242;
-      
-    }
 
     .text {
       position: relative;

@@ -24,13 +24,14 @@
         <div class="dot"></div>
       </div>
     </div>
-    <p class="textListas">Explorar todo</p>
-    <div class="cardL">
+    <p class="textListas" *ngIf="!buscar">Explorar todo</p>
+    <div class="cardL" *ngIf="!buscar">
       <div class="topList" *ngFor="let category of nameCategory; let i = index">
         <div class="cardList">
-          <img src={{imageCategory[i]}} alt="Imagen del artista" class="cardImageList">
+          <img src={{imageCategory[i]}} alt="Imagen del artista" class="cardImageList" (click)="takeId(idCategory[i])"
+           [routerLink]="'/categoryId'" (click)="changeTerm(nameCategory[i])">
           <div class="topTrackslist">
-            <p class="texttt1">{{ nameCategory [i] }}</p>
+            <p class="texttt11">{{ nameCategory [i] }}</p>
           </div>
         </div>
       </div>

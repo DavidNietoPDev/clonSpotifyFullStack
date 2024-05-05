@@ -32,6 +32,7 @@ export class SearchComponent implements OnInit {
 
   imageCategory: string[] = [];
   nameCategory: string[] = [];
+  idCategory: string[] = [];
 
   imageSimilar: string[] = [];
   artistSimilarList: string[] = [];
@@ -68,9 +69,11 @@ export class SearchComponent implements OnInit {
   takeId(id: string) {
     this.takeIdPlaylist.setAlgoId(id);
   }
-  ngOnInit() {
-   
 
+  changeTerm(nameCategory: string) {
+    this.searchTerm.setSearchTerm(nameCategory)
+  }
+  ngOnInit() {
     this.route.queryParams.subscribe(params => {
       if (params.fromSongsComponent || params.fromArtistsComponent || params.fromAlbumsComponent) {
         this.buscarArtista();
@@ -96,9 +99,13 @@ export class SearchComponent implements OnInit {
   categories() {
     this.nameCategory = [];
     this.imageCategory = [];
+    this.idCategory = [];
+
     this.loading = true;
+
     this.artistSearch.getCategories().subscribe((response: Categories) => {
       for (let category of response.categories.items) {
+        this.idCategory.push(category.id);
         this.imageCategory.push(category.icons[0].url);
         this.nameCategory.push(category.name);
       }
@@ -113,14 +120,17 @@ export class SearchComponent implements OnInit {
       this.loading = false;
     } else {
       this.artistSearch.getArtistAll().subscribe((response: All) => {
+        this.buscar = true;
+
         this.idArtistTracks = [];
         this.idArtistTracksTwo = [];
         this.idArtists = [];
-        this.idsAlbum = [];
+
         this.idsPlaylist = [];
         this.playListName = [];
         this.playList = [];
         this.playListImage = [];
+
         this.topTrackId = [];
         this.topTrackArtist = [];
         this.topTrackArtistTwo = [];
@@ -128,15 +138,16 @@ export class SearchComponent implements OnInit {
         this.topTrack = [];
         this.topTrackDuration = [];
         this.topTrackArtistImage = [];
+
         this.artistSimilarId = [];
         this.imageSimilar = [];
         this.artistSimilarList = [];
         this.topAlbum = [];
+        
         this.topAlbumImage = [];
+        this.idsAlbum = [];
         this.topAlbumArtist = [];
         this.topAlbumYear = [];
-        this.buscar = true;
-
         
         this.idArtist = response.artists.items[0].id;
         this.artist = response.artists.items[0].name;

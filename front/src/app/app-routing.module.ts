@@ -9,6 +9,7 @@ import { ArtistIdComponent } from './search/artists/artist-id/artist-id.componen
 import { PlayListComponent } from './search/play-list/play-list.component';
 import { AlbumDirectComponent } from './search/albums/album-direct/album-direct.component';
 import { SongsIdComponent } from './search/songs/songs-id/songs-id.component';
+import { CategoriesComponent } from './search/categories/categories.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'playListId', component: PlayListComponent},
   { path: 'albumDirect', component: AlbumDirectComponent},
   { path: 'songsId', component: SongsIdComponent},
+  { path: 'categoryId', component: CategoriesComponent},
   { path: '**', redirectTo: 'home' },
 ];
 

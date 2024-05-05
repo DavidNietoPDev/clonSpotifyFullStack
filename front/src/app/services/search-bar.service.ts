@@ -12,6 +12,8 @@ import { AlbumID } from '../models/albumId.model';
 import { ArtistID } from '../models/artistId.model';
 import { TrackID } from '../models/trackId.model';
 import { Categories } from '../models/categories.model';
+import { query } from '@angular/animations';
+import { Category } from '../models/categry.model';
 
 
 export interface ArtistResponse {
@@ -33,17 +35,17 @@ export class SearchBarService {
 
  getArtist(): Observable<Artista> {
   const searchArt = this.searchterm.getSearchTerm();
-  return this.http.get<Artista>(`${this.baseUrl}${'/artist'}`, { params: { artist: searchArt } })  
+  return this.http.get<Artista>(`${this.baseUrl}${'/artist'}`, { params: { query: searchArt } })  
  }
 
  getArtistTopTracks(): Observable<Track> {
   const searchArt = this.searchterm.getSearchTerm();
-  return this.http.get<Track>(`${this.baseUrl}${'/artistTopTracks'}`, { params: { artist: searchArt}})
+  return this.http.get<Track>(`${this.baseUrl}${'/artistTopTracks'}`, { params: { query: searchArt}})
  }
     
  getArtistAll(): Observable<All> {
   const searchArt = this.searchterm.getSearchTerm();
-  return this.http.get<All>(`${this.baseUrl}${'/artistAll'}`, { params: { artist: searchArt } })
+  return this.http.get<All>(`${this.baseUrl}${'/artistAll'}`, { params: { query: searchArt } })
   }
 
   getTopList(): Observable<Top> {
@@ -53,7 +55,7 @@ export class SearchBarService {
 
   getartistAlbum(): Observable<Album> {
     const searchArt = this.searchterm.getSearchTerm();
-    return this.http.get<Album>(`${this.baseUrl}${'/artistAlbum'}`, { params: { artist: searchArt } })
+    return this.http.get<Album>(`${this.baseUrl}${'/artistAlbum'}`, { params: { query: searchArt } })
   }
 
   
@@ -83,6 +85,11 @@ export class SearchBarService {
 
   getTrackId(trackId: string): Observable<TrackID> {
     return this.http.get<TrackID>(`${this.baseUrl}${'/songsId'}/${trackId}`)
+  }
+
+  getCategoryId(categoryId: string): Observable<Category> {
+    const search = this.searchterm.getSearchTerm();
+    return this.http.get<Category>(`${this.baseUrl}${'/categoriesId'}/${categoryId}`,{ params: { query: search } })
   }
 }
   

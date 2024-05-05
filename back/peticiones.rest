@@ -48,4 +48,6 @@
     //Petición para los trackIds
     GET http://localhost:3000/api/songsId/7stqrF7SI1Sca0OjkF7z3v
 
-
+###
+    //Petición para los categoryId
+    GET http://localhost:3000/api/categoriesId/0JQ5DAqbMKFz6FAsUtgAab/?query=Novedades

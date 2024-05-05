@@ -8,11 +8,11 @@ require('dotenv').config();
 //ha buscado en el nombre, la coincidencia exacta saldrá primero
 
 router.get('/', async (req: any, res: any) => {
-    const { artist } = req.query;
+    const { query } = req.query;
     const type = 'track';
         try {
             
-            await handleSpotifyRequest(req, res, artist, type);
+            await handleSpotifyRequest(req, res, query, type);
 
         } catch (error:any) {
             console.log(error)
@@ -98,14 +98,14 @@ router.get('/', async (req: any, res: any) => {
 // }
 
 
-export async function handleSpotifyRequest(req:any, res:any, artist:any, type:any) {
+export async function handleSpotifyRequest(req:any, res:any, query:any, type:any) {
     try { // Función para hacer la petición a spotify de búsqueda de artista
         const baseUrlSpotify = process.env.baseUrlSpotify || '';
         const tokenSpotify = process.env.SPOTIFY_ACCESS_TOKEN || '';
 
         const responseSpotify = await axios.get(baseUrlSpotify, {
             params: {
-                q: artist,
+                q: query,
                 type: type,
                 limit: 50
             },
@@ -124,7 +124,7 @@ export async function handleSpotifyRequest(req:any, res:any, artist:any, type:an
                 await getNewToken(); // Método para refrescar el token
                 console.log('Token refrescado correctamente. Intentando de nuevo la solicitud a Spotify...');
                 // Volver a intentar la solicitud a Spotify
-                return handleSpotifyRequest(req, res, artist, type);
+                return handleSpotifyRequest(req, res, query, type);
             } catch (refreshError) {
                 console.error('Error al refrescar el token de acceso:', refreshError);
                 res.status(500).json({ error: 'Error al refrescar el token de acceso' });
