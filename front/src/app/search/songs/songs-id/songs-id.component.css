@@ -166,7 +166,6 @@
   }
   
   .table2 {
-
     margin-left: 20px;
     position:relative;
   }
@@ -177,7 +176,7 @@
     font-size: 14px;
 }
 .column1 {
-    width: 2.5%;  
+  width: 2.5%;  
 }
 .column2 {
     width: 0%;
@@ -186,13 +185,13 @@
     width: 45%;
 }
 .column4 {
-    width: 35%;
+    width: 45%;
 }
 .column5 {
     width: 10%; 
 }
 .column6 {
-    width: 5%;
+    width: 0%;
 }
 
 
@@ -221,8 +220,12 @@ table {
 
 
 .fila1 {
-    color: #a09f9f;
-    
+  color: #a09f9f;
+  padding-left: 10px;
+}
+
+.fila1:hover {
+  cursor: pointer;
 }
 .imgCanciones {
     width: 45px;

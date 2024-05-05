@@ -174,7 +174,7 @@
                 <tbody>
                     <ng-container class="filasallFoot" *ngFor="let track of albumTracksName; let i = index">
                         <tr class="filasall">
-                            <td class="fila1">{{ i + 1 }}</td>
+                            <td class="fila1" (click)="togglePlayBack(this.albumTracksPreviewUrl[i])">{{ i + 1 }}</td>
                             <td></td>
                             <td>
                                 <span class="fila31" (click)="takeIdAll(albumTracksId[i])"(click)="ngOnInit()">{{albumTracksName[i]}}</span><br>

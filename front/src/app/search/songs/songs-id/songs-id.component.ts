@@ -48,7 +48,6 @@ export class SongsIdComponent implements OnInit {
   trackArtistDuration: number[] = [];
   trackArtistUrl: string[] = [];
   trackArtistId: string[] = [];
-  trackArtistArtists: string = '';
 
   releaseDateArtist: string[] = [];
   typeAlbumArtist: string[] = [];
@@ -61,7 +60,6 @@ export class SongsIdComponent implements OnInit {
   nameAlbumArtistTwo: string[] = [];
   imageAlbumArtistTwo: string[] = [];
   idsAlbumArtistTwo: string[] = [];
-  albumArtistArtistTwo: string = '';
 
   artistSimilarImage: string[] = [];
   artistSimilarName: string[] = [];
@@ -73,6 +71,7 @@ export class SongsIdComponent implements OnInit {
   albumType: string = '';
   albumImgTrack: string = '';
   albumTracksName: string[] = [];
+  albumTracksPreviewUrl: string [] = [];
   albumTracksId: string[] = [];
   albumTracksArtist: string[] = [];
   albumTracksArtistTwo: string[] = [];
@@ -130,6 +129,7 @@ export class SongsIdComponent implements OnInit {
     this.albumTracksId = [];
     this.albumTracksName = [];
     this.albumTracksArtist = [];
+    this.albumTracksPreviewUrl =  [];
     this.albumTracksArtistTwo = [];
     this.albumTracksArtistId = [];
     this.albumTracksArtistTwoId = [];
@@ -221,6 +221,7 @@ export class SongsIdComponent implements OnInit {
       for (let track of response.albumInfo.tracks.items) {
         this.albumTracksId.push(track.id);
         this.albumTracksName.push(track.name);
+        this.albumTracksPreviewUrl.push(track.preview_url);
         this.albumTracksArtist.push(track.artists[0].name);
         this.albumTracksArtistId.push(track.artists[0].id);
         this.albumTracksDuration.push(track.duration_ms);
