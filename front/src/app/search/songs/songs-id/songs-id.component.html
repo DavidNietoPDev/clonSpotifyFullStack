@@ -18,14 +18,7 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="loading"
-            style="font-size: 25px; font-weight: bold; position: absolute; top: 50%; left: 40%; z-index: 999">
-            <div class="loader">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-        </div>
+        <app-loader *ngIf="loading"/>
         <div *ngIf="buscar && !loading">
             <p class="textTracks">Recomendaciones</p>
             <p class="textTracksTwo">Basadas en esta canción</p>

@@ -17,6 +17,7 @@
                 <button #buttonAlbums class="bsqAl" (click)="buscarAlbums()">Álbumes</button>
             </div>
         </div>
+        <app-loader *ngIf="loading"/>
         <div *ngIf="buscar && !loading">
             <p class="textArtist">Albums</p>
             <div class="artistsall">

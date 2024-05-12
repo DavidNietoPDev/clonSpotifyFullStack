@@ -18,6 +18,11 @@ import { AlbumDirectComponent } from './search/albums/album-direct/album-direct.
 import { SongsIdComponent } from './search/songs/songs-id/songs-id.component';
 import { CategoriesComponent } from './search/categories/categories.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NavLeftComponent } from './components/nav-left/nav-left.component';
+import { HomeSearchComponent } from './components/navLeft/home-search/home-search.component';
+import { LibraryComponent } from './components/navLeft/library/library.component';
+import { FooterLeftComponent } from './components/navLeft/footer-left/footer-left.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 @NgModule({
@@ -36,6 +41,11 @@ import { FooterComponent } from './components/footer/footer.component';
     SongsIdComponent,
     CategoriesComponent,
     FooterComponent,
+    NavLeftComponent,
+    HomeSearchComponent,
+    LibraryComponent,
+    FooterLeftComponent,
+    LoaderComponent,
     
   ],
   imports: [

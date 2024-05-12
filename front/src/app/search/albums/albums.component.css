@@ -270,17 +270,10 @@
 
 
   @media screen and (max-height: 600px) {  
-    .tercero {
-      min-height: 320px;
-    }
     .primary {
       min-height: 485px;
     }
-    .foot {
-      top: 500px ;
-      height: 80px;
-    }
-  
+
   }
   
 
@@ -303,25 +296,9 @@
       left: 385px;
     }
 
-
-    /* .btonre {
-      left: 470px;
-    }
-    
-    .btonis {
-      left: 650px;
-    } */
-
-    /* .searcher {
-      width: 70px;
-    } */
-
     .primary {
       left: 380px;
       
-    }
-    .icon31 {
-      left: 340px;
     }
   }
 

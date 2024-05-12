@@ -16,14 +16,7 @@
         <button class="bsq" (click)="navegarAComponenteAlbumes()">Álbumes</button>
       </div>
     </div>
-    <div *ngIf="loading"
-      style="font-size: 25px; font-weight: bold; position: absolute; top: 50%; left: 40%; z-index: 999">
-      <div class="loader">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </div>
-    </div>
+    <app-loader *ngIf="loading"/>
     <p class="textListas" *ngIf="!buscar">Explorar todo</p>
     <div class="cardL" *ngIf="!buscar">
       <div class="topList" *ngFor="let category of nameCategory; let i = index">

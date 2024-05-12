@@ -20,13 +20,7 @@
             </div>
         </div>
         <div class="grid-container">
-            <div *ngIf="loading" style="font-size: 25px; font-weight: bold; position: absolute; top: 50%; left: 40%;">
-                <div class="loader">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
-            </div>
+            <app-loader *ngIf="loading" />
             <table *ngIf="!loading && buscar">
                 <thead>
                     <tr class="columnall">

@@ -1,0 +1,268 @@
+.tercero {
+    position: fixed;
+    left: 8px;
+    bottom: 85px;
+    width: calc(427px - 8px);
+    top: 172px;
+    background-color: #121212;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    scrollbar-gutter: stable;
+  
+  
+  }
+  
+  .biblioteca {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 56px;
+    width: 400px;
+    color: #a09f9f;
+    margin-top: 10px;
+    
+  }
+  
+  .biblioteca:hover {
+    color: white;
+  }
+  
+  .icon3 {
+    scale: 120%;
+    margin-left: 25px;
+  }
+  
+  .title3 {
+    margin-left: 10px;
+    font-weight: 500;
+  
+  }
+  
+  .icon31 {
+    display: flex;
+    position: fixed;
+    text-align: center;
+    scale: 100%;
+    left: 390px;
+    color: #6a6a6a;
+    width: 32px;
+    height: 32px;
+    line-height: 35px;
+  
+  }
+  
+  .icon31:hover {
+    background-color: #1b1a1a;
+    border-radius: 50%;
+    background-size: 200%;
+    color: rgb(170, 175, 179);
+  }
+  
+  .listasypodcast {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 345px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin-top: 10px;
+    margin-left: 8px;
+    margin-right: 8px;
+    scrollbar-gutter: stable;
+    
+    
+  }
+  
+  .listasypodcast:hover {
+    overflow-y: auto;
+  }
+  
+  .listasypodcast::-webkit-scrollbar {
+    width: 10px;
+    height: 20px;
+    background-color: transparent;
+    
+  }
+  
+  .listasypodcast::-webkit-scrollbar-thumb{
+    background-color: rgb(76, 76, 77);
+    
+  }
+  
+  .tercero:hover::-webkit-scrollbar-thumb {
+    background-color: #09C; /* Color del pulgar traslúcido al pasar el mouse */
+  }
+  
+  .lista {
+  
+    margin-top: 8px;
+    margin-left: 8px;
+    width: 400px;
+    height: 136px;
+    min-height: 136px;
+    display: flex;
+    flex-direction: column;
+    background-color: #242424;
+    border-radius: 10px;
+    margin-bottom: 25px;
+  
+  }
+  .botnlis {
+    display: inline-block;
+    margin: auto;
+    margin-left: 20px;
+    margin-top: 8px;
+    border-radius: 20px;
+    border: none;
+    height: 23.5%;
+    font-size: 14px;
+    font-weight: 700;
+    padding-right: 20px;
+    padding-left: 20px;
+  
+  }
+  
+  .botnlis:hover {
+    scale: 103%;
+  }
+  
+  .listtext {
+    margin-top: 12px;
+    margin-left: 20px;
+    font-weight: 700;
+  }
+  
+  .listtext1 {
+    margin-top: -10px;
+    margin-left: 20px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .podcast {
+  
+    margin-left: 8px;
+    min-height: 136px;
+    width: 400px;
+    height: 136px;
+    display: flex;
+    flex-direction: column;
+    background-color: #242424;
+    border-radius: 10px;
+  
+  }
+  
+  
+  .legal {
+    height: 290px;
+    width: 400px;
+  
+  }
+  
+  .listalegal {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-left: 10px;
+  
+  }
+  
+  .lgl {
+    font-family: var(--font-family, CircularSp, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif));
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #a7a7a7;
+  
+  }
+  
+  .cookies {
+  
+    font-size: 11.5px;
+    font-weight: 500;
+    margin-left: 10px;
+    margin-top: -5px;
+    color: #a7a7a7;
+    text-decoration: none;
+  }
+  
+  .cookies:hover {
+    text-decoration: underline;
+    color: #a7a7a7;
+  }
+  
+  .idioma {
+    position: relative;
+    margin-bottom: 30px;
+    
+  }
+  
+  .btonln {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(78, 77, 77);
+    margin-left: 20px;
+    margin-top: 25px;
+    border-radius: 20px;
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: 700;
+    height: 34px;
+    padding-left: 10px;
+    padding-right : 15px;
+    color: white;
+  }
+  
+  .btonln:hover {
+    scale: 103%;
+    border: 1px solid white;
+  }
+  
+  .iconln {
+    scale: 85%;
+  }
+  
+  .idiom {
+    font-size: 14px;
+    font-weight: 600;
+  
+  }
+
+  @media screen and (max-height: 600px) {  
+    .tercero {
+      min-height: 320px;
+    }
+  }
+
+  @media screen and (max-width: 855px) {
+
+    .lista {
+      width: 100%;
+    }
+  
+    .podcast {
+      width: 100%;
+    }
+    .icon31 {
+      left: 45%;
+    }
+  
+    .tercero {
+      min-width: calc(419px - 50px) ;
+      width: 49%
+    }
+  
+  }
+
+  @media screen and (max-width: 755px) {
+
+    .icon31 {
+      left: 340px;
+    }
+  }
+  
+  
