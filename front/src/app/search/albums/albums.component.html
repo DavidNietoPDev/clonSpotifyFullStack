@@ -1,7 +1,7 @@
 <div class="container">
     <div class="primary">
         <div class="navsearch">
-            <div class="searcher"> 
+            <div class="searcher">
                 <div class="icinp"><mat-icon class="icon">search</mat-icon><input class="insearch" type="text"
                         [(ngModel)]="artistNameArtist" placeholder="¿Que quieres reproducir?"
                         (keydown.enter)="buscarAlbums()"></div>
@@ -17,7 +17,7 @@
                 <button #buttonAlbums class="bsqAl" (click)="buscarAlbums()">Álbumes</button>
             </div>
         </div>
-        <app-loader *ngIf="loading"/>
+        <app-loader *ngIf="loading" />
         <div *ngIf="buscar && !loading">
             <p class="textArtist">Albums</p>
             <div class="artistsall">
@@ -27,14 +27,20 @@
                             [routerLink]="'/albumDirect'">
                         <div class="textListBottom">
                             <p class="artistSimilar">{{albumName[i] | pipeTruncate}}</p> <br>
-                            <p class="yearArtist" *ngIf="albumArtistNameTwo[i] === ''">{{albumYear[i].split("-")[0]}} · <span class="artistAlbumLink" (click)="takeId(idsArtists[i])" [routerLink]="'/artistId'">{{albumArtistName[i]}}</span></p>
-                            <p class="yearArtist" *ngIf="albumArtistNameTwo[i] !== ''">{{albumYear[i].split("-")[0]}} · <span class="artistAlbumLink" (click)="takeId(idsArtists[i])" [routerLink]="'/artistId'">{{albumArtistName[i]}}</span>, 
-                                <span class="artistAlbumLink" (click)="takeId(idsArtistsTwo[i])" [routerLink]="'/artistId'">{{albumArtistNameTwo[i]}}</span></p>
+                            <p class="yearArtist" *ngIf="albumArtistNameTwo[i] === ''">{{albumYear[i].split("-")[0]}} ·
+                                <span class="artistAlbumLink" (click)="takeId(idsArtists[i])"
+                                    [routerLink]="'/artistId'">{{albumArtistName[i]}}</span></p>
+                            <p class="yearArtist" *ngIf="albumArtistNameTwo[i] !== ''">{{albumYear[i].split("-")[0]}} ·
+                                <span class="artistAlbumLink" (click)="takeId(idsArtists[i])"
+                                    [routerLink]="'/artistId'">{{albumArtistName[i]}}</span>,
+                                <span class="artistAlbumLink" (click)="takeId(idsArtistsTwo[i])"
+                                    [routerLink]="'/artistId'">{{albumArtistNameTwo[i]}}</span>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-         <app-footer></app-footer>
+            <app-footer></app-footer>
         </div>
     </div>
 </div>
