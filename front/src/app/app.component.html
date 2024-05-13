@@ -1,29 +1,25 @@
 <div class="container">
   <div class="primary">
-    <app-search *ngIf="search"/>
-    <app-loader *ngIf="loading"/>
+    <app-search *ngIf="search" />
+    <app-loader *ngIf="loading" />
     <div *ngIf="!search && !loading">
-      <div>
-        <div class="navsearch">
-          <button class="btonre">Registrarte</button>
-          <button class="btonis">Iniciar sesión</button>
-        </div>
-        <p class="textListas">Para empezar... Listas Top</p>
-        <div class="cardL">
-          <div class="topList" *ngFor="let list of topListName; let i = index">
-            <div class="cardList">
-              <img src={{topListImage[i]}} alt="Imagen del artista" class="cardImageList"
-                (click)="takeId(idsPlaylist[i])" [routerLink]="'/playListId'">
-              <div class="topTrackslist">
-                <p class="texttt1">{{ topListName[i] | pipeTruncate }}</p>
-                <p class="artistt1">{{ topListArtist[i] }}</p>
-              </div>
+      <app-simple/>
+      <p class="textListas">Para empezar... Listas Top</p>
+      <div class="cardL">
+        <div class="topList" *ngFor="let list of topListName; let i = index">
+          <div class="cardList">
+            <img src={{topListImage[i]}} alt="Imagen del artista" class="cardImageList" (click)="takeId(idsPlaylist[i])"
+              [routerLink]="'/playListId'">
+            <div class="topTrackslist">
+              <p class="texttt1">{{ topListName[i] | pipeTruncate }}</p>
+              <p class="artistt1">{{ topListArtist[i] }}</p>
             </div>
           </div>
         </div>
       </div>
-        <app-footer/>
-        <app-nav-left/>
-      </div>
     </div>
-    <router-outlet />
+    <app-footer />
+    <app-nav-left />
+  </div>
+</div>
+<router-outlet />

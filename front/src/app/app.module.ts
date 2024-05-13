@@ -23,6 +23,7 @@ import { HomeSearchComponent } from './components/navLeft/home-search/home-searc
 import { LibraryComponent } from './components/navLeft/library/library.component';
 import { FooterLeftComponent } from './components/navLeft/footer-left/footer-left.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { SimpleComponent } from './components/navSearch/simple/simple.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     LibraryComponent,
     FooterLeftComponent,
     LoaderComponent,
+    SimpleComponent,
     
   ],
   imports: [

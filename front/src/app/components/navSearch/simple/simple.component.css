@@ -1,0 +1,62 @@
+.navsearch {
+    min-width: 360px;
+    top: 8px;
+    right: 8px;
+    left: 435px;
+    height: 70px;
+    position: fixed;
+    background-color: #080808;
+    z-index: 1;
+
+}
+.btonre {
+  position: fixed;
+  top: 25px;
+  right: 200px;
+  border: none;
+  color: #acabab;
+  background-color: transparent;
+  font-weight: 500;
+
+}
+
+.btonre:hover {
+  scale: 103%;
+  color: white;
+}
+
+.btonis {
+  position: fixed;
+  top: 12px;
+  right: 20px;
+  border-radius: 50px;
+  border: none;
+  font-weight: 650;
+  width: 160px;
+  height: 50px;
+  margin-left: 20px;
+
+}
+
+.btonis:hover {
+  scale: 103%;
+}
+
+@media screen and (max-width: 855px) {
+    .navsearch {
+    
+        left: 51%;
+      }
+}
+
+@media screen and (max-width: 755px) {
+    .navsearch {
+        left: 380px;
+      } 
+}
+
+@media screen and (max-height: 600px) { 
+    .navsearch {
+        min-height: 485px;
+      }
+}
