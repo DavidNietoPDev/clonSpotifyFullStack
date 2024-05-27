@@ -2,6 +2,9 @@ import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { SearchBarService } from '../../../services/search-bar.service';
 import { TakeIdsService } from '../../../services/take-ids.service';
 import { Top } from '../../../models/top.model';
+import { Categories } from '../../../models/categories.model';
+import { PressSearchService } from '../../../services/press-search.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cards-square',
@@ -11,6 +14,8 @@ import { Top } from '../../../models/top.model';
 export class CardsSquareComponent {
   listCards = inject(SearchBarService)
   takeIdService = inject(TakeIdsService)
+  searchTake = inject(PressSearchService)
+  router = inject(Router)
   @Output() loadingChange = new EventEmitter<boolean>();
 
   listName: string[] = [];
@@ -24,7 +29,17 @@ export class CardsSquareComponent {
   }
 
   ngOnInit() {
-    this.searchItems();
+    if(this.checkRoute()) {
+      this.searchCategories();
+    } else {
+      this.searchItems();
+    }
+  }
+
+  checkRoute() {
+    if(this.router.url === '/search'){
+      return true;
+    } 
   }
 
 
@@ -32,7 +47,6 @@ export class CardsSquareComponent {
     this.loading = true;
     this.loadingChange.emit(this.loading)
     this.listCards.getTopList().subscribe((response: Top) => {
-      // this.termSearch.setSearchTerm(this.artistName);
       this.listName = [];
       this.listImage = [];
       this.listArtist = [];
@@ -50,5 +64,22 @@ export class CardsSquareComponent {
       this.loading = false;
       this.loadingChange.emit(this.loading)
     });
+  }
+
+  searchCategories() {
+    this.listName = [];
+    this.listImage = [];
+    this.listIds = [];
+
+    this.loading = true;
+
+    this.listCards.getCategories().subscribe((response: Categories) => {
+      for (let category of response.categories.items) {
+        this.listIds.push(category.id);
+        this.listImage.push(category.icons[0].url);
+        this.listName.push(category.name);
+      }
+      this.loading = false;
+    })
   }
 }

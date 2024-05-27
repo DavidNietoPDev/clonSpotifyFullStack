@@ -193,7 +193,7 @@
     
     }
     
-    .cardL {
+    /* .cardL {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       grid-row-gap:10px
@@ -242,7 +242,7 @@
       left: -180px;
       top: 180px;
     }
-    
+     */
 
     .text {
       position: relative;

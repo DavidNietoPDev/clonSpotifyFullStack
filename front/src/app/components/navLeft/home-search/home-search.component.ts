@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { PressSearchService } from '../../../services/press-search.service';
 
 @Component({
   selector: 'app-home-search',
@@ -6,9 +7,16 @@ import { Component } from '@angular/core';
   styleUrl: './home-search.component.css'
 })
 export class HomeSearchComponent {
+  searchTake = inject(PressSearchService)
+  search: boolean = false;
 
-  search = false;
   onClickSearch() {
+    this.search = true;
+    this.searchTake.setSearch(this.search)
+  }
+
+  onClickHome() {
     this.search = false;
+    this.searchTake.setSearch(this.search)
   }
 }

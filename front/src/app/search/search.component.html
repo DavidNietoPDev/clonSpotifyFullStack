@@ -18,7 +18,8 @@
     </div>
     <app-loader *ngIf="loading"/>
     <p class="textListas" *ngIf="!buscar">Explorar todo</p>
-    <div class="cardL" *ngIf="!buscar">
+    <app-cards-square/>
+    <!-- <div class="cardL" *ngIf="!buscar">
       <div class="topList" *ngFor="let category of nameCategory; let i = index">
         <div class="cardList">
           <img src={{imageCategory[i]}} alt="Imagen del artista" class="cardImageList" (click)="takeId(idCategory[i])"
@@ -28,7 +29,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div *ngIf="buscar">
       <p class="text">Resultado principal</p>
       <p class="text2">Canciones</p>

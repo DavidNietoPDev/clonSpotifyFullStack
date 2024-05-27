@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { PressSearchService } from './services/press-search.service';
 
 
 
@@ -8,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
+  searchTake = inject(PressSearchService)
+
   title = 'searchMusic';
 
   loader: boolean = true;
-  search = false;
+  search = this.searchTake.getSearch();
 
   ngOnInit() {
     document.body.classList.add('dark-mode');

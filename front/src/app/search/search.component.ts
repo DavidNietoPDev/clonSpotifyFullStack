@@ -30,10 +30,6 @@ export class SearchComponent implements OnInit {
   buscar: boolean = false;
   globalVolume: number = 0.1;
 
-  imageCategory: string[] = [];
-  nameCategory: string[] = [];
-  idCategory: string[] = [];
-
   imageSimilar: string[] = [];
   artistSimilarList: string[] = [];
   artistSimilarId: string [] = []; 
@@ -77,9 +73,7 @@ export class SearchComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (params.fromSongsComponent || params.fromArtistsComponent || params.fromAlbumsComponent) {
         this.buscarArtista();
-      } else {
-        this.categories();
-      }
+      } 
     });
   }
 
@@ -94,23 +88,6 @@ export class SearchComponent implements OnInit {
 
   navegarAComponenteAlbumes() {
     this.router.navigate(['/albums'], { queryParams: { fromSearchComponent: true } });
-  }
-
-  categories() {
-    this.nameCategory = [];
-    this.imageCategory = [];
-    this.idCategory = [];
-
-    this.loading = true;
-
-    this.artistSearch.getCategories().subscribe((response: Categories) => {
-      for (let category of response.categories.items) {
-        this.idCategory.push(category.id);
-        this.imageCategory.push(category.icons[0].url);
-        this.nameCategory.push(category.name);
-      }
-      this.loading = false;
-    })
   }
 
   buscarArtista(): void {
