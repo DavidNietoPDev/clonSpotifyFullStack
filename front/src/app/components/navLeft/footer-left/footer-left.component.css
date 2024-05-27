@@ -13,8 +13,6 @@
     
   }
   
-  
-  
   .registrate {
     display: flex;
     flex-direction: column;
@@ -61,10 +59,10 @@
   }
 
 
-  @media screen and (max-height: 600px) {  
+  @media screen and (max-height: 580px) {  
     .foot {
       top: 500px ;
-      height: 80px;
+      height: 70px;
     }
   
   }

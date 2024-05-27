@@ -44,7 +44,6 @@
 
 @media screen and (max-width: 855px) {
     .navsearch {
-    
         left: 51%;
       }
 }
@@ -53,10 +52,10 @@
     .navsearch {
         left: 380px;
       } 
-}
-
-@media screen and (max-height: 600px) { 
-    .navsearch {
-        min-height: 485px;
-      }
+    .btonre{
+      left: 450px;
+    }
+    .btonis{
+      left: 550px;
+    }
 }

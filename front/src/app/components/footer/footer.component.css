@@ -1,10 +1,12 @@
+.base {
+  padding: 20px;
+}
 .footerOne {
-    left: 30px;
     top: 250px;
     position: relative;
     display: flex;
     flex-direction: row;
-    gap: 10%;
+    justify-content: space-between;
   }
   
   .footerOneOne {
@@ -16,13 +18,17 @@
   .footerOneOne p {
     margin-bottom: 2px;
   }
+
+  .iconosFoot {
+    margin-right: 25px;
+  }
   
   .iconosFoot a{
     display: inline-block;
     text-decoration: none;
     border-radius: 100%;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     line-height: 45px;
     color: #f8f6f6;
     margin-right: 10px;
@@ -42,5 +48,13 @@
   
   .finalFoot {
   position: relative;
-  margin-top: 400px;
+  margin-top: 300px;
+  }
+
+  .copyright {
+    position: relative;
+    margin-bottom: 50px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #858484;
   }
