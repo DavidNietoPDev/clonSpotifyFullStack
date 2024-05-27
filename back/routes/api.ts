@@ -8,7 +8,7 @@ router.use('/categorys', require('./api/generalSearchs/categorys'));
 
 
 router.use('/topList', require('./api/listSearchs/topList'));
-router.use('/playList', require('./api/listSearchs/playlist'));
+router.use('/playList', require('./api/listSearchs/playList'));
 
 
 router.use('/albumId', require('./api/albumSearchs/albumId'));
