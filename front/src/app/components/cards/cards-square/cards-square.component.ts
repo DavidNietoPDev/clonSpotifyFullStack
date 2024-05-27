@@ -5,6 +5,7 @@ import { Top } from '../../../models/top.model';
 import { Categories } from '../../../models/categories.model';
 import { PressSearchService } from '../../../services/press-search.service';
 import { Router } from '@angular/router';
+import { SearchServiceService } from '../../../services/search-service.service';
 
 @Component({
   selector: 'app-cards-square',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrl: './cards-square.component.css'
 })
 export class CardsSquareComponent {
+  searchTerm = inject(SearchServiceService)
   listCards = inject(SearchBarService)
   takeIdService = inject(TakeIdsService)
   searchTake = inject(PressSearchService)
@@ -23,6 +25,11 @@ export class CardsSquareComponent {
   listArtist: string[] = []; 
   listIds: string[] = [];
   loading: boolean = false;
+  
+
+  getTerm(term: string) {
+    this.searchTerm.setSearchTerm(term)
+  }
 
   takeId(id: string) {
     this.takeIdService.setAlgoId(id)

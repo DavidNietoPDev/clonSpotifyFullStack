@@ -3,11 +3,11 @@
   <div class="topList" *ngFor="let list of listName; let i = index">
     <div class="cardList" >
       <div *ngIf="checkRoute(); else elseBlock">
-      <img src={{listImage[i]}} alt="Imagen del artista" class="cardImageList" (click)="takeId(listIds[i])"
+      <img src={{listImage[i]}} alt="Imagen del artista" class="cardImageList" (click)="getTerm(listName[i])" (click)="takeId(listIds[i])"
         [routerLink]="'/categoryId'">
       </div>
       <ng-template #elseBlock>
-        <img src={{listImage[i]}} alt="Imagen del artista" class="cardImageList" (click)="takeId(listIds[i])"
+        <img src={{listImage[i]}} alt="Imagen del artista" class="cardImageList" (click)="getTerm(listName[i])" (click)="takeId(listIds[i])"
         [routerLink]="'/playListId'">
       </ng-template>
       <div class="topTrackslist">

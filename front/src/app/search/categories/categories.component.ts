@@ -57,11 +57,6 @@ export class CategoriesComponent implements OnInit {
   nameArtists: string[] = [];
   imageArtists: string[] = [];
 
-
-
-  
-
-
   ngOnInit(): void {
     this.buscarCategories();
   }
@@ -72,6 +67,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   buscarCategories() {
+    
     this.loading = true;
     this.buscar = true;
 
