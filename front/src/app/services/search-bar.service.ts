@@ -30,6 +30,7 @@ export class SearchBarService {
   http = inject(HttpClient)
   searchterm = inject(SearchServiceService);
   baseUrl = 'https://clonspotifyfullstack.onrender.com/api'
+  // baseUrl = 'http://localhost:3000/api'
 
 
 
