@@ -1,0 +1,13 @@
+<app-loader *ngIf="loading" />
+<div class="cardL" >
+  <div class="topList" *ngFor="let list of listName; let i = index">
+    <div class="cardList">
+      <img src={{listImage[i]}} alt="Imagen del artista" class="cardImageList" (click)="takeId(listIds[i])"
+        [routerLink]="'/playListId'">
+      <div class="topTrackslist">
+        <p class="underImage1" *ngIf="listName">{{ listName[i] | pipeTruncate }}</p>
+        <p class="underImage2" *ngIf="listArtist">{{ listArtist[i] }}</p>
+      </div>
+    </div>
+  </div>
+</div>

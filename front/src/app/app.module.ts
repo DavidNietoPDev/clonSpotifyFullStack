@@ -24,6 +24,8 @@ import { LibraryComponent } from './components/navLeft/library/library.component
 import { FooterLeftComponent } from './components/navLeft/footer-left/footer-left.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { SimpleComponent } from './components/navSearch/simple/simple.component';
+import { CardsSquareComponent } from './components/cards/cards-square/cards-square.component';
+
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import { SimpleComponent } from './components/navSearch/simple/simple.component'
     FooterLeftComponent,
     LoaderComponent,
     SimpleComponent,
+    CardsSquareComponent
     
   ],
   imports: [

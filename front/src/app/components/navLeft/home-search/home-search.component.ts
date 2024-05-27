@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class HomeSearchComponent {
 
   search = false;
-  buscar() {
+  onClickSearch() {
     this.search = false;
   }
 }
