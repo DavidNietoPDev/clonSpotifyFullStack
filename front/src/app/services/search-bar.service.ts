@@ -29,7 +29,7 @@ export interface ArtistResponse {
 export class SearchBarService {
   http = inject(HttpClient)
   searchterm = inject(SearchServiceService);
-  baseUrl = 'http://localhost:3000/api'
+  baseUrl = 'https://clonspotifyfullstack.onrender.com/api'
 
 
 
