@@ -63,8 +63,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 345px;
-    min-height: 140px;
+    height: 420px;
+    min-height: 50px;
     overflow-y: hidden;
     overflow-x: hidden;
     margin-top: 10px;
@@ -155,13 +155,12 @@
   
   
   .legal {
-    height: 290px;
+    height: 200px;
     width: 400px;
   
   }
   
   .listalegal {
-    margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
