@@ -5,7 +5,6 @@ import { SearchServiceService } from '../services/search-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TakeIdsService } from '../services/take-ids.service';
 import { MusicPlayerService } from '../services/music-player.service';
-import { Categories } from '../models/categories.model';
 
 
 

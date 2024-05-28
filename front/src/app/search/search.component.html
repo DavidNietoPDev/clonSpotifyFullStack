@@ -18,18 +18,7 @@
     </div>
     <app-loader *ngIf="loading"/>
     <p class="textListas" *ngIf="!buscar">Explorar todo</p>
-    <app-cards-square/>
-    <!-- <div class="cardL" *ngIf="!buscar">
-      <div class="topList" *ngFor="let category of nameCategory; let i = index">
-        <div class="cardList">
-          <img src={{imageCategory[i]}} alt="Imagen del artista" class="cardImageList" (click)="takeId(idCategory[i])"
-           [routerLink]="'/categoryId'" (click)="changeTerm(nameCategory[i])">
-          <div class="topTrackslist">
-            <p class="texttt11">{{ nameCategory [i] }}</p>
-          </div>
-        </div>
-      </div>
-    </div> -->
+    <app-cards-square *ngIf="!buscar"/>
     <div *ngIf="buscar">
       <p class="text">Resultado principal</p>
       <p class="text2">Canciones</p>
