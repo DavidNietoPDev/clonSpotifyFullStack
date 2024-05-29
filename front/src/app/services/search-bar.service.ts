@@ -14,6 +14,7 @@ import { TrackID } from '../models/trackId.model';
 import { Categories } from '../models/categories.model';
 import { query } from '@angular/animations';
 import { Category } from '../models/categry.model';
+import { environment } from '../../environments/environmentDev';
 
 
 export interface ArtistResponse {
@@ -29,8 +30,7 @@ export interface ArtistResponse {
 export class SearchBarService {
   http = inject(HttpClient)
   searchterm = inject(SearchServiceService);
-  // baseUrl = 'https://clonspotifyfullstack.onrender.com/api'
-  baseUrl = 'http://localhost:3000/api'
+  baseUrl = environment.apiUrl;
 
 
 
