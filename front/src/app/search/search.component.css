@@ -37,186 +37,15 @@
       background-color: #080808;
       z-index: 1;
     }
-    .searcher {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      position: relative;
-      height: 70px;
-    }
-    .icinp {
-      display: flex;
-      align-items: center;
-      justify-content: left;
-      width: 35%;
-      position: relative;
-      height: 70px;
-      position: relative;
-    }
-    .botonesRI {
-      align-items: center;
-      justify-content: right;
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      width: 65%
-    }
-
-    .icinp:hover input {
-      border: 1px solid #525151;
-      background-color: #383838;
-    }
-
-    .icinp input::placeholder {
-      position: relative;
-      left: 25px;
-      font-size: 14px;
-      color: #777676;
-
-    }
-
-    .icinp:hover .icon {
-      color: rgb(211, 201, 201);
-    }
-
-    .icon {
-
-      color: #757171;
-      position: absolute;
-      left: 30px;
-      top: 35px;
-      transform: translateY(-50%);
-      z-index: 1;
-
-    }
-
-    .insearch {
-      position: relative;
-      background-color: #242424;
-      border: none;
-      left: 20px;
-      padding-left: 40px;
-      height: 45px;
-      width: 100%;
-      border-radius: 20px;
-      color: white;
-      max-width: 368px;
-    }
- 
-    .btonre {
-      right: 15px;
-      position: relative;
-      border: none;
-      color: #acabab;
-      background-color: transparent;
-      font-weight: 500;
-
-    }
-
-    .btonre:hover {
-      scale: 103%;
-      color: white;
-    }
-
-    .btonis {
-      margin-right: 25px;
-      position: relative;
-      border-radius: 50px;
-      border: none;
-      font-weight: 650;
-      width: 160px;
-      height: 50px;
-
-
-    }
-
-    .btonis:hover {
-      scale: 103%;
-    }
-
-    .listaBusquedas {
-      background-color: #121212;
-      margin-right: 10px;
-      position: relative;
-      display: flex;
-      left: 10px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-
-
-
-    }
-
-    .bsqS {
-      margin-left: 10px;
-      height: 32px;
-      padding-left: 15px;
-      padding-right: 15px;
-      border-radius: 50px;
-      border: none;
-      background-color: white;
-      font-size: 15px;
-      font-weight: 500;
-      color: black;
-    }
-
-    .bsq {
-      margin-left: 10px;
-      height: 32px;
-      padding-left: 15px;
-      padding-right: 15px;
-      border-radius: 50px;
-      border: none;
-      background-color: #242424;
-      font-size: 15px;
-      font-weight: 500;
-      color: white;
-    }
-
-    .bsq:hover {
-      background-color: #302f2f;
-
-    }
-
-    .bsq:focus {
-      background-color: white;
-      color: black
-    }
-
-
+    
     .textListas {
       position: relative;
       left: 10px;
       font-size: 26px;
       font-weight: bold;
       color: white; 
-    
     }
-    
-    /* .cardL {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      grid-row-gap:10px
-    
-    }
-    
-    .topList {
-      left: 10px;
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      height: 240px;
-    }
-    
-    .cardList {
-    
-      display: flex;
-      padding-left: 10px;
-      width: 210px;
-    
-    }
-    
-    
+     
     .cardImageList {
       border-radius: 10px;
       border: none;
@@ -242,7 +71,6 @@
       left: -180px;
       top: 180px;
     }
-     */
 
     .text {
       position: relative;

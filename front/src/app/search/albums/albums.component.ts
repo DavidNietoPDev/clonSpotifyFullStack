@@ -4,6 +4,7 @@ import { SearchBarService } from '../../services/search-bar.service';
 import { Album } from '../../models/album.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TakeIdsService } from '../../services/take-ids.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-albums',
@@ -18,6 +19,7 @@ export class AlbumsComponent implements OnInit {
   takeIdAlbum = inject(TakeIdsService)
   constructor(private router: Router) { }
 
+  subscription: Subscription;
   artistNameArtist: string = this.searchTerm.getSearchTerm();
   loading: boolean = false;
   buscar: boolean = false;
@@ -31,33 +33,25 @@ export class AlbumsComponent implements OnInit {
   idsArtistsTwo: string[] = [];
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if (params.fromSongsComponent || params.fromArtistsComponent || params.fromSearchComponent) {
-        this.buscarAlbums();
-      }
-    });
+
+    this.searchMethod();
+    this.subscription = this.searchTerm.searchTerm$.subscribe(term => {
+      this.artistNameArtist = term;
+      this.searchMethod()
+    })
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   takeId(id: string) {
     this.takeIdAlbum.setAlgoId(id);
   }
 
-  navegarAComponenteSongs() {
-    // Navegar a SongsComponent y pasar un parámetro indicando que proviene de SearchComponent
-    this.router.navigate(['/songs'], { queryParams: { fromAlbumsComponent: true } });
-  }
-  navegarAComponenteSearch() {
-    // Navegar a SearchComponent y pasar un parámetro indicando que proviene de SongsComponent
-    this.router.navigate(['/search'], { queryParams: { fromAlbumsComponent: true } });
-  }
-
-  navegarAComponenteArtists() {
-    // Navegar a SearchComponent y pasar un parámetro indicando que proviene de SongsComponent
-    this.router.navigate(['/artists'], { queryParams: { fromAlbumsComponent: true } });
-  }
-
-
-  buscarAlbums() {
+  searchMethod() {
     this.loading = true;
     if (!this.searchTerm.checkTerm(this.artistNameArtist)) {
       console.error('Introduce un artista')

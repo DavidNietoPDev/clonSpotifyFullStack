@@ -1,21 +1,8 @@
 <div class="container">
     <div class="primary">
         <div class="navsearch">
-            <div class="searcher">
-                <div class="icinp"><mat-icon class="icon">search</mat-icon><input class="insearch" type="text"
-                        [(ngModel)]="artistNameArtist" placeholder="¿Que quieres reproducir?"
-                        (keydown.enter)="buscarAlbums()"></div>
-                <div class="botonesRI">
-                    <button class="btonre">Registrarte</button>
-                    <button class="btonis">Iniciar sesión</button>
-                </div>
-            </div>
-            <div class="listaBusquedas">
-                <button #buttonTodo class="bsq" (click)="navegarAComponenteSearch()">Todo</button>
-                <button #buttonSongs class="bsq" (click)="navegarAComponenteSongs()">Canciones</button>
-                <button #buttonArtists class="bsq" (click)="navegarAComponenteArtists()">Artistas</button>
-                <button #buttonAlbums class="bsqAl" (click)="buscarAlbums()">Álbumes</button>
-            </div>
+            <app-nav-search-complete />
+            <app-nav-cards />
         </div>
         <app-loader *ngIf="loading" />
         <div *ngIf="buscar && !loading">
@@ -29,7 +16,8 @@
                             <p class="artistSimilar">{{albumName[i] | pipeTruncate}}</p> <br>
                             <p class="yearArtist" *ngIf="albumArtistNameTwo[i] === ''">{{albumYear[i].split("-")[0]}} ·
                                 <span class="artistAlbumLink" (click)="takeId(idsArtists[i])"
-                                    [routerLink]="'/artistId'">{{albumArtistName[i]}}</span></p>
+                                    [routerLink]="'/artistId'">{{albumArtistName[i]}}</span>
+                            </p>
                             <p class="yearArtist" *ngIf="albumArtistNameTwo[i] !== ''">{{albumYear[i].split("-")[0]}} ·
                                 <span class="artistAlbumLink" (click)="takeId(idsArtists[i])"
                                     [routerLink]="'/artistId'">{{albumArtistName[i]}}</span>,

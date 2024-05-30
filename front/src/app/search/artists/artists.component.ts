@@ -4,6 +4,7 @@ import { Artista } from '../../models/artista.model';
 import { SearchServiceService } from '../../services/search-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TakeIdsService } from '../../services/take-ids.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-artists',
@@ -17,6 +18,7 @@ export class ArtistsComponent {
   artistSearch = inject(SearchBarService)
   takeId = inject(TakeIdsService)
   constructor(private router: Router) { }
+  subscription: Subscription;
 
   artistImage: string[] = [];
   artistName: string[] = [];
@@ -26,32 +28,24 @@ export class ArtistsComponent {
   buscar: boolean = false;
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if (params.fromSongsComponent || params.fromAlbumsComponent || params.fromSearchComponent) {
-        this.buscarArtistas();
-      }
-    });
+    this.searchMethod();
+    this.subscription = this.searchTerm.searchTerm$.subscribe(term => {
+      this.artistNameArtist = term;
+      this.searchMethod()
+    })
   }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
   takeIdArtist (id: string) {
     this.takeId.setAlgoId(id);
   }
 
-  navegarAComponenteSongs() {
-    // Navegar a SongsComponent y pasar un parámetro indicando que proviene de SearchComponent
-    this.router.navigate(['/songs'], { queryParams: { fromArtistsComponent: true } });
-  }
-  navegarAComponenteSearch() {
-    // Navegar a SearchComponent y pasar un parámetro indicando que proviene de SongsComponent
-    this.router.navigate(['/search'], { queryParams: { fromArtistsComponent: true } });
-  }
-
-  avegarAComponenteAlbums() {
-    // Navegar a SearchComponent y pasar un parámetro indicando que proviene de SongsComponent
-    this.router.navigate(['/albums'], { queryParams: { fromArtistsComponent: true } });
-  }
-
-
-  buscarArtistas() {
+  searchMethod() {
     this.loading = true;
     if (!this.searchTerm.checkTerm(this.artistNameArtist)) {
       console.error('Introduce un artista')

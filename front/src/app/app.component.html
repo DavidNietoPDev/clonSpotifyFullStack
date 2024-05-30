@@ -4,7 +4,7 @@
     <p class="textListas" *ngIf="!loader">Para empezar... Listas Top</p>
     <app-cards-square (loadingChange)="squareLoadingChange($event)" />
     <div *ngIf="!search && !loader">
-      <app-simple/>
+      <app-nav-search-complete/>
       <app-footer />
     </div> 
     <app-nav-left />

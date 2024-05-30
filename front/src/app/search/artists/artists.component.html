@@ -1,36 +1,24 @@
 <div class="container">
     <div class="primary">
         <div class="navsearch">
-            <div class="searcher">
-                <div class="icinp"><mat-icon class="icon">search</mat-icon><input class="insearch" type="text"
-                        [(ngModel)]="artistNameArtist" placeholder="¿Que quieres reproducir?"
-                        (keydown.enter)="buscarArtistas()"></div>
-                <div class="botonesRI">
-                    <button class="btonre">Registrarte</button>
-                    <button class="btonis">Iniciar sesión</button>
-                </div>
-            </div>
-            <div class="listaBusquedas">
-                <button #buttonTodo class="bsq" (click)="navegarAComponenteSearch()">Todo</button>
-                <button #buttonSongs class="bsq" (click)="navegarAComponenteSongs()">Canciones</button>
-                <button #buttonArtists class="bsqA" (click)="buscarArtistas()">Artistas</button>
-                <button class="bsq" (click)="avegarAComponenteAlbums()">Álbumes</button>
-            </div>
+            <app-nav-search-complete />
+            <app-nav-cards />
         </div>
-        <app-loader *ngIf="loading"/>
+        <app-loader *ngIf="loading" />
         <div *ngIf="buscar && !loading">
             <p class="textArtist">Artistas</p>
             <div class="artistsall">
                 <div class="cardArtist" *ngFor="let artist of artistName; let i = index">
                     <div class="cardImageArtista">
-                        <img class="imageSimilar" src="{{artistImage[i]}}" alt="" (click)="takeIdArtist(idArtist[i])" [routerLink]="'/artistId'">
+                        <img class="imageSimilar" src="{{artistImage[i]}}" alt="" (click)="takeIdArtist(idArtist[i])"
+                            [routerLink]="'/artistId'">
                         <div class="textListBottom">
                             <p class="artistSimilar">{{artistName[i]}}</p>
                         </div>
                     </div>
                 </div>
             </div>
-        <app-footer></app-footer>
+            <app-footer></app-footer>
         </div>
     </div>
 </div>

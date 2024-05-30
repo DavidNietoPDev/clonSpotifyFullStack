@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { PressSearchService } from './services/press-search.service';
-import { environment } from '../environments/environmentDev';
+
 
 
 
@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     document.body.classList.add('dark-mode');
-    console.log('Environment:', environment)
   }
 
   squareLoadingChange(loading: boolean) {

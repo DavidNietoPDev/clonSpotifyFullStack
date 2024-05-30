@@ -1,0 +1,58 @@
+.listaBusquedas {
+    background-color: #121212;
+    top: 70px;
+    margin-right: 10px;
+    position: relative;
+    display: flex;
+    left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* .bsqS {
+    margin-left: 10px;
+    height: 32px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 50px;
+    border: none;
+    background-color: white;
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+  } */
+
+  .bsq {
+    margin-left: 10px;
+    height: 32px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 50px;
+    border: none;
+    background-color: #242424;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+  }
+
+  .bsq:hover {
+    background-color: #302f2f;
+  }
+
+  .bsq.active {
+    margin-left: 10px;
+    height: 32px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 50px;
+    border: none;
+    background-color: white;
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+  }
+
+  .bsq:focus {
+    background-color: white;
+    color: black
+  }

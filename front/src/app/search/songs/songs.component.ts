@@ -5,6 +5,7 @@ import { SearchServiceService } from '../../services/search-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MusicPlayerService } from '../../services/music-player.service';
 import { TakeIdsService } from '../../services/take-ids.service';
+import { Subscription } from 'rxjs';
 
 
 
@@ -26,7 +27,8 @@ export class SongsComponent implements OnInit {
   @ViewChild('buttonSongs') buttonSongs: ElementRef;
   artistNameSongs: string = this.searchTerm.getSearchTerm();
 
- 
+  subscription: Subscription;
+
   topTrackArtistId: string[] = [];
   topTrackArtistTwoId: string[] = [];
   topTrackArtist: string[] = [];
@@ -50,34 +52,24 @@ export class SongsComponent implements OnInit {
   globalVolume: number = 0.1;
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if (params.fromSearchComponent || params.fromArtistsComponent || params.fromAlbumsComponent) {
-        this.buscarCanciones();
-      }
-    });
+    this.searchMethod()
+    this.subscription = this.searchTerm.searchTerm$.subscribe(term => {
+      this.artistNameSongs = term;
+      this.searchMethod()
+    })
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   takeIdAll(id: string) {
     this.takeId.setAlgoId(id);
   }
 
-
-  navegarAComponenteSearch() {
-    // Navegar a SearchComponent y pasar un parámetro indicando que proviene de SongsComponent
-    this.router.navigate(['/search'], { queryParams: { fromSongsComponent: true } });
-  }
-
-  navegarAComponenteArtistas() {
-    // Navegar a SearchComponent y pasar un parámetro indicando que proviene de SongsComponent
-    this.router.navigate(['/artists'], { queryParams: { fromSongsComponent: true } });
-  }
-
-  navegarAComponenteAlbumes() {
-    // Navegar a SearchComponent y pasar un parámetro indicando que proviene de SongsComponent
-    this.router.navigate(['/albums'], { queryParams: { fromSongsComponent: true } });
-  }
-
-  buscarCanciones(): void {
+  searchMethod(): void {
     this.stopMusic();
     if (!this.searchTerm.checkTerm(this.artistNameSongs)) {
       console.error('Introduce un artista')

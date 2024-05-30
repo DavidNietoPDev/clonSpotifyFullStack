@@ -3,7 +3,6 @@ import { SearchBarService } from '../../../services/search-bar.service';
 import { TakeIdsService } from '../../../services/take-ids.service';
 import { Top } from '../../../models/top.model';
 import { Categories } from '../../../models/categories.model';
-import { PressSearchService } from '../../../services/press-search.service';
 import { Router } from '@angular/router';
 import { SearchServiceService } from '../../../services/search-service.service';
 
@@ -16,15 +15,16 @@ export class CardsSquareComponent {
   searchTerm = inject(SearchServiceService)
   listCards = inject(SearchBarService)
   takeIdService = inject(TakeIdsService)
-  searchTake = inject(PressSearchService)
   router = inject(Router)
   @Output() loadingChange = new EventEmitter<boolean>();
+
 
   listName: string[] = [];
   listImage: string[] = [];
   listArtist: string[] = []; 
   listIds: string[] = [];
   loading: boolean = false;
+  value: string;
   
 
   getTerm(term: string) {

@@ -5,8 +5,7 @@ import { SearchServiceService } from '../services/search-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TakeIdsService } from '../services/take-ids.service';
 import { MusicPlayerService } from '../services/music-player.service';
-
-
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -24,6 +23,7 @@ export class SearchComponent implements OnInit {
   route = inject(ActivatedRoute)
   constructor(private router: Router) { }
 
+  subscription: Subscription;
   artistName: string = this.searchTerm.getSearchTerm();
   loading: boolean = false;
   buscar: boolean = false;
@@ -69,27 +69,28 @@ export class SearchComponent implements OnInit {
     this.searchTerm.setSearchTerm(nameCategory)
   }
   ngOnInit() {
+    
     this.route.queryParams.subscribe(params => {
       if (params.fromSongsComponent || params.fromArtistsComponent || params.fromAlbumsComponent) {
-        this.buscarArtista();
+        this.searchMethod();
       } 
     });
+
+    // this.searchMethod();
+    
+    this.subscription = this.searchTerm.searchTerm$.subscribe(term => {
+      this.artistName = term;
+      this.searchMethod()
+    })
   }
 
-  navegarAComponenteSongs() {
-    // Navegar a SongsComponent y pasar un parámetro indicando que proviene de SearchComponent
-    this.router.navigate(['/songs'], { queryParams: { fromSearchComponent: true } });
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
-  navegarAComponenteArtists() {
-    this.router.navigate(['/artists'], { queryParams: { fromSearchComponent: true } });
-  }
-
-  navegarAComponenteAlbumes() {
-    this.router.navigate(['/albums'], { queryParams: { fromSearchComponent: true } });
-  }
-
-  buscarArtista(): void {
+  searchMethod(): void {
     this.loading = true;
     if (!this.searchTerm.checkTerm(this.artistName)) {
       console.error('Introduce un artista')

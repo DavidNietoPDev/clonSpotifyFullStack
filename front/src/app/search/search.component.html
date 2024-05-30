@@ -1,20 +1,8 @@
 <div class="container">
   <div class="primary">
     <div class="navsearch">
-      <div class="searcher">
-        <div class="icinp"><mat-icon class="icon">search</mat-icon><input class="insearch" type="text"
-            [(ngModel)]="artistName" placeholder="¿Que quieres reproducir?" (keydown.enter)="buscarArtista()"></div>
-        <div class="botonesRI">
-          <button class="btonre">Registrarte</button>
-          <button class="btonis">Iniciar sesión</button>
-        </div>
-      </div>
-      <div class="listaBusquedas" *ngIf="buscar">
-        <button #buttonTodo name="buttonTodo" class="bsqS" (click)="buscarArtista()">Todo</button>
-        <button #buttonSongs class="bsq" (click)="navegarAComponenteSongs()">Canciones</button>
-        <button class="bsq" (click)="navegarAComponenteArtists()">Artistas</button>
-        <button class="bsq" (click)="navegarAComponenteAlbumes()">Álbumes</button>
-      </div>
+      <app-nav-search-complete/>
+      <app-nav-cards *ngIf="artistName !== ''"/>
     </div>
     <app-loader *ngIf="loading"/>
     <p class="textListas" *ngIf="!buscar">Explorar todo</p>

@@ -1,0 +1,50 @@
+.icinp {
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 35%;
+    position: absolute;
+    height: 70px;
+    z-index: 2;
+  }
+
+  .icinp:hover input {
+    border: 1px solid #525151;
+    background-color: #383838;
+  }
+
+  .icinp input::placeholder {
+    position: relative;
+    left: 25px;
+    font-size: 14px;
+    color: #777676;
+  }
+
+  .icinp:hover .icon {
+    color: rgb(211, 201, 201);
+  }
+
+  .icon {
+
+    color: #757171;
+    position: absolute;
+    left: 30px;
+    top: 35px;
+    transform: translateY(-50%);
+    z-index: 1;
+
+  }
+
+  .insearch {
+    position: relative;
+    background-color: #242424;
+    border: none;
+    left: 20px;
+    padding-left: 40px;
+    height: 45px;
+    width: 100%;
+    border-radius: 20px;
+    color: white;
+    max-width: 368px;
+  }
