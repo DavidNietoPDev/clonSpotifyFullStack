@@ -1,21 +1,19 @@
 <div class="container">
   <div class="primary">
-    <div class="navsearch">
-      <app-nav-search-complete/>
-      <app-nav-cards *ngIf="artistName !== ''"/>
-    </div>
-    <app-loader *ngIf="loading"/>
+    <app-nav-search-complete />
+    <app-nav-cards *ngIf="artistName !== ''" />
+    <app-loader *ngIf="loading" />
     <p class="textListas" *ngIf="!buscar">Explorar todo</p>
-    <app-cards-square *ngIf="!buscar"/>
+    <app-cards-square *ngIf="!buscar" />
     <div *ngIf="buscar">
       <p class="text">Resultado principal</p>
       <p class="text2">Canciones</p>
-      <div class="cardP" (click)="takeId(idArtist)" [routerLink]="'/artistId'" >
+      <div class="cardP" (click)="takeId(idArtist)" [routerLink]="'/artistId'">
         <div class="cardI">
           <img src={{imageUrl}} alt="Imagen del artista" class="card-image">
         </div>
         <div class="cancarti">
-          <p class="nombrecanc" >{{artist}}</p>
+          <p class="nombrecanc">{{artist}}</p>
           <p class="result">Artista<span class="artista"></span></p>
         </div>
       </div>
@@ -27,9 +25,13 @@
             <div class="topTrackslist">
               <p class="texttt1" (click)="takeId(topTrackId[i])" [routerLink]="'/songsId'">{{ topTrack[i] }}</p>
               <p class="artistt1" *ngIf="topTrackArtistTwo[i] !== ''">
-                <span class="artistTrackLink" (click)="takeId(idArtistTracks[i])" [routerLink]="'/artistId'">{{ topTrackArtist[i] }}</span>, 
-                <span class="artistTrackLink" (click)="takeId(idArtistTracksTwo[i])" [routerLink]="'/artistId'">{{topTrackArtistTwo[i]}}</span></p>
-              <p class="artistt2" *ngIf="topTrackArtistTwo[i] === ''" (click)="takeId(idArtistTracks[i])" [routerLink]="'/artistId'" >{{ topTrackArtist[i] }}</p>
+                <span class="artistTrackLink" (click)="takeId(idArtistTracks[i])" [routerLink]="'/artistId'">{{
+                  topTrackArtist[i] }}</span>,
+                <span class="artistTrackLink" (click)="takeId(idArtistTracksTwo[i])"
+                  [routerLink]="'/artistId'">{{topTrackArtistTwo[i]}}</span>
+              </p>
+              <p class="artistt2" *ngIf="topTrackArtistTwo[i] === ''" (click)="takeId(idArtistTracks[i])"
+                [routerLink]="'/artistId'">{{ topTrackArtist[i] }}</p>
             </div>
             <div>
               <p class="timett">{{topTrackDuration[i] | pipeDuracion}}</p>
@@ -38,10 +40,11 @@
         </div>
       </div>
       <p class="textArtist">Artistas</p>
-      <div class="cardArtist" >
+      <div class="cardArtist">
         <div class="cardImageArtista" *ngFor="let artista of artistSimilarList.slice(0, 7); let i = index">
           <div class="cardRedSimilar">
-            <img class="imageSimilar" (click)="takeId(artistSimilarId[i])" [routerLink]="'/artistId'" src="{{imageSimilar[i]}}" alt="">
+            <img class="imageSimilar" (click)="takeId(artistSimilarId[i])" [routerLink]="'/artistId'"
+              src="{{imageSimilar[i]}}" alt="">
             <div class="textListBottom">
               <p class="artistSimilar">{{artistSimilarList[i]}}</p>
             </div>
@@ -57,12 +60,12 @@
             <div class="textListBottom">
               <p class="artistAlbum">{{ topAlbum [i] | pipeTruncate}}</p>
               <p class="yearArtist">{{topAlbumYear[i].split("-")[0]}} · <span class="artistAlbumLink"
-                 (click)="takeId(idArtists[i])" [routerLink]="'/artistId'">{{topAlbumArtist[i]}}</span></p>
+                  (click)="takeId(idArtists[i])" [routerLink]="'/artistId'">{{topAlbumArtist[i]}}</span></p>
             </div>
           </div>
         </div>
       </div>
-      <p class="textListas">Listas</p>
+      <p class="textList">Listas</p>
       <div class="cardListas">
         <div class="cardImagenListas" *ngFor="let lista of playList.slice(0, 7); let i = index">
           <div class="cardCuadListas">
@@ -75,7 +78,7 @@
           </div>
         </div>
       </div>
-     <app-footer></app-footer>
+      <app-footer></app-footer>
     </div>
   </div>
 </div>

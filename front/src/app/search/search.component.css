@@ -12,7 +12,6 @@
       scrollbar-gutter: stable;
     }
 
-
     .primary:hover {
       overflow-y: auto;
     }
@@ -29,23 +28,7 @@
       background-color: rgb(76, 76, 77);
 
     }
-    .navsearch {
-      right: 8px;
-      left: 435px;
-      height: 70px;
-      position: fixed;
-      background-color: #080808;
-      z-index: 1;
-    }
-    
-    .textListas {
-      position: relative;
-      left: 10px;
-      font-size: 26px;
-      font-weight: bold;
-      color: white; 
-    }
-     
+
     .cardImageList {
       border-radius: 10px;
       border: none;
@@ -54,17 +37,18 @@
       width: 180px;
       height: 180px;
     }
-    
-    .cardImageList::shadow{
+
+    .cardImageList::shadow {
       box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
       background-color: #292828;
     }
-    
+
     .cardImageList:hover {
       cursor: pointer;
     }
+
     .texttt11 {
-    
+
       width: 160px;
       height: 10%;
       position: relative;
@@ -88,7 +72,7 @@
       font-size: 22px;
       font-weight: bold;
       color: white;
-    } 
+    }
 
     .cardP {
 
@@ -238,7 +222,7 @@
       cursor: pointer;
     }
 
-   
+
 
     .timett {
       right: 100px;
@@ -258,15 +242,15 @@
     }
 
     .textArtist {
-      top: -80px;
+      top: -60px;
       position: relative;
-      margin-left: 15px;  
+      margin-left: 15px;
       font-size: 22px;
       font-weight: bold;
       color: white;
     }
-    
-    
+
+
     .cardArtist {
       display: flex;
       flex-direction: row;
@@ -275,7 +259,7 @@
       height: 240px;
     }
 
-  
+
     .cardImageArtista {
       position: relative;
       display: flex;
@@ -340,7 +324,7 @@
       position: relative;
       top: 20px;
       height: 240px;
- 
+
     }
 
     .cardImageAlbum {
@@ -402,11 +386,18 @@
       text-decoration: underline;
       cursor: pointer;
     }
-    
-
 
     .textListas {
-      margin-top: 120px;
+      top: 100px;
+      position: relative;
+      left: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .textList {
+      top: 60px;
       position: relative;
       margin-left: 15px;
       font-size: 22px;
@@ -415,11 +406,11 @@
     }
 
     .cardListas {
-      
+
       display: flex;
       flex-direction: row;
       position: relative;
-      top: 20px;
+      top: 80px;
       height: 240px;
 
     }
@@ -484,21 +475,16 @@
       color: #747171;
     }
 
-    @media screen and (max-height: 600px) {  
 
-      .primary {
-        min-height: 485px;
-      }
-
-    
-    }
     @media screen and (max-width: 1600px) {
       .cardImageAlbum:nth-child(n+6) {
         display: none;
       }
+
       .cardImageArtista:nth-child(n+6) {
         display: none;
       }
+
       .cardImagenListas:nth-child(n+6) {
         display: none;
       }
@@ -508,9 +494,11 @@
       .cardImageAlbum:nth-child(n+5) {
         display: none;
       }
+
       .cardImageArtista:nth-child(n+5) {
         display: none;
       }
+
       .cardImagenListas:nth-child(n+5) {
         display: none;
       }
@@ -520,50 +508,51 @@
       .cardImageAlbum:nth-child(n+4) {
         display: none;
       }
+
       .cardImageArtista:nth-child(n+4) {
         display: none;
       }
+
       .cardImagenListas:nth-child(n+4) {
         display: none;
       }
     }
+
     @media screen and (max-width: 1000px) {
       .cardImageAlbum:nth-child(n+3) {
         display: none;
       }
+
       .cardImageArtista:nth-child(n+3) {
         display: none;
       }
+
       .cardImagenListas:nth-child(n+3) {
         display: none;
       }
     }
-  
-    @media screen and (max-width: 855px) {
-      .searcher {
-        width: 25%;
-      }
-  
-      .navsearch {
-        left: 51%;
-      }
-  
-      .primary {
-        left: 51%;
-      }
-    }
-  
-    @media screen and (max-width: 755px) {
-      .navsearch {
-        left: 385px;
-      }
-  
-      .primary {
-        left: 380px;
-        
-      }
-    }
-  
-  
-  
 
+    @media screen and (max-width: 855px) {
+
+
+      .primary {
+        left: 51%;
+      }
+    }
+
+    @media screen and (max-width: 755px) {
+
+      .primary {
+        left: 385px;
+
+      }
+    }
+
+    @media screen and (max-height: 600px) {
+
+      .primary {
+        min-height: 485px;
+      }
+
+
+    }

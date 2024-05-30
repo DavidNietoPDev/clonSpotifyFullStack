@@ -1,11 +1,12 @@
 .icinp {
-    top: 0;
+    top: 10px;
     display: flex;
     align-items: center;
     justify-content: left;
     width: 35%;
-    position: absolute;
-    height: 70px;
+    min-width: 50px;
+    position: fixed;
+    height: 65px;
     z-index: 2;
   }
 
@@ -16,7 +17,6 @@
 
   .icinp input::placeholder {
     position: relative;
-    left: 25px;
     font-size: 14px;
     color: #777676;
   }
@@ -47,4 +47,10 @@
     border-radius: 20px;
     color: white;
     max-width: 368px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .icinp{
+      width: 50px;
+    }
   }
