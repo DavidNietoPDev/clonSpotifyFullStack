@@ -1,24 +1,17 @@
-<div class="container">
-    <div class="primary">
-        <div class="navsearch">
-            <app-nav-search-complete />
-            <app-nav-cards />
-        </div>
-        <app-loader *ngIf="loading" />
-        <div *ngIf="buscar && !loading">
-            <p class="textArtist">Artistas</p>
-            <div class="artistsall">
-                <div class="cardArtist" *ngFor="let artist of artistName; let i = index">
-                    <div class="cardImageArtista">
-                        <img class="imageSimilar" src="{{artistImage[i]}}" alt="" (click)="takeIdArtist(idArtist[i])"
-                            [routerLink]="'/artistId'">
-                        <div class="textListBottom">
-                            <p class="artistSimilar">{{artistName[i]}}</p>
-                        </div>
-                    </div>
+
+<app-nav-cards />
+<app-loader *ngIf="loading" />
+<div *ngIf="buscar && !loading">
+    <p class="textArtist">Artistas</p>
+    <div class="artistsall">
+        <div class="cardArtist" *ngFor="let artist of artistName; let i = index">
+            <div class="cardImageArtista">
+                <img class="imageSimilar" src="{{artistImage[i]}}" alt="" (click)="takeIdArtist(idArtist[i])"
+                    [routerLink]="'/artistId'">
+                <div class="textListBottom">
+                    <p class="artistSimilar">{{artistName[i]}}</p>
                 </div>
             </div>
-            <app-footer></app-footer>
         </div>
     </div>
 </div>

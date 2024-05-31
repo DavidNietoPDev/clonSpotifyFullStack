@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SearchBarService } from '../../../services/search-bar.service';
 import { TakeIdsService } from '../../../services/take-ids.service';
 import { Top } from '../../../models/top.model';
@@ -16,7 +16,6 @@ export class CardsSquareComponent {
   listCards = inject(SearchBarService)
   takeIdService = inject(TakeIdsService)
   router = inject(Router)
-  @Output() loadingChange = new EventEmitter<boolean>();
 
 
   listName: string[] = [];
@@ -52,7 +51,6 @@ export class CardsSquareComponent {
 
   searchItems(): void {
     this.loading = true;
-    this.loadingChange.emit(this.loading)
     this.listCards.getTopList().subscribe((response: Top) => {
       this.listName = [];
       this.listImage = [];
@@ -69,7 +67,6 @@ export class CardsSquareComponent {
         }
       }
       this.loading = false;
-      this.loadingChange.emit(this.loading)
     });
   }
 

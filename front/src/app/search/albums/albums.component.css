@@ -1,43 +1,4 @@
-.primary {
-    position: fixed;
-    top: 8px;
-    right: 8px;
-    left: 435px;
-    bottom: 85px;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    background-color: #121212;
-    border-radius: 10px;
-    min-width: 360px;
-    scrollbar-gutter: stable;
-  }
-  
-  
-  .primary:hover {
-    overflow-y: auto;
-  }
-  
-  
-  .primary::-webkit-scrollbar {
-    width: 10px;
-    height: 20px;
-    background-color: transparent;
-  
-  }
-  
-  .primary::-webkit-scrollbar-thumb {
-    background-color: rgb(76, 76, 77);
-  
-  }
-  .navsearch {
-    right: 8px;
-    left: 435px;
-    min-width: 420px;
-    height: 70px;
-    position: fixed;
-    background-color: #080808;
-    z-index: 1;
-  }
+
 
   .textArtist {
     top: 140px;
@@ -123,35 +84,16 @@
 
 
   @media screen and (max-height: 600px) {  
-    .primary {
-      min-height: 485px;
-    }
+
 
   }
   
 
   @media screen and (max-width: 855px) {
-    .searcher {
-      width: 25%;
-    }
 
-    .navsearch {
-      left: 51%;
-    }
-
-    .primary {
-      left: 51%;
-    }
   }
 
   @media screen and (max-width: 755px) {
-    .navsearch {
-      left: 385px;
-    }
 
-    .primary {
-      left: 380px;
-      
-    }
   }
 
