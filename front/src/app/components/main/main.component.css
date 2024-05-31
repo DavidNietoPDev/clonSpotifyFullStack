@@ -6,3 +6,22 @@
   font-weight: bold;
   color: white;
 }
+
+
+@media screen and (max-width: 655px) {
+  .textListas {
+    font-size: 20;
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .textListas {
+    font-size: 17;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .textListas{
+    font-size: 14px;
+  }
+}

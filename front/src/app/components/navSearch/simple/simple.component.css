@@ -81,3 +81,20 @@
     left: 23%;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .btonis{
+    font-size: 8px;
+    width: 60px;
+    height: 30px;
+    top: 24px;
+  }
+  .btonre{
+    font-size: 8px;
+    right: 85px;
+    top: 30px;
+  }
+  .navsearch {
+    left: 24%;
+  }
+}

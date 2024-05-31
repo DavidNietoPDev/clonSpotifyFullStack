@@ -64,3 +64,10 @@
     left: 23%;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .primary {
+    left: 24%;
+    bottom: 67px;
+  }
+}
