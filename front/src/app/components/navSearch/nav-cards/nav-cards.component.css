@@ -9,18 +9,6 @@
     padding-bottom: 10px;
   }
 
-  /* .bsqS {
-    margin-left: 10px;
-    height: 32px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 50px;
-    border: none;
-    background-color: white;
-    font-size: 15px;
-    font-weight: 500;
-    color: black;
-  } */
 
   .bsq {
     margin-left: 10px;
@@ -55,4 +43,30 @@
   .bsq:focus {
     background-color: white;
     color: black
+  }
+
+  @media screen and (max-width: 555px) {
+    .bsq {
+      font-size: 10px;
+    }
+
+    .bsq.active {
+      font-size: 10px;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .bsq {
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-left: 5px;
+      font-size: 10px;
+    }
+
+    .bsq.active {
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-left: 5px;
+      font-size: 10px;
+    }
   }
