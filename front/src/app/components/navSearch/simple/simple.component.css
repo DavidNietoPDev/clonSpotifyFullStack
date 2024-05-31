@@ -1,14 +1,13 @@
 .navsearch {
-    min-width: 360px;
-    top: 8px;
-    right: 8px;
-    left: 435px;
-    height: 70px;
-    position: fixed;
-    background-color: #080808;
-    z-index: 1;
-
+  top: 8px;
+  right: 8px;
+  left: 435px;
+  height: 70px;
+  position: fixed;
+  background-color: #080808;
+  z-index: 1;
 }
+
 .btonre {
   position: fixed;
   top: 25px;
@@ -17,7 +16,6 @@
   color: #acabab;
   background-color: transparent;
   font-weight: 500;
-
 }
 
 .btonre:hover {
@@ -35,27 +33,51 @@
   width: 160px;
   height: 50px;
   margin-left: 20px;
-
 }
 
 .btonis:hover {
   scale: 103%;
 }
 
+@media screen and (max-width: 955px) {
+
+  .navsearch {
+    left: 41.5%;
+  }
+}
+
 @media screen and (max-width: 855px) {
-    .navsearch {
-        left: 51%;
-      }
+
+  .navsearch {
+    left: 37%;
+  }
 }
 
 @media screen and (max-width: 755px) {
-    .navsearch {
-        left: 385px;
-      } 
-    .btonre{
-      left: 450px;
-    }
-    .btonis{
-      left: 550px;
-    }
+
+  .navsearch {
+    left: 32%;
+  }
+}
+
+@media screen and (max-width: 655px) {
+  .btonis{
+    font-size: 12px;
+    width: 120px;
+    height: 40px;
+    top: 18px;
+  }
+  .btonre{
+    font-size: 12px;
+    right: 150px;
+  }
+  .navsearch {
+    left: 27.5%;
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .navsearch {
+    left: 23%;
+  }
 }

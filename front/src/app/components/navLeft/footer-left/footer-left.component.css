@@ -1,78 +1,78 @@
 .foot {
-    display: flex;
-    position: fixed;
-    justify-content: space-between;
-    align-items: center;
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
-    width: calc(100% - 16px);
-    min-width: 730px;
-    height: 68px;
-    background: linear-gradient(to right, #af2896, #509bf5);
-    
-  }
-  
-  .registrate {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    margin-left: 10px;
-  }
-  
-  .registrate p {
-    margin: 0;
-  }
-  
-  .muestra {
-    margin-top: 10px;
-    margin-left: 10px;
-    font-size: 14px;
-    font-weight: 700;
-  }
-  
-  .disfruta {
-    font-size: 16px;
-    margin-left: 10px;
-    font-weight: 600;
-  }
-  
-  .botonregistrate { 
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  width: calc(100% - 16px);
+  height: 68px;
+  background: linear-gradient(to right, #af2896, #509bf5);
+}
+
+.registrate {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.registrate p {
+  margin: 0;
+}
+
+.muestra {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.disfruta {
+  font-size: 16px;
+  margin-left: 10px;
+  font-weight: 600;
+}
+
+.botonregistrate {
   margin-right: 20px;
-    
-  }
-  
-  .btonr{
-    
-    border-radius: 50px;
-    border: none;
-    height: 47px;
-    width: 100%;
-    font-weight: 650;
-    min-width: 150px;
-    max-width: 195px;
-    margin-left: auto;
-  }
-  
-  .btonr:hover {
-    scale: 103%;
-  }
+}
+
+.btonr {
+  border-radius: 50px;
+  border: none;
+  height: 47px;
+  width: 100%;
+  font-weight: 650;
+  min-width: 150px;
+  max-width: 195px;
+  margin-left: auto;
+}
+
+.btonr:hover {
+  scale: 103%;
+}
 
 
-  @media screen and (max-height: 580px) {  
-    .foot {
-      top: 500px ;
-      height: 70px;
-    }
-  
+@media screen and (max-height: 580px) {
+  .foot {
+    top: 500px;
+    height: 70px;
   }
-  
-  @media screen and (max-width: 855px) {
-  
-    .botnr {
-      position: fixed;
-      right: 2px;
-    }
-  
+}
+
+@media screen and (max-width: 855px) {
+  .botnr {
+    position: fixed;
+    right: 2px;
   }
-  
+
+  .foot {
+    font-size: 10px;
+  }
+
+  .foot p {
+    font-size: 10px;
+  }
+}
