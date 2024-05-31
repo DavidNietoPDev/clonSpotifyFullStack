@@ -12,7 +12,7 @@
       </ng-template>
       <div class="topTrackslist">
         <p class="underImage1" *ngIf="listName">{{ listName[i] | pipeTruncate }}</p>
-        <p class="underImage2" *ngIf="listArtist">{{ listArtist[i] }}</p>
+        <p class="underImage2" *ngIf="listArtist && listArtist.length > 0 ">{{ listArtist[i] | pipeTruncate }}</p>
       </div>
     </div>
   </div>

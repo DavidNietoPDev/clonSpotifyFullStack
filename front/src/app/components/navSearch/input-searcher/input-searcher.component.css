@@ -1,9 +1,9 @@
 .icinp {
-    top: 10px;
+    top: 5px;
     display: flex;
     align-items: center;
     justify-content: left;
-    width: 35%;
+    width: 30%;
     min-width: 50px;
     position: fixed;
     height: 65px;
@@ -26,7 +26,6 @@
   }
 
   .icon {
-
     color: #757171;
     position: absolute;
     left: 30px;
@@ -49,8 +48,31 @@
     max-width: 368px;
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1100px){
     .icinp{
-      width: 50px;
+      width: 25%;
+    }
+  }
+  @media screen and (max-width: 855px){
+    .icinp{
+      width: 22%;
+    }
+  }
+
+
+  @media screen and (max-width: 555px) {
+
+    .insearch{
+      height: 35px;
+    }
+
+    .icinp input::placeholder {
+      font-size: 10px;
+      top: -2px;
+    }
+
+    .icon {
+      transform: translateY(-70%);
+      scale: 70%;
     }
   }

@@ -25,15 +25,6 @@
   background-color: rgb(76, 76, 77);
 }
 
-.textListas {
-  top: 100px;
-  position: relative;
-  left: 20px;
-  font-size: 22px;
-  font-weight: bold;
-  color: white;
-}
-
 
 @media screen and (max-height: 600px) {
   .primary {

@@ -1,33 +1,3 @@
-    .primary {
-      position: fixed;
-      top: 8px;
-      right: 8px;
-      left: 435px;
-      bottom: 85px;
-      overflow-y: hidden;
-      overflow-x: hidden;
-      background-color: #121212;
-      border-radius: 10px;
-      min-width: 360px;
-      scrollbar-gutter: stable;
-    }
-
-    .primary:hover {
-      overflow-y: auto;
-    }
-
-
-    .primary::-webkit-scrollbar {
-      width: 10px;
-      height: 20px;
-      background-color: transparent;
-
-    }
-
-    .primary::-webkit-scrollbar-thumb {
-      background-color: rgb(76, 76, 77);
-
-    }
 
     .cardImageList {
       border-radius: 10px;
@@ -530,29 +500,4 @@
       .cardImagenListas:nth-child(n+3) {
         display: none;
       }
-    }
-
-    @media screen and (max-width: 855px) {
-
-
-      .primary {
-        left: 51%;
-      }
-    }
-
-    @media screen and (max-width: 755px) {
-
-      .primary {
-        left: 385px;
-
-      }
-    }
-
-    @media screen and (max-height: 600px) {
-
-      .primary {
-        min-height: 485px;
-      }
-
-
     }
