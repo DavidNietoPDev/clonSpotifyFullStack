@@ -4,8 +4,7 @@
     left: 8px;
     bottom: 8px;
     width: calc(427px - 8px);
-    /* min-width: 419px; */
-    height: calc(156px) ;
+    height: 156px;
     background-color: #121212;
     border-radius: 10px;
     z-index: 1;
@@ -33,6 +32,10 @@
     display: flex;
     flex-direction: column;
     color: #a09f9f;
+  }
+
+  .homSearch mat-icon:hover{
+    cursor: pointer;
   }
   
   .inicio {
@@ -126,5 +129,13 @@
     .title2 {
       display: none;
     }
+
+}
+
+@media screen and (max-width: 400px) {
+
+  .second mat-icon{
+    margin-left: 25px;
+  }
 
 }

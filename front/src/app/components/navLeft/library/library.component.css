@@ -30,6 +30,10 @@
   margin-left: 25px;
 }
 
+.icon3:hover {
+  cursor: pointer;
+}
+
 .title3 {
   margin-left: 10px;
   font-weight: 500;
@@ -84,7 +88,6 @@
 
 .tercero:hover::-webkit-scrollbar-thumb {
   background-color: #09C;
-  /* Color del pulgar traslúcido al pasar el mouse */
 }
 
 .lista {
@@ -371,6 +374,56 @@
     padding-right: 0px;
     padding-left: 0px;
     height: auto;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .tercero{
+    bottom: 67px;
+  }
+
+  .tercero p {
+    font-size: 7px;
+    margin-left: 8px;
+  }
+
+  .tercero button {
+    font-size: 7px;
+  }
+
+  .icon3 {
+    margin-left: 25px;
+  }
+
+  .botnlis {
+    margin-top: 0px;
+    margin-left: 5px;
+    border-radius: 20px;
+    border: none;
+    padding-right: 0px;
+    padding-left: 0px;
+    height: auto;
+  }
+
+  .listasypodcast {
+    height: 300px;
+    min-height: 300px;
+  }
+
+  .lista {
+    height: 125px;
+    min-height: 125px;
+  }
+
+  .podcast {
+    height: 180px;
+    min-height: 180px;
+  }
+
+  .cookies {
+    font-size: 10px;
+    margin-top: 0px;
   }
 
 }

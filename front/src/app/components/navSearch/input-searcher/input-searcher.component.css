@@ -76,3 +76,23 @@
       scale: 70%;
     }
   }
+
+  @media screen and (max-width: 400px) {
+    .icinp{
+      width: 30%;
+    }
+
+    .insearch{
+      height: 30px;
+    }
+
+    .icinp input::placeholder {
+      font-size: 10px;
+      top: -2px;
+    }
+
+    .icon {
+      transform: translateY(-70%);
+      scale: 70%;
+    }
+  }
