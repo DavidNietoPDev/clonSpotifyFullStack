@@ -1,5 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
-import { ExtractColorService } from '../../../services/extract-color.service';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header-base',
@@ -7,8 +6,6 @@ import { ExtractColorService } from '../../../services/extract-color.service';
   styleUrl: './header-base.component.css'
 })
 export class HeaderBaseComponent {
-
-  extractColor = inject(ExtractColorService)
 
   @Input() colorDominantImage: number[] = [];
   @Input() imageId: string = '';
@@ -19,15 +16,7 @@ export class HeaderBaseComponent {
   @Input() numberSongsOrPopularity: number | string;
   @Input() search: boolean;
 
-  async colorDominante(imageUrl: string) {
-    this.extractColor.getColorDominante(imageUrl)
-      .then(color => {
-        for (let colore of color) {
-          this.colorDominantImage.push(colore);
-        }
-      })
-      .catch(error => {
-        console.error('Error al obtener el color dominante', error);
-      })
+  isNumber(value: any): boolean {
+    return !isNaN(Number(value));
   }
 }

@@ -32,6 +32,7 @@ export class SongsIdComponent implements OnInit {
   trackReleaseDate: string = '';
   trackPopularity: number = 0;
   trackDuration: number = 0;
+  artistFollowers: number = 0;
 
   trackRecomImage: string[] = [];
   trackRecomName: string[] = [];
@@ -142,6 +143,7 @@ export class SongsIdComponent implements OnInit {
         this.trackNameArtistTwo = response.song.artists[1].name;
       }
 
+      this.artistFollowers = response.artists[0].followers.total;
       this.albumId = response.albumInfo.id;
       this.trackNameArtist = response.song.artists[0].name;
       this.trackName = response.song.name;
