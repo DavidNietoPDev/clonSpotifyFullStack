@@ -1,0 +1,19 @@
+<div class="fondo" [ngStyle]="{
+    'background': 'linear-gradient(to top, transparent 0, rgba(' + colorDominantImage[0] + ',' + colorDominantImage[1] + ',' + colorDominantImage[2] + ', 1) 100%)'
+  }">
+    <div class="navsearch" >
+        <button class="btonre">Registrarte</button>
+        <button class="btonis">Iniciar sesión</button>
+    </div>
+    <div class="header">
+        <div class="imgHeader">
+            <img class="imgImg" src="{{imageId}}" alt="">
+        </div>
+        <div class="textHeader" *ngIf="search">
+            <p class="albumType">{{typeId.charAt(0).toUpperCase() + typeId.slice(1)}}</p>
+            <p class="nLista">{{nameId | pipeTruncate}}</p>
+            <p class="sLista"></p>
+            <p><span class="sLista">{{ nameArtistOrFollowers }}  ·  {{ releaseDate.split("-")[0] }}  ·  {{ numberSongsOrPopularity }} canciones</span></p>
+        </div>
+    </div>
+</div>

@@ -29,6 +29,7 @@ import { InputSearcherComponent } from './components/navSearch/input-searcher/in
 import { NavSearchCompleteComponent } from './components/navSearch/nav-search-complete/nav-search-complete.component';
 import { NavCardsComponent } from './components/navSearch/nav-cards/nav-cards.component';
 import { MainComponent } from './components/main/main.component';
+import { HeaderBaseComponent } from './components/headersIds/header-base/header-base.component';
 
 
 
@@ -58,7 +59,9 @@ import { MainComponent } from './components/main/main.component';
     InputSearcherComponent,
     NavSearchCompleteComponent,
     NavCardsComponent,
-    MainComponent
+    MainComponent,
+    HeaderBaseComponent
+
     
   ],
   imports: [
