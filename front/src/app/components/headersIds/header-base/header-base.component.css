@@ -64,15 +64,14 @@
     left: 50px;
     align-items: center;
     justify-content: center;
-    width: 70%;
-    border: 1px solid red;
   }
   
   .imgImg {
     border-radius: 10px;
     position: relative;
+    width: 350px;
+    height: 350px;
     margin: auto;
-    width: 100%;
     height: auto;
     backface-visibility: hidden;
     background-size: cover;
@@ -84,20 +83,17 @@
   }
   
   .textHeader {
-    margin-top: 50px;
-    margin-left: 50px;
+
+    height: auto;
+    margin-left: 40px;
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
-    border: 1px solid blue;
-  }
-
-  .albumType {
-    margin-left: 10px;
   }
   
   .textHeader p {
+    white-space: normal;
     margin-bottom: 0px;
     color: white;
   }
@@ -108,13 +104,148 @@
   }
   
   .nLista {
-    font-size: 100px;
+    font-size: 80px;
     font-weight: bold;
   }
   
   .sLista {
-    margin-left: 10px;
     font-size: 14px;
     color: rgb(151, 146, 146) !important;
   }
+
+  @media screen and (max-width: 1300px) {
+      
+  .imgImg {
+    width: 260px;
+    height: 260px;
+    }
+    .nLista{
+      font-size: 60px;
+    }
+    .fondo{
+      height: 410px;
+    }
+  }
+
+  @media screen and (max-width: 1055px) {
+    .imgImg {
+      width: 250px;
+      height: 250px;
+      }
+      .nLista{
+        font-size: 50px;
+      }
+
+      .fondo{
+        height: 400px;
+      }
+  }
   
+  @media screen and (max-width: 955px) {
+
+    .imgImg {
+      width: 230px;
+      height: 230px;
+      }
+      .nLista{
+        font-size: 40px;
+      }
+
+      .fondo{
+        height: 380px;
+      }
+  }
+  
+  @media screen and (max-width: 855px) {
+  
+    .imgImg {
+      width: 200px;
+      height: 200px;
+      }
+
+      .fondo{
+        height: 350px;
+      }
+  }
+  
+  @media screen and (max-width: 755px) {
+  
+    .imgImg {
+      width: 150px;
+      height: 150px;
+      }
+
+      .textHeader {
+        margin-left: 30px;
+      }
+
+      
+      .fondo{
+        height: 300px;
+      }
+  }
+  
+  @media screen and (max-width: 655px) {
+    .imgImg {
+      width: 130px;
+      height: 130px;
+      }
+
+      .nLista{
+        font-size: 30px;
+      }
+    
+      .fondo{
+        height: 280px;
+      }
+  }
+  
+  @media screen and (max-width: 555px) {
+    .imgImg {
+      width: 120px;
+      height: 120px;
+      }
+      
+      .nLista{
+        font-size: 20px;
+      }
+      .sLista {
+        font-size: 8px;
+      }
+      .albumType{
+        font-size: 8px;
+      }
+      .textHeader {
+        margin-left: 10px;
+      }
+
+      .fondo{
+        height: 270px;
+      }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .imgImg {
+      width: 100px;
+      height: 100px;
+      }
+
+      .nLista{
+        font-size: 12px;
+      }
+
+      .textHeader {
+        margin-left: 5px;
+      }
+
+      .sLista {
+        font-size: 6px;
+      }
+      .albumType{
+        font-size: 6px;
+      }
+
+      .fondo{
+        height: 250px;
+      }
+  }
