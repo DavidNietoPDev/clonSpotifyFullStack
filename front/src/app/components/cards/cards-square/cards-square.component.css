@@ -1,7 +1,7 @@
 .cardL {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-row-gap:10px
+    grid-row-gap:40px
   }
   
   .topList {
@@ -17,7 +17,6 @@
     display: flex;
     padding-left: 10px;
     width: 210px;
-  
   }
   
   .cardImageList {
@@ -27,6 +26,7 @@
     border: none;
     width: 180px;
     height: 180px;
+    border: 1px solid orange;
   }
   
   .cardImageList::shadow{
@@ -37,8 +37,8 @@
   .cardImageList:hover {
     cursor: pointer;
   }
+
   .underImage1 {
-  
     width: 160px;
     height: 10%;
     position: relative;
@@ -47,11 +47,169 @@
   }
   
   .underImage2 {
-    width: 160px;
-    height: 10%;
     position: relative;
     left: -180px;
     top: 185px;
     color: #424242;
+  }
+
+  @media screen and (max-width: 955px) {
+    .cardL{
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+
+    .topList {
+
+      height: 220px;
+    }    
     
+    .cardList {
+      width: 190px;
+    
+    }
+
+    .cardImageList {
+      width: 155px;
+      height: 155px;
+    }
+
+    .underImage1 {
+      font-size: 13px;
+      left: -160px;
+      top: 160px;
+    }
+    
+    .underImage2 {
+      font-size: 13px;
+      left: -160px;
+      top: 165px;
+    }
+  }
+  
+  @media screen and (max-width: 855px) {
+    .cardL{
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-row-gap:30px
+    }
+    .topList {
+
+      height: 210px;
+    }    
+    
+    .cardList {
+      width: 180px;
+    
+    }
+    .cardImageList {
+      width: 150px;
+      height: 150px;
+    }
+
+    .underImage1 {
+      left: -150px;
+      top: 150px;
+    }
+    
+    .underImage2 {
+      left: -150px;
+      top: 140px;
+    }
+
+  }
+  
+  @media screen and (max-width: 755px) {
+    .cardL{
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      grid-row-gap:20px
+    }
+    .topList {
+
+      height: 200px;
+    }    
+    
+    .cardList {
+      width: 170px;
+    
+    }
+    .cardImageList {
+      width: 140px;
+      height: 140px;
+    }
+
+    .underImage1 {
+      font-size: 12px;
+      left: -140px;
+      top: 140px;
+    }
+    
+    .underImage2 {
+      font-size: 12px;
+      left: -140px;
+      top: 130px;
+    }
+ 
+  }
+  
+  @media screen and (max-width: 655px) {
+    .cardL{
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      grid-row-gap:10px
+    }
+    .topList {
+
+      height: 180px;
+    }    
+    
+    .cardList {
+      width: 150px;
+    
+    }
+    .cardImageList {
+      width: 120px;
+      height: 120px;
+    }
+
+    .underImage1 {
+      font-size: 11px;
+      left: -120px;
+      top: 120px;
+    }
+    
+    .underImage2 {
+      font-size: 11px;
+      left: -120px;
+      top: 110px;
+    }
+  }
+  
+  @media screen and (max-width: 555px) {
+    .cardL{
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      grid-row-gap:5px
+    }
+    .topList {
+
+      height: 160px;
+    }    
+    
+    .cardList {
+      width: 130px;
+    
+    }
+    .cardImageList {
+      width: 100px;
+      height: 100px;
+    }
+
+    .underImage1 {
+      font-size: 10px;
+      left: -100px;
+      top: 100px;
+    }
+    
+    .underImage2 {
+      font-size: 10px;
+      left: -100px;
+      top: 90px;
+    }
   }

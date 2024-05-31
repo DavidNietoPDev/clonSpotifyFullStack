@@ -69,15 +69,7 @@ export class SearchComponent implements OnInit {
     this.searchTerm.setSearchTerm(nameCategory)
   }
   ngOnInit() {
-    
-    this.route.queryParams.subscribe(params => {
-      if (params.fromSongsComponent || params.fromArtistsComponent || params.fromAlbumsComponent) {
-        this.searchMethod();
-      } 
-    });
-
-    // this.searchMethod();
-    
+    this.searchMethod();
     this.subscription = this.searchTerm.searchTerm$.subscribe(term => {
       this.artistName = term;
       this.searchMethod()

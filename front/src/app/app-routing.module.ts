@@ -10,10 +10,12 @@ import { PlayListComponent } from './search/play-list/play-list.component';
 import { AlbumDirectComponent } from './search/albums/album-direct/album-direct.component';
 import { SongsIdComponent } from './search/songs/songs-id/songs-id.component';
 import { CategoriesComponent } from './search/categories/categories.component';
+import { MainComponent } from './components/main/main.component';
 
 
 const routes: Routes = [
-  { path: 'home', component: AppComponent},
+  { path: '', component: AppComponent},
+  { path: 'home', component: MainComponent},
   { path: 'search', component: SearchComponent},
   { path: 'songs', component: SongsComponent},
   { path: 'artists', component: ArtistsComponent},
