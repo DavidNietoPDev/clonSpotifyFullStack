@@ -1,6 +1,16 @@
 <div class="container">
     <div class="primary">
-        <div class="fondo" [ngStyle]="{
+        <app-header-base
+            [colorDominantImage]="colorDominanteAlbum"
+            [imageId]="listImage"
+            [typeId]="typeAlbum"
+            [nameId]="listName"
+            [nameArtistOrFollowers]="albumArtists"
+            [releaseDate]="releaseDate"
+            [numberSongsOrPopularity]="listCanciones"
+            [search]="buscar"
+            />
+        <!-- <div class="fondo" [ngStyle]="{
             'background': 'linear-gradient(to top, transparent 0, rgba(' + colorDominanteAlbum[0] + ',' + colorDominanteAlbum[1] + ',' + colorDominanteAlbum[2] + ', 1) 100%)'
           }">
             <div class="navsearch" >
@@ -18,7 +28,7 @@
                     <p><span class="sLista">{{ albumArtists }}  ·  {{ releaseDate.split("-")[0] }}  ·  {{listCanciones}} canciones</span></p>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="grid-container">
             <app-loader *ngIf="loading" />
             <table *ngIf="!loading && buscar">
