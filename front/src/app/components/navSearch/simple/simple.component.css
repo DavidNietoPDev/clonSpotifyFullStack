@@ -7,7 +7,7 @@
   left: 435px;
   height: 70px;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.192);
+  background-color: rgb(10, 10, 10);
   z-index: 1;
 }
 .navButtons{
@@ -76,7 +76,6 @@
 }
 
 @media screen and (max-width: 955px) {
-
   .navsearch {
     left: 41.5%;
   }
@@ -94,6 +93,7 @@
   .navsearch {
     left: 32%;
   }
+  
   .btonis{
     font-size: 13px;
     width: 140px;

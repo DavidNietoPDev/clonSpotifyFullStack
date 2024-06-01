@@ -1,16 +1,20 @@
 <app-loader *ngIf="loading" />
-<div class="cardL" >
+<div class="cardL">
   <div class="topList" *ngFor="let list of listName; let i = index">
-    <div class="cardList" >
+    <div class="cardList">
       <div *ngIf="checkRoute(); else elseBlock">
-      <img src={{listImage[i]}} alt="Imagen del artista" class="cardImageList" (click)="getTerm(listName[i])" (click)="takeId(listIds[i])"
-        [routerLink]="'/categoryId'">
+        <div class="img">
+          <img src={{listImage[i]}} alt="Imagen del artista" class="cardImageList" (click)="getTerm(listName[i])"
+            (click)="takeId(listIds[i])" [routerLink]="'/categoryId'">
+        </div>
       </div>
       <ng-template #elseBlock>
-        <img src={{listImage[i]}} alt="Imagen del artista" class="cardImageList" (click)="getTerm(listName[i])" (click)="takeId(listIds[i])"
-        [routerLink]="'/playListId'">
+        <div class="text">
+          <img src={{listImage[i]}} alt="Imagen del artista" class="cardImageList" (click)="getTerm(listName[i])"
+            (click)="takeId(listIds[i])" [routerLink]="'/playListId'">
+        </div>
       </ng-template>
-      <div class="topTrackslist">
+      <div class="text">
         <p class="underImage1" *ngIf="listName">{{ listName[i] | pipeTruncate }}</p>
         <p class="underImage2" *ngIf="listArtist && listArtist.length > 0 ">{{ listArtist[i] | pipeTruncate }}</p>
       </div>
