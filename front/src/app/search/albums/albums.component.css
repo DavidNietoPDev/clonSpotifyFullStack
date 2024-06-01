@@ -1,5 +1,4 @@
 
-
   .textArtist {
     top: 140px;
     position: relative;
@@ -9,42 +8,49 @@
     color: white;
   }
 
+  .artistsall {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-row-gap:40px;
+}
+
   .cardArtist {
     top: 160px;
     display: flex;
     position: relative;
-    height: 240px;
+    height: 300px;
   }
-  .cardArtist:hover {
-    background-color: rgba(112, 109, 109, 0.226);
-  }
-
-  .artistsall {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      
-  }
-  
 
   .cardImageArtista {
     padding-top: 10px;
     display: flex;
     flex-direction: column;
     position: relative;
-    align-items: center;
     width: 100%;
     height: 100%;
     border: none;
   }
 
 
+  .cardImageArtista:hover {
+    border-radius: 10px;
+    background-color: rgba(112, 109, 109, 0.226);
+  }
+
+  
+  .img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   .imageSimilar {
-    border: none;
+    display: flex;
     position: relative;
-    width: 170px;
-    height: 170px;
+    border-radius: 10px;
+    border: none;
+    width: 180px;
+    height: 180px;
   }
 
   .imageSimilar::shadow {
@@ -52,48 +58,138 @@
     border-radius: 10px;
     background-color: #181717;
   }
+
   .imageSimilar:hover {
     cursor: pointer;
   }
 
-  .artistSimilar {
-    position: relative;
-
+  .text{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .yearArtist {
-    top: -40px;
+  .artistSimilar {
     position: relative;
-    font-size: 13px;
-    color: #747171;
+  }
+
+  .yearArtist{
+    position: relative;
+    color: #424242;
   }
 
   .artistAlbumLink:hover {
     text-decoration: underline;
     cursor: pointer;
   }
-  .textListBottom {
-    position: relative;
-    display: flex;
-    justify-content: left;
-    flex-direction: column;
+
+
+
+  @media screen and (max-width: 955px) {
+    .artistsall{
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .cardArtist {
+
+      height: 270px;
+    }    
+    
+
+    .imageSimilar {
+      width: 155px;
+      height: 155px;
+    }
+
+    .artistSimilar {
+      font-size: 13px;
+    }
+    
+    .yearArtist {
+      font-size: 13px;
+    }
   }
-
   
-
-
-
-  @media screen and (max-height: 600px) {  
-
-
-  }
-  
-
   @media screen and (max-width: 855px) {
-
+    .artistsall{
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+    .cardArtist {
+      height: 250px;
+    }    
+    
+    .imageSimilar {
+      width: 150px;
+      height: 150px;
+    }
   }
-
+  
   @media screen and (max-width: 755px) {
+    .artistsall{
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    }
+    .cardArtist {
+      height: 230px;
+    }    
+    
+    .imageSimilar {
+      width: 140px;
+      height: 140px;
+    }
 
+    .artistSimilar {
+      font-size: 12px;
+    }
+    
+    .yearArtist {
+      font-size: 12px;
+    }
+ 
   }
+  
+  @media screen and (max-width: 655px) {
+    .artistsall{
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    .cardArtist {
 
+      height: 200px;
+    }    
+
+    .imageSimilar {
+      width: 120px;
+      height: 120px;
+    }
+
+    .artistSimilar {
+      font-size: 11px;
+    }
+    
+    .yearArtist {
+      font-size: 11px;
+    }
+  }
+  
+  @media screen and (max-width: 555px) {
+    .artistsall{
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    }
+    .topList {
+
+      height: 160px;
+    }    
+    
+    .imageSimilar {
+      width: 100px;
+      height: 100px;
+    }
+
+    .artistSimilar {
+      font-size: 10px;
+    }
+    
+    .yearArtist {
+      font-size: 10px;
+    }
+  }

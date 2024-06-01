@@ -5,50 +5,65 @@
   }
   
   .topList {
-    left: 10px;
     top: 120px;
     display: flex;
-    flex-direction: row;
     position: relative;
-    height: 240px;
+    height: 300px;
   }
   
   .cardList {
+    padding-top: 10px;
     display: flex;
-    padding-left: 10px;
-    width: 210px;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .cardList:hover {
+    border-radius: 10px;
+    background-color: rgba(112, 109, 109, 0.226);
+  }
+
+  .img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .cardImageList {
+    display: flex;
     border-radius: 10px;
     border: none;
     position: relative;
-    border: none;
     width: 180px;
     height: 180px;
   }
   
   .cardImageList::shadow{
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-    background-color: #292828;
+    border-radius: 10px;
+    background-color: #181717;
   }
   
   .cardImageList:hover {
     cursor: pointer;
   }
 
+  .text{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .underImage1 {
-    width: 160px;
-    height: 10%;
     position: relative;
-    left: -180px;
-    top: 180px;
+
   }
   
   .underImage2 {
     position: relative;
-    left: -180px;
-    top: 185px;
     color: #424242;
   }
 
@@ -59,13 +74,8 @@
 
     .topList {
 
-      height: 220px;
+      height: 250px;
     }    
-    
-    .cardList {
-      width: 190px;
-    
-    }
 
     .cardImageList {
       width: 155px;
@@ -74,14 +84,10 @@
 
     .underImage1 {
       font-size: 13px;
-      left: -160px;
-      top: 160px;
     }
     
     .underImage2 {
       font-size: 13px;
-      left: -160px;
-      top: 165px;
     }
   }
   
@@ -91,27 +97,12 @@
       grid-row-gap:30px
     }
     .topList {
-
-      height: 210px;
+      height: 240px;
     }    
     
-    .cardList {
-      width: 180px;
-    
-    }
     .cardImageList {
       width: 150px;
       height: 150px;
-    }
-
-    .underImage1 {
-      left: -150px;
-      top: 150px;
-    }
-    
-    .underImage2 {
-      left: -150px;
-      top: 140px;
     }
 
   }
@@ -123,13 +114,9 @@
     }
     .topList {
 
-      height: 200px;
+      height: 220px;
     }    
     
-    .cardList {
-      width: 170px;
-    
-    }
     .cardImageList {
       width: 140px;
       height: 140px;
@@ -137,14 +124,10 @@
 
     .underImage1 {
       font-size: 12px;
-      left: -140px;
-      top: 140px;
     }
     
     .underImage2 {
       font-size: 12px;
-      left: -140px;
-      top: 130px;
     }
  
   }
@@ -156,13 +139,9 @@
     }
     .topList {
 
-      height: 180px;
+      height: 200px;
     }    
     
-    .cardList {
-      width: 150px;
-    
-    }
     .cardImageList {
       width: 120px;
       height: 120px;
@@ -170,14 +149,10 @@
 
     .underImage1 {
       font-size: 11px;
-      left: -120px;
-      top: 120px;
     }
     
     .underImage2 {
       font-size: 11px;
-      left: -120px;
-      top: 110px;
     }
   }
   
@@ -188,13 +163,9 @@
     }
     .topList {
 
-      height: 160px;
+      height: 170px;
     }    
-    
-    .cardList {
-      width: 130px;
-    
-    }
+
     .cardImageList {
       width: 100px;
       height: 100px;
@@ -202,13 +173,9 @@
 
     .underImage1 {
       font-size: 10px;
-      left: -100px;
-      top: 100px;
     }
     
     .underImage2 {
       font-size: 10px;
-      left: -100px;
-      top: 90px;
     }
   }

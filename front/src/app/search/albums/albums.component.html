@@ -1,26 +1,28 @@
 <app-nav-cards />
 <app-loader *ngIf="loading" />
-<div *ngIf="buscar && !loading">
+<div *ngIf="buscar && !loading" class="container">
     <p class="textArtist">Albums</p>
     <div class="artistsall">
         <div class="cardArtist" *ngFor="let album of albumName; let i = index">
-            <div class="cardImageArtista">
-                <img class="imageSimilar" src="{{albumImage[i] }}" alt="" (click)="takeId(idsAlbum[i])"
+            <div class="cardImageArtista"> 
+                <div class="img">
+                    <img class="imageSimilar" src="{{albumImage[i] }}" alt="" (click)="takeId(idsAlbum[i])"
                     [routerLink]="'/albumDirect'">
-                <div class="textListBottom">
-                    <p class="artistSimilar">{{albumName[i] | pipeTruncate}}</p> <br>
+                </div>
+                <div class="text">
+                    <p class="artistSimilar">{{albumName[i] | pipeTruncate}}</p>
                     <p class="yearArtist" *ngIf="albumArtistNameTwo[i] === ''">{{albumYear[i].split("-")[0]}} ·
                         <span class="artistAlbumLink" (click)="takeId(idsArtists[i])"
                             [routerLink]="'/artistId'">{{albumArtistName[i]}}</span>
                     </p>
                     <p class="yearArtist" *ngIf="albumArtistNameTwo[i] !== ''">{{albumYear[i].split("-")[0]}} ·
                         <span class="artistAlbumLink" (click)="takeId(idsArtists[i])"
-                            [routerLink]="'/artistId'">{{albumArtistName[i]}}</span>,
+                            [routerLink]="'/artistId'">{{albumArtistName[i]}}</span>,<br>
                         <span class="artistAlbumLink" (click)="takeId(idsArtistsTwo[i])"
                             [routerLink]="'/artistId'">{{albumArtistNameTwo[i]}}</span>
                     </p>
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
 </div>

@@ -279,9 +279,12 @@
   .tercero button {
     font-size: 12px;
   }
+   .listalegal{
+    width: 0px;
+  }
 
   .lgl {
-    display: none
+    display: none;
   }
 }
 
@@ -415,15 +418,25 @@
     height: 125px;
     min-height: 125px;
   }
+  .legal {
+    width: 75px;
+  }
+
+  .biblioteca{
+    width: 70px;
+  }
 
   .podcast {
     height: 180px;
     min-height: 180px;
   }
+  .cookiesDiv{
+    width: 75px;
+  }
 
   .cookies {
-    font-size: 10px;
-    margin-top: 0px;
+    font-size: 8px;
+    margin-top: -5px;
   }
 
 }
