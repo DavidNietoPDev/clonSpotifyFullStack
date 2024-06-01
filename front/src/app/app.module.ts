@@ -26,7 +26,6 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { SimpleComponent } from './components/navSearch/simple/simple.component';
 import { CardsSquareComponent } from './components/cards/cards-square/cards-square.component';
 import { InputSearcherComponent } from './components/navSearch/input-searcher/input-searcher.component';
-import { NavSearchCompleteComponent } from './components/navSearch/nav-search-complete/nav-search-complete.component';
 import { NavCardsComponent } from './components/navSearch/nav-cards/nav-cards.component';
 import { MainComponent } from './components/main/main.component';
 import { HeaderBaseComponent } from './components/headersIds/header-base/header-base.component';
@@ -57,7 +56,6 @@ import { HeaderBaseComponent } from './components/headersIds/header-base/header-
     SimpleComponent,
     CardsSquareComponent,
     InputSearcherComponent,
-    NavSearchCompleteComponent,
     NavCardsComponent,
     MainComponent,
     HeaderBaseComponent
