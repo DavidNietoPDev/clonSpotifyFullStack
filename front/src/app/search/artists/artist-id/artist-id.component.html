@@ -1,21 +1,13 @@
-<div class="fondo" [ngStyle]="{
-            'background': 'linear-gradient(to top, transparent 0, rgba(' + colorDominanteArtist[0] + ',' + colorDominanteArtist[1] + ',' + colorDominanteArtist[2] + ', 1) 100%)'
-          }">
-    <div class="navsearch">
-        <button class="btonre">Registrarte</button>
-        <button class="btonis">Iniciar sesión</button>
-    </div>
-    <div class="header">
-        <div class="imgHeader">
-            <img class="imgImg" src="{{artistImage}}" alt="">
-        </div>
-        <div class="textHeader" *ngIf="buscar">
-            <p class="artistName">{{artistName}}</p>
-            <p><span class="sLista">{{ artistFollowers | numberFormat }} seguidores · Popularidad
-                    {{artistPopularity}}</span></p>
-        </div>
-    </div>
-</div>
+<app-header-base
+[colorDominantImage]="colorDominanteArtist"
+[imageId]="artistImage"
+[typeId]="artistType"
+[nameId]="artistName"
+[nameArtistOrFollowers]="artistFollowers"
+[releaseDate]="artistGenres"
+[numberSongsOrPopularity]="artistPopularity"
+[search]="buscar"
+/>
 <app-loader *ngIf="loading" />
 <div *ngIf="buscar && !loading">
     <p class="textTracks">Populares</p>

@@ -28,6 +28,8 @@ export class ArtistIdComponent implements OnInit {
 
   artistName: string = '';
   artistImage: string = '';
+  artistType: string = '';
+  artistGenres: string [] = [];
   artistFollowers: number = 0;
   artistPopularity: number = 0;
 
@@ -63,6 +65,7 @@ export class ArtistIdComponent implements OnInit {
     this.colorDominanteArtist = [];
     this.nameAlbum = [];
     this.imageAlbum = [];
+    this.artistGenres = [];
     this.releaseDate = [];
     this.typeAlbum = [];
     this.idsAlbum = [];
@@ -80,9 +83,11 @@ export class ArtistIdComponent implements OnInit {
 
     this.playListSearch.getArtistId(this.artistId).subscribe((response: ArtistID) => {
       this.artistName = response.artistInfo.name;
+      this.artistType = response.artistInfo.type;
       this.artistFollowers = response.artistInfo.followers.total;
       this.artistImage = response.artistInfo.images[0].url;
       this.artistPopularity = response.artistInfo.popularity;
+      this.artistGenres = response.artistInfo.genres;
       this.colorDominante(this.artistImage);
 
       for (let album of response.albums.items) {

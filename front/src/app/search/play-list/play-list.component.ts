@@ -36,6 +36,7 @@ export class PlayListComponent implements OnInit {
   artistId: string[] = [];
 
   listName: string = '';
+  numberSongs: number = 0;
   listDescription: string = '';
   listFollowers: number = 0;
   listImage: string = '';
@@ -82,6 +83,7 @@ export class PlayListComponent implements OnInit {
         } else {
           this.artistId.push('');
         }
+        this.numberSongs = response.tracks.total
         this.listType = response.type;
         this.listName = response.name;
         if (response.description && response.description.length > 0) {
