@@ -15,7 +15,6 @@ export class NavSearchCompleteComponent {
   }
 
   checkRoute() {
-
     if (this.router.url === '/home') {
       return true;
     }

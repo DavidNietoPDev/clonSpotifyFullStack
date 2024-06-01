@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { NavegationArrowService } from '../../../services/navegation-arrow.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-simple',
@@ -6,5 +8,23 @@ import { Component } from '@angular/core';
   styleUrl: './simple.component.css'
 })
 export class SimpleComponent {
+  navigationService = inject(NavegationArrowService)
+  router = inject(Router)
 
+  navigateBack(): void {
+    this.navigationService.back()
+  }
+
+  navigateForward(): void {
+    this.navigationService.forward();
+  }
+
+  checkRoute() {
+    if (this.router.url === '/home') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }
