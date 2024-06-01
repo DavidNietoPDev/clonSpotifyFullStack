@@ -43,3 +43,29 @@
     background-color: white;
     color: black
   }
+
+  @media screen and (max-width: 555px) {
+    .bsq {
+      font-size: 10px;
+    }
+
+    .bsq.active {
+      font-size: 10px;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .bsq {
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-left: 5px;
+      font-size: 10px;
+    }
+
+    .bsq.active {
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-left: 5px;
+      font-size: 10px;
+    }
+  }

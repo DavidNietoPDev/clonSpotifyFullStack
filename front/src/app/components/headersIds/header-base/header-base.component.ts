@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { ExtractColorService } from '../../../services/extract-color.service';
 
 @Component({
