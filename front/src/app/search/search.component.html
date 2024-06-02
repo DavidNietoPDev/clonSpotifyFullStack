@@ -1,6 +1,6 @@
 
 <app-nav-cards *ngIf="artistName !== ''" />
-<app-cards-square/>
+<app-cards-square *ngIf="!buscar"/>
 <div *ngIf="buscar">
   <p class="text">Resultado principal</p>
   <p class="text2">Canciones</p>

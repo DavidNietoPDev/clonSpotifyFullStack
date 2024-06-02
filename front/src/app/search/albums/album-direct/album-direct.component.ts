@@ -4,6 +4,7 @@ import { TakeIdsService } from '../../../services/take-ids.service';
 import { MusicPlayerService } from '../../../services/music-player.service';
 import { AlbumID } from '../../../models/albumId.model';
 import { ExtractColorService } from '../../../services/extract-color.service';
+import { LoadingService } from '../../../services/loading.service';
 
 @Component({
   selector: 'app-album-direct',
@@ -14,6 +15,7 @@ export class AlbumDirectComponent  implements OnInit  {
 
   playListSearch = inject(SearchBarService)
   takeId = inject(TakeIdsService)
+  loadingService = inject(LoadingService)
   musicPlayer = inject(MusicPlayerService)
   extractColor = inject(ExtractColorService)
 
@@ -48,6 +50,7 @@ export class AlbumDirectComponent  implements OnInit  {
   }
 
   buscarAlbum(): void {
+    this.loadingService.setLoading(true);
     this.loading = true;
     this.colorDominanteAlbum = [];
 
@@ -94,6 +97,7 @@ export class AlbumDirectComponent  implements OnInit  {
         this.tracksDuration.push(track.duration_ms);
         
       }
+      this.loadingService.setLoading(false);
       this.loading = false;
       this.buscar = true;
     });

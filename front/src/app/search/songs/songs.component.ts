@@ -6,8 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MusicPlayerService } from '../../services/music-player.service';
 import { TakeIdsService } from '../../services/take-ids.service';
 import { Subscription } from 'rxjs';
-
-
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-songs',
@@ -19,6 +18,7 @@ export class SongsComponent implements OnInit {
   artistSearch = inject(SearchBarService);
   searchTerm = inject(SearchServiceService);
   route = inject(ActivatedRoute);
+  loadingService = inject(LoadingService)
   musicPlayer = inject(MusicPlayerService)
   takeId = inject(TakeIdsService)
   constructor(private router: Router) { }
@@ -74,6 +74,7 @@ export class SongsComponent implements OnInit {
     if (!this.searchTerm.checkTerm(this.artistNameSongs)) {
       console.error('Introduce un artista')
     } else {
+      this.loadingService.setLoading(true);
       this.loading = true;
       this.artistSearch.getArtistTopTracks().subscribe((response: Track) => {
 
@@ -115,6 +116,7 @@ export class SongsComponent implements OnInit {
         }
         }
         this.loading = false;
+        this.loadingService.setLoading(false);
       });
     }
   }

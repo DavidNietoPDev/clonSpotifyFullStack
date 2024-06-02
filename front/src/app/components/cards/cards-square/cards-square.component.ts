@@ -21,13 +21,15 @@ export class CardsSquareComponent {
   snack = inject(MatSnackBar)
   router = inject(Router)
 
+  snackBarShown: boolean = JSON.parse(localStorage.getItem('snackBarShown') || 'false');
+  snackBarShownTime: number = JSON.parse(localStorage.getItem('snackBarShownTime') || '0');
+
   isLoading: boolean = true;
   listName: string[] = [];
   listImage: string[] = [];
-  listArtist: string[] = []; 
+  listArtist: string[] = [];
   listIds: string[] = [];
-  value: string;
-  
+
 
   getTerm(term: string) {
     this.searchTerm.setSearchTerm(term)
@@ -38,34 +40,39 @@ export class CardsSquareComponent {
   }
 
   ngOnInit() {
-    if(this.checkRoute()) {
+    if (this.checkRoute()) {
       this.searchCategories();
     } else {
       this.searchItems();
     }
+    const timer = 15 * 60 * 1000;
+    const currentTime = new Date().getTime();
+    if (currentTime - this.snackBarShownTime > timer) {
+      localStorage.removeItem('snackBarShown');
+      localStorage.removeItem('snackBarShownTime');
+    }
   }
 
   checkRoute() {
-    if(this.router.url === '/search'){
+    if (this.router.url === '/search') {
       return true;
-    } 
+    }
   }
 
   searchItems(): void {
     this.loadingService.setLoading(true);
-    const timeoutThreshold = 5000; 
-    let timerId: any;
-    const showSnackBarWhenLoaded = () => {
-      if (this.isLoading) {
-        clearTimeout(timerId); // Limpiar el temporizador si isLoading se establece en falso
-        this.snack.open('El servidor se está iniciando, espere un momento (de media unos 50s).', 'Cerrar', {
-          verticalPosition: 'top' // Mostrar el Snackbar en la parte superior de la pantalla
-        });
-      } else {
-        timerId = setTimeout(showSnackBarWhenLoaded, 100); // Esperar 100ms antes de verificar de nuevo
-      }
-    };
-    timerId = setTimeout(showSnackBarWhenLoaded, timeoutThreshold);
+
+    if (!this.snackBarShown) {
+      this.snack.open('El servidor se está iniciando, espere un momento (de media unos 50s).', 'Cerrar',
+        { verticalPosition: 'top' })
+    }
+
+    this.snackBarShown = true;
+    this.snackBarShownTime = new Date().getTime(); // Guardar el tiempo actual
+    localStorage.setItem('snackBarShown', JSON.stringify(true)); // Almacenar en el almacenamiento local que el Snackbar se ha mostrado
+    localStorage.setItem('snackBarShownTime', JSON.stringify(this.snackBarShownTime)); // Almacenar la marca de tiempo actual
+    
+
     this.listCards.getTopList().subscribe((response: Top) => {
       this.listName = [];
       this.listImage = [];
@@ -75,18 +82,17 @@ export class CardsSquareComponent {
         this.listIds.push(playlist.id)
         this.listName.push(playlist.name)
         this.listArtist.push(playlist.owner.display_name)
-        if(playlist.images && playlist.images.length > 0) {
-        this.listImage.push(playlist.images[0].url);
+        if (playlist.images && playlist.images.length > 0) {
+          this.listImage.push(playlist.images[0].url);
         } else {
           this.listImage.push('../assets/Artistasinfoto.png');
         }
       }
       this.loadingService.setLoading(false);
+      this.snack.dismiss();
       this.isLoading = false;
     });
   }
-
-
 
   searchCategories() {
     this.listName = [];
