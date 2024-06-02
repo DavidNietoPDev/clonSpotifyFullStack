@@ -4,6 +4,7 @@ import { TakeIdsService } from '../../../services/take-ids.service';
 import { MusicPlayerService } from '../../../services/music-player.service';
 import { ArtistID } from '../../../models/artistId.model';
 import { ExtractColorService } from '../../../services/extract-color.service';
+import { LoadingService } from '../../../services/loading.service';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class ArtistIdComponent implements OnInit {
 
   playListSearch = inject(SearchBarService)
   takeId = inject(TakeIdsService)
+  loadingService = inject(LoadingService)
   musicPlayer = inject(MusicPlayerService)
   extractColor = inject(ExtractColorService)
 
@@ -61,6 +63,7 @@ export class ArtistIdComponent implements OnInit {
 
   buscarArtist(): void {
     this.loading = true;
+    this.loadingService.setLoading(true)
 
     this.colorDominanteArtist = [];
     this.nameAlbum = [];
@@ -112,6 +115,7 @@ export class ArtistIdComponent implements OnInit {
         this.artistSimilarType.push(artist.type);
         this.idArtistSimilar.push(artist.id);
       }
+      this.loadingService.setLoading(false);
       this.loading = false;
       this.buscar = true;
     });

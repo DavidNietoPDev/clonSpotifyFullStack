@@ -7,9 +7,8 @@
 [releaseDate]="" 
 [numberSongsOrPopularity]="numberSongs"
 [search]="buscar" />
-<div class="grid-container">
-    <app-loader *ngIf="loading" />
-    <div *ngIf="!loading && buscar">
+<div class="grid-container" *ngIf="!loading && buscar">
+    <div >
         <div>
             <table>
                 <thead>

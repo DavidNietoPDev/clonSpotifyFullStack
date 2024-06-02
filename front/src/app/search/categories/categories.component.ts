@@ -5,6 +5,7 @@ import { ExtractColorService } from '../../services/extract-color.service';
 import { Category } from '../../models/categry.model';
 import { SearchServiceService } from '../../services/search-service.service';
 import { MusicPlayerService } from '../../services/music-player.service';
+import { LoadingService } from '../../services/loading.service';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class CategoriesComponent implements OnInit {
   searchTerm = inject(SearchServiceService)
   categoriesSearch = inject(SearchBarService)
   takeIdAll = inject(TakeIdsService)
+  loadingService = inject(LoadingService)
   extractColor = inject(ExtractColorService)
   musicPlayer = inject(MusicPlayerService)
 
@@ -68,7 +70,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   buscarCategories() {
-    
+    this.loadingService.setLoading(true)
     this.loading = true;
     this.buscar = true;
 
@@ -151,9 +153,11 @@ export class CategoriesComponent implements OnInit {
           this.topTrackDuration.push(track.duration_ms)
 
         }
+        this.loadingService.setLoading(false)
+        this.loading = false;
         
-    })
-    this.loading = false;
+    });
+    
   }
 
 

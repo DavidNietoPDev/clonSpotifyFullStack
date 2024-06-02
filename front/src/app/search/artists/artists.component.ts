@@ -5,6 +5,7 @@ import { SearchServiceService } from '../../services/search-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TakeIdsService } from '../../services/take-ids.service';
 import { Subscription } from 'rxjs';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-artists',
@@ -16,6 +17,7 @@ export class ArtistsComponent {
   route = inject(ActivatedRoute)
   searchTerm = inject(SearchServiceService)
   artistSearch = inject(SearchBarService)
+  loadingService = inject(LoadingService)
   takeId = inject(TakeIdsService)
   constructor(private router: Router) { }
   subscription: Subscription;
@@ -47,6 +49,7 @@ export class ArtistsComponent {
 
   searchMethod() {
     this.loading = true;
+    this.loadingService.setLoading(true)
     if (!this.searchTerm.checkTerm(this.artistNameArtist)) {
       console.error('Introduce un artista')
       this.loading = false;
@@ -65,6 +68,7 @@ export class ArtistsComponent {
             this.artistImage.push('../../assets/Artistasinfoto.png'); 
           } 
         }
+        this.loadingService.setLoading(false)
         this.loading = false;
       });
     }

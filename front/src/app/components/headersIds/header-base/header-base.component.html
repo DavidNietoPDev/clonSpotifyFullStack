@@ -1,4 +1,4 @@
-<div class="fondo" [ngStyle]="{
+<div *ngIf="search" class="fondo" [ngStyle]="{
     'background': 'linear-gradient(to top, transparent 0, rgba(' + colorDominantImage[0] + ',' + colorDominantImage[1] + ',' + colorDominantImage[2] + ', 1) 100%)'
   }">
     <div class="navsearch" >

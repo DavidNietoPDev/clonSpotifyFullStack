@@ -9,9 +9,8 @@
             [numberSongsOrPopularity]="listCanciones"
             [search]="buscar"
             />
-        <div class="grid-container">
-            <app-loader *ngIf="loading" />
-            <table *ngIf="!loading && buscar">
+        <div class="grid-container" *ngIf="!loading && buscar">
+            <table >
                 <thead>
                     <tr class="columnall">
                         <th class="column1">#</th>

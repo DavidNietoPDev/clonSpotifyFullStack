@@ -4,6 +4,7 @@ import { TakeIdsService } from '../../../services/take-ids.service';
 import { MusicPlayerService } from '../../../services/music-player.service';
 import { TrackID } from '../../../models/trackId.model';
 import { ExtractColorService } from '../../../services/extract-color.service';
+import { LoadingService } from '../../../services/loading.service';
 @Component({
   selector: 'app-songs-id',
   templateUrl: './songs-id.component.html',
@@ -15,6 +16,7 @@ export class SongsIdComponent implements OnInit {
   takeId = inject(TakeIdsService)
   musicPlayer = inject(MusicPlayerService)
   extractColor = inject(ExtractColorService)
+  loadingService = inject(LoadingService)
 
   buscar: boolean = false;
   loading: boolean = false;
@@ -91,7 +93,6 @@ export class SongsIdComponent implements OnInit {
   }
 
   buscarArtist(): void {
-    this.loading = true;
     this.colorDominanteTrack = [];
 
     this.trackRecomImage = [];
@@ -135,9 +136,9 @@ export class SongsIdComponent implements OnInit {
     this.albumTracksArtistId = [];
     this.albumTracksArtistTwoId = [];
     this.albumTracksDuration = [];
-
+    this.loading = true;
+    this.loadingService.setLoading(true)
     this.playListSearch.getTrackId(this.songId).subscribe((response: TrackID) => {
-
       if(response.artists && response.artists.length > 1) {
         this.artistTwoImage = response.artists[1].images[0].url;
         this.trackNameArtistTwo = response.song.artists[1].name;
@@ -235,6 +236,7 @@ export class SongsIdComponent implements OnInit {
           this.albumTracksArtistTwoId.push('');
         }
       }
+      this.loadingService.setLoading(false)
       this.loading = false;
       this.buscar = true;
     });

@@ -5,6 +5,7 @@ import { Album } from '../../models/album.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TakeIdsService } from '../../services/take-ids.service';
 import { Subscription } from 'rxjs';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-albums',
@@ -15,6 +16,7 @@ export class AlbumsComponent implements OnInit {
   @ViewChild('buttonAlbums') buttonAlbums: ElementRef;
   route = inject(ActivatedRoute)
   searchTerm = inject(SearchServiceService)
+  loadingService = inject(LoadingService)
   artistSearch = inject(SearchBarService)
   takeIdAlbum = inject(TakeIdsService)
   constructor(private router: Router) { }
@@ -52,11 +54,13 @@ export class AlbumsComponent implements OnInit {
   }
 
   searchMethod() {
-    this.loading = true;
+
     if (!this.searchTerm.checkTerm(this.artistNameArtist)) {
       console.error('Introduce un artista')
-      this.loading = false;
     } else {
+      this.loadingService.setLoading(true)
+      this.loading = true;
+      this.buscar = true;
       this.artistSearch.getartistAlbum().subscribe((response: Album) => {
         this.idsAlbum = [];
         this.albumArtistName = [];
@@ -66,7 +70,6 @@ export class AlbumsComponent implements OnInit {
         this.albumArtistNameTwo = [];
         this.idsArtistsTwo = [];
         this.idsArtists = [];
-        this.buscar = true;
 
         for (let album of response.albums.items) {
           this.idsAlbum.push(album.id)
@@ -90,6 +93,7 @@ export class AlbumsComponent implements OnInit {
             this.albumImage.push('../../assets/Artistasinfoto.png'); 
           } 
         }
+        this.loadingService.setLoading(false);
         this.loading = false;
       });
     }

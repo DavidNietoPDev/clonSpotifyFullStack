@@ -4,6 +4,7 @@ import { PlayList } from '../../models/playlist.model';
 import { TakeIdsService } from '../../services/take-ids.service';
 import { MusicPlayerService } from '../../services/music-player.service';
 import { ExtractColorService } from '../../services/extract-color.service';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-play-list',
@@ -14,6 +15,7 @@ export class PlayListComponent implements OnInit {
   playListSearch = inject(SearchBarService)
   takeId = inject(TakeIdsService)
   musicPlayer = inject(MusicPlayerService)
+  loadingService = inject(LoadingService)
   extractColor = inject(ExtractColorService)
 
   buscar: boolean = false;
@@ -53,6 +55,7 @@ export class PlayListComponent implements OnInit {
   }
 
   buscarPlayList(): void {
+    this.loadingService.setLoading(true)
     this.loading = true;
     this.colorDominantePlayList = [];
 
@@ -134,6 +137,7 @@ export class PlayListComponent implements OnInit {
           }
         }
       }
+      this.loadingService.setLoading(false)
       this.loading = false;
       this.buscar = true;
     });
