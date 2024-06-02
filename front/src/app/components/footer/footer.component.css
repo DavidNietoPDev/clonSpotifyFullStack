@@ -4,6 +4,7 @@
 .footerOne {
     top: 250px;
     position: relative;
+    right: -10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -18,11 +19,6 @@
   .footerOneOne p {
     margin-bottom: 2px;
   }
-
-  .iconosFoot {
-    margin-right: 25px;
-  }
-  
   .iconosFoot a{
     display: inline-block;
     text-decoration: none;
@@ -31,7 +27,6 @@
     height: 40px;
     line-height: 45px;
     color: #f8f6f6;
-    margin-right: 10px;
     background-color: #2f3131;
     text-align: center;
     transition: all 300ms ease;
@@ -72,23 +67,17 @@
       width: 20px;
       height: 20px;
       line-height: 20px;
-      color: #f8f6f6;
-      margin-right: 10px;
-      background-color: #2f3131;
-      text-align: center;
-      transition: all 300ms ease;
-    
     }
   }
   
   @media screen and (max-width: 555px) {
-    .textListas {
-      font-size: 17;
+    .base{
+      padding: 10px;
     }
   }
   
   @media screen and (max-width: 400px) {
-    .textListas{
-      font-size: 14px;
+    .base{
+      font-size: 8px;
     }
   }

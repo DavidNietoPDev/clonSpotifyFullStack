@@ -218,10 +218,14 @@
 }
 
 
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 560px) {
   .tercero {
     min-height: 320px;
   }
+  .listasypodcast{
+    height: 250px !important;
+  }
+
 }
 
 @media screen and (max-width: 955px) {
@@ -254,13 +258,6 @@
 }
 
 @media screen and (max-width: 855px) {
-  .lista {
-    width: 100%;
-  }
-
-  .podcast {
-    width: 100%;
-  }
 
   .icon31 {
     left: 31%;
@@ -386,6 +383,10 @@
     bottom: 67px;
   }
 
+  .listasypodcast::-webkit-scrollbar {
+    width: 5px;
+  }
+
   .tercero p {
     font-size: 7px;
     margin-left: 8px;
@@ -411,7 +412,7 @@
 
   .listasypodcast {
     height: 300px;
-    min-height: 300px;
+    min-height: 200px;
   }
 
   .lista {
@@ -439,4 +440,16 @@
     margin-top: -5px;
   }
 
+}
+
+@media screen and (max-width: 350px) {
+  .lista{
+    width: 50px;
+  }
+  .podcast{
+    width: 50px;
+  }
+  .icon3 {
+    margin-left: 20px;
+  }
 }

@@ -55,7 +55,7 @@
 }
 
 
-@media screen and (max-height: 580px) {
+@media screen and (max-height: 560px) {
   .foot {
     top: 500px;
     height: 70px;
@@ -101,5 +101,22 @@
 
   .foot p {
     font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .btonr {
+    width: 10%;
+    min-width: 80px;
+  }
+  .botonregistrate{
+    margin-right: 10px;
+  }
+
+  .foot {
+    font-size: 7px;
+  }
+  .foot p {
+    font-size: 7px;
   }
 }

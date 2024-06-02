@@ -73,7 +73,6 @@
     }
 
     .topList {
-
       height: 250px;
     }    
 
@@ -181,8 +180,10 @@
 
   @media screen and (max-width: 400px) {
     .cardL{
+      position: relative;
       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      grid-row-gap:5px
+      grid-row-gap:5px;
+      top: -50px;
     }
   }
 
