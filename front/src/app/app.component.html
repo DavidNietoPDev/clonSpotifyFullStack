@@ -1,11 +1,10 @@
 <div class="container">
   <div class="primary">
+    <app-loader *ngIf="isLoading"/>
     <router-outlet/>
-    <div *ngIf="!search">
       <app-simple/>
-      <app-footer />
-    </div> 
-    <app-nav-left />
+      <app-footer *ngIf="!isLoading"/>
+    <app-nav-left/>
   </div>
 </div>
 

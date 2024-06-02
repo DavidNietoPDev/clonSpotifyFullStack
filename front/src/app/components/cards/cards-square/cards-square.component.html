@@ -1,4 +1,6 @@
-<app-loader *ngIf="loading" />
+
+<p *ngIf="!checkRoute() && !isLoading" class="textListas">Para empezar... Listas Top</p>
+<p *ngIf="checkRoute() && !isLoading" class="textListas">Explorar todo</p> 
 <div class="cardL">
   <div class="topList" *ngFor="let list of listName; let i = index">
     <div class="cardList">

@@ -357,14 +357,6 @@
       cursor: pointer;
     }
 
-    .textListas {
-      top: 100px;
-      position: relative;
-      left: 20px;
-      font-size: 22px;
-      font-weight: bold;
-      color: white;
-    }
 
     .textList {
       top: 60px;
@@ -499,24 +491,5 @@
 
       .cardImagenListas:nth-child(n+3) {
         display: none;
-      }
-    }
-
-    @media screen and (max-width: 655px) {
-      .textListas {
-        font-size: 20;
-      }
-    }
-    
-    @media screen and (max-width: 555px) {
-      .textListas {
-        font-size: 17;
-      }
-    }
-    
-    @media screen and (max-width: 400px) {
-      .textListas{
-        font-size: 14px;
-        top: 70px;
       }
     }

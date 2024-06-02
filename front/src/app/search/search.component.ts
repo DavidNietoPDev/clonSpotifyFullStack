@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TakeIdsService } from '../services/take-ids.service';
 import { MusicPlayerService } from '../services/music-player.service';
 import { Subscription } from 'rxjs';
+import { LoadingService } from '../services/loading.service';
 
 
 @Component({
@@ -19,13 +20,13 @@ export class SearchComponent implements OnInit {
   searchTerm = inject(SearchServiceService)
   artistSearch = inject(SearchBarService)
   mediaPlayer = inject(MusicPlayerService)
+  loadingService = inject(LoadingService)
   takeIdPlaylist = inject(TakeIdsService)
   route = inject(ActivatedRoute)
   constructor(private router: Router) { }
 
   subscription: Subscription;
   artistName: string = this.searchTerm.getSearchTerm();
-  loading: boolean = false;
   buscar: boolean = false;
   globalVolume: number = 0.1;
 
@@ -83,11 +84,10 @@ export class SearchComponent implements OnInit {
   }
 
   searchMethod(): void {
-    this.loading = true;
     if (!this.searchTerm.checkTerm(this.artistName)) {
       console.error('Introduce un artista')
-      this.loading = false;
     } else {
+      this.loadingService.setLoading(true);
       this.artistSearch.getArtistAll().subscribe((response: All) => {
         this.buscar = true;
 
@@ -188,11 +188,9 @@ export class SearchComponent implements OnInit {
           this.playListImage.push('../assets/Artistasinfoto.png');
         }
       }
-
-
-        this.loading = false;
+      this.loadingService.setLoading(false);
       });
-    }
+    } 
   }
 
   topMusic() {

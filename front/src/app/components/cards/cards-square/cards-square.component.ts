@@ -5,6 +5,8 @@ import { Top } from '../../../models/top.model';
 import { Categories } from '../../../models/categories.model';
 import { Router } from '@angular/router';
 import { SearchServiceService } from '../../../services/search-service.service';
+import { LoadingService } from '../../../services/loading.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cards-square',
@@ -15,14 +17,15 @@ export class CardsSquareComponent {
   searchTerm = inject(SearchServiceService)
   listCards = inject(SearchBarService)
   takeIdService = inject(TakeIdsService)
+  loadingService = inject(LoadingService)
+  snack = inject(MatSnackBar)
   router = inject(Router)
 
-
+  isLoading: boolean = true;
   listName: string[] = [];
   listImage: string[] = [];
   listArtist: string[] = []; 
   listIds: string[] = [];
-  loading: boolean = false;
   value: string;
   
 
@@ -48,9 +51,21 @@ export class CardsSquareComponent {
     } 
   }
 
-
   searchItems(): void {
-    this.loading = true;
+    this.loadingService.setLoading(true);
+    const timeoutThreshold = 5000; 
+    let timerId: any;
+    const showSnackBarWhenLoaded = () => {
+      if (this.isLoading) {
+        clearTimeout(timerId); // Limpiar el temporizador si isLoading se establece en falso
+        this.snack.open('El servidor se está iniciando, espere un momento (de media unos 50s).', 'Cerrar', {
+          verticalPosition: 'top' // Mostrar el Snackbar en la parte superior de la pantalla
+        });
+      } else {
+        timerId = setTimeout(showSnackBarWhenLoaded, 100); // Esperar 100ms antes de verificar de nuevo
+      }
+    };
+    timerId = setTimeout(showSnackBarWhenLoaded, timeoutThreshold);
     this.listCards.getTopList().subscribe((response: Top) => {
       this.listName = [];
       this.listImage = [];
@@ -66,24 +81,26 @@ export class CardsSquareComponent {
           this.listImage.push('../assets/Artistasinfoto.png');
         }
       }
-      this.loading = false;
+      this.loadingService.setLoading(false);
+      this.isLoading = false;
     });
   }
+
+
 
   searchCategories() {
     this.listName = [];
     this.listImage = [];
     this.listIds = [];
-
-    this.loading = true;
-
+    this.loadingService.setLoading(true);
     this.listCards.getCategories().subscribe((response: Categories) => {
       for (let category of response.categories.items) {
         this.listIds.push(category.id);
         this.listImage.push(category.icons[0].url);
         this.listName.push(category.name);
       }
-      this.loading = false;
+      this.loadingService.setLoading(false);
+      this.isLoading = false;
     })
   }
 }
