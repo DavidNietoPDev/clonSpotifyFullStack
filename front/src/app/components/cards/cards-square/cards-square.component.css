@@ -162,7 +162,6 @@
       grid-row-gap:5px
     }
     .topList {
-
       height: 170px;
     }    
 
@@ -177,5 +176,19 @@
     
     .underImage2 {
       font-size: 10px;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .cardL{
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      grid-row-gap:5px
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .cardImageList {
+      width: 80px;
+      height: 80px;
     }
   }
