@@ -67,13 +67,22 @@
     color: #424242;
   }
 
+  .textListas {
+    top: 100px;
+    position: relative;
+    left: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+  }
+  
+
   @media screen and (max-width: 955px) {
     .cardL{
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     }
 
     .topList {
-
       height: 250px;
     }    
 
@@ -140,6 +149,9 @@
     .topList {
 
       height: 200px;
+    }
+    .textListas {
+      font-size: 20;
     }    
     
     .cardImageList {
@@ -163,7 +175,11 @@
     }
     .topList {
       height: 170px;
-    }    
+    } 
+    
+    .textListas {
+      font-size: 17;
+    }
 
     .cardImageList {
       width: 100px;
@@ -181,8 +197,14 @@
 
   @media screen and (max-width: 400px) {
     .cardL{
+      position: relative;
       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      grid-row-gap:5px
+      grid-row-gap:5px;
+      top: -50px;
+    }
+    .textListas{
+      font-size: 14px;
+      top: 70px;
     }
   }
 

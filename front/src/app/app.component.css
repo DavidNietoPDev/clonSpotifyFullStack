@@ -70,4 +70,8 @@
     left: 24%;
     bottom: 67px;
   }
+  .primary::-webkit-scrollbar {
+    width: 5px;
+    height: 20px;
+  }
 }

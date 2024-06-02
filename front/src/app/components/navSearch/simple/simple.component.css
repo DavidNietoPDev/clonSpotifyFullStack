@@ -157,14 +157,17 @@
   .btonis{
     font-size: 8px;
     width: 60px;
-    height: 30px;
-    top: 28px;
+    height: 25px;
+    top: 19px;
     right: 12px;
+  }
+  .navsearch{
+    height: 50px;
   }
   .btonre{
     font-size: 8px;
     right: 72px;
-    top: 35px;
+    top: 25px;
   }
   .navsearch {
     left: 24%;

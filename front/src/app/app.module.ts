@@ -29,7 +29,8 @@ import { InputSearcherComponent } from './components/navSearch/input-searcher/in
 import { NavCardsComponent } from './components/navSearch/nav-cards/nav-cards.component';
 import { MainComponent } from './components/main/main.component';
 import { HeaderBaseComponent } from './components/headersIds/header-base/header-base.component';
-
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -68,9 +69,12 @@ import { HeaderBaseComponent } from './components/headersIds/header-base/header-
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatSnackBarModule
     
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
