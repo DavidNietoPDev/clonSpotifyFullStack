@@ -5,12 +5,12 @@
     </div>
     <div class="homSearch">
         <div class="inicio">
-            <mat-icon class="icon" [routerLink]="'/home'">home</mat-icon>
-            <div class="title2"><button class="btn1" [routerLink]="'/home'" (click)="onClickHome()">Inicio</button></div>
+            <mat-icon class="icon" (click)="onClickHome()">home</mat-icon>
+            <div class="title2"><button class="btn1" (click)="onClickHome()">Inicio</button></div>
         </div>
         <div class="buscar">
-            <mat-icon class="icon" [routerLink]="'/search'">search</mat-icon>
-            <div class="title2"> <button class="btn1" [routerLink]="'/search'" (click)="onClickSearch()">Buscar</button>
+            <mat-icon class="icon" (click)="onClickSearch()" >search</mat-icon>
+            <div class="title2"> <button class="btn1" (click)="onClickSearch()" >Buscar</button>
             </div>
         </div>
     </div>

@@ -1,11 +1,12 @@
 
 <div class="listaBusquedas">
-    <button #buttonTodo name="buttonTodo" class="bsq" routerLink="/search"
+    <button #buttonTodo class="bsq" [routerLink]="['/searchMain', searchTerm]"
     routerLinkActive="active">Todo</button>
-    <button #buttonSongs class="bsq" routerLink="/songs"
+    <button #buttonSongs class="bsq" [routerLink]="['/songs', searchTerm]"
     routerLinkActive="active">Canciones</button>
-    <button #buttonArtists class="bsq" routerLink="/artists"
+    <button #buttonArtists class="bsq" [routerLink]="['/artists', searchTerm]"
     routerLinkActive="active">Artistas</button>
-    <button #buttonAlbums class="bsq" routerLink="/albums"
+    <button #buttonAlbums class="bsq" [routerLink]="['/albums', searchTerm]"
     routerLinkActive="active">Álbumes</button>
 </div>
+

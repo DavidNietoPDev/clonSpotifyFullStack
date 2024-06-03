@@ -22,15 +22,15 @@
                             [routerLink]="'/songsId'">{{topTrack[i]}}</span> <br>
                         <span class="fila32" *ngIf="topTrackArtistTwo[i] !== ''">
                             <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistId[i])"
-                                [routerLink]="'/artistId'">{{ topTrackArtist[i] }} ,
+                                [routerLink]="['/artistId', topTrackArtistId[i]]">{{ topTrackArtist[i] }} ,
                             </span>
                             <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistTwoId[i])"
-                                [routerLink]="'/artistId'">{{ topTrackArtistTwo[i] }}
+                            [routerLink]="['/artistId', topTrackArtistTwoId[i]]">{{ topTrackArtistTwo[i] }}
                             </span>
                         </span>
                         <span class="fila32" *ngIf="topTrackArtistTwo[i] === ''">
                             <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistId[i])"
-                                [routerLink]="'/artistId'">{{ topTrackArtist[i] }}</span>
+                            [routerLink]="['/artistId', topTrackArtistId[i]]">{{ topTrackArtist[i] }}</span>
                         </span>
                     </td>
                     <td class="fila4" (click)="takeIdAll(topTrackAlbumId[i])" [routerLink]="'/albumDirect'">

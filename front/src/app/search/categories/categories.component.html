@@ -12,7 +12,7 @@
   <div class="cardArtist">
     <div class="cardImageArtista" *ngFor="let artista of nameArtists.slice(0, 7); let i = index">
       <div class="cardRedSimilar">
-        <img class="imageSimilar" (click)="takeId(idArtists[i])" [routerLink]="'/artistId'" src="{{imageArtists[i]}}"
+        <img class="imageSimilar" (click)="takeId(idArtists[i])" [routerLink]="['/artistId', idArtists[i]]" src="{{imageArtists[i]}}"
           alt="">
         <div class="textListBottom">
           <p class="artistSimilar">{{nameArtists[i]}}</p>
@@ -29,7 +29,7 @@
         <div class="textListBottom">
           <p class="artistAlbum">{{ topAlbum [i] | pipeTruncate}}</p>
           <p class="yearArtist">{{topAlbumYear[i].split("-")[0]}} · <span class="artistAlbumLink"
-              (click)="takeId(idArtists[i])" [routerLink]="'/artistId'">{{topAlbumArtist[i]}}</span></p>
+              (click)="takeId(idArtists[i])" [routerLink]="['/artistId', idArtists[i]]">{{topAlbumArtist[i]}}</span></p>
         </div>
       </div>
     </div>
@@ -69,14 +69,14 @@
               pipeTruncate}}</span><br>
 
             <span class="fila32" *ngIf="topTrackArtistTwo[i] === ''">
-              <span class="linkArtist" (click)="takeId(idArtistTracks[i])" [routerLink]="'/artistId'">
+              <span class="linkArtist" (click)="takeId(idArtistTracks[i])" [routerLink]="['/artistId', idArtistTracks[i]]">
                 {{topTrackArtist[i]}} </span></span>
 
             <span class="fila32" *ngIf="topTrackArtistTwo[i] !== ''">
-              <span class="linkArtist" (click)="takeId(idArtistTracks[i])" [routerLink]="'/artistId'">
+              <span class="linkArtist" (click)="takeId(idArtistTracks[i])" [routerLink]="['/artistId', idArtistTracks[i]]">
                 {{topTrackArtist[i]}} </span> ,
               <span class="linkArtist" (click)="takeId(idArtistTracksTwo[i])"
-                [routerLink]="'/artistId'">{{topTrackArtistTwo[i]}}</span> </span>
+              [routerLink]="['/artistId', idArtistTracksTwo[i]]">{{topTrackArtistTwo[i]}}</span> </span>
           </td>
           <td></td>
           <td class="fila4">{{topTrackDuration[i] | pipeDuracion}}</td>

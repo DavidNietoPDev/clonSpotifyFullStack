@@ -3,10 +3,11 @@ import { SearchBarService } from '../../../services/search-bar.service';
 import { TakeIdsService } from '../../../services/take-ids.service';
 import { Top } from '../../../models/top.model';
 import { Categories } from '../../../models/categories.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SearchServiceService } from '../../../services/search-service.service';
 import { LoadingService } from '../../../services/loading.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cards-square',
@@ -14,16 +15,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './cards-square.component.css'
 })
 export class CardsSquareComponent {
-  searchTerm = inject(SearchServiceService)
+  searcherTerm = inject(SearchServiceService)
   listCards = inject(SearchBarService)
   takeIdService = inject(TakeIdsService)
   loadingService = inject(LoadingService)
   snack = inject(MatSnackBar)
   router = inject(Router)
+  route = inject(ActivatedRoute)
 
+  subscription: Subscription;
+  searchTerm: string = '';
   snackBarShown: boolean = JSON.parse(localStorage.getItem('snackBarShown') || 'false');
   snackBarShownTime: number = JSON.parse(localStorage.getItem('snackBarShownTime') || '0');
 
+  
   isLoading: boolean = true;
   listName: string[] = [];
   listImage: string[] = [];
@@ -31,8 +36,8 @@ export class CardsSquareComponent {
   listIds: string[] = [];
 
 
-  getTerm(term: string) {
-    this.searchTerm.setSearchTerm(term)
+  navigateTo(term: string) {
+  this.router.navigate(['/category', term])
   }
 
   takeId(id: string) {
@@ -52,6 +57,13 @@ export class CardsSquareComponent {
       localStorage.removeItem('snackBarShownTime');
     }
   }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+  
 
   checkRoute() {
     if (this.router.url === '/search') {

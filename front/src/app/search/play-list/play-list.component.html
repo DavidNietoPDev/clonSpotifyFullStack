@@ -33,13 +33,13 @@
 
                                 <span class="fila32" *ngIf="trackArtistTwo[i] === ''">
                                     <span class="linkArtist" (click)="takeIdAll(trackArtistId[i])"
-                                        [routerLink]="'/artistId'"> {{tracksArtist[i]}} </span></span>
+                                    [routerLink]="['/artistId', trackArtistId[i]]"> {{tracksArtist[i]}} </span></span>
 
                                 <span class="fila32" *ngIf="trackArtistTwo[i] !== ''">
                                     <span class="linkArtist" (click)="takeIdAll(trackArtistId[i])"
-                                        [routerLink]="'/artistId'"> {{tracksArtist[i]}} </span> ,
+                                    [routerLink]="['/artistId', trackArtistId[i]]"> {{tracksArtist[i]}} </span> ,
                                     <span class="linkArtist" (click)="takeIdAll(trackArtistTwoId[i])"
-                                        [routerLink]="'/artistId'">{{trackArtistTwo[i]}}</span> </span>
+                                    [routerLink]="['/artistId', trackArtistTwoId[i]]">{{trackArtistTwo[i]}}</span> </span>
                             </td>
                             <td class="fila4"> <span (click)="takeIdAll(albumId[i])"
                                     [routerLink]="'/albumDirect'">{{tracksAlbum[i]}}</span> </td>

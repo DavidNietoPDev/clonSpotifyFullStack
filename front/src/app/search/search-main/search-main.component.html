@@ -1,0 +1,75 @@
+<app-nav-cards/>
+<div *ngIf="buscar">
+    <p class="text">Resultado principal</p>
+    <p class="text2">Canciones</p>
+    <div class="cardP" (click)="takeId(idArtist)" [routerLink]="['/artistId', idArtist]">
+      <div class="cardI">
+        <img src={{imageUrl}} alt="Imagen del artista" class="card-image">
+      </div>
+      <div class="cancarti">
+        <p class="nombrecanc">{{artist}}</p>
+        <p class="result">Artista<span class="artista"></span></p>
+      </div>
+    </div>
+    <div class="cardC">
+      <div class="toptrack" *ngFor="let track of topTrack.slice(0, 4); let i = index">
+        <div class="cardItt">
+          <img src={{topTrackArtistImage[i]}} alt="Imagen del artista" class="card-imagett"
+            (click)="togglePlayBack(topTrackUrl[i])">
+          <div class="topTrackslist">
+            <p class="texttt1" (click)="takeId(topTrackId[i])" [routerLink]="'/songsId'">{{ topTrack[i] }}</p>
+            <p class="artistt1" *ngIf="topTrackArtistTwo[i] !== ''">
+              <span class="artistTrackLink" (click)="takeId(idArtistTracks[i])" [routerLink]="['/artistId', idArtistTracks[i]]">{{
+                topTrackArtist[i] }}</span>,
+              <span class="artistTrackLink" (click)="takeId(idArtistTracksTwo[i])"
+              [routerLink]="['/artistId', idArtistTracksTwo[i]]">{{topTrackArtistTwo[i]}}</span>
+            </p>
+            <p class="artistt2" *ngIf="topTrackArtistTwo[i] === ''" (click)="takeId(idArtistTracks[i])"
+            [routerLink]="['/artistId', idArtistTracks[i]]">{{ topTrackArtist[i] }}</p>
+          </div>
+          <div>
+            <p class="timett">{{topTrackDuration[i] | pipeDuracion}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="textArtist">Artistas</p>
+    <div class="cardArtist">
+      <div class="cardImageArtista" *ngFor="let artista of artistSimilarList.slice(0, 7); let i = index">
+        <div class="cardRedSimilar">
+          <img class="imageSimilar" (click)="takeId(artistSimilarId[i])" [routerLink]="['/artistId', artistSimilarId[i]]"
+            src="{{imageSimilar[i]}}" alt="">
+          <div class="textListBottom">
+            <p class="artistSimilar">{{artistSimilarList[i]}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="textAlbumes">Álbumes</p>
+    <div class="cardAlbum">
+      <div class="cardImageAlbum" *ngFor="let album of topAlbum.slice(0, 7); let i = index">
+        <div class="cardCuadAlbum">
+          <img class="imageAlbum" src="{{topAlbumImage[i]}}" (click)="takeId(idsAlbum[i])" [routerLink]="'/albumDirect'"
+            alt="">
+          <div class="textListBottom">
+            <p class="artistAlbum">{{ topAlbum [i] | pipeTruncate}}</p>
+            <p class="yearArtist">{{topAlbumYear[i].split("-")[0]}} · <span class="artistAlbumLink"
+                (click)="takeId(idArtists[i])" [routerLink]="['/artistId', idArtists[i]]">{{topAlbumArtist[i]}}</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="textList">Listas</p>
+    <div class="cardListas">
+      <div class="cardImagenListas" *ngFor="let lista of playList.slice(0, 7); let i = index">
+        <div class="cardCuadListas">
+          <img class="imageListas" src="{{playListImage[i]}}" (click)="takeId(idsPlaylist[i])"
+            [routerLink]="'/playListId'" alt="">
+          <div class="textListBottom">
+            <p class="artistListas">{{ playList[i] | pipeTruncate}}</p>
+            <p class="nameListas">{{playListName[i]}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

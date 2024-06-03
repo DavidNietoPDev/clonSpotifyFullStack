@@ -34,13 +34,13 @@
 
                         <span class="fila32" *ngIf="trackRecomArtistsTwo[i] === ''">
                             <span class="linkArtist" (click)="takeIdAll(trackRecomArtistsId[i])"
-                                [routerLink]="'/artistId'"> {{trackRecomArtists[i]}} </span></span>
+                            [routerLink]="['/artistId', trackRecomArtistsId[i]]"> {{trackRecomArtists[i]}} </span></span>
 
                         <span class="fila32" *ngIf="trackRecomArtistsTwo[i] !== ''">
                             <span class="linkArtist" (click)="takeIdAll(trackRecomArtistsId[i])"
-                                [routerLink]="'/artistId'"> {{trackRecomArtists[i]}} </span> ,
+                            [routerLink]="['/artistId', trackRecomArtistsId[i]]"> {{trackRecomArtists[i]}} </span> ,
                             <span class="linkArtist" (click)="takeIdAll(trackRecomArtistsTwoIds[i])"
-                                [routerLink]="'/artistId'">{{trackRecomArtistsTwo[i]}}</span> </span>
+                            [routerLink]="['/artistId', trackRecomArtistsTwoIds[i]]">{{trackRecomArtistsTwo[i]}}</span> </span>
                     </td>
                     <td></td>
                     <td class="fila4">{{trackRecomDuration[i] | pipeDuracion}}</td>
@@ -123,7 +123,7 @@
     <p class="textArtist">Sus fans también escuchan</p>
     <div class="cardArtist">
         <div class="cardImageArtista" *ngFor="let artista of artistSimilarName.slice(0, 6); let i = index">
-            <div class="cardRedSimilar" (click)="takeIdAll(idArtistSimilar[i])" [routerLink]="'/artistId'">
+            <div class="cardRedSimilar" (click)="takeIdAll(idArtistSimilar[i])" [routerLink]="['/artistId', idArtistSimilar[i]]">
                 <img class="imageSimilar" src="{{artistSimilarImage[i]}}" alt="">
                 <div class="textListBottom">
                     <p class="artistSimilar">{{artistSimilarName[i]}}</p>
@@ -164,13 +164,13 @@
 
                         <span class="fila32" *ngIf="albumTracksArtistTwo[i] === ''">
                             <span class="linkArtist" (click)="takeIdAll(albumTracksArtistId[i])"
-                                [routerLink]="'/artistId'"> {{albumTracksArtist[i]}} </span></span>
+                            [routerLink]="['/artistId', albumTracksArtistId[i]]"> {{albumTracksArtist[i]}} </span></span>
 
                         <span class="fila32" *ngIf="albumTracksArtistTwo[i] !== ''">
                             <span class="linkArtist" (click)="takeIdAll(albumTracksArtistId[i])"
-                                [routerLink]="'/artistId'"> {{albumTracksArtist[i]}} </span> ,
+                            [routerLink]="['/artistId', albumTracksArtistId[i]]"> {{albumTracksArtist[i]}} </span> ,
                             <span class="linkArtist" (click)="takeIdAll(albumTracksArtistTwoId[i])"
-                                [routerLink]="'/artistId'">{{albumTracksArtistTwo[i]}}</span> </span>
+                            [routerLink]="['/artistId', albumTracksArtistTwoId[i]]">{{albumTracksArtistTwo[i]}}</span> </span>
                     </td>
                     <td></td>
                     <td class="fila4">{{albumTracksDuration[i] | pipeDuracion}}</td>

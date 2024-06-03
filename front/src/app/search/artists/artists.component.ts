@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { SearchBarService } from '../../services/search-bar.service';
 import { Artista } from '../../models/artista.model';
 import { SearchServiceService } from '../../services/search-service.service';
@@ -29,12 +29,23 @@ export class ArtistsComponent {
   artistNameArtist: string = this.searchTerm.getSearchTerm();
   buscar: boolean = false;
 
-  ngOnInit() {
-    this.searchMethod();
-    this.subscription = this.searchTerm.searchTerm$.subscribe(term => {
-      this.artistNameArtist = term;
-      this.searchMethod()
-    })
+  ngOnInit(): void {
+    this.subscription = this.route.paramMap.subscribe(params => {
+      const term = params.get('search');
+      if (term) {
+        this.artistNameArtist = term;
+        this.searchTerm.setSearchTerm(term);
+        this.searchMethod(); // Realiza la búsqueda inicial
+      }
+    });
+
+    // Suscribirse a cambios en el término de búsqueda
+    this.subscription.add(
+      this.searchTerm.searchTerm$.subscribe(term => {
+        this.artistNameArtist = term;
+        this.searchMethod(); // Realiza la búsqueda cuando el término de búsqueda cambia
+      })
+    );
   }
 
   ngOnDestroy() {
@@ -45,15 +56,13 @@ export class ArtistsComponent {
 
   takeIdArtist (id: string) {
     this.takeId.setAlgoId(id);
+    this.router.navigate(['/artistId', id])
   }
 
   searchMethod() {
     this.loading = true;
     this.loadingService.setLoading(true)
-    if (!this.searchTerm.checkTerm(this.artistNameArtist)) {
-      console.error('Introduce un artista')
-      this.loading = false;
-    } else {
+
       this.artistSearch.getArtist().subscribe((response: Artista) => {
         this.artistImage = [];
         this.artistName = [];
@@ -62,9 +71,9 @@ export class ArtistsComponent {
           this.idArtist.push(artist.id)
           this.artistName.push(artist.name)
           if (artist.images && artist.images.length > 0) {
-            this.artistImage.push(artist.images[0].url); // Verifica si hay imágenes disponibles
+            this.artistImage.push(artist.images[0].url); 
           } else {
-            // Si no hay imagen disponible, puedes agregar una imagen por defecto o dejar este espacio en blanco
+            
             this.artistImage.push('../../assets/Artistasinfoto.png'); 
           } 
         }
@@ -73,4 +82,4 @@ export class ArtistsComponent {
       });
     }
   }
-}
+// }

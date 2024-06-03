@@ -24,7 +24,7 @@ export class SongsComponent implements OnInit {
   constructor(private router: Router) { }
 
 
-  @ViewChild('buttonSongs') buttonSongs: ElementRef;
+  // @ViewChild('buttonSongs') buttonSongs: ElementRef;
   artistNameSongs: string = this.searchTerm.getSearchTerm();
 
   subscription: Subscription;
@@ -51,12 +51,31 @@ export class SongsComponent implements OnInit {
   buscar: boolean = false;
   globalVolume: number = 0.1;
 
-  ngOnInit() {
-    this.searchMethod()
-    this.subscription = this.searchTerm.searchTerm$.subscribe(term => {
-      this.artistNameSongs = term;
-      this.searchMethod()
-    })
+  // ngOnInit() {
+  //   this.searchMethod()
+  //   this.subscription = this.searchTerm.searchTerm$.subscribe(term => {
+  //     this.artistNameSongs = term;
+  //     this.searchMethod()
+  //   })
+  // }
+
+  ngOnInit(): void {
+    this.subscription = this.route.paramMap.subscribe(params => {
+      const term = params.get('search');
+      if (term) {
+        this.artistNameSongs = term;
+        this.searchTerm.setSearchTerm(term);
+        this.searchMethod(); // Realiza la búsqueda inicial
+      }
+    });
+
+    // Suscribirse a cambios en el término de búsqueda
+    this.subscription.add(
+      this.searchTerm.searchTerm$.subscribe(term => {
+        this.artistNameSongs = term;
+        this.searchMethod(); // Realiza la búsqueda cuando el término de búsqueda cambia
+      })
+    );
   }
 
   ngOnDestroy() {
@@ -71,9 +90,9 @@ export class SongsComponent implements OnInit {
 
   searchMethod(): void {
     this.stopMusic();
-    if (!this.searchTerm.checkTerm(this.artistNameSongs)) {
-      console.error('Introduce un artista')
-    } else {
+    // if (!this.searchTerm.checkTerm(this.artistNameSongs)) {
+    //   console.error('Introduce un artista')
+    // } else {
       this.loadingService.setLoading(true);
       this.loading = true;
       this.artistSearch.getArtistTopTracks().subscribe((response: Track) => {
@@ -119,7 +138,7 @@ export class SongsComponent implements OnInit {
         this.loadingService.setLoading(false);
       });
     }
-  }
+  // }
 
   stopMusic() {
     this.musicPlayer.stopMusic();

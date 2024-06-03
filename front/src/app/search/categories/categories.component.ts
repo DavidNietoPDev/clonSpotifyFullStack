@@ -6,6 +6,8 @@ import { Category } from '../../models/categry.model';
 import { SearchServiceService } from '../../services/search-service.service';
 import { MusicPlayerService } from '../../services/music-player.service';
 import { LoadingService } from '../../services/loading.service';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -20,6 +22,9 @@ export class CategoriesComponent implements OnInit {
   loadingService = inject(LoadingService)
   extractColor = inject(ExtractColorService)
   musicPlayer = inject(MusicPlayerService)
+  route = inject(ActivatedRoute)
+  
+  subscription: Subscription;
 
   globalVolume: number = 0.1;
   loading: boolean = false;
@@ -29,8 +34,6 @@ export class CategoriesComponent implements OnInit {
   categoryId: string = this.takeIdAll.getAlgoId()
   imageCategory: string = '';
   nameCategory: string = '';
-
-
 
   topTrackId: string[] = [];
   topTrackUrl: string[] = [];
@@ -61,7 +64,20 @@ export class CategoriesComponent implements OnInit {
   imageArtists: string[] = [];
 
   ngOnInit(): void {
-    this.buscarCategories();
+    this.subscription = this.route.paramMap.subscribe(params => {
+      const term = params.get('search');
+      if (term) {
+        this.categoryId = term;
+        this.searchTerm.setSearchTerm(term);
+        this.buscarCategories(); // Realiza la búsqueda inicial
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 

@@ -1,0 +1,495 @@
+
+.cardImageList {
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    border: none;
+    width: 180px;
+    height: 180px;
+  }
+
+  .cardImageList::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    background-color: #292828;
+  }
+
+  .cardImageList:hover {
+    cursor: pointer;
+  }
+
+  .texttt11 {
+
+    width: 160px;
+    height: 10%;
+    position: relative;
+    left: -180px;
+    top: 180px;
+  }
+
+  .text {
+    position: relative;
+    top: 140px;
+    margin-left: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .text2 {
+    position: relative;
+    top: 90px;
+    margin-left: 410px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .cardP {
+
+    position: relative;
+    top: 105px;
+    margin-left: 15px;
+    width: 380px;
+    height: 220px;
+    border-radius: 10px;
+    background-color: #181717;
+  }
+
+  .cardP:hover {
+    background-color: #242424;
+    cursor: pointer;
+  }
+
+  .cardI {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    top: 20px;
+    margin-left: 20px;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .cardI::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    background-color: #181717;
+  }
+
+  .cancarti {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nombrecanc {
+    position: relative;
+    top: 25px;
+    font-weight: bold;
+    font-size: 28px;
+    color: white;
+    margin-left: 20px;
+  }
+
+  .result {
+    position: relative;
+    bottom: 5px;
+    top: 30px;
+    font-size: 15px;
+    margin-left: 20px;
+    color: #a09f9f;
+  }
+
+
+  .cardC {
+    top: -115px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 415px;
+    right: 10px;
+    height: 225px;
+    width: 70%;
+  }
+
+  .toptrack {
+    position: relative;
+    height: 25%;
+    border-radius: 5px;
+  }
+
+  .toptrack:hover {
+    background-color: rgba(112, 109, 109, 0.226);
+  }
+
+  .cardItt {
+    display: flex;
+    margin-left: 10px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .card-imagett {
+    width: 40px;
+    height: 40px;
+  }
+
+  .card-imagett::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    background-color: #181717;
+  }
+
+  .card-imagett {
+    cursor: pointer;
+  }
+
+  .topTrackslist {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .texttt1 {
+    position: relative;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    margin-left: 10px;
+
+  }
+
+  .texttt1:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .artistt1 {
+    position: relative;
+    margin-top: -20px;
+    margin-left: 10px;
+    font-size: 15px;
+    color: #a09f9f;
+  }
+
+  .artistt2 {
+    position: relative;
+    margin-top: -20px;
+    margin-left: 10px;
+    font-size: 15px;
+    color: #a09f9f;
+  }
+
+  .artistt2:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .artistTrackLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+
+
+  .timett {
+    right: 100px;
+    top: 15px;
+    position: absolute;
+    color: #a09f9f;
+  }
+
+  .artista {
+    color: white;
+    margin-left: 3px;
+  }
+
+  .card-image {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .textArtist {
+    top: -60px;
+    position: relative;
+    margin-left: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+  }
+
+
+  .cardArtist {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: -40px;
+    height: 240px;
+  }
+
+
+  .cardImageArtista {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    width: 200px;
+    height: 100%;
+
+  }
+
+  .cardImageArtista:hover {
+    background-color: rgba(112, 109, 109, 0.226);
+  }
+
+  .cardRedSimilar {
+    border-radius: 100%;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .imageSimilar {
+    position: relative;
+    border-radius: 100%;
+    border: none;
+    width: 170px;
+    height: 170px;
+  }
+
+  .imageSimilar::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 100%;
+    background-color: #181717;
+  }
+
+  .imageSimilar:Hover {
+    cursor: pointer;
+  }
+
+  .artistSimilar {
+    position: relative;
+
+
+  }
+
+  .textAlbumes {
+    position: relative;
+    margin-left: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .cardAlbum {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 20px;
+    height: 240px;
+
+  }
+
+  .cardImageAlbum {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    width: 200px;
+    height: 100%;
+
+  }
+
+  .cardImageAlbum:hover {
+    background-color: rgba(112, 109, 109, 0.226);
+  }
+
+
+  .cardCuadAlbum {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+
+  }
+
+  .imageAlbum {
+    border: none;
+    position: relative;
+    border: none;
+    width: 170px;
+    height: 170px;
+  }
+
+  .imageAlbum::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    background-color: #181717;
+  }
+
+  .imageAlbum:hover {
+    cursor: pointer;
+  }
+
+  .artistAlbum {
+    position: relative;
+  }
+
+  .yearArtist {
+    top: -20px;
+    position: relative;
+    font-size: 13px;
+    color: #747171;
+  }
+
+  .artistAlbumLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+
+  .textList {
+    top: 60px;
+    position: relative;
+    margin-left: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .cardListas {
+
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 80px;
+    height: 240px;
+
+  }
+
+  .cardImagenListas {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    width: 200px;
+    height: 100%;
+  }
+
+  .cardImagenListas:hover {
+    background-color: rgba(112, 109, 109, 0.226);
+  }
+
+  .cardCuadListas {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .imageListas {
+    border: none;
+    position: relative;
+    border: none;
+    width: 170px;
+    height: 170px;
+  }
+
+  .imageListas::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    background-color: #181717;
+  }
+
+  .imageListas:hover {
+    cursor: pointer;
+  }
+
+  .textListBottom {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+  }
+
+  .artistListas {
+    position: relative;
+
+  }
+
+  .nameListas {
+    top: -20px;
+    position: relative;
+    font-size: 13px;
+    color: #747171;
+  }
+
+
+  @media screen and (max-width: 1600px) {
+    .cardImageAlbum:nth-child(n+6) {
+      display: none;
+    }
+
+    .cardImageArtista:nth-child(n+6) {
+      display: none;
+    }
+
+    .cardImagenListas:nth-child(n+6) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1400px) {
+    .cardImageAlbum:nth-child(n+5) {
+      display: none;
+    }
+
+    .cardImageArtista:nth-child(n+5) {
+      display: none;
+    }
+
+    .cardImagenListas:nth-child(n+5) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .cardImageAlbum:nth-child(n+4) {
+      display: none;
+    }
+
+    .cardImageArtista:nth-child(n+4) {
+      display: none;
+    }
+
+    .cardImagenListas:nth-child(n+4) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .cardImageAlbum:nth-child(n+3) {
+      display: none;
+    }
+
+    .cardImageArtista:nth-child(n+3) {
+      display: none;
+    }
+
+    .cardImagenListas:nth-child(n+3) {
+      display: none;
+    }
+  }

@@ -57,10 +57,10 @@
     <p class="textArtist">Sus fans también escuchan</p>
     <div class="cardArtist">
         <div class="cardImageArtista" *ngFor="let artista of artistSimilarName.slice(0, 6); let i = index">
-            <div class="cardRedSimilar" (click)="takeIdAll(idArtistSimilar[i])" (click)="ngOnInit()">
+            <div class="cardRedSimilar" (click)="takeIdAll(idArtistSimilar[i])" [routerLink]="['/artistId', idArtistSimilar[i]]">
                 <img class="imageSimilar" src="{{artistSimilarImage[i]}}" alt="">
                 <div class="textListBottom">
-                    <p class="artistSimilar">{{artistSimilarName[i]}}</p>
+                    <p class="artistSimilar" >{{artistSimilarName[i]}}</p>
                     <p class="typeArtist">{{artistSimilarType[i]}}</p>
                 </div>
             </div>

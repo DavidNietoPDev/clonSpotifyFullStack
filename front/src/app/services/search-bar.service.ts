@@ -46,10 +46,6 @@ export class SearchBarService {
   return this.http.get<Track>(`${this.baseUrl}${'/artistTopTracks'}`, { params })
  }
     
-//  getArtistAll(): Observable<All> {
-//   const searchArt = this.searchterm.getSearchTerm();
-//   return this.http.get<All>(`${this.baseUrl}${'/artistAll'}`, { params: { query: searchArt } })
-//   }
 
 getArtistAll(): Observable<All> {
   const searcherTerm = this.searchterm.getSearchTerm();
@@ -64,7 +60,7 @@ getArtistAll(): Observable<All> {
 
   getartistAlbum(): Observable<Album> {
     const searcherTerm = this.searchterm.getSearchTerm();
-  const params = new HttpParams().set('query', searcherTerm);
+    const params = new HttpParams().set('query', searcherTerm);
     return this.http.get<Album>(`${this.baseUrl}${'/artistAlbum'}`, { params })
   }
 

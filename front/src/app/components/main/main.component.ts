@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
-import { LoadingService } from '../../services/loading.service';
+import {  Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-main',
@@ -7,7 +7,5 @@ import { LoadingService } from '../../services/loading.service';
   styleUrl: './main.component.css'
 })
 export class MainComponent {
-loadingService = inject(LoadingService)
-cdr = inject(ChangeDetectorRef)
 
 }
