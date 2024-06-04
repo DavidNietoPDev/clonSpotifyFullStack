@@ -18,7 +18,7 @@
                 <span *ngIf="!isNumber(nameArtistOrFollowers)">{{ nameArtistOrFollowers}}</span>  
                <span *ngIf="releaseDate !== ''"> · </span> <span *ngIf="isNumber(releaseDate)">{{ releaseDate.split("-")[0] }}</span>
                 <span *ngIf="!isNumber(releaseDate)"> {{ releaseDate }}</span>   
-                ·  {{ numberSongsOrPopularity }} 
+                · {{ numberSongsOrPopularity }} 
                 <span *ngIf="numberSongsOrPopularity > 1 && (typeId === 'album' || typeId === 'playlist') " >canciones</span>
                 <span *ngIf="numberSongsOrPopularity < 2 && (typeId === 'album' || typeId === 'playlist')">canción</span>
                 <span *ngIf="typeId === 'artist' || typeId === 'track'">Popularidad</span></span></p>

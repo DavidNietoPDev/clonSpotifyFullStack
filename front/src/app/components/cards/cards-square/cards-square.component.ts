@@ -28,17 +28,12 @@ export class CardsSquareComponent {
   snackBarShown: boolean = JSON.parse(localStorage.getItem('snackBarShown') || 'false');
   snackBarShownTime: number = JSON.parse(localStorage.getItem('snackBarShownTime') || '0');
 
-  
+  nameTerm: string = '';
   isLoading: boolean = true;
   listName: string[] = [];
   listImage: string[] = [];
   listArtist: string[] = [];
   listIds: string[] = [];
-
-
-  navigateTo(term: string) {
-  this.router.navigate(['/category', term])
-  }
 
   takeId(id: string) {
     this.takeIdService.setAlgoId(id)
@@ -62,6 +57,10 @@ export class CardsSquareComponent {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  takeName(name: string) {
+    this.searcherTerm.setTermName(name);
   }
   
 

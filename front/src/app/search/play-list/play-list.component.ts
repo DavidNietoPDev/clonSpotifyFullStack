@@ -5,6 +5,9 @@ import { TakeIdsService } from '../../services/take-ids.service';
 import { MusicPlayerService } from '../../services/music-player.service';
 import { ExtractColorService } from '../../services/extract-color.service';
 import { LoadingService } from '../../services/loading.service';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { SearchServiceService } from '../../services/search-service.service';
 
 @Component({
   selector: 'app-play-list',
@@ -17,6 +20,9 @@ export class PlayListComponent implements OnInit {
   musicPlayer = inject(MusicPlayerService)
   loadingService = inject(LoadingService)
   extractColor = inject(ExtractColorService)
+  searcherTerm = inject(SearchServiceService)
+  route = inject(ActivatedRoute)
+  subscription: Subscription;
 
   buscar: boolean = false;
   loading: boolean = false;
@@ -51,8 +57,22 @@ export class PlayListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.buscarPlayList();
+    this.subscription = this.route.paramMap.subscribe(params => {
+      const term = params.get('Id');
+      if (term) {
+        this.playListId = term;
+        this.searcherTerm.setSearchTerm(term);
+        this.buscarPlayList(); 
+      }
+    });
   }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
 
   buscarPlayList(): void {
     this.loadingService.setLoading(true)

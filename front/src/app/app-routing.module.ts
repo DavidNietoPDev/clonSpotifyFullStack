@@ -22,11 +22,11 @@ const routes: Routes = [
   { path: 'songs/:search', component: SongsComponent},
   { path: 'artists/:search', component: ArtistsComponent},
   { path: 'albums/:search', component: AlbumsComponent},
-  { path: 'artistId/:search', component: ArtistIdComponent},
-  { path: 'playListId', component: PlayListComponent},
-  { path: 'albumDirect', component: AlbumDirectComponent},
-  { path: 'songsId', component: SongsIdComponent},
-  { path: 'category/:search', component: CategoriesComponent},
+  { path: 'artistId/:Id', component: ArtistIdComponent},
+  { path: 'playListId/:Id', component: PlayListComponent},
+  { path: 'albumDirect/:Id', component: AlbumDirectComponent},
+  { path: 'songsId/:Id', component: SongsIdComponent},
+  { path: 'category/:Id/:search', component: CategoriesComponent},
   { path: '**', redirectTo: 'home' },
 ];
 

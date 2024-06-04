@@ -28,7 +28,7 @@
                     <td class="fila2"><img class="imgCanciones" src="{{trackImage[i]}}"
                             (click)="togglePlayBack(trackUrl[i])"></td>
                     <td>
-                        <span class="fila31" (click)="takeIdAll(trackId[i])" [routerLink]="'/songsId'">{{ trackName[i]
+                        <span class="fila31" (click)="takeIdAll(trackId[i])" [routerLink]="['/songsId', trackId[i]]">{{ trackName[i]
                             }}</span> <br>
                     </td>
                     <td></td>
@@ -46,7 +46,7 @@
         <div class="cardImageAlbum" *ngFor="let album of nameAlbum.slice(0, 6); let i = index">
             <div class="cardCuadAlbum">
                 <img class="imageAlbum" src="{{imageAlbum[i] }}" alt="" (click)="takeIdAll(idsAlbum[i])"
-                    [routerLink]="'/albumDirect'">
+                [routerLink]="['/albumDirect', idsAlbum[i]]">
                 <div class="textListBottom">
                     <p class="artistAlbum">{{nameAlbum[i] | pipeTruncate}}</p> <br>
                     <p class="yearArtist">{{releaseDate[i].split("-")[0]}} · {{typeAlbum[i]}}</p>

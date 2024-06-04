@@ -6,7 +6,7 @@
             <div class="cardImageArtista"> 
                 <div class="img">
                     <img class="imageSimilar" src="{{albumImage[i] }}" alt="" (click)="takeId(idsAlbum[i])"
-                    [routerLink]="'/albumDirect'">
+                    [routerLink]="['/albumDirect', idsAlbum[i]]">
                 </div>
                 <div class="text">
                     <p class="artistSimilar">{{albumName[i] | pipeTruncate}}</p>

@@ -7,31 +7,43 @@ import { Subject } from 'rxjs';
 })
 export class SearchServiceService {
   router = inject(Router)
+  termName: string = '';
   searchTerm: string = '';
   searchTermSource = new Subject<string>();
   searchTerm$ = this.searchTermSource.asObservable();
 
-  setSearchTerm(term: string, updateUrl: boolean = true) {
-    console.log(term)
-    this.searchTerm = term;
+  setSearchTerm(id: string, term?:string, updateUrl: boolean = true) {
+    this.searchTerm = id;
+    this.termName = term;
+    this.searchTermSource.next(id);
     this.searchTermSource.next(term);
     if (updateUrl) {
-      this.updateUrl(term);
-      console.log(this.updateUrl(term), 'extraUpdate')
+      this.updateUrl(id, term);
     }
   }
 
-  updateUrl(term: string) {
+  setTermName(term: string) {
+    this.termName = term;
+  }
+
+  getTermName() {
+    return this.termName;
+  }
+
+  updateUrl(id: string, term?:string) {
     // Obtener la ruta actual y dividirla en segmentos
-    console.log(term)
-    console.log(this.router.url, 'actual ruta  ')
     const segments = this.router.url.split('/');
     // Reemplazar el último segmento con el nuevo término de búsqueda
-    segments[segments.length - 1] = term;
-    console.log(segments[segments.length -1], 'segmentos')
-    // Reconstruir la URL con el nuevo término de búsqueda y navegar a ella
-    console.log(segments.join('/'), 'ultimo')
-   this.router.navigateByUrl(segments.join('/'));
+    if(term){
+      segments[segments.length -1] = term;
+      this.router.navigateByUrl(segments.join('/'))
+    } else {
+      segments[segments.length - 1] = id;
+      this.router.navigateByUrl(segments.join('/'));
+    }
+    
+   
+   
   }
 
   getSearchTerm() {

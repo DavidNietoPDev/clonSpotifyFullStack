@@ -64,13 +64,19 @@ export class ArtistIdComponent implements OnInit {
 
   ngOnInit(): void {
       this.subscription = this.route.paramMap.subscribe(params => {
-        const term = params.get('search');
+        const term = params.get('Id');
         if (term) {
           this.artistId = term;
           this.searcherTerm.setSearchTerm(term);
           this.buscarArtist(); 
         }
       });
+    }
+
+    ngOnDestroy() {
+      if (this.subscription) {
+        this.subscription.unsubscribe();
+      }
     }
   
   

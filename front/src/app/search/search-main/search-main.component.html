@@ -17,7 +17,7 @@
           <img src={{topTrackArtistImage[i]}} alt="Imagen del artista" class="card-imagett"
             (click)="togglePlayBack(topTrackUrl[i])">
           <div class="topTrackslist">
-            <p class="texttt1" (click)="takeId(topTrackId[i])" [routerLink]="'/songsId'">{{ topTrack[i] }}</p>
+            <p class="texttt1" (click)="takeId(topTrackId[i])" [routerLink]="['/songsId', topTrackId[i]]">{{ topTrack[i] }}</p>
             <p class="artistt1" *ngIf="topTrackArtistTwo[i] !== ''">
               <span class="artistTrackLink" (click)="takeId(idArtistTracks[i])" [routerLink]="['/artistId', idArtistTracks[i]]">{{
                 topTrackArtist[i] }}</span>,
@@ -49,7 +49,7 @@
     <div class="cardAlbum">
       <div class="cardImageAlbum" *ngFor="let album of topAlbum.slice(0, 7); let i = index">
         <div class="cardCuadAlbum">
-          <img class="imageAlbum" src="{{topAlbumImage[i]}}" (click)="takeId(idsAlbum[i])" [routerLink]="'/albumDirect'"
+          <img class="imageAlbum" src="{{topAlbumImage[i]}}" (click)="takeId(idsAlbum[i])" [routerLink]="['/albumDirect', idsAlbum[i]]"
             alt="">
           <div class="textListBottom">
             <p class="artistAlbum">{{ topAlbum [i] | pipeTruncate}}</p>
@@ -64,7 +64,7 @@
       <div class="cardImagenListas" *ngFor="let lista of playList.slice(0, 7); let i = index">
         <div class="cardCuadListas">
           <img class="imageListas" src="{{playListImage[i]}}" (click)="takeId(idsPlaylist[i])"
-            [routerLink]="'/playListId'" alt="">
+          [routerLink]="['/playListId', idsPlaylist[i]]" alt="">
           <div class="textListBottom">
             <p class="artistListas">{{ playList[i] | pipeTruncate}}</p>
             <p class="nameListas">{{playListName[i]}}</p>

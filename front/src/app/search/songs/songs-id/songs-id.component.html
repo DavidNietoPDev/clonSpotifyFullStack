@@ -90,7 +90,7 @@
         <div class="cardImageAlbum" *ngFor="let album of nameAlbumArtist.slice(0, 6); let i = index">
             <div class="cardCuadAlbum">
                 <img class="imageAlbum" src="{{imageAlbumArtist[i] }}" alt="" (click)="takeIdAll(idsAlbumArtist[i])"
-                    [routerLink]="'/albumDirect'">
+                [routerLink]="['/albumDirect', idsAlbumArtist[i]]">
                 <div class="textListBottom">
                     <p class="artistAlbum">{{nameAlbumArtist[i] | pipeTruncate}}</p> <br>
                     <p class="yearArtist">{{releaseDateArtist[i].split("-")[0]}} · {{typeAlbumArtist[i]}}</p>
@@ -111,7 +111,7 @@
         <div class="cardImageAlbum" *ngFor="let album of nameAlbumArtistTwo.slice(0, 6); let i = index">
             <div class="cardCuadAlbum">
                 <img class="imageAlbum" src="{{imageAlbumArtistTwo[i] }}" alt=""
-                    (click)="takeIdAll(idsAlbumArtistTwo[i])" [routerLink]="'/albumDirect'">
+                    (click)="takeIdAll(idsAlbumArtistTwo[i])" [routerLink]="['/albumDirect', idsAlbumArtistTwo[i]]">
                 <div class="textListBottom">
                     <p class="artistAlbum">{{nameAlbumArtistTwo[i] | pipeTruncate}}</p> <br>
                     <p class="yearArtist">{{releaseDateArtistTwo[i].split("-")[0]}} · {{typeAlbumArtistTwo[i]}}
@@ -138,7 +138,7 @@
         </div>
         <div class="textAlbumFooter">
             <div class="textAlbumFooterType">Del {{albumType}}</div>
-            <div class="textAlbumFooterName" (click)="takeIdAll(albumId)" [routerLink]="'/albumDirect'">
+            <div class="textAlbumFooterName" (click)="takeIdAll(albumId)" [routerLink]="['/albumDirect', albumId]">
                 {{albumTrack}}</div>
         </div>
     </div>

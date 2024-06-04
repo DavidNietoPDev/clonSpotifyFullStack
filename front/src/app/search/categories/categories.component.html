@@ -1,4 +1,4 @@
-<app-header-base 
+<app-header-base *ngIf="nameCategory && !loading"
 [colorDominantImage]="colorDominanteCategory" 
 [imageId]="imageCategory" 
 [typeId]=""
@@ -24,7 +24,7 @@
   <div class="cardAlbum">
     <div class="cardImageAlbum" *ngFor="let album of topAlbum.slice(0, 7); let i = index">
       <div class="cardCuadAlbum">
-        <img class="imageAlbum" src="{{topAlbumImage[i]}}" (click)="takeId(idsAlbum[i])" [routerLink]="'/albumDirect'"
+        <img class="imageAlbum" src="{{topAlbumImage[i]}}" (click)="takeId(idsAlbum[i])" [routerLink]="['/albumDirect', idsAlbum[i]]"
           alt="">
         <div class="textListBottom">
           <p class="artistAlbum">{{ topAlbum [i] | pipeTruncate}}</p>
@@ -39,7 +39,7 @@
     <div class="cardImagenListas" *ngFor="let lista of playListName.slice(0, 7); let i = index">
       <div class="cardCuadListas">
         <img class="imageListas" src="{{playListImage[i]}}" (click)="takeId(idsPlaylist[i])"
-          [routerLink]="'/playListId'" alt="">
+        [routerLink]="['/playListId', idsPlaylist[i]]" >
         <div class="textListBottom">
           <p class="artistListas">{{ playListName[i] | pipeTruncate}}</p>
           <p class="nameListas">{{playListAutor[i]}}</p>
@@ -65,7 +65,7 @@
           <td class="fila1" (click)="togglePlayBack(this.topTrackUrl[i])">{{ i + 1 }}</td>
           <td></td>
           <td>
-            <span class="fila31" (click)="takeId(topTrackId[i])" [routerLink]="'/songsId'">{{topTrack[i] |
+            <span class="fila31" (click)="takeId(topTrackId[i])" [routerLink]="['/songsId', topTrackId[i]]">{{topTrack[i] |
               pipeTruncate}}</span><br>
 
             <span class="fila32" *ngIf="topTrackArtistTwo[i] === ''">
