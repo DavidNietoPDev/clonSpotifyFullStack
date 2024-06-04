@@ -5,6 +5,9 @@ import { MusicPlayerService } from '../../../services/music-player.service';
 import { AlbumID } from '../../../models/albumId.model';
 import { ExtractColorService } from '../../../services/extract-color.service';
 import { LoadingService } from '../../../services/loading.service';
+import { SearchServiceService } from '../../../services/search-service.service';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-album-direct',
@@ -18,6 +21,9 @@ export class AlbumDirectComponent  implements OnInit  {
   loadingService = inject(LoadingService)
   musicPlayer = inject(MusicPlayerService)
   extractColor = inject(ExtractColorService)
+  searcherTerm = inject(SearchServiceService)
+  route = inject(ActivatedRoute)
+  subscription: Subscription;
 
   buscar: boolean = false;
   loading: boolean = false;
@@ -41,9 +47,23 @@ export class AlbumDirectComponent  implements OnInit  {
   typeAlbum: string = '';
   listCanciones: number = 0;
   listImage: string = '';
+
   ngOnInit(): void {
-    this.buscarAlbum();
-  }
+      this.subscription = this.route.paramMap.subscribe(params => {
+        const term = params.get('Id');
+        if (term) {
+          this.albumId = term;
+          this.searcherTerm.setSearchTerm(term);
+          this.buscarAlbum(); 
+        }
+      });
+    }
+
+    ngOnDestroy() {
+      if (this.subscription) {
+        this.subscription.unsubscribe();
+      }
+    }
 
   takeIdAll (id: string) {
     this.takeId.setAlgoId(id);

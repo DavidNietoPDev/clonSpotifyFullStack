@@ -28,21 +28,21 @@
                             <td class="fila2"><img class="imgCanciones" src="{{tracksImages[i]}}"
                                     (click)="togglePlayBack(trackUrl[i])"></td>
                             <td>
-                                <span class="fila31" (click)="takeIdAll(artistId[i])" [routerLink]="'/songsId'">
+                                <span class="fila31" (click)="takeIdAll(artistId[i])" [routerLink]="['/songsId', artistId[i]]">
                                     {{tracksList[i] }}</span> <br>
 
                                 <span class="fila32" *ngIf="trackArtistTwo[i] === ''">
                                     <span class="linkArtist" (click)="takeIdAll(trackArtistId[i])"
-                                        [routerLink]="'/artistId'"> {{tracksArtist[i]}} </span></span>
+                                    [routerLink]="['/artistId', trackArtistId[i]]"> {{tracksArtist[i]}} </span></span>
 
                                 <span class="fila32" *ngIf="trackArtistTwo[i] !== ''">
                                     <span class="linkArtist" (click)="takeIdAll(trackArtistId[i])"
-                                        [routerLink]="'/artistId'"> {{tracksArtist[i]}} </span> ,
+                                    [routerLink]="['/artistId', trackArtistId[i]]"> {{tracksArtist[i]}} </span> ,
                                     <span class="linkArtist" (click)="takeIdAll(trackArtistTwoId[i])"
-                                        [routerLink]="'/artistId'">{{trackArtistTwo[i]}}</span> </span>
+                                    [routerLink]="['/artistId', trackArtistTwoId[i]]">{{trackArtistTwo[i]}}</span> </span>
                             </td>
                             <td class="fila4"> <span (click)="takeIdAll(albumId[i])"
-                                    [routerLink]="'/albumDirect'">{{tracksAlbum[i]}}</span> </td>
+                                [routerLink]="['/albumDirect', albumId[i]]">{{tracksAlbum[i]}}</span> </td>
                             <td class="fila4">{{tracksDuration[i] | pipeDuracion}}</td>
                             <td class="flila5">
                                 <input type="range" min="0" max="1" step="0.05" [(ngModel)]="globalVolume"

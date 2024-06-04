@@ -34,13 +34,32 @@ export class AlbumsComponent implements OnInit {
   idsArtists: string[] = [];
   idsArtistsTwo: string[] = [];
 
-  ngOnInit() {
+  // ngOnInit() {
 
-    this.searchMethod();
-    this.subscription = this.searchTerm.searchTerm$.subscribe(term => {
-      this.artistNameArtist = term;
-      this.searchMethod()
-    })
+  //   this.searchMethod();
+  //   this.subscription = this.searchTerm.searchTerm$.subscribe(term => {
+  //     this.artistNameArtist = term;
+  //     this.searchMethod()
+  //   })
+  // }
+
+  ngOnInit(): void {
+    this.subscription = this.route.paramMap.subscribe(params => {
+      const term = params.get('search');
+      if (term) {
+        this.artistNameArtist = term;
+        this.searchTerm.setSearchTerm(term);
+        this.searchMethod(); // Realiza la búsqueda inicial
+      }
+    });
+
+    // Suscribirse a cambios en el término de búsqueda
+    this.subscription.add(
+      this.searchTerm.searchTerm$.subscribe(term => {
+        this.artistNameArtist = term;
+        this.searchMethod(); // Realiza la búsqueda cuando el término de búsqueda cambia
+      })
+    );
   }
 
   ngOnDestroy() {
@@ -54,10 +73,9 @@ export class AlbumsComponent implements OnInit {
   }
 
   searchMethod() {
-
-    if (!this.searchTerm.checkTerm(this.artistNameArtist)) {
-      console.error('Introduce un artista')
-    } else {
+    // if (!this.searchTerm.checkTerm(this.artistNameArtist)) {
+    //   console.error('Introduce un artista')
+    // } else {
       this.loadingService.setLoading(true)
       this.loading = true;
       this.buscar = true;
@@ -98,5 +116,5 @@ export class AlbumsComponent implements OnInit {
       });
     }
   }
-}
+// }
 

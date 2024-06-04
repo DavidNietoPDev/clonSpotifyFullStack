@@ -6,6 +6,8 @@ import { Category } from '../../models/categry.model';
 import { SearchServiceService } from '../../services/search-service.service';
 import { MusicPlayerService } from '../../services/music-player.service';
 import { LoadingService } from '../../services/loading.service';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -20,6 +22,9 @@ export class CategoriesComponent implements OnInit {
   loadingService = inject(LoadingService)
   extractColor = inject(ExtractColorService)
   musicPlayer = inject(MusicPlayerService)
+  route = inject(ActivatedRoute)
+  
+  subscription: Subscription;
 
   globalVolume: number = 0.1;
   loading: boolean = false;
@@ -27,10 +32,9 @@ export class CategoriesComponent implements OnInit {
   colorDominanteCategory: number [] = [];
 
   categoryId: string = this.takeIdAll.getAlgoId()
+  termName: string = this.searchTerm.getTermName();
   imageCategory: string = '';
   nameCategory: string = '';
-
-
 
   topTrackId: string[] = [];
   topTrackUrl: string[] = [];
@@ -61,9 +65,23 @@ export class CategoriesComponent implements OnInit {
   imageArtists: string[] = [];
 
   ngOnInit(): void {
-    this.buscarCategories();
+    this.subscription = this.route.paramMap.subscribe(params => {
+      const id = params.get('Id');
+      const term = params.get('search')
+      if (id && term) {
+        this.categoryId = id;
+        // this.searchTerm.setTermName(term)
+        this.searchTerm.setSearchTerm(id, term);
+        this.buscarCategories(); // Realiza la búsqueda inicial
+      }
+    });
   }
 
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 
   takeId(id: string) {
     this.takeIdAll.setAlgoId(id);
@@ -127,8 +145,12 @@ export class CategoriesComponent implements OnInit {
         }
       for (let album of response.searchs.albums.items)
         {
-          this.topAlbum.push(album.name) 
-          this.topAlbumImage.push(album.images[0].url);
+          this.topAlbum.push(album.name)
+          if(album.images && album.images.length > 1) {
+            this.topAlbumImage.push(album.images[0].url);
+          } else {
+            this.topAlbumImage.push('../../assets/Artistasinfoto.png')
+          }
           this.topAlbumArtist.push(album.artists[0].name)
           this.topAlbumYear.push(album.release_date) 
           this.idsAlbum.push(album.id); 

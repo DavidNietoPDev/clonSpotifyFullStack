@@ -11,20 +11,22 @@ import { AlbumDirectComponent } from './search/albums/album-direct/album-direct.
 import { SongsIdComponent } from './search/songs/songs-id/songs-id.component';
 import { CategoriesComponent } from './search/categories/categories.component';
 import { MainComponent } from './components/main/main.component';
+import { SearchMainComponent } from './search/search-main/search-main.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch: 'full'},
   { path: 'home', component: MainComponent},
   { path: 'search', component: SearchComponent},
-  { path: 'songs', component: SongsComponent},
-  { path: 'artists', component: ArtistsComponent},
-  { path: 'albums', component: AlbumsComponent},
-  { path: 'artistId', component: ArtistIdComponent},
-  { path: 'playListId', component: PlayListComponent},
-  { path: 'albumDirect', component: AlbumDirectComponent},
-  { path: 'songsId', component: SongsIdComponent},
-  { path: 'categoryId', component: CategoriesComponent},
+  { path: 'searchMain/:search', component: SearchMainComponent},
+  { path: 'songs/:search', component: SongsComponent},
+  { path: 'artists/:search', component: ArtistsComponent},
+  { path: 'albums/:search', component: AlbumsComponent},
+  { path: 'artistId/:Id', component: ArtistIdComponent},
+  { path: 'playListId/:Id', component: PlayListComponent},
+  { path: 'albumDirect/:Id', component: AlbumDirectComponent},
+  { path: 'songsId/:Id', component: SongsIdComponent},
+  { path: 'category/:Id/:search', component: CategoriesComponent},
   { path: '**', redirectTo: 'home' },
 ];
 

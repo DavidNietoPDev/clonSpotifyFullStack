@@ -30,7 +30,6 @@ export class SearchBarService {
   http = inject(HttpClient)
   searchterm = inject(SearchServiceService);
   baseUrl = environment.apiUrl;
-  searchTerm = '';
 
 
 
@@ -46,10 +45,6 @@ export class SearchBarService {
   return this.http.get<Track>(`${this.baseUrl}${'/artistTopTracks'}`, { params })
  }
     
-//  getArtistAll(): Observable<All> {
-//   const searchArt = this.searchterm.getSearchTerm();
-//   return this.http.get<All>(`${this.baseUrl}${'/artistAll'}`, { params: { query: searchArt } })
-//   }
 
 getArtistAll(): Observable<All> {
   const searcherTerm = this.searchterm.getSearchTerm();
@@ -64,7 +59,7 @@ getArtistAll(): Observable<All> {
 
   getartistAlbum(): Observable<Album> {
     const searcherTerm = this.searchterm.getSearchTerm();
-  const params = new HttpParams().set('query', searcherTerm);
+    const params = new HttpParams().set('query', searcherTerm);
     return this.http.get<Album>(`${this.baseUrl}${'/artistAlbum'}`, { params })
   }
 
@@ -98,9 +93,10 @@ getArtistAll(): Observable<All> {
   }
 
   getCategoryId(categoryId: string): Observable<Category> {
-    const searcherTerm = this.searchterm.getSearchTerm();
+    const searcherTerm = this.searchterm.getTermName();
     const params = new HttpParams().set('query', searcherTerm);
-    return this.http.get<Category>(`${this.baseUrl}${'/categoriesId'}/${categoryId}`,{ params })
+    const data = this.http.get<Category>(`${this.baseUrl}${'/categoriesId'}/${categoryId}`,{ params })
+    return data
   }
 }
   

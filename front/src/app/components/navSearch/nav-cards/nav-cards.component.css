@@ -39,11 +39,11 @@
     font-weight: 500;
     color: black;
   }
-
   .bsq:focus {
     background-color: white;
     color: black
   }
+  
   @media screen and (max-width: 955px) {
     .listaBusquedas{
       left: 41.5%;

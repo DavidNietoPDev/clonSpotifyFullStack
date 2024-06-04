@@ -26,18 +26,18 @@
                         <tr class="filasall" >
                             <td class="fila1" (click)="togglePlayBack(trackUrl[i])">{{ i + 1 }}</td>
                             <td class="fila2">
-                                <span class="fila31" (click)="takeIdAll(trackId[i])" [routerLink]="'/songsId'" >{{tracksList[i] }}</span> <br>
+                                <span class="fila31" (click)="takeIdAll(trackId[i])" [routerLink]="['/songsId', trackId[i]]" >{{tracksList[i] }}</span> <br>
                                 <span class="fila32"  *ngIf="trackArtistTwo[i] !== ''">
                                     <span class="artistTrackLink" (click)="takeIdAll(idArtistTracks[i])" 
-                                    [routerLink]="'/artistId'">{{ tracksArtist[i] }} ,
+                                    [routerLink]="['/artistId', idArtistTracks[i]]">{{ tracksArtist[i] }} ,
                                     </span>
                                     <span class="artistTrackLink" (click)="takeIdAll(idArtistTracksTwo[i])"
-                                    [routerLink]="'/artistId'">{{ trackArtistTwo[i] }}
+                                    [routerLink]="['/artistId', idArtistTracksTwo[i]]">{{ trackArtistTwo[i] }}
                                     </span>
                                 </span> 
                                 <span class="fila32" *ngIf="trackArtistTwo[i] === ''">
                                     <span class="artistTrackLink" (click)="takeIdAll(idArtistTracks[i])" 
-                                    [routerLink]="'/artistId'">{{ tracksArtist[i] }}</span>
+                                    [routerLink]="['/artistId', idArtistTracks[i]]">{{ tracksArtist[i] }}</span>
                                 </span>
                             <td>
                                 

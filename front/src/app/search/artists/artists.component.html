@@ -5,8 +5,7 @@
     <div class="artistsall">
         <div class="cardArtist" *ngFor="let artist of artistName; let i = index">
             <div class="cardImageArtista">
-                <img class="imageSimilar" src="{{artistImage[i]}}" alt="" (click)="takeIdArtist(idArtist[i])"
-                    [routerLink]="'/artistId'">
+                <img class="imageSimilar" src="{{artistImage[i]}}" alt="" (click)="takeIdArtist(idArtist[i])">
                 <div class="textListBottom">
                     <p class="artistSimilar">{{artistName[i]}}</p>
                 </div>

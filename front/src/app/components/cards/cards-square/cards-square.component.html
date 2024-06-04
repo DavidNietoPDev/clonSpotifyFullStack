@@ -6,14 +6,14 @@
     <div class="cardList">
       <div *ngIf="checkRoute(); else elseBlock">
         <div class="img">
-          <img src={{listImage[i]}} alt="Imagen del artista" class="cardImageList" (click)="getTerm(listName[i])"
-            (click)="takeId(listIds[i])" [routerLink]="'/categoryId'">
+          <img src={{listImage[i]}} alt="Imagen del artista" class="cardImageList" 
+            (click)="takeId(listIds[i])" (click)="takeName(listName[i])" [routerLink]="['/category', listIds[i], listName[i]]" >
         </div>
       </div>
       <ng-template #elseBlock>
         <div class="text">
-          <img src={{listImage[i]}} alt="Imagen del artista" class="cardImageList" (click)="getTerm(listName[i])"
-            (click)="takeId(listIds[i])" [routerLink]="'/playListId'">
+          <img src={{listImage[i]}} alt="Imagen del artista" class="cardImageList" 
+            (click)="takeId(listIds[i])" [routerLink]="['/playListId', listIds[i]]">
         </div>
       </ng-template>
       <div class="text">

@@ -5,6 +5,9 @@ import { MusicPlayerService } from '../../../services/music-player.service';
 import { ArtistID } from '../../../models/artistId.model';
 import { ExtractColorService } from '../../../services/extract-color.service';
 import { LoadingService } from '../../../services/loading.service';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { SearchServiceService } from '../../../services/search-service.service';
 
 
 @Component({
@@ -18,9 +21,11 @@ export class ArtistIdComponent implements OnInit {
   takeId = inject(TakeIdsService)
   loadingService = inject(LoadingService)
   musicPlayer = inject(MusicPlayerService)
+  searcherTerm = inject(SearchServiceService)
   extractColor = inject(ExtractColorService)
+  route = inject(ActivatedRoute)
 
-
+  subscription: Subscription;
   colorDominanteArtist: number[] = [];
   rgbaString: string = '';
   buscar: boolean = false;
@@ -58,8 +63,23 @@ export class ArtistIdComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.buscarArtist();
-  }
+      this.subscription = this.route.paramMap.subscribe(params => {
+        const term = params.get('Id');
+        if (term) {
+          this.artistId = term;
+          this.searcherTerm.setSearchTerm(term);
+          this.buscarArtist(); 
+        }
+      });
+    }
+
+    ngOnDestroy() {
+      if (this.subscription) {
+        this.subscription.unsubscribe();
+      }
+    }
+  
+  
 
   buscarArtist(): void {
     this.loading = true;
