@@ -6,14 +6,15 @@
   display: grid;
   border-collapse: collapse;
   width: 100%;
-  border-bottom:1px solid #292828;
+  
 
 }
 .columnall {
     color: #a09f9f;
-    font-size: 14px;
+    border-bottom:1px solid #292828;
 }
 .column1 {
+  padding-left: 5px;
     width: 2.5%;  
 
 }
@@ -54,12 +55,26 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .filasall:hover {
+  border-radius: 10px;
   background-color: rgba(112, 109, 109, 0.226);
 }
 
+.filasall:hover td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.filasall:hover td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
 .fila1 {
-    color: #a09f9f;
-    
+  padding-left: 5px;
+    color: #a09f9f;  
+}
+.fila2{
+  padding-right: 5px;
 }
 .imgCanciones {
     width: 45px;
@@ -75,7 +90,8 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .fila31 {
-    color: white !important;
+  font-size: 15px;
+  color: white !important;
 }
 .fila31:hover {
   cursor: pointer;
@@ -101,11 +117,16 @@ input[type="range"]::-webkit-slider-runnable-track {
   text-decoration: underline;
 }
 
-
-
-@media screen and (max-height: 600px) {  
-
-
+@media screen and (max-width: 1150px) {
+  .fila31{
+    font-size: 13px;
+  }
+  .fila32{
+    font-size: 12px;
+  }
+  .fila4{
+    font-size: 12px;
+  }
 }
 
 
@@ -114,7 +135,75 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 @media screen and (max-width: 755px) {
-
+  .column5 mat-icon {
+    scale: 80%;
+  }
+  .columnall{
+    font-size: 12px;
+  }
+  .fila31{
+    font-size: 11px;
+  }
+  .fila1{
+    font-size: 12px;
+  }
+  .fila32{
+    font-size: 10px;
+  }
+  .fila4{
+    font-size: 10px;
+  }
+  input[type="range"] {
+    width: 30px; 
+  }
 
 }
+
+@media screen and (max-width: 555px) {
+  .column5 mat-icon {
+    scale: 70%;
+  }
+  .columnall{
+    font-size: 11px;
+  }
+  .fila31{
+    font-size: 10px;
+  }
+  .fila32{
+    font-size: 9px;
+  }
+  .fila4{
+    font-size: 9px;
+  }
+  input[type="range"] {
+    width: 30px; 
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .grid-container{
+    padding: 0px;
+  }
+  .column5 mat-icon {
+    scale: 70%;
+  }
+  .columnall{
+    font-size: 11px;
+  }
+  .fila31{
+    font-size: 9px;
+  }
+  .fila32{
+    font-size: 8px;
+  }
+  .fila4{
+    font-size: 8px;
+  }
+  input[type="range"] {
+    width: 20px; 
+  }
+
+}
+
 

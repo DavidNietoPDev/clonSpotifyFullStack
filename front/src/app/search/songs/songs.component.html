@@ -19,7 +19,7 @@
                             (click)="togglePlayBack(topTrackUrlSong[i])"></td>
                     <td>
                         <span class="fila31" (click)="takeIdAll(topTrackId[i])"
-                        [routerLink]="['/songsId', topTrackId[i]]">{{topTrack[i]}}</span> <br>
+                        [routerLink]="['/songsId', topTrackId[i]]">{{topTrack[i] | pipeTruncate}}</span> <br>
                         <span class="fila32" *ngIf="topTrackArtistTwo[i] !== ''">
                             <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistId[i])"
                                 [routerLink]="['/artistId', topTrackArtistId[i]]">{{ topTrackArtist[i] }} ,
@@ -34,7 +34,7 @@
                         </span>
                     </td>
                     <td class="fila4" (click)="takeIdAll(topTrackAlbumId[i])" [routerLink]="['/albumDirect', topTrackAlbumId[i]]">
-                        {{topTrackAlbum[i]}}</td>
+                        {{topTrackAlbum[i] | pipeTruncate}}</td>
                     <td class="fila4">{{topTrackDuration[i] | pipeDuracion}}</td>
                     <td class="flila5">
                         <input type="range" min="0" max="1" step="0.05" [(ngModel)]="globalVolume"
