@@ -45,12 +45,6 @@ export class CardsSquareComponent {
     } else {
       this.searchItems();
     }
-    const timer = 15 * 60 * 1000;
-    const currentTime = new Date().getTime();
-    if (currentTime - this.snackBarShownTime > timer) {
-      localStorage.removeItem('snackBarShown');
-      localStorage.removeItem('snackBarShownTime');
-    }
   }
 
   ngOnDestroy() {
@@ -76,6 +70,12 @@ export class CardsSquareComponent {
     if (!this.snackBarShown) {
       this.snack.open('El servidor se está iniciando, espere un momento (de media unos 50s).', 'Cerrar',
         { verticalPosition: 'top' })
+        const timer = 15 * 60 * 1000;
+        const currentTime = new Date().getTime();
+        if (currentTime - this.snackBarShownTime > timer) {
+          localStorage.removeItem('snackBarShown');
+          localStorage.removeItem('snackBarShownTime');
+        }
     }
 
     this.snackBarShown = true;
