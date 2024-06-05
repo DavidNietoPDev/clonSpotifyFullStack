@@ -1,11 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { SearchServiceService } from './search-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NavegationArrowService {
-
+  searchTerm = inject(SearchServiceService)
   history: string[] = [];
   currentIndex: number = -1;
 
@@ -20,7 +21,6 @@ export class NavegationArrowService {
       }
     });
   }
-  
 
   back(): void {
     if(this.currentIndex > 0) {

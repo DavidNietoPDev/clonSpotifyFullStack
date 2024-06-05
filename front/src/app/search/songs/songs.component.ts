@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { SearchBarService } from '../../services/search-bar.service';
 import { Track } from '../../models/tracks.model';
 import { SearchServiceService } from '../../services/search-service.service';
@@ -16,7 +16,7 @@ import { LoadingService } from '../../services/loading.service';
 
 export class SongsComponent implements OnInit {
   artistSearch = inject(SearchBarService);
-  searchTerm = inject(SearchServiceService);
+  searchService = inject(SearchServiceService);
   route = inject(ActivatedRoute);
   loadingService = inject(LoadingService)
   musicPlayer = inject(MusicPlayerService)
@@ -25,9 +25,10 @@ export class SongsComponent implements OnInit {
 
 
   // @ViewChild('buttonSongs') buttonSongs: ElementRef;
-  artistNameSongs: string = this.searchTerm.getSearchTerm();
+  artistNameSongs: string = '';
 
-  subscription: Subscription;
+  routeSubscription: Subscription;
+  searchSubscription: Subscription;
 
   topTrackArtistId: string[] = [];
   topTrackArtistTwoId: string[] = [];
@@ -51,36 +52,29 @@ export class SongsComponent implements OnInit {
   buscar: boolean = false;
   globalVolume: number = 0.1;
 
-  // ngOnInit() {
-  //   this.searchMethod()
-  //   this.subscription = this.searchTerm.searchTerm$.subscribe(term => {
-  //     this.artistNameSongs = term;
-  //     this.searchMethod()
-  //   })
-  // }
-
-  ngOnInit(): void {
-    this.subscription = this.route.paramMap.subscribe(params => {
+  ngOnInit(){
+    this.routeSubscription = this.route.paramMap.subscribe(params => {
       const term = params.get('search');
       if (term) {
         this.artistNameSongs = term;
-        this.searchTerm.setSearchTerm(term);
-        this.searchMethod(); // Realiza la búsqueda inicial
+        this.searchService.setSearchTerm(term);
+        this.searchMethod()
       }
     });
 
-    // Suscribirse a cambios en el término de búsqueda
-    this.subscription.add(
-      this.searchTerm.searchTerm$.subscribe(term => {
-        this.artistNameSongs = term;
-        this.searchMethod(); // Realiza la búsqueda cuando el término de búsqueda cambia
-      })
-    );
+    this.searchSubscription = this.searchService.searchTerm$.subscribe(data => {
+      const { id, term } = data;
+      this.artistNameSongs = term || ''; // Actualizar el valor del input
+    });
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    // Desuscribirse para evitar fugas de memoria
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
+    }
+    if (this.searchSubscription) {
+      this.searchSubscription.unsubscribe();
     }
   }
 

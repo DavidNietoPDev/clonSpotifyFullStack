@@ -15,14 +15,15 @@ import { LoadingService } from '../../services/loading.service';
 export class AlbumsComponent implements OnInit {
   @ViewChild('buttonAlbums') buttonAlbums: ElementRef;
   route = inject(ActivatedRoute)
-  searchTerm = inject(SearchServiceService)
+  searchService = inject(SearchServiceService)
   loadingService = inject(LoadingService)
   artistSearch = inject(SearchBarService)
   takeIdAlbum = inject(TakeIdsService)
   constructor(private router: Router) { }
 
-  subscription: Subscription;
-  artistNameArtist: string = this.searchTerm.getSearchTerm();
+  routeSubscription: Subscription;
+  searchSubscription: Subscription;
+  artistNameArtist: string = '';
   loading: boolean = false;
   buscar: boolean = false;
   albumName: string[] = [];
@@ -34,37 +35,30 @@ export class AlbumsComponent implements OnInit {
   idsArtists: string[] = [];
   idsArtistsTwo: string[] = [];
 
-  // ngOnInit() {
 
-  //   this.searchMethod();
-  //   this.subscription = this.searchTerm.searchTerm$.subscribe(term => {
-  //     this.artistNameArtist = term;
-  //     this.searchMethod()
-  //   })
-  // }
-
-  ngOnInit(): void {
-    this.subscription = this.route.paramMap.subscribe(params => {
+  ngOnInit(){
+    this.routeSubscription = this.route.paramMap.subscribe(params => {
       const term = params.get('search');
       if (term) {
         this.artistNameArtist = term;
-        this.searchTerm.setSearchTerm(term);
-        this.searchMethod(); // Realiza la búsqueda inicial
+        this.searchService.setSearchTerm(term);
+        this.searchMethod()
       }
     });
 
-    // Suscribirse a cambios en el término de búsqueda
-    this.subscription.add(
-      this.searchTerm.searchTerm$.subscribe(term => {
-        this.artistNameArtist = term;
-        this.searchMethod(); // Realiza la búsqueda cuando el término de búsqueda cambia
-      })
-    );
+    this.searchSubscription = this.searchService.searchTerm$.subscribe(data => {
+      const { id, term } = data;
+      this.artistNameArtist = term || ''; // Actualizar el valor del input
+    });
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    // Desuscribirse para evitar fugas de memoria
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
+    }
+    if (this.searchSubscription) {
+      this.searchSubscription.unsubscribe();
     }
   }
 

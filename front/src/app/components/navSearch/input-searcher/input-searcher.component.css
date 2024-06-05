@@ -101,14 +101,17 @@
         height: 20px;
         width: 95%;
     }
-
+    .icinp input {
+      font-size: 8px;
+    }
+    
     .icinp input::placeholder {
       font-size: 8px;
-      top: -2px;
+      top: 0px;
     }
 
     .icon {
-      transform: translateY(-90%);
+      transform: translateY(-105%);
       scale: 50%;
       left: 18px;
     }
@@ -122,5 +125,6 @@
     .insearch{
       width: 80%;
     }
-    
+
+
   }

@@ -16,13 +16,11 @@ export class HomeSearchComponent {
 
   onClickSearch() {
     this.search = true;
-    this.term.setSearchTerm('')
-    this.router.navigate(['/search'])
+    this.term.clearSearchTerm()
   }
 
   onClickHome() {
     this.search = false;
-    this.term.setSearchTerm('')
     this.router.navigate(['/home'])
   }
 }
