@@ -15,7 +15,7 @@ import { All } from '../../models/artist.model';
 })
 
 export class SearchMainComponent implements OnInit {
-  searchTerm = inject(SearchServiceService)
+  searchService = inject(SearchServiceService)
   artistSearch = inject(SearchBarService)
   mediaPlayer = inject(MusicPlayerService)
   loadingService = inject(LoadingService)
@@ -24,8 +24,9 @@ export class SearchMainComponent implements OnInit {
   constructor(private router: Router) { }
 
   
-  subscription: Subscription;
-  artistName: string = this.searchTerm.getSearchTerm();
+  routeSubscription: Subscription;
+  searchSubscription: Subscription;
+  artistName: string = '';
   buscar: boolean = false;
   globalVolume: number = 0.1;
 
@@ -66,38 +67,32 @@ export class SearchMainComponent implements OnInit {
   }
 
   changeTerm(nameCategory: string) {
-    this.searchTerm.setSearchTerm(nameCategory)
+    this.searchService.setSearchTerm(nameCategory)
   }
-  // ngOnInit() {
-  //   this.searchMethod();
-  //   this.subscription = this.searchTerm.searchTerm$.subscribe(term => {
-  //     this.artistName = term;
-  //     this.searchMethod()
-  //   })
-  // }
 
-  ngOnInit(): void {
-    this.subscription = this.route.paramMap.subscribe(params => {
+  ngOnInit(){
+    this.routeSubscription = this.route.paramMap.subscribe(params => {
       const term = params.get('search');
       if (term) {
         this.artistName = term;
-        this.searchTerm.setSearchTerm(term);
-        this.searchMethod(); // Realiza la búsqueda inicial
+        this.searchService.setSearchTerm(term);
+        this.searchMethod()
       }
     });
 
-    // Suscribirse a cambios en el término de búsqueda
-    this.subscription.add(
-      this.searchTerm.searchTerm$.subscribe(term => {
-        this.artistName = term;
-      })
-    );
+    this.searchSubscription = this.searchService.searchTerm$.subscribe(data => {
+      const { id, term } = data;
+      this.artistName = term || ''; // Actualizar el valor del input
+    });
   }
 
-
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    // Desuscribirse para evitar fugas de memoria
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
+    }
+    if (this.searchSubscription) {
+      this.searchSubscription.unsubscribe();
     }
   }
 

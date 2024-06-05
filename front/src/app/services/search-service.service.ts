@@ -2,6 +2,10 @@ import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
+interface SearchTerm{
+  id: string,
+  term?: string;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -9,14 +13,16 @@ export class SearchServiceService {
   router = inject(Router)
   termName: string = '';
   searchTerm: string = '';
-  searchTermSource = new Subject<string>();
+  searchTermSource = new Subject<SearchTerm>();
+  clearTermSource = new Subject<void>();
   searchTerm$ = this.searchTermSource.asObservable();
 
-  setSearchTerm(id: string, term?:string, updateUrl: boolean = true) {
+  setSearchTerm(id: string, term?: string, updateUrl: boolean = true) {
     this.searchTerm = id;
-    this.termName = term;
-    this.searchTermSource.next(id);
-    this.searchTermSource.next(term);
+    this.termName = term || '';
+    this.searchTermSource.next({id, term: this.termName});
+    
+    
     if (updateUrl) {
       this.updateUrl(id, term);
     }
@@ -30,37 +36,37 @@ export class SearchServiceService {
     return this.termName;
   }
 
-  updateUrl(id: string, term?:string) {
-    // Obtener la ruta actual y dividirla en segmentos
+  updateUrl(id: string, term?: string) {
     const segments = this.router.url.split('/');
-    // Reemplazar el último segmento con el nuevo término de búsqueda
-    if(term){
-      segments[segments.length -1] = term;
-      this.router.navigateByUrl(segments.join('/'))
+    // Obtener la ruta actual y dividirla en segmentos
+    if (term === '') {
+      this.router.navigateByUrl('/search');
     } else {
-      segments[segments.length - 1] = id;
-      this.router.navigateByUrl(segments.join('/'));
+      // Reemplazar el último segmento con el nuevo término de búsqueda
+      if (term) {
+        segments[segments.length - 1] = term;
+        this.router.navigateByUrl(segments.join('/'))
+      } else {
+        segments[segments.length - 1] = id;
+        this.router.navigateByUrl(segments.join('/'));
+      }
     }
-    
-   
-   
+  }
+
+  setTerm() {
+    this.searchTerm = '';
   }
 
   getSearchTerm() {
     return this.searchTerm;
   }
 
-  // checkTerm(term: string) {
-  //   if (term === this.searchTerm && this.searchTerm !== '') {
-  //     return true;
-  //   } else if (term !== this.searchTerm && term !== '') {
-  //     this.setSearchTerm(term)
-  //     return true;
-  //   } else {
-  //     this.setSearchTerm(term)
-  //     return false;
-  //   }
-  // }
+  clearSearchTerm() {
+    this.searchTerm = '';
+    this.termName = '';
+    this.clearTermSource.next(); // Notificar a los observadores que se limpió el término de búsqueda
+    this.router.navigateByUrl('/search'); // Redirigir a la página de búsqueda vacía
+  }
 
   emitEnterPressed(value: string) {
     this.setSearchTerm(value); // Llamar a setSearchTerm() para gestionar el término de búsqueda
