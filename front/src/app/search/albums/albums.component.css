@@ -96,7 +96,6 @@
       height: 270px;
     }    
     
-
     .imageSimilar {
       width: 155px;
       height: 155px;
@@ -145,15 +144,14 @@
     .yearArtist {
       font-size: 12px;
     }
- 
   }
   
   @media screen and (max-width: 655px) {
     .artistsall{
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
+    
     .cardArtist {
-
       height: 200px;
     }    
 
