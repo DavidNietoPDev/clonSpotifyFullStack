@@ -22,6 +22,14 @@ export class NavegationArrowService {
     });
   }
 
+  canGoBack(): boolean {
+    return this.currentIndex > 0;
+  }
+
+  canGoForward(): boolean {
+    return this.currentIndex < this.history.length - 1;
+  }
+
   back(): void {
     if(this.currentIndex > 0) {
       this.currentIndex--;

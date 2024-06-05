@@ -38,6 +38,10 @@
   align-items: center;
   justify-content: center;
 }
+.navB.disabled {
+  opacity: 0.5; 
+  cursor: not-allowed; 
+}
 
 .navB svg{
   scale: 80%;

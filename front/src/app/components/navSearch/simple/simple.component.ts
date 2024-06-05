@@ -19,6 +19,14 @@ export class SimpleComponent {
     this.navigationService.forward();
   }
 
+  canGoBack(): boolean {
+    return this.navigationService.canGoBack();
+  }
+
+  canGoForward(): boolean {
+    return this.navigationService.canGoForward();
+  }
+
   checkRoute() {
     if (this.router.url === '/home') {
       return true;
