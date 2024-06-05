@@ -25,8 +25,6 @@ export class CardsSquareComponent {
 
   subscription: Subscription;
   searchTerm: string = '';
-  snackBarShown: boolean = JSON.parse(localStorage.getItem('snackBarShown') || 'false');
-  snackBarShownTime: number = JSON.parse(localStorage.getItem('snackBarShownTime') || '0');
 
   nameTerm: string = '';
   isLoading: boolean = true;
@@ -67,23 +65,6 @@ export class CardsSquareComponent {
   searchItems(): void {
     this.loadingService.setLoading(true);
 
-    if (!this.snackBarShown) {
-      this.snack.open('El servidor se está iniciando, espere un momento (de media unos 50s).', 'Cerrar',
-        { verticalPosition: 'top' })
-        const timer = 15 * 60 * 1000;
-        const currentTime = new Date().getTime();
-        if (currentTime - this.snackBarShownTime > timer) {
-          localStorage.removeItem('snackBarShown');
-          localStorage.removeItem('snackBarShownTime');
-        }
-    }
-
-    this.snackBarShown = true;
-    this.snackBarShownTime = new Date().getTime(); // Guardar el tiempo actual
-    localStorage.setItem('snackBarShown', JSON.stringify(true)); // Almacenar en el almacenamiento local que el Snackbar se ha mostrado
-    localStorage.setItem('snackBarShownTime', JSON.stringify(this.snackBarShownTime)); // Almacenar la marca de tiempo actual
-    
-
     this.listCards.getTopList().subscribe((response: Top) => {
       this.listName = [];
       this.listImage = [];
@@ -104,7 +85,7 @@ export class CardsSquareComponent {
       this.isLoading = false;
     });
   }
-
+  
   searchCategories() {
     this.listName = [];
     this.listImage = [];
