@@ -10,11 +10,12 @@ import { Router } from '@angular/router';
 })
 export class InputSearcherComponent {
   searchTerm = inject(SearchServiceService)
-  termSearcher = this.searchTerm.getSearchTerm()
+  termSearcher = this.searchTerm.getTermName()
   router = inject(Router)
 
   ngOnInit(){
-    this.termSearcher = this.searchTerm.getSearchTerm()
+    if(this.router.url.startsWith('/search'))
+      this.searchTerm.setTermName('')
   }
 
   onEnter(event: KeyboardEvent) {

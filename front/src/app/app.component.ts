@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { LoadingService } from './services/loading.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,8 @@ export class AppComponent implements OnInit {
   loadingService = inject(LoadingService)
   snack = inject(MatSnackBar)
   cdr = inject(ChangeDetectorRef)
+  router = inject(Router)
+
   timer = 15 * 60 * 1000;
   currentTime = new Date().getTime();
   isLoading: boolean = true;
@@ -37,6 +40,16 @@ export class AppComponent implements OnInit {
     if (this.currentTime - this.snackBarShownTime > this.timer) {
       localStorage.removeItem('snackBarShown');
       localStorage.removeItem('snackBarShownTime');
+    }
+  }
+
+  checkRoute() {
+    if (this.router.url.startsWith('/search') || this.router.url.startsWith('/home') ||
+        this.router.url.startsWith('/songs/') || this.router.url.startsWith('/artists') ||
+        this.router.url.startsWith('/albums')) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

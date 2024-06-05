@@ -32,6 +32,7 @@ import { HeaderBaseComponent } from './components/headersIds/header-base/header-
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SearchMainComponent } from './search/search-main/search-main.component';
+import { SpecificNavComponent } from './components/navSearch/specific-nav/specific-nav.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { SearchMainComponent } from './search/search-main/search-main.component'
     NavCardsComponent,
     MainComponent,
     HeaderBaseComponent,
-    SearchMainComponent
+    SearchMainComponent,
+    SpecificNavComponent
 
     
   ],

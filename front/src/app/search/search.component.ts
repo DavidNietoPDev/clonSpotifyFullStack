@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -9,7 +10,8 @@ import { Component } from '@angular/core';
 
 
 export class SearchComponent {
-  
+
+
 }
 
 

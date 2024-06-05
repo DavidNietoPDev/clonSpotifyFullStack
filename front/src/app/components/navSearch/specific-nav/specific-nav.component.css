@@ -1,0 +1,181 @@
+.navsearch {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    top: 7px;
+    right: 8px;
+    left: 435px;
+    height: 70px;
+    position: fixed;
+    background-color: rgba(10, 10, 10, 0.322);
+    z-index: 1;
+  }
+  .navButtons{
+    width: 90px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+  }
+  .navsearch app-input-searcher{
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .navB {
+    background-color: rgba(0, 0, 0, .7);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .navB svg{
+    scale: 80%;
+    margin-bottom: 3px;
+  }
+  
+  .btonre {
+    position: fixed;
+    top: 25px;
+    right: 200px;
+    border: none;
+    color: #acabab;
+    background-color: transparent;
+    font-weight: 500;
+  }
+  
+  .btonre:hover {
+    scale: 103%;
+    color: white;
+  }
+  
+  .btonis {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 650;
+    width: 160px;
+    height: 50px;
+    margin-left: 20px;
+  }
+  
+  .btonis:hover {
+    scale: 103%;
+  }
+  
+  @media screen and (max-width: 955px) {
+    .navsearch {
+      left: 41.5%;
+    }
+  }
+  
+  @media screen and (max-width: 855px) {
+  
+    .navsearch {
+      left: 37%;
+    }
+  }
+  
+  @media screen and (max-width: 755px) {
+  
+    .navsearch {
+      left: 32%;
+    }
+    
+    .btonis{
+      font-size: 13px;
+      width: 140px;
+      height: 45px;
+      top: 18px;
+    }
+  
+    .btonre{
+      top: 30px;
+      font-size: 13px;
+      right: 170px;
+    }
+  }
+  
+  @media screen and (max-width: 655px) {
+    .btonis{
+      font-size: 12px;
+      width: 120px;
+      height: 40px;
+      top: 18px;
+    }
+    .btonre{
+      font-size: 12px;
+      right: 150px;
+    }
+    .navsearch {
+      left: 27.5%;
+    }
+  }
+  
+  @media screen and (max-width: 555px) {
+    .navsearch {
+      left: 23%;
+    }
+    .navButtons{
+      gap: 5px;
+      left: -6px;
+    }
+    .navB svg{
+      scale: 70%;
+    }
+    .navB {
+      height: 25px;
+      width: 25px;
+    }
+  
+    .btonis{
+      font-size: 10px;
+      width: 90px;
+      height: 35px;
+      top: 22px;
+    }
+    .btonre{
+      font-size: 10px;
+      right: 110px;
+      top: 30px;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .btonis{
+      font-size: 8px;
+      width: 60px;
+      height: 25px;
+      top: 19px;
+      right: 12px;
+    }
+    .navsearch{
+      height: 50px;
+    }
+    .btonre{
+      font-size: 8px;
+      right: 72px;
+      top: 25px;
+    }
+    .navsearch {
+      left: 24%;
+    }
+    .navButtons{
+      gap: 3px;
+    }
+    .navB svg{
+      scale: 70%;
+    }
+  }

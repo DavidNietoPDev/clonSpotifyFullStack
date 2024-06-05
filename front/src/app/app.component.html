@@ -2,7 +2,8 @@
   <div class="primary">
     <app-loader *ngIf="isLoading"/>
     <router-outlet/>
-      <app-simple/>
+      <app-simple *ngIf="checkRoute()"/>
+      <app-specific-nav *ngIf="!checkRoute()"/>
       <app-footer *ngIf="!isLoading"/>
     <app-nav-left/>
   </div>

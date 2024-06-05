@@ -14,18 +14,4 @@ export class NavCardsComponent {
 
   searchTerm = this.search.getSearchTerm();
 
-  // Método para marcar los botones activos según la URL actual
-  // updateActiveButtons(): void {
-  //   const currentUrl = '/' + this.router.url.split('/')[1];
-  //   const buttons = document.querySelectorAll('.bsq');
-  //   buttons.forEach((button: HTMLElement, index: number) => {
-  //     console.log(this.buttonUrls[index], 'button')
-  //     const buttonUrl = this.buttonUrls[index];
-  //     if (currentUrl === buttonUrl) {
-  //       console.log(buttonUrl, currentUrl)
-  //       console.log(button)
-  //       button.classList.add('bsq','active');
-  //     } 
-  //   });
-  // }
 }

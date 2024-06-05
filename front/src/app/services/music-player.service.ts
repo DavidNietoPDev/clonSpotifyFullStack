@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Injectable({
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class MusicPlayerService {
 currentAudio : HTMLAudioElement;
+snackBar = inject(MatSnackBar)
 globalVolume: number = 0.5;
   playMusic(previewUrl: any) {
     if (previewUrl) {             
@@ -17,7 +19,7 @@ globalVolume: number = 0.5;
       audio.volume = this.globalVolume;          // y seguidamente se reproduce
       audio.play();
     } else {
-      console.log("No hay audio disponible")
+      this.snackBar.open('El audio no está disponible', 'Cerrar', { duration: 2000})
     }
   }
 
