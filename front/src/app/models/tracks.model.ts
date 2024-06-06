@@ -1,37 +1,3 @@
-// export interface Tracks {
-//     name:       string;
-//     playcount:  string;
-//     listeners:  string;
-//     mbid?:      string;
-//     url:        string;
-//     streamable: string;
-//     artist:     Artist;
-//     image:      Image[];
-//     "@attr":    Attr;
-//     images:     string[];
-// }
-
-// export interface Attr {
-//     rank: string;
-// }
-
-// export interface Artist {
-//     name: string;
-//     mbid: string;
-//     url:  string;
-// }
-
-// export interface Image {
-//     "#text": string;
-//     size:    Size;
-// }
-
-// export enum Size {
-//     Extralarge = "extralarge",
-//     Large = "large",
-//     Medium = "medium",
-//     Small = "small",
-// }
 
 
 export interface Track {

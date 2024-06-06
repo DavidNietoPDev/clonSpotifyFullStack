@@ -13,7 +13,7 @@ export class HeaderBaseComponent {
   @Input() nameId: string = '';
   @Input() nameArtistOrFollowers: string[] | number;
   @Input() releaseDate: string[] | string;
-  @Input() numberSongsOrPopularity: number | string;
+  @Input() numberSongsOrPopularity: number;
   @Input() search: boolean;
 
   isNumber(value: any): boolean {

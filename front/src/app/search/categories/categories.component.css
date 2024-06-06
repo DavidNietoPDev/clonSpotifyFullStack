@@ -5,6 +5,7 @@
   font-size: 26px;
   font-weight: bold;
   color: white; 
+  bottom: 20px;
 
 }
 
@@ -252,7 +253,6 @@
 }
 
 .textArtist {
-  top: -80px;
   position: relative;
   margin-left: 15px;  
   font-size: 22px;
@@ -262,13 +262,12 @@
 
 
 .cardArtist {
+  top: 20px;
   display: flex;
   flex-direction: row;
   position: relative;
-  top: -40px;
   height: 240px;
 }
-
 
 .cardImageArtista {
   position: relative;
@@ -321,12 +320,14 @@
 }
 
 .textAlbumes {
+  margin-top: 80px;
   position: relative;
   margin-left: 15px;
   font-size: 22px;
   font-weight: bold;
   color: white;
 }
+
 
 .cardAlbum {
   display: flex;
@@ -400,7 +401,7 @@
 
 
 .textListas {
-  margin-top: 120px;
+  margin-top: 80px;
   position: relative;
   margin-left: 15px;
   font-size: 22px;
@@ -478,118 +479,10 @@
   color: #747171;
 }
 
-.table2 {
-  margin-left: 20px;
-  position:relative;
-}
-
-.columnall {
-  width: 100%;
-  color: #a09f9f;
-  font-size: 14px;
-}
-.column1 {
-width: 2.5%;  
-}
-.column2 {
-  width: 0%;
-}
-.column3 {
-  width: 45%;
-}
-.column4 {
-  width: 45%;
-}
-.column5 {
-  width: 10%; 
-}
-.column6 {
-  width: 0%;
-}
-
-
-input[type="range"] {
-/* Cambiar la longitud del input */
-width: 50px; 
-}
-
-/* Cambiar el color de la barra de deslizamiento */
-input[type="range"]::-webkit-slider-runnable-track {
-background-color: #2b2828; /* Cambia el color de la barra de deslizamiento para navegadores webkit (Chrome, Safari, etc.) */
-}
-
-table {
-margin-left: 10px;
-}
-
-.filasall {
-  height: 60px;
-  
-}
-
-.filasall:hover {
-background-color: rgba(112, 109, 109, 0.226);
-}
-
-
-.fila1 {
-color: #a09f9f;
-padding-left: 10px;
-}
-
-.fila1:hover {
-cursor: pointer;
-}
-.imgCanciones {
-  width: 45px;
-  height: 45px;
-  border-radius: 10px;
-}
-.imgCanciones::shadow {
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-}
-
-.imgCanciones:hover {
-cursor: pointer;
-}
-
-.fila31 {
-margin-left: 10px;
-  color: white !important;
-}
-
-.fila31:hover {
-cursor: pointer;
-text-decoration: underline;
-}
-.fila32 {
-margin-left: 10px;
-  font-size: 14px;
-  color: #a09f9f;
-}
-
-.linkArtist:hover {
-cursor: pointer;
-text-decoration: underline;
-}
-
-
-.fila4 {
-  color: #a09f9f;
-  font-size: 14px;
-}
-
-.fila4:hover {
-cursor: pointer;
-}
 
 
 
-@media screen and (max-height: 600px) {  
-  .primary {
-    min-height: 485px;
-  }
-}
+
 @media screen and (max-width: 1600px) {
   .cardImageAlbum:nth-child(n+6) {
     display: none;
@@ -634,28 +527,5 @@ cursor: pointer;
   }
   .cardImagenListas:nth-child(n+3) {
     display: none;
-  }
-}
-
-@media screen and (max-width: 855px) {
-
-
-  .navsearch {
-    left: 51%;
-  }
-
-  .primary {
-    left: 51%;
-  }
-}
-
-@media screen and (max-width: 755px) {
-  .navsearch {
-    left: 385px;
-  }
-
-  .primary {
-    left: 380px;
-    
   }
 }

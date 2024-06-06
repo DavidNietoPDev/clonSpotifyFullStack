@@ -84,6 +84,7 @@ getArtistAll(): Observable<All> {
     return this.http.get<AlbumID>(`${this.baseUrl}${'/albumId'}/${albumId}`)
   }
 
+
   getArtistId(artistId: string): Observable<ArtistID> {
     return this.http.get<ArtistID>(`${this.baseUrl}${'/artistId'}/${artistId}`)
   }

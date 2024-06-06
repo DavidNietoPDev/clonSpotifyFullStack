@@ -2,12 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { SearchBarService } from '../../services/search-bar.service';
 import { TakeIdsService } from '../../services/take-ids.service';
 import { ExtractColorService } from '../../services/extract-color.service';
-import { Category } from '../../models/categry.model';
+import { Category, TracksItem } from '../../models/categry.model';
 import { SearchServiceService } from '../../services/search-service.service';
-import { MusicPlayerService } from '../../services/music-player.service';
 import { LoadingService } from '../../services/loading.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { Item } from '../../models/categories.model';
 
 
 @Component({
@@ -21,12 +21,10 @@ export class CategoriesComponent implements OnInit {
   takeIdAll = inject(TakeIdsService)
   loadingService = inject(LoadingService)
   extractColor = inject(ExtractColorService)
-  musicPlayer = inject(MusicPlayerService)
   route = inject(ActivatedRoute)
   
   subscription: Subscription;
 
-  globalVolume: number = 0.1;
   loading: boolean = false;
   buscar: boolean = false;
   colorDominanteCategory: number [] = [];
@@ -36,15 +34,7 @@ export class CategoriesComponent implements OnInit {
   imageCategory: string = '';
   nameCategory: string = '';
 
-  topTrackId: string[] = [];
-  topTrackUrl: string[] = [];
-  topTrack: string[] = [];
-  topTrackDuration: number[] = [];
-  topTrackArtist: string[] = [];
-  topTrackArtistTwo: string[] = [];
-  topTrackArtistImage: string[] = [];
-  idArtistTracks: string [] = [];
-  idArtistTracksTwo: string [] = [];
+  topTrackList: TracksItem [] = [];
 
 
   topAlbum: string[] = [];
@@ -110,16 +100,6 @@ export class CategoriesComponent implements OnInit {
     this.idsAlbum = [];
     this.idsArtistAlbum = [];
 
-    this.topTrackArtistTwo = [];
-    this.idArtistTracksTwo = [];
-    this.topTrackArtist = [];
-    this.idArtistTracks = [];
-    this.topTrackId = [];
-    this.topTrackArtistImage = [];
-    this.topTrackUrl = [];
-    this.topTrack = [];
-    this.topTrackDuration = [];
-
     this.categoriesSearch.getCategoryId(this.categoryId).subscribe((response: Category) => {
       this.imageCategory = response.categoryInfo.icons[0].url;
       this.colorDominante(this.imageCategory)
@@ -141,7 +121,6 @@ export class CategoriesComponent implements OnInit {
             } else {
               this.imageArtists.push('../../assets/Artistasinfoto.png');
             }
-          
         }
       for (let album of response.searchs.albums.items)
         {
@@ -156,50 +135,14 @@ export class CategoriesComponent implements OnInit {
           this.idsAlbum.push(album.id); 
           this.idsArtistAlbum.push(album.artists[0].id)
         }
-      for (let track of response.searchs.tracks.items)
+      for (let track of response.searchs.tracks.items.slice(0, 10))
         {
-          if(track.artists && track.artists.length > 1) 
-            {
-              this.topTrackArtistTwo.push(track.artists[1].name)
-              this.idArtistTracksTwo.push(track.artists[1].id)
-            } else {
-              this.idArtistTracksTwo.push('')
-              this.topTrackArtistTwo.push('')
-            }
-          this.topTrackArtist.push(track.artists[0].name)
-          this.idArtistTracks.push(track.artists[0].id)
-          this.topTrackId.push(track.id)
-          this.topTrackArtistImage.push(track.album.images[0].url)
-          this.topTrackUrl.push(track.preview_url)
-          this.topTrack.push(track.name)
-          this.topTrackDuration.push(track.duration_ms)
-
-        }
+          this.topTrackList.push(track);
+         }
         this.loadingService.setLoading(false)
-        this.loading = false;
-        
-    });
-    
+        this.loading = false;     
+    }); 
   }
-
-
-   //Zona de Reproducción
-   stopMusic() {
-    this.musicPlayer.stopMusic();
-  }
-
-  togglePlayBack(previewUrl: string) {
-    this.musicPlayer.togglePlayBack(previewUrl);
-  }
-
-  setVolume(volume: number) {
-    this.musicPlayer.setVolume(volume);
-  }
-
-  ajustarVolume() {
-    this.musicPlayer.setVolume(this.globalVolume);
-  }
-
 
   async colorDominante(imageUrl: string) {
     this.extractColor.getColorDominante(imageUrl)

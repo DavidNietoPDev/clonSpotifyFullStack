@@ -2,26 +2,30 @@
     'background': 'linear-gradient(to top, transparent 0, rgba(' + colorDominantImage[0] + ',' + colorDominantImage[1] + ',' + colorDominantImage[2] + ', 1) 100%)'
   }">
     <div class="header">
-        <div class="imgHeader">
+        <div class="imgHeader" *ngIf="imageId">
             <img class="imgImg" src="{{imageId}}" alt="">
         </div>
         <div class="textHeader" *ngIf="search">
             <p class="albumType">{{typeId.charAt(0).toUpperCase() + typeId.slice(1)}}</p>
             <p class="nLista">{{nameId | pipeTruncate}}</p>
             <p class="sLista"></p>
-            <p><span class="sLista">
+            <p>
+                <span class="sLista">
                     <span *ngIf="isNumber(nameArtistOrFollowers)">{{ nameArtistOrFollowers | numberFormat}}</span>
                     <span *ngIf="!isNumber(nameArtistOrFollowers)">{{ nameArtistOrFollowers}}</span>
                     <span *ngIf="!isEmpty(releaseDate)"> · </span> <span *ngIf="!isGenres(releaseDate)">{{
                         releaseDate.split("-")[0] }}</span>
                     <span *ngIf="isGenres(releaseDate)"> {{ releaseDate }} </span>
-                    ·
+                    <span *ngIf="numberSongsOrPopularity && numberSongsOrPopularity !== 0"> · </span>
+                    <span *ngIf="numberSongsOrPopularity !== 0"> {{ numberSongsOrPopularity }} </span>
                     <span
-                        *ngIf="numberSongsOrPopularity > 1 && (typeId === 'album' || typeId === 'playlist') ">canciones</span>
+                        *ngIf="numberSongsOrPopularity !== 0 && numberSongsOrPopularity > 1 && (typeId === 'album' || typeId === 'playlist')">
+                        canciones </span>
                     <span
-                        *ngIf="numberSongsOrPopularity < 2 && (typeId === 'album' || typeId === 'playlist')">canción</span>
-                    <span *ngIf="typeId === 'artist' || typeId === 'track'">Popularidad </span>
-                    {{ numberSongsOrPopularity }} </span>
+                        *ngIf="numberSongsOrPopularity !== 0 && numberSongsOrPopularity < 2 && (typeId === 'single' || typeId === 'playlist')">
+                        canción </span>
+                    <span *ngIf="typeId === 'artist' || typeId === 'track'"> Popularidad </span>
+                </span>
             </p>
         </div>
     </div>
