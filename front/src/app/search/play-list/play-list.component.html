@@ -1,4 +1,4 @@
-<app-header-base *ngIf="buscar && trackList"
+<app-header-base *ngIf="!loading"
 [colorDominantImage]="colorDominantePlayList" 
 [imageId]="listImage" 
 [typeId]="listType"
@@ -9,6 +9,5 @@
 [search]="buscar" />
 <div class="grid-container">
     <app-list-songs *ngIf="trackList"
-    [topTrackList]="trackList"
-    />
+    [topTrackList]="trackList"/>
 </div>

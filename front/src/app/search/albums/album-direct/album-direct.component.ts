@@ -26,7 +26,7 @@ export class AlbumDirectComponent  implements OnInit  {
 
   trackList: Item [] = [];
   buscar: boolean = false;
-  loading: boolean = false;
+  loading: boolean = true;
   albumId: string = this.takeId.getAlgoId();
   
   albumArtists: string[] = [];
@@ -75,14 +75,15 @@ export class AlbumDirectComponent  implements OnInit  {
       this.listImage = response.images[0].url;
       this.colorDominante(this.listImage);
       this.listName = response.name;
-      
+
+      this.trackList = response.tracks.items
+
       for (let artist of response.artists) {
         this.albumArtists.push(artist.name)
       }
-      for (let track of response.tracks.items) {
-        this.trackList.push(track);    
-      }
+      this.loadingService.setLoading(false)
     });
+
   }
 
    //función para extraer el color de la imagen

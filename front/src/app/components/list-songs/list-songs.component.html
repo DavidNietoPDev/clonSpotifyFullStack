@@ -1,17 +1,19 @@
-<table *ngIf="!loading && search">
+
+<table  >
     <thead>
         <tr class="columnall">
             <th class="column1">#</th>
             <th class="column2"></th>
             <th class="column3">Título</th>
-            <th class="column4">Álbum</th>
+            <th class="column4" *ngIf="!checkRoute()">Álbum</th>
+            <th class="column4" *ngIf="checkRoute()"></th>
             <th class="column5"><mat-icon>av_timer</mat-icon></th>
             <th class="column6"></th>
         </tr>
     </thead>
     <tbody>
         <ng-container *ngFor="let track of topTrackList; let i = index">
-            <tr class="filasall">
+            <tr class="filasall" >
                 <td class="fila1" *ngIf="checkRoute()" (click)="togglePlayBack(topTrackUrlSong[i])">{{ i + 1 }}</td>
                 <td class="fila1" *ngIf="!checkRoute()" >{{ i + 1 }}</td>
                 <td class="fila2" *ngIf="checkRoute()"></td>
@@ -19,7 +21,7 @@
                         (click)="togglePlayBack(topTrackUrlSong[i])">
                 </td>
                 <td>
-                    <span class="fila31" (click)="takeIdAll(topTrackId[i])"
+                    <span class="fila31" 
                     [routerLink]="['/songsId', topTrackId[i]]">{{topTrack[i] | pipeTruncate}}</span> <br>
                     <span class="fila32" *ngIf="topTrackArtistTwo[i] !== ''">
                         <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistId[i])"
@@ -45,3 +47,4 @@
         </ng-container>
     </tbody>
 </table>
+

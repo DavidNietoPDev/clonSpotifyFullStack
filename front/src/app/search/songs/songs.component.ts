@@ -25,11 +25,12 @@ export class SongsComponent implements OnInit {
 
   routeSubscription: Subscription;
   searchSubscription: Subscription;
-  trackList: Item [] = [];
+  loadingSubscription: Subscription;
+
+  trackList: Item[] = [];
 
   artistNameSongs: string = '';
 
-  loading: boolean = false;
   buscar: boolean = false;
 
   ngOnInit() {
@@ -58,20 +59,16 @@ export class SongsComponent implements OnInit {
     }
   }
 
-  takeIdAll(id: string) {
-    this.takeId.setAlgoId(id);
-  }
+
 
   searchMethod(): void {
     this.loadingService.setLoading(true);
-    this.loading = true;
     this.buscar = true;
     this.artistSearch.getArtistTopTracks().subscribe((response: Track) => {
-      for (let track of response.tracks.items) {
-        this.trackList.push(track)
-      }
-    });
+      this.trackList = response.tracks.items
+      this.loadingService.setLoading(false);
+    })
   }
 }
-    
+
 

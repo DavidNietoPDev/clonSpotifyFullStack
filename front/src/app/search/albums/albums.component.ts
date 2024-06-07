@@ -67,9 +67,6 @@ export class AlbumsComponent implements OnInit {
   }
 
   searchMethod() {
-    // if (!this.searchTerm.checkTerm(this.artistNameArtist)) {
-    //   console.error('Introduce un artista')
-    // } else {
       this.loadingService.setLoading(true)
       this.loading = true;
       this.buscar = true;

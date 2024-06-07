@@ -22,11 +22,12 @@ export class PlayListComponent implements OnInit {
   route = inject(ActivatedRoute)
   subscription: Subscription;
 
-  loading: boolean = false;
+  loading: boolean = true;
   playListId: string = this.takeId.getAlgoId();
 
-  trackList: Track [] = [];
-  lista: Item [] = [];
+  trackList: Item [] = [];
+  lista: Track [] = [];
+  otraLista: Item [] = [];
 
   colorDominantePlayList: number[] = [];
   listImage: string = '';
@@ -60,7 +61,6 @@ export class PlayListComponent implements OnInit {
 
   buscarPlayList(): void {
     this.loadingService.setLoading(true)
-    this.loading = true;
     this.buscar = true;
     this.colorDominantePlayList = [];
 
@@ -71,12 +71,13 @@ export class PlayListComponent implements OnInit {
       this.listFollowers = response.followers.total;
       this.listType = response.type;
       this.listName = response.name;
-      for (let track of response.tracks.items) {
-        this.lista.push(track)
-      }
+      this.lista = response.tracks.items
       for(let item of this.lista) {
-        this.trackList.push(item.track)
+        this.otraLista.push(item.track)
       }
+      this.trackList = this.otraLista;  
+      this.loadingService.setLoading(false);
+      this.loading = false;
     });
   }
 

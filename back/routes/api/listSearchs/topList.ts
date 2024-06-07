@@ -18,14 +18,14 @@ router.get('/', async (req: any, res: any) => {
 export async function handleSpotifyRequest(req:any, res:any) {
     try { // Función para hacer la petición a spotify de búsqueda de artista
 
-
         const baseUrlSpotify = process.env.baseUrlSpotify || '';
         const tokenSpotify = process.env.SPOTIFY_ACCESS_TOKEN || '';
         
         const responseSpotify = await axios.get(baseUrlSpotify, {
             params: {
-                q: 'Top mundial',
+                q: 'Top mundial, top españa',
                 type: 'playlist',
+                market: 'ES',
                 limit: 50
             },
             headers: {

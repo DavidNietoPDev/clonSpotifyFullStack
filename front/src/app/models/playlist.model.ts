@@ -51,7 +51,7 @@ export enum OwnerType {
 
 export interface Tracks {
     href:     string;
-    items:    Item[];
+    items:    Track[];
     limit:    number;
     next:     null;
     offset:   number;
@@ -59,16 +59,16 @@ export interface Tracks {
     total:    number;
 }
 
-export interface Item {
+export interface Track {
     added_at:        Date;
     added_by:        Owner;
     is_local:        boolean;
     primary_color:   null;
-    track:           Track | null;
+    track:           Item | null;
     video_thumbnail: VideoThumbnail;
 }
 
-export interface Track {
+export interface Item {
     preview_url:       null | string;
     available_markets: string[];
     explicit:          boolean;
