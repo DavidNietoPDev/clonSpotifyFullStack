@@ -33,6 +33,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SearchMainComponent } from './search/search-main/search-main.component';
 import { SpecificNavComponent } from './components/navSearch/specific-nav/specific-nav.component';
+import { ListSongsComponent } from './components/list-songs/list-songs.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { SpecificNavComponent } from './components/navSearch/specific-nav/specif
     MainComponent,
     HeaderBaseComponent,
     SearchMainComponent,
-    SpecificNavComponent
+    SpecificNavComponent,
+    ListSongsComponent
 
     
   ],

@@ -48,7 +48,9 @@
     </div>
   </div>
   <div class="textListas">Top canciones de {{nameCategory}}</div>
-  <table class="table2">
+  <app-list-songs *ngIf="topTrackList"
+  [topTrackList]="topTrackList"/>
+  <!-- <table class="table2">
     <thead>
       <tr class="columnall">
         <th class="column1"></th>
@@ -86,6 +88,6 @@
         </tr>
       </ng-container>
     </tbody>
-  </table>
-  <div class="releaseFoot">{{albumTracksRelease}}</div>
+  </table> -->
+  <!-- <div class="releaseFoot">{{ albumTracksRelease }}</div> -->
 </div>

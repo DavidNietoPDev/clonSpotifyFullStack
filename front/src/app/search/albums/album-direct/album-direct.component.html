@@ -1,5 +1,5 @@
 
-        <app-header-base
+        <app-header-base *ngIf="!loading"
             [colorDominantImage]="colorDominanteAlbum"
             [imageId]="listImage"
             [typeId]="typeAlbum"
@@ -9,48 +9,9 @@
             [numberSongsOrPopularity]="listCanciones"
             [search]="buscar"
             />
-        <div class="grid-container" *ngIf="!loading && buscar">
-            <table >
-                <thead>
-                    <tr class="columnall">
-                        <th class="column1">#</th>
-                        <th class="column2">Título</th>
-                        <th class="column3"></th>
-                        <th class="column4"></th>
-                        <th class="column5"><mat-icon>av_timer</mat-icon></th>
-                        <th class="column6"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <ng-container *ngFor="let track of tracksList; let i = index">
-                        <tr class="filasall" >
-                            <td class="fila1" (click)="togglePlayBack(trackUrl[i])">{{ i + 1 }}</td>
-                            <td class="fila2">
-                                <span class="fila31" (click)="takeIdAll(trackId[i])" [routerLink]="['/songsId', trackId[i]]" >{{tracksList[i] }}</span> <br>
-                                <span class="fila32"  *ngIf="trackArtistTwo[i] !== ''">
-                                    <span class="artistTrackLink" (click)="takeIdAll(idArtistTracks[i])" 
-                                    [routerLink]="['/artistId', idArtistTracks[i]]">{{ tracksArtist[i] }} ,
-                                    </span>
-                                    <span class="artistTrackLink" (click)="takeIdAll(idArtistTracksTwo[i])"
-                                    [routerLink]="['/artistId', idArtistTracksTwo[i]]">{{ trackArtistTwo[i] }}
-                                    </span>
-                                </span> 
-                                <span class="fila32" *ngIf="trackArtistTwo[i] === ''">
-                                    <span class="artistTrackLink" (click)="takeIdAll(idArtistTracks[i])" 
-                                    [routerLink]="['/artistId', idArtistTracks[i]]">{{ tracksArtist[i] }}</span>
-                                </span>
-                            <td>
-                                
-                            </td>
-                            <td class="fila4"></td>  
-                            <td class="fila4">{{tracksDuration[i] | pipeDuracion}}</td>
-                            <td class="flila5">
-                                <input type="range" min="0" max="1" step="0.05" [(ngModel)]="globalVolume" (input)="ajustarVolume()">
-                            </td>
-                        </tr>
-                    </ng-container>
-                </tbody>
-            </table>
+        <div class="grid-container" >
+            <app-list-songs *ngIf="trackList"
+            [topTrackList]="trackList"/>
         </div>
 
  

@@ -1,4 +1,4 @@
-<app-header-base
+<app-header-base *ngIf="!loading"
             [colorDominantImage]="colorDominanteTrack"
             [imageId]="trackImage"
             [typeId]="trackType"
@@ -29,7 +29,7 @@
                     <td class="fila2"><img class="imgCanciones" src="{{trackRecomImage[i]}}"
                             (click)="togglePlayBack(trackRecomUrl[i])"></td>
                     <td>
-                        <span class="fila31" (click)="takeIdAll(trackRecomId[i])" (click)="ngOnInit()">{{
+                        <span class="fila31" (click)="takeIdAll(trackRecomId[i])" [routerLink]="['/songsId', trackRecomId[i]]">{{
                             trackRecomName[i] }}</span> <br>
 
                         <span class="fila32" *ngIf="trackRecomArtistsTwo[i] === ''">
