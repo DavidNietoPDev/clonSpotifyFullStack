@@ -24,7 +24,6 @@
 }
 .column6 {
     width: 5%;
-
 }
 
 
@@ -46,6 +45,14 @@ input[type="range"]::-webkit-slider-runnable-track {
 .filasall:hover {
   border-radius: 10px;
   background-color: rgba(112, 109, 109, 0.226);
+}
+
+.Svg-sc{
+  width: 17px;
+}
+
+.fila1:hover {
+  cursor: pointer;
 }
 
 .filasall:hover td:first-child {

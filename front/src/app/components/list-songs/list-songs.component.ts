@@ -24,6 +24,7 @@ export class ListSongsComponent {
     return this._topTrackList;
   }
 
+  hoveredIndex: number | null = null;
   topTrackArtistId: string[] = [];
   topTrackArtistTwoId: string[] = [];
   topTrackArtist: string[] = [];
@@ -41,6 +42,14 @@ export class ListSongsComponent {
   loading: boolean = true;
   search: boolean = false;
   globalVolume: number = 0.1;
+
+  onMouseOver(index: number): void {
+    this.hoveredIndex = index;
+  }
+
+  onMouseLeave(): void {
+    this.hoveredIndex = null;
+  }
 
   checkRoute(): boolean {
     return this.router.url.startsWith('/albumDirect/')
