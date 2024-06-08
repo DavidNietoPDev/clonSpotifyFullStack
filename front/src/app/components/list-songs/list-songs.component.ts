@@ -54,6 +54,11 @@ export class ListSongsComponent {
   checkRoute(): boolean {
     return this.router.url.startsWith('/albumDirect/')
   }
+
+  checkComponent(): boolean {
+    return this.router.url.startsWith('/songsId/')
+  }
+
   listMethod() {
     this.loading = true;
 
@@ -94,7 +99,8 @@ export class ListSongsComponent {
       if (track && track.album && track.album.images && track.album.images.length > 0) {
         this.topTrackArtistImage.push(track.album.images[0].url);
       } else {
-        this.topTrackArtistImage.push('../../assets/Artistasinfoto.png');
+        this.topTrackArtistImage.push('');
+  
       }
 
       if (track && track.name && track.name.length > 0) {

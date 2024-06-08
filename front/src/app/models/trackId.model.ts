@@ -2,7 +2,7 @@
 
 
 export interface TrackID {
-    song:            Song;
+    song:            Item;
     artists:         ArtistRelatedArtist[];
     artistsAlbums:   ArtistsAlbum[];
     artistTracks:    ArtistTrack[];
@@ -79,7 +79,7 @@ export enum ReleaseDatePrecision {
 
 export interface Tracks {
     href:     string;
-    items:    Song[];
+    items:    Item[];
     limit:    number;
     next:     null;
     offset:   number;
@@ -87,7 +87,7 @@ export interface Tracks {
     total:    number;
 }
 
-export interface Song {
+export interface Item {
     artists:           AlbumInfoArtist[];
     available_markets: string[];
     disc_number:       number;
@@ -155,7 +155,7 @@ export interface Followers {
 }
 
 export interface ArtistTrack {
-    tracks: Song[];
+    tracks: Item[];
 }
 
 export interface ArtistsAlbum {
@@ -169,7 +169,7 @@ export interface ArtistsAlbum {
 }
 
 export interface Recommendations {
-    tracks: Song[];
+    tracks: Item[];
     seeds:  Seed[];
 }
 

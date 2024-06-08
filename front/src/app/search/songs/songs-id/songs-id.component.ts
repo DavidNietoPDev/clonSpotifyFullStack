@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { SearchBarService } from '../../../services/search-bar.service';
 import { TakeIdsService } from '../../../services/take-ids.service';
 import { MusicPlayerService } from '../../../services/music-player.service';
-import { TrackID } from '../../../models/trackId.model';
+import { Item, TrackID } from '../../../models/trackId.model';
 import { ExtractColorService } from '../../../services/extract-color.service';
 import { LoadingService } from '../../../services/loading.service';
 import { Subscription } from 'rxjs';
@@ -42,21 +42,9 @@ export class SongsIdComponent implements OnInit {
   trackDuration: number = 0;
   artistFollowers: number = 0;
 
-  trackRecomImage: string[] = [];
-  trackRecomName: string[] = [];
-  trackRecomId: string[] = [];
-  trackRecomDuration: number[] = [];
-  trackRecomUrl: string[] = [];
-  trackRecomArtists: string[] = [];
-  trackRecomArtistsId: string[] = [];
-  trackRecomArtistsTwoIds: string[] = [];
-  trackRecomArtistsTwo: string[] = [];
+  trackRecomList: Item [] = [];
 
-  trackArtistImage: string[] = [];
-  trackArtistName: string[] = [];
-  trackArtistDuration: number[] = [];
-  trackArtistUrl: string[] = [];
-  trackArtistId: string[] = [];
+  trackArtistList: Item [] = [];
 
   releaseDateArtist: string[] = [];
   typeAlbumArtist: string[] = [];
@@ -79,14 +67,8 @@ export class SongsIdComponent implements OnInit {
   albumTrack: string = '';
   albumType: string = '';
   albumImgTrack: string = '';
-  albumTracksName: string[] = [];
-  albumTracksPreviewUrl: string [] = [];
-  albumTracksId: string[] = [];
-  albumTracksArtist: string[] = [];
-  albumTracksArtistTwo: string[] = [];
-  albumTracksArtistId: string[] = [];
-  albumTracksArtistTwoId: string[] = [];
-  albumTracksDuration: number[] = [];
+
+  albumTrackList: Item [] = [];
   albumTracksRelease: string = '';
 
   takeIdAll(id: string) {
@@ -114,22 +96,6 @@ export class SongsIdComponent implements OnInit {
   buscarArtist(): void {
     this.colorDominanteTrack = [];
 
-    this.trackRecomImage = [];
-    this.trackRecomId = [];
-    this.trackRecomName = [];
-    this.trackRecomDuration = [];
-    this.trackRecomUrl = [];
-    this.trackRecomArtists = [];
-    this.trackRecomArtistsId = [];
-    this.trackRecomArtistsTwo = [];
-    this.trackRecomArtistsTwoIds = [];
-
-    this.trackArtistImage = [];
-    this.trackArtistName = [];
-    this.trackArtistDuration = [];
-    this.trackArtistUrl = [];
-    this.trackArtistId = [];
-
     this.releaseDateArtist = [];
     this.typeAlbumArtist = [];
     this.nameAlbumArtist = [];
@@ -147,14 +113,6 @@ export class SongsIdComponent implements OnInit {
     this.artistSimilarType = [];
     this.idArtistSimilar = [];
 
-    this.albumTracksId = [];
-    this.albumTracksName = [];
-    this.albumTracksArtist = [];
-    this.albumTracksPreviewUrl =  [];
-    this.albumTracksArtistTwo = [];
-    this.albumTracksArtistId = [];
-    this.albumTracksArtistTwoId = [];
-    this.albumTracksDuration = [];
     this.loading = true;
     this.loadingService.setLoading(true)
     this.playListSearch.getTrackId(this.songId).subscribe((response: TrackID) => {
@@ -174,32 +132,11 @@ export class SongsIdComponent implements OnInit {
       this.trackDuration = response.song.duration_ms;
       this.trackReleaseDate = response.song.album.release_date;
 
+      this.trackRecomList = response.recommendations.tracks.slice(0, 5);
 
-      for (let track of response.recommendations.tracks) {
-        this.trackRecomImage.push(track.album.images[0].url);
-        this.trackRecomName.push(track.name);
-        this.trackRecomDuration.push(track.duration_ms);
-        this.trackRecomUrl.push(track.preview_url);
-        this.trackRecomId.push(track.id);
-        this.trackRecomArtists.push(track.artists[0].name)
-        this.trackRecomArtistsId.push(track.artists[0].id);
-        if (track.artists && track.artists.length > 1) {
-          this.trackRecomArtistsTwo.push(track.artists[1].name)
-          this.trackRecomArtistsTwoIds.push(track.artists[1].id);
-        } else {
-          this.trackRecomArtistsTwo.push('');
-          this.trackRecomArtistsTwoIds.push('');
-        }
-      }
 
       if (response.artistTracks) {
-        for (let track of response.artistTracks[0].tracks) {
-          this.trackArtistImage.push(track.album.images[0].url)
-          this.trackArtistName.push(track.name)
-          this.trackArtistDuration.push(track.duration_ms)
-          this.trackArtistUrl.push(track.preview_url)
-          this.trackArtistId.push(track.id)
-        }
+          this.trackArtistList = response.artistTracks[0].tracks.slice(0, 5)  
       }
 
       if (response.artistsAlbums.length > 1) {
@@ -240,21 +177,9 @@ export class SongsIdComponent implements OnInit {
       this.albumTrack = response.albumInfo.name;
       this.albumImgTrack = response.albumInfo.images[0].url;
       this.albumTracksRelease = response.albumInfo.release_date;
-      for (let track of response.albumInfo.tracks.items) {
-        this.albumTracksId.push(track.id);
-        this.albumTracksName.push(track.name);
-        this.albumTracksPreviewUrl.push(track.preview_url);
-        this.albumTracksArtist.push(track.artists[0].name);
-        this.albumTracksArtistId.push(track.artists[0].id);
-        this.albumTracksDuration.push(track.duration_ms);
-        if(track.artists && track.artists.length > 1) {
-          this.albumTracksArtistTwo.push(track.artists[1].name);
-          this.albumTracksArtistTwoId.push(track.artists[1].id);
-        } else {
-          this.albumTracksArtistTwo.push('');
-          this.albumTracksArtistTwoId.push('');
-        }
-      }
+
+      this.albumTrackList = response.albumInfo.tracks.items;
+
       this.loadingService.setLoading(false)
       this.loading = false;
       this.buscar = true;
