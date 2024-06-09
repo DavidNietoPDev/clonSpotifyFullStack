@@ -34,7 +34,9 @@
       </div>
     </div>
     <p class="textArtist">Artistas</p>
-    <div class="cardArtist">
+    <app-cards-line
+    [topTrackList]="artistSonList" />
+    <!-- <div class="cardArtist">
       <div class="cardImageArtista" *ngFor="let artista of artistSimilarList.slice(0, 7); let i = index">
         <div class="cardRedSimilar">
           <img class="imageSimilar" (click)="takeId(artistSimilarId[i])" [routerLink]="['/artistId', artistSimilarId[i]]"
@@ -44,7 +46,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <p class="textAlbumes">Álbumes</p>
     <div class="cardAlbum">
       <div class="cardImageAlbum" *ngFor="let album of topAlbum.slice(0, 7); let i = index">

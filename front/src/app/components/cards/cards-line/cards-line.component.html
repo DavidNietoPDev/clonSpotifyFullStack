@@ -1,0 +1,33 @@
+<div class="swiper" *ngIf="check()">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let card of topTrackList.slice(0, 10); let i = index">
+            <div class="music-card">
+                <img class="image" src="{{image[i]}}" alt="imagen" [routerLink]="['/albumDirect', idsAlbum[i]]">
+            </div>
+            <div class="card-text">
+                <p>{{ name[i] }}</p>
+                <p>{{ albumYear[i] }} · {{artistName[i]}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+
+
+
+<div class="swiperTwo" *ngIf="!check()">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let card of topTrackList.slice(0, 10); let i = index">
+            <div class="music-cardTwo">
+                <img class="image" src="{{image[i]}}" alt="imagen"  [routerLink]="['/artistId', id[i]]">
+            </div>
+            <div class="card-text">
+                <p>{{ name[i] }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>

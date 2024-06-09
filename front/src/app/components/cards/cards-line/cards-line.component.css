@@ -1,0 +1,181 @@
+
+.swiper {
+  padding: 10px;
+  position: relative;
+  width: 100%;
+}
+.music-card {
+  background-color: #f0f0f0;
+  padding: 10px;
+  height: 180px;
+  width: 180px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.swiper-slide {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  text-align: center;
+  align-items: center;
+}
+.swiper-slide:hover {
+  background-color: rgba(112, 109, 109, 0.226);
+  border-radius: 10px;
+}
+
+.image {
+  position: relative;
+  border-radius: 100%;
+  border: none;
+  width: 170px;
+  height: 170px;
+}
+.image::shadow {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 100%;
+  background-color: #181717;
+}
+.image:hover {
+  cursor: pointer;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 100%;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px;
+  /* Cambiar el tamaño del icono de la flecha */
+}
+
+.card-text {
+  height: 70px;
+  text-align: center;
+  color: white;
+  width: 180px;
+
+}
+
+.music-cardTwo {
+  background-color: transparent;
+  width: 170px;
+  height: 170px;
+  border-radius: 100px;
+  text-align: center;
+}
+
+.swiperTwo {
+  padding: 30px;
+  position: relative;
+  width: 100%;
+
+}
+
+.swiper-button-nextTwo,
+.swiper-button-prevTwo {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 100%;
+}
+
+.swiper-button-nextTwo::after,
+.swiper-button-prevTwo::after {
+  font-size: 16px;
+  /* Cambiar el tamaño del icono de la flecha */
+}
+
+
+
+@media screen and (max-width: 955px) {
+
+
+  .cardImageList {
+    width: 155px;
+    height: 155px;
+  }
+
+  .underImage1 {
+    font-size: 13px;
+  }
+
+  .underImage2 {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 855px) {
+
+
+  .cardImageList {
+    width: 150px;
+    height: 150px;
+  }
+
+}
+
+@media screen and (max-width: 755px) {
+
+  .cardImageList {
+    width: 140px;
+    height: 140px;
+  }
+
+  .underImage1 {
+    font-size: 12px;
+  }
+
+  .underImage2 {
+    font-size: 12px;
+  }
+
+}
+
+@media screen and (max-width: 655px) {
+
+
+  .cardImageList {
+    width: 120px;
+    height: 120px;
+  }
+
+  .underImage1 {
+    font-size: 11px;
+  }
+
+  .underImage2 {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 555px) {
+
+
+  .cardImageList {
+    width: 100px;
+    height: 100px;
+  }
+
+  .underImage1 {
+    font-size: 10px;
+  }
+
+  .underImage2 {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {}
+
+@media screen and (max-width: 350px) {
+  .cardImageList {
+    width: 80px;
+    height: 80px;
+  }
+}

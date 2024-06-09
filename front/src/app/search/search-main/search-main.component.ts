@@ -30,9 +30,7 @@ export class SearchMainComponent implements OnInit {
   buscar: boolean = false;
   globalVolume: number = 0.1;
 
-  imageSimilar: string[] = [];
-  artistSimilarList: string[] = [];
-  artistSimilarId: string [] = []; 
+  artistSonList: any [] = [];
 
 
   topTrackId: string[] = [];
@@ -97,9 +95,7 @@ export class SearchMainComponent implements OnInit {
   }
 
   searchMethod(): void {
-    // if (!this.searchTerm.checkTerm(this.artistName)) {
-    //   console.error('Introduce un artista')
-    // } else {
+
       this.loadingService.setLoading(true);
       this.artistSearch.getArtistAll().subscribe((response: All) => {
         this.buscar = true;
@@ -121,10 +117,7 @@ export class SearchMainComponent implements OnInit {
         this.topTrackDuration = [];
         this.topTrackArtistImage = [];
 
-        this.artistSimilarId = [];
-        this.imageSimilar = [];
-        this.artistSimilarList = [];
-        this.topAlbum = [];
+        this.artistSonList = [];
         
         this.topAlbumImage = [];
         this.idsAlbum = [];
@@ -155,16 +148,9 @@ export class SearchMainComponent implements OnInit {
             }
           }
         }
-        for (let similar of response.artists.items) {
-          this.artistSimilarList.push(similar.name);
-          this.artistSimilarId.push(similar.id);
-          if (similar.images && similar.images.length > 0) {
-            this.imageSimilar.push(similar.images[0].url); // Verifica si hay imágenes disponibles
-          } else {
-            // Si no hay imagen disponible, puedes agregar una imagen por defecto o dejar este espacio en blanco
-            this.imageSimilar.push('../assets/Artistasinfoto.png');
-          }
-        }
+
+        this.artistSonList = response.artists.items
+
         for (let tracks of response.tracks.items) {
           this.topTrackId.push(tracks.id)
           this.topTrackUrl.push(tracks.preview_url)
