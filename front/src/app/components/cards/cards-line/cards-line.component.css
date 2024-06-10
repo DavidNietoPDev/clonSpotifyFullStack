@@ -22,6 +22,7 @@
   text-align: center;
   align-items: center;
 }
+
 .swiper-slide:hover {
   background-color: rgba(112, 109, 109, 0.226);
   border-radius: 10px;
