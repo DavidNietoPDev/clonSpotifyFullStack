@@ -19,21 +19,11 @@
     <p class="textTracksTwo">{{trackNameArtist}}</p>
     <app-list-songs
     [topTrackList]="trackArtistList" />
- 
 
     <p class="textAlbumes">Publicaciones populares de {{trackNameArtist}}</p>
-    <div class="cardAlbum">
-        <div class="cardImageAlbum" *ngFor="let album of nameAlbumArtist.slice(0, 6); let i = index">
-            <div class="cardCuadAlbum">
-                <img class="imageAlbum" src="{{imageAlbumArtist[i] }}" alt="" (click)="takeIdAll(idsAlbumArtist[i])"
-                [routerLink]="['/albumDirect', idsAlbumArtist[i]]">
-                <div class="textListBottom">
-                    <p class="artistAlbum">{{nameAlbumArtist[i] | pipeTruncate}}</p> <br>
-                    <p class="yearArtist">{{releaseDateArtist[i].split("-")[0]}} · {{typeAlbumArtist[i]}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <app-cards-line class="app-album"
+    [topAlbumList]="albumList"/>
+
     <div *ngIf=" artistTwoImage !== ''">
         <div class="cardArtistTwo">
             <div class="artistTwoImage"><img class="artistTwoImage" src="{{artistTwoImage}}" alt=""></div>
@@ -43,31 +33,13 @@
             </div>
         </div>
     </div>
-    <div class="cardAlbum" *ngIf="artistTwoImage !== ''">
-        <div class="cardImageAlbum" *ngFor="let album of nameAlbumArtistTwo.slice(0, 6); let i = index">
-            <div class="cardCuadAlbum">
-                <img class="imageAlbum" src="{{imageAlbumArtistTwo[i] }}" alt=""
-                    (click)="takeIdAll(idsAlbumArtistTwo[i])" [routerLink]="['/albumDirect', idsAlbumArtistTwo[i]]">
-                <div class="textListBottom">
-                    <p class="artistAlbum">{{nameAlbumArtistTwo[i] | pipeTruncate}}</p> <br>
-                    <p class="yearArtist">{{releaseDateArtistTwo[i].split("-")[0]}} · {{typeAlbumArtistTwo[i]}}
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <app-cards-line class="app-albumTwo"
+    [topAlbumList]="albumListTwo"/>
+
     <p class="textArtist">Sus fans también escuchan</p>
-    <div class="cardArtist">
-        <div class="cardImageArtista" *ngFor="let artista of artistSimilarName.slice(0, 6); let i = index">
-            <div class="cardRedSimilar" (click)="takeIdAll(idArtistSimilar[i])" [routerLink]="['/artistId', idArtistSimilar[i]]">
-                <img class="imageSimilar" src="{{artistSimilarImage[i]}}" alt="">
-                <div class="textListBottom">
-                    <p class="artistSimilar">{{artistSimilarName[i]}}</p>
-                    <p class="typeArtist">{{artistSimilarType[i]}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <app-cards-line
+    [topTrackList]="artistSimilarList"/>
+
     <div class="albumImagText">
         <div class="imageAlbumFooter">
             <img class="imageAlbumFooter" src="{{trackImage}}" alt="">
@@ -78,9 +50,9 @@
                 {{albumTrack}}</div>
         </div>
     </div>
-    
-    <app-list-songs 
+
+    <app-list-songs class="list-song"
     [topTrackList]="albumTrackList" />
-   
+
     <div class="releaseFoot">{{albumTracksRelease}}</div>
 </div>

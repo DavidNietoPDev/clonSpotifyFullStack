@@ -1,7 +1,7 @@
 
-<table  >
-    <thead *ngIf="!checkComponent()">
-        <tr class="columnall">
+<table >
+    <thead *ngIf="!checkComponent() && !loading">
+        <tr class="columnall" >
             <th class="column1">#</th>
             <th class="column2"></th>
             <th class="column3">Título</th>
@@ -11,12 +11,12 @@
             <th class="column6"></th>
         </tr>
     </thead>
-    <thead *ngIf="checkComponent()">
-        <tr class="columnAll2">
+    <thead *ngIf="checkComponent() && !loading">
+        <tr class="columnAll2" >
             <th class="column1"></th>
             <th class="column2"></th>
             <th class="column3"></th>
-            <th class="column4" ></th>
+            <th class="column4"></th>
             <th class="column5"></th>
             <th class="column6"></th>
         </tr>

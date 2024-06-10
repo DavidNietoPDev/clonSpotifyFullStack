@@ -46,22 +46,11 @@ export class SongsIdComponent implements OnInit {
 
   trackArtistList: Item [] = [];
 
-  releaseDateArtist: string[] = [];
-  typeAlbumArtist: string[] = [];
-  nameAlbumArtist: string[] = [];
-  imageAlbumArtist: string[] = [];
-  idsAlbumArtist: string[] = [];
+  albumList: any [] = [];
 
-  releaseDateArtistTwo: string[] = [];
-  typeAlbumArtistTwo: string[] = [];
-  nameAlbumArtistTwo: string[] = [];
-  imageAlbumArtistTwo: string[] = [];
-  idsAlbumArtistTwo: string[] = [];
+  albumListTwo: any [] = [];
 
-  artistSimilarImage: string[] = [];
-  artistSimilarName: string[] = [];
-  artistSimilarType: string[] = [];
-  idArtistSimilar: string[] = [];
+  artistSimilarList: any [] = [];
 
   albumId: string = '';
   albumTrack: string = '';
@@ -96,22 +85,11 @@ export class SongsIdComponent implements OnInit {
   buscarArtist(): void {
     this.colorDominanteTrack = [];
 
-    this.releaseDateArtist = [];
-    this.typeAlbumArtist = [];
-    this.nameAlbumArtist = [];
-    this.imageAlbumArtist = [];
-    this.idsAlbumArtist = [];
+    this.albumList = [];
 
-    this.releaseDateArtistTwo = [];
-    this.typeAlbumArtistTwo = [];
-    this.nameAlbumArtistTwo = [];
-    this.imageAlbumArtistTwo = [];
-    this.idsAlbumArtistTwo = [];
+    this.albumListTwo = [];
 
-    this.artistSimilarImage = [];
-    this.artistSimilarName = [];
-    this.artistSimilarType = [];
-    this.idArtistSimilar = [];
+    this.artistSimilarList = [];
 
     this.loading = true;
     this.loadingService.setLoading(true)
@@ -134,43 +112,20 @@ export class SongsIdComponent implements OnInit {
 
       this.trackRecomList = response.recommendations.tracks.slice(0, 5);
 
-
       if (response.artistTracks) {
           this.trackArtistList = response.artistTracks[0].tracks.slice(0, 5)  
       }
 
       if (response.artistsAlbums.length > 1) {
-        for (let artist of response.artistsAlbums[0].items) {
-          this.releaseDateArtist.push(artist.release_date)
-          this.typeAlbumArtist.push(artist.album_type)
-          this.nameAlbumArtist.push(artist.name)
-          this.imageAlbumArtist.push(artist.images[0].url)
-          this.idsAlbumArtist.push(artist.id) 
-        }
-        for (let artist of response.artistsAlbums[1].items) {
-          this.releaseDateArtistTwo.push(artist.release_date);
-          this.typeAlbumArtistTwo.push(artist.album_type);
-          this.nameAlbumArtistTwo.push(artist.name);
-          this.imageAlbumArtistTwo.push(artist.images[0].url);
-          this.idsAlbumArtistTwo.push(artist.id); 
-        }
+        this.albumList = response.artistsAlbums[0].items
+        this.albumListTwo = response.artistsAlbums[1].items
+
       } else {
-        for (let artist of response.artistsAlbums[0].items) {
-          this.releaseDateArtist.push(artist.release_date)
-          this.typeAlbumArtist.push(artist.album_type)
-          this.nameAlbumArtist.push(artist.name)
-          this.imageAlbumArtist.push(artist.images[0].url)
-          this.idsAlbumArtist.push(artist.id)
-        }
+        this.albumList = response.artistsAlbums[0].items
       }
 
       if ( response.artistRelated ) {
-        for( let artist of response.artistRelated[0].artists) {
-          this.artistSimilarImage.push(artist.images[0].url);
-          this.artistSimilarName.push(artist.name);
-          this.artistSimilarType.push(artist.type);
-          this.idArtistSimilar.push(artist.id); 
-        }
+        this.artistSimilarList = response.artistRelated[0].artists;
       }
 
       this.albumType = response.albumInfo.album_type;
@@ -185,7 +140,6 @@ export class SongsIdComponent implements OnInit {
       this.buscar = true;
     });
   }
-
 
   //Zona de Reproducción
   stopMusic() {
@@ -204,9 +158,7 @@ export class SongsIdComponent implements OnInit {
     this.musicPlayer.setVolume(this.globalVolume);
   }
 
-
   //función para extraer el color de la imagen
-
   async colorDominante(imageUrl: string) {
     this.extractColor.getColorDominante(imageUrl)
       .then(color => {

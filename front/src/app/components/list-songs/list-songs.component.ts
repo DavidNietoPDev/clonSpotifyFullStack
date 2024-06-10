@@ -100,7 +100,6 @@ export class ListSongsComponent {
         this.topTrackArtistImage.push(track.album.images[0].url);
       } else {
         this.topTrackArtistImage.push('');
-  
       }
 
       if (track && track.name && track.name.length > 0) {
