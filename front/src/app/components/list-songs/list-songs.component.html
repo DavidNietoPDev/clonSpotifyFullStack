@@ -1,7 +1,7 @@
 
-<table  >
-    <thead>
-        <tr class="columnall">
+<table >
+    <thead *ngIf="!checkComponent() && !loading">
+        <tr class="columnall" >
             <th class="column1">#</th>
             <th class="column2"></th>
             <th class="column3">Título</th>
@@ -11,13 +11,25 @@
             <th class="column6"></th>
         </tr>
     </thead>
+    <thead *ngIf="checkComponent() && !loading">
+        <tr class="columnAll2" >
+            <th class="column1"></th>
+            <th class="column2"></th>
+            <th class="column3"></th>
+            <th class="column4"></th>
+            <th class="column5"></th>
+            <th class="column6"></th>
+        </tr>
+    </thead>
     <tbody>
         <ng-container *ngFor="let track of topTrackList; let i = index">
-            <tr class="filasall" >
-                <td class="fila1" *ngIf="checkRoute()" (click)="togglePlayBack(topTrackUrlSong[i])">{{ i + 1 }}</td>
-                <td class="fila1" *ngIf="!checkRoute()" >{{ i + 1 }}</td>
-                <td class="fila2" *ngIf="checkRoute()"></td>
-                <td class="fila2" *ngIf="!checkRoute()"><img  class="imgCanciones" src="{{topTrackArtistImage[i]}}"
+            <tr class="filasall" (mouseover)="onMouseOver(i)" (mouseleave)="onMouseLeave()">
+                <td (click)="togglePlayBack(topTrackUrlSong[i])" class="fila1" *ngIf="hoveredIndex === i"><svg data-encore-id="icon" role="img" aria-hidden="true" fill="white" class="Svg-sc" viewBox="0 0 24 24">
+                    <path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path></svg></td>
+                <td class="fila1" *ngIf="checkRoute() && hoveredIndex !== i" (click)="togglePlayBack(topTrackUrlSong[i])">{{ i + 1 }}</td>
+                <td class="fila1" *ngIf="!checkRoute() && hoveredIndex !== i" >{{ i + 1 }}</td>
+                <td class="fila2" *ngIf="checkRoute() || topTrackArtistImage[i] === ''"></td>
+                <td class="fila2" *ngIf="!checkRoute() && topTrackArtistImage[i] !== ''"><img  class="imgCanciones" src="{{topTrackArtistImage[i]}}"
                         (click)="togglePlayBack(topTrackUrlSong[i])">
                 </td>
                 <td>

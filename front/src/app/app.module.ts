@@ -34,6 +34,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SearchMainComponent } from './search/search-main/search-main.component';
 import { SpecificNavComponent } from './components/navSearch/specific-nav/specific-nav.component';
 import { ListSongsComponent } from './components/list-songs/list-songs.component';
+import { CardsLineComponent } from './components/cards/cards-line/cards-line.component';
+
 
 
 @NgModule({
@@ -65,7 +67,8 @@ import { ListSongsComponent } from './components/list-songs/list-songs.component
     HeaderBaseComponent,
     SearchMainComponent,
     SpecificNavComponent,
-    ListSongsComponent
+    ListSongsComponent,
+    CardsLineComponent
 
     
   ],
