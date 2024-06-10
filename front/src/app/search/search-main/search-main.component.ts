@@ -21,17 +21,14 @@ export class SearchMainComponent implements OnInit {
   loadingService = inject(LoadingService)
   takeIdPlaylist = inject(TakeIdsService)
   route = inject(ActivatedRoute)
+  
   constructor(private router: Router) { }
 
-  
   routeSubscription: Subscription;
   searchSubscription: Subscription;
   artistName: string = '';
   buscar: boolean = false;
   globalVolume: number = 0.1;
-
-  artistSonList: any [] = [];
-
 
   topTrackId: string[] = [];
   topTrackUrl: string[] = [];
@@ -43,18 +40,10 @@ export class SearchMainComponent implements OnInit {
   idArtistTracks: string [] = [];
   idArtistTracksTwo: string [] = [];
 
+  artistSonList: any [] = [];
+  albumSonList: any [] = [];
+  playListSonList: any [] = [];
 
-  topAlbum: string[] = [];
-  topAlbumImage: string[] = [];
-  topAlbumArtist: string[] = [];
-  topAlbumYear: string[] = [];
-  idsAlbum: string[] = [];
-
-
-  idsPlaylist: string[] = [];
-  playList: string[] = [];
-  playListImage: string[] = [];
-  playListName: string[] = [];
   idArtists: string [] = [];
   idArtist: string = '';
   imageUrl: string = '';
@@ -95,61 +84,35 @@ export class SearchMainComponent implements OnInit {
   }
 
   searchMethod(): void {
+    this.idArtistTracks = [];
+    this.idArtistTracksTwo = [];
+    this.idArtists = [];
+
+    this.topTrackId = [];
+    this.topTrackArtist = [];
+    this.topTrackArtistTwo = [];
+    this.topTrackUrl = [];
+    this.topTrack = [];
+    this.topTrackDuration = [];
+    this.topTrackArtistImage = [];
+
+    this.artistSonList = [];
+    this.albumSonList = [];
+    this.playListSonList = [];
 
       this.loadingService.setLoading(true);
       this.artistSearch.getArtistAll().subscribe((response: All) => {
         this.buscar = true;
-
-        this.idArtistTracks = [];
-        this.idArtistTracksTwo = [];
-        this.idArtists = [];
-
-        this.idsPlaylist = [];
-        this.playListName = [];
-        this.playList = [];
-        this.playListImage = [];
-
-        this.topTrackId = [];
-        this.topTrackArtist = [];
-        this.topTrackArtistTwo = [];
-        this.topTrackUrl = [];
-        this.topTrack = [];
-        this.topTrackDuration = [];
-        this.topTrackArtistImage = [];
-
-        this.artistSonList = [];
-        
-        this.topAlbumImage = [];
-        this.idsAlbum = [];
-        this.topAlbumArtist = [];
-        this.topAlbumYear = [];
         
         this.idArtist = response.artists.items[0].id;
         this.artist = response.artists.items[0].name;
         this.imageUrl = response.artists.items[0].images[0].url;
 
-
-        for (let album of response.albums.items) {
-          this.idsAlbum.push(album.id);
-          this.topAlbum.push(album.name)
-          this.topAlbumYear.push(album.release_date)
-          if (album.images && album.images.length > 0) {
-            this.topAlbumImage.push(album.images[0].url); // Verifica si hay imágenes disponibles
-          } else {
-            // Si no hay imagen disponible, puedes agregar una imagen por defecto o dejar este espacio en blanco
-            this.topAlbumImage.push('../assets/Artistasinfoto.png');
-          }
-          for (let artists of album.artists) {
-            this.idArtists.push(artists.id);
-            if (artists.name && artists.name.length > 0) {
-              this.topAlbumArtist.push(artists.name);
-            } else {
-              this.topAlbumArtist.push('');
-            }
-          }
-        }
+        this.albumSonList = response.albums.items;
 
         this.artistSonList = response.artists.items
+
+        this.playListSonList = response.playlists.items
 
         for (let tracks of response.tracks.items) {
           this.topTrackId.push(tracks.id)
@@ -168,25 +131,10 @@ export class SearchMainComponent implements OnInit {
           if (tracks.album.images && tracks.album.images.length > 0) {
             this.topTrackArtistImage.push(tracks.album.images[0].url);
           } else {
-            // Si no hay imagen disponible, puedes agregar una imagen por defecto o dejar este espacio en blanco
+            // Si no hay imagen disponible, puedes agregar una imagen por defecto 
             this.topTrackArtistImage.push('../assets/Artistasinfoto.png');
           }
         }
-
-        for (let playList of response.playlists.items) {
-          this.idsPlaylist.push(playList.id)
-          this.playList.push(playList.name)
-          if (playList.name) {
-            this.playListName.push(playList.owner.display_name)
-          } else {
-            this.playListName.push('Desconocido')
-          }
-          if (playList.images && playList.images.length > 0) {
-            this.playListImage.push(playList.images[0].url)
-        } else {
-          this.playListImage.push('../assets/Artistasinfoto.png');
-        }
-      }
       this.loadingService.setLoading(false);
       });
     } 

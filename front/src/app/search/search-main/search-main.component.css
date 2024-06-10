@@ -1,34 +1,8 @@
 
-.cardImageList {
-    border-radius: 10px;
-    border: none;
-    position: relative;
-    border: none;
-    width: 180px;
-    height: 180px;
-  }
-
-  .cardImageList::shadow {
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-    background-color: #292828;
-  }
-
-  .cardImageList:hover {
-    cursor: pointer;
-  }
-
-  .texttt11 {
-
-    width: 160px;
-    height: 10%;
-    position: relative;
-    left: -180px;
-    top: 180px;
-  }
-
   .text {
+    width: 340px;
+    top: 130px;
     position: relative;
-    top: 140px;
     margin-left: 15px;
     font-size: 22px;
     font-weight: bold;
@@ -36,20 +10,19 @@
   }
 
   .text2 {
+    top: 0px;
+    margin-bottom: 30px;
     position: relative;
-    top: 90px;
-    margin-left: 410px;
     font-size: 22px;
     font-weight: bold;
     color: white;
   }
 
   .cardP {
-
     position: relative;
-    top: 105px;
+    top: 150px;
     margin-left: 15px;
-    width: 380px;
+    width: 500px;
     height: 220px;
     border-radius: 10px;
     background-color: #181717;
@@ -66,11 +39,6 @@
     height: 100px;
     top: 20px;
     margin-left: 20px;
-  }
-
-  .card-image {
-    width: 100%;
-    height: 100%;
   }
 
   .cardI::shadow {
@@ -101,17 +69,20 @@
     margin-left: 20px;
     color: #a09f9f;
   }
-
+  .containerCards {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
 
   .cardC {
-    top: -115px;
+    top: 80px;
+    width: 100%;
+    right: 10px; 
     display: flex;
     flex-direction: column;
     position: relative;
-    left: 415px;
-    right: 10px;
-    height: 225px;
-    width: 70%;
+    height: 300px;
   }
 
   .toptrack {
@@ -158,7 +129,6 @@
     font-weight: bold;
     color: white;
     margin-left: 10px;
-
   }
 
   .texttt1:hover {
@@ -192,14 +162,23 @@
     cursor: pointer;
   }
 
-
-
   .timett {
     right: 100px;
     top: 15px;
     position: absolute;
     color: #a09f9f;
   }
+
+  input[type="range"] {
+    /* Cambiar la longitud del input */
+    width: 50px; 
+  }
+  
+  /* Cambiar el color de la barra de deslizamiento */
+  input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #2b2828; /* Cambia el color de la barra de deslizamiento para navegadores webkit (Chrome, Safari, etc.) */
+  }
+  
 
   .artista {
     color: white;
@@ -208,158 +187,30 @@
 
   .card-image {
     width: 100%;
+    height: 100%;
     border-radius: 5px;
   }
 
   .textArtist {
-    top: -60px;
+    top: 150px;
     position: relative;
     margin-left: 15px;
     font-size: 22px;
     font-weight: bold;
     color: white;
-  }
-
-
-  .cardArtist {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    top: -40px;
-    height: 240px;
-  }
-
-
-  .cardImageArtista {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-    width: 200px;
-    height: 100%;
-
-  }
-
-  .cardImageArtista:hover {
-    background-color: rgba(112, 109, 109, 0.226);
-  }
-
-  .cardRedSimilar {
-    border-radius: 100%;
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  .imageSimilar {
-    position: relative;
-    border-radius: 100%;
-    border: none;
-    width: 170px;
-    height: 170px;
-  }
-
-  .imageSimilar::shadow {
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-    border-radius: 100%;
-    background-color: #181717;
-  }
-
-  .imageSimilar:Hover {
-    cursor: pointer;
-  }
-
-  .artistSimilar {
-    position: relative;
-
-
   }
 
   .textAlbumes {
+    top: 150px;
     position: relative;
     margin-left: 15px;
     font-size: 22px;
     font-weight: bold;
     color: white;
   }
-
-  .cardAlbum {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    top: 20px;
-    height: 240px;
-
-  }
-
-  .cardImageAlbum {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-    width: 200px;
-    height: 100%;
-
-  }
-
-  .cardImageAlbum:hover {
-    background-color: rgba(112, 109, 109, 0.226);
-  }
-
-
-  .cardCuadAlbum {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    border: none;
-
-  }
-
-  .imageAlbum {
-    border: none;
-    position: relative;
-    border: none;
-    width: 170px;
-    height: 170px;
-  }
-
-  .imageAlbum::shadow {
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-    background-color: #181717;
-  }
-
-  .imageAlbum:hover {
-    cursor: pointer;
-  }
-
-  .artistAlbum {
-    position: relative;
-  }
-
-  .yearArtist {
-    top: -20px;
-    position: relative;
-    font-size: 13px;
-    color: #747171;
-  }
-
-  .artistAlbumLink:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
 
   .textList {
-    top: 60px;
+    top: 150px;
     position: relative;
     margin-left: 15px;
     font-size: 22px;
@@ -367,129 +218,106 @@
     color: white;
   }
 
-  .cardListas {
+  @media screen and (max-width: 1100px) {
 
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    top: 80px;
-    height: 240px;
-
-  }
-
-  .cardImagenListas {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-    width: 200px;
-    height: 100%;
-  }
-
-  .cardImagenListas:hover {
-    background-color: rgba(112, 109, 109, 0.226);
-  }
-
-  .cardCuadListas {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  .imageListas {
-    border: none;
-    position: relative;
-    border: none;
-    width: 170px;
-    height: 170px;
-  }
-
-  .imageListas::shadow {
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-    background-color: #181717;
-  }
-
-  .imageListas:hover {
-    cursor: pointer;
-  }
-
-  .textListBottom {
-    position: relative;
-    display: flex;
-    justify-content: left;
-    flex-direction: column;
-  }
-
-  .artistListas {
-    position: relative;
-
-  }
-
-  .nameListas {
-    top: -20px;
-    position: relative;
-    font-size: 13px;
-    color: #747171;
-  }
-
-
-  @media screen and (max-width: 1600px) {
-    .cardImageAlbum:nth-child(n+6) {
-      display: none;
+    .texttt1{
+      font-size: 10px;
+    }
+    .artistTrackLink{
+      font-size: 9px;
+    }
+    .timett{
+      font-size: 10px;
+      right: 40px;
+    }
+    input[type="range"] {
+      width: 30px; 
     }
 
-    .cardImageArtista:nth-child(n+6) {
-      display: none;
-    }
+  }
 
-    .cardImagenListas:nth-child(n+6) {
-      display: none;
+  @media screen and (max-width: 850px) {
+    .cardI{
+      width: 80px;
+      height: 80px;
+      margin-left: 10px;
+    }
+    .cardP{
+      width: 150px;
+    }
+    .nombrecanc{
+      font-size: 20px;
+      margin-left: 10px;
+    }
+    .result{
+      margin-left: 10px;
+    }
+    .text{
+      font-size: 12px;
+    }
+    .text2{
+      font-size: 12px;
+    }
+    .cardC{
+      top: 95px;
     }
   }
 
-  @media screen and (max-width: 1400px) {
-    .cardImageAlbum:nth-child(n+5) {
-      display: none;
+    @media screen and (max-width: 550px) {
+      .containerCards {
+        gap: 5px;
+      }
+      .cardI{
+        width: 65px;
+        height: 65px;
+        margin-left: 5px;
+      }
+      .cardP{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 130px;
+      }
+      .nombrecanc{
+        font-size: 10px;
+        margin-left: 5px;
+      }
+      .result{
+        font-size: 8px;
+        margin-left: 5px;
+      }
+      .cardC{
+        right: 2px;
+        top: 98px;
+      }
+      .text{
+        font-size: 10px;
+      }
+      .text2{
+        font-size: 10px;
+        left: 10px;
+      }
     }
 
-    .cardImageArtista:nth-child(n+5) {
-      display: none;
+    @media screen and (max-width:450px) {
+      .containerCards{
+        flex-direction: column;
+      }
+      input[type="range"] {
+        width: 20px; 
+      }
+      .timett{
+        font-size: 8px;
+        right: 25px;
+      }
+      .result{
+        top: 10px;
+      }
+      .cardC{
+        top: 150px;
+      }
+      .cardP{
+        height: 140px;
+      }
     }
 
-    .cardImagenListas:nth-child(n+5) {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 1200px) {
-    .cardImageAlbum:nth-child(n+4) {
-      display: none;
-    }
-
-    .cardImageArtista:nth-child(n+4) {
-      display: none;
-    }
-
-    .cardImagenListas:nth-child(n+4) {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 1000px) {
-    .cardImageAlbum:nth-child(n+3) {
-      display: none;
-    }
-
-    .cardImageArtista:nth-child(n+3) {
-      display: none;
-    }
-
-    .cardImagenListas:nth-child(n+3) {
-      display: none;
-    }
-  }
