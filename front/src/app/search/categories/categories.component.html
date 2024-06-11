@@ -9,85 +9,18 @@
 [search]="buscar" />
 <div *ngIf="nameCategory && !loading">
   <p class="textArtist">Artistas de {{nameCategory}}</p>
-  <div class="cardArtist">
-    <div class="cardImageArtista" *ngFor="let artista of nameArtists.slice(0, 7); let i = index">
-      <div class="cardRedSimilar">
-        <img class="imageSimilar" (click)="takeId(idArtists[i])" [routerLink]="['/artistId', idArtists[i]]" src="{{imageArtists[i]}}"
-          alt="">
-        <div class="textListBottom">
-          <p class="artistSimilar">{{nameArtists[i]}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-cards-line class="list-app"
+  [topTrackList]="listArtist"/>
+
   <p class="textAlbumes">Álbumes de {{nameCategory}}</p>
-  <div class="cardAlbum">
-    <div class="cardImageAlbum" *ngFor="let album of topAlbum.slice(0, 7); let i = index">
-      <div class="cardCuadAlbum">
-        <img class="imageAlbum" src="{{topAlbumImage[i]}}" (click)="takeId(idsAlbum[i])" [routerLink]="['/albumDirect', idsAlbum[i]]"
-          alt="">
-        <div class="textListBottom">
-          <p class="artistAlbum">{{ topAlbum [i] | pipeTruncate}}</p>
-          <p class="yearArtist">{{topAlbumYear[i].split("-")[0]}} · <span class="artistAlbumLink"
-              (click)="takeId(idArtists[i])" [routerLink]="['/artistId', idArtists[i]]">{{topAlbumArtist[i]}}</span></p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-cards-line class="list-app"
+  [topAlbumList]="listAlbum"/>
+
   <p class="textListas">Las mejores listas de {{nameCategory}}</p>
-  <div class="cardListas">
-    <div class="cardImagenListas" *ngFor="let lista of playListName.slice(0, 7); let i = index">
-      <div class="cardCuadListas">
-        <img class="imageListas" src="{{playListImage[i]}}" (click)="takeId(idsPlaylist[i])"
-        [routerLink]="['/playListId', idsPlaylist[i]]" >
-        <div class="textListBottom">
-          <p class="artistListas">{{ playListName[i] | pipeTruncate}}</p>
-          <p class="nameListas">{{playListAutor[i]}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-cards-line class="list-app"
+  [topPlayListList]="listPlayList"/>
+
   <div class="textListas">Top canciones de {{nameCategory}}</div>
   <app-list-songs *ngIf="topTrackList"
   [topTrackList]="topTrackList"/>
-  <!-- <table class="table2">
-    <thead>
-      <tr class="columnall">
-        <th class="column1"></th>
-        <th class="column2"></th>
-        <th class="column3"></th>
-        <th class="column4"></th>
-        <th class="column5"></th>
-        <th class="column6"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container class="filasallFoot" *ngFor="let track of topTrack.slice(0, 10); let i = index">
-        <tr class="filasall">
-          <td class="fila1" (click)="togglePlayBack(this.topTrackUrl[i])">{{ i + 1 }}</td>
-          <td></td>
-          <td>
-            <span class="fila31" (click)="takeId(topTrackId[i])" [routerLink]="['/songsId', topTrackId[i]]">{{topTrack[i] |
-              pipeTruncate}}</span><br>
-
-            <span class="fila32" *ngIf="topTrackArtistTwo[i] === ''">
-              <span class="linkArtist" (click)="takeId(idArtistTracks[i])" [routerLink]="['/artistId', idArtistTracks[i]]">
-                {{topTrackArtist[i]}} </span></span>
-
-            <span class="fila32" *ngIf="topTrackArtistTwo[i] !== ''">
-              <span class="linkArtist" (click)="takeId(idArtistTracks[i])" [routerLink]="['/artistId', idArtistTracks[i]]">
-                {{topTrackArtist[i]}} </span> ,
-              <span class="linkArtist" (click)="takeId(idArtistTracksTwo[i])"
-              [routerLink]="['/artistId', idArtistTracksTwo[i]]">{{topTrackArtistTwo[i]}}</span> </span>
-          </td>
-          <td></td>
-          <td class="fila4">{{topTrackDuration[i] | pipeDuracion}}</td>
-          <td class="flila5">
-            <input type="range" min="0" max="1" step="0.05" [(ngModel)]="globalVolume" (input)="ajustarVolume()">
-          </td>
-        </tr>
-      </ng-container>
-    </tbody>
-  </table> -->
-  <!-- <div class="releaseFoot">{{ albumTracksRelease }}</div> -->
 </div>

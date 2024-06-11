@@ -40,22 +40,11 @@ export class ArtistIdComponent implements OnInit {
   artistFollowers: number = 0;
   artistPopularity: number = 0;
 
-  releaseDate: string[] = [];
-  typeAlbum: string[] = [];
-  nameAlbum: string[] = [];
-  imageAlbum: string[] = [];
-  idsAlbum: string[] = [];
+  albumList: any[] = [];
 
-  trackId: string[] = [];
-  trackImage: string[] = [];
-  trackName: string[] = [];
-  trackDuration: number[] = [];
-  trackUrl: string[] = [];
+  trackList: any[] = [];
 
-  artistSimilarImage: string[] = [];
-  artistSimilarName: string[] = [];
-  artistSimilarType: string[] = [];
-  idArtistSimilar: string[] = [];
+  artistList: any[] = [];
 
   takeIdAll(id: string) {
     this.takeId.setAlgoId(id);
@@ -78,31 +67,18 @@ export class ArtistIdComponent implements OnInit {
         this.subscription.unsubscribe();
       }
     }
-  
-  
 
   buscarArtist(): void {
     this.loading = true;
     this.loadingService.setLoading(true)
 
     this.colorDominanteArtist = [];
-    this.nameAlbum = [];
-    this.imageAlbum = [];
-    this.artistGenres = [];
-    this.releaseDate = [];
-    this.typeAlbum = [];
-    this.idsAlbum = [];
 
-    this.trackId = [];
-    this.trackUrl = [];
-    this.trackDuration = [];
-    this.trackName = [];
-    this.trackImage = [];
+    this.albumList = [];
 
-    this.artistSimilarImage = [];
-    this.artistSimilarType = [];
-    this.artistSimilarName = [];
-    this.idArtistSimilar = [];
+    this.trackList = [];
+
+    this.artistList = []
 
     this.playListSearch.getArtistId(this.artistId).subscribe((response: ArtistID) => {
       this.artistName = response.artistInfo.name;
@@ -113,34 +89,17 @@ export class ArtistIdComponent implements OnInit {
       this.artistGenres = response.artistInfo.genres;
       this.colorDominante(this.artistImage);
 
-      for (let album of response.albums.items) {
-        this.releaseDate.push(album.release_date);
-        this.typeAlbum.push(album.album_type);
-        this.nameAlbum.push(album.name);
-        this.imageAlbum.push(album.images[0].url);
-        this.idsAlbum.push(album.id);
-      }
+      this.albumList = response.albums.items
 
-      for (let track of response.topTracks.tracks) {
-        this.trackId.push(track.id);
-        this.trackUrl.push(track.preview_url);
-        this.trackDuration.push(track.duration_ms);
-        this.trackName.push(track.name);
-        this.trackImage.push(track.album.images[0].url);
-      }
+      this.trackList = response.topTracks.tracks
 
-      for (let artist of response.relatedArtists.artists) {
-        this.artistSimilarImage.push(artist.images[0].url);
-        this.artistSimilarName.push(artist.name);
-        this.artistSimilarType.push(artist.type);
-        this.idArtistSimilar.push(artist.id);
-      }
+      this.artistList = response.relatedArtists.artists
+
       this.loadingService.setLoading(false);
       this.loading = false;
       this.buscar = true;
     });
   }
-
 
   //Zona de Reproducción
   stopMusic() {
@@ -158,9 +117,6 @@ export class ArtistIdComponent implements OnInit {
   ajustarVolume() {
     this.musicPlayer.setVolume(this.globalVolume);
   }
-
-
-  //función para extraer el color de la imagen
 
   async colorDominante(imageUrl: string) {
     this.extractColor.getColorDominante(imageUrl)

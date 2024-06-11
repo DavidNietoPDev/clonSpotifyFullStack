@@ -1,6 +1,6 @@
 
 <table >
-    <thead *ngIf="!checkComponent() && !loading">
+    <thead *ngIf="!checkComponent() && !loading && search">
         <tr class="columnall" >
             <th class="column1">#</th>
             <th class="column2"></th>
@@ -11,7 +11,7 @@
             <th class="column6"></th>
         </tr>
     </thead>
-    <thead *ngIf="checkComponent() && !loading">
+    <thead *ngIf="checkComponent() && !loading && search">
         <tr class="columnAll2" >
             <th class="column1"></th>
             <th class="column2"></th>
@@ -36,19 +36,18 @@
                     <span class="fila31" 
                     [routerLink]="['/songsId', topTrackId[i]]">{{topTrack[i] | pipeTruncate}}</span> <br>
                     <span class="fila32" *ngIf="topTrackArtistTwo[i] !== ''">
-                        <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistId[i])"
+                        <span class="artistTrackLink" 
                             [routerLink]="['/artistId', topTrackArtistId[i]]">{{ topTrackArtist[i] }} ,
                         </span>
-                        <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistTwoId[i])"
-                        [routerLink]="['/artistId', topTrackArtistTwoId[i]]">{{ topTrackArtistTwo[i] }}
-                        </span>
+                        <span class="artistTrackLink" 
+                        [routerLink]="['/artistId', topTrackArtistTwoId[i]]">{{ topTrackArtistTwo[i] }}</span>
                     </span>
                     <span class="fila32" *ngIf="topTrackArtistTwo[i] === ''">
-                        <span class="artistTrackLink" (click)="takeIdAll(topTrackArtistId[i])"
+                        <span class="artistTrackLink" 
                         [routerLink]="['/artistId', topTrackArtistId[i]]">{{ topTrackArtist[i] }}</span>
                     </span>
                 </td>
-                <td class="fila4" (click)="takeIdAll(topTrackAlbumId[i])" [routerLink]="['/albumDirect', topTrackAlbumId[i]]">
+                <td class="fila4"  [routerLink]="['/albumDirect', topTrackAlbumId[i]]">
                     {{topTrackAlbum[i] | pipeTruncate}}</td>
                 <td class="fila4">{{topTrackDuration[i] | pipeDuracion}}</td>
                 <td class="flila5">

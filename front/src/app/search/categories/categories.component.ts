@@ -36,23 +36,24 @@ export class CategoriesComponent implements OnInit {
 
   topTrackList: TracksItem [] = [];
 
+  listAlbum: any [] = [];
+  // topAlbum: string[] = [];
+  // topAlbumImage: string[] = [];
+  // topAlbumArtist: string[] = [];
+  // topAlbumYear: string[] = [];
+  // idsAlbum: string[] = [];
+  // idsArtistAlbum: string[] = [];
 
-  topAlbum: string[] = [];
-  topAlbumImage: string[] = [];
-  topAlbumArtist: string[] = [];
-  topAlbumYear: string[] = [];
-  idsAlbum: string[] = [];
-  idsArtistAlbum: string[] = [];
+  listPlayList: any [] = [];
+  // idsPlaylist: string[] = [];
+  // playListAutor: string[] = [];
+  // playListImage: string[] = [];
+  // playListName: string[] = [];
 
-
-  idsPlaylist: string[] = [];
-  playListAutor: string[] = [];
-  playListImage: string[] = [];
-  playListName: string[] = [];
-
-  idArtists: string [] = [];
-  nameArtists: string[] = [];
-  imageArtists: string[] = [];
+  listArtist: any [] = [];
+  // idArtists: string [] = [];
+  // nameArtists: string[] = [];
+  // imageArtists: string[] = [];
 
   ngOnInit(): void {
     this.subscription = this.route.paramMap.subscribe(params => {
@@ -84,57 +85,64 @@ export class CategoriesComponent implements OnInit {
 
     this.colorDominanteCategory = [];
 
-    this.idsPlaylist = [];
-    this.playListImage = [];
-    this.playListName = [];
-    this.playListAutor = [];
+    this.listAlbum = [];
+    this.listArtist = [];
+    this.listPlayList = [];
 
-    this.idArtists = [];
-    this.nameArtists = [];
-    this.imageArtists = [];
+    // this.idsPlaylist = [];
+    // this.playListImage = [];
+    // this.playListName = [];
+    // this.playListAutor = [];
 
-    this.topAlbum = [];
-    this.topAlbumImage = [];
-    this.topAlbumArtist = [];
-    this.topAlbumYear = [];
-    this.idsAlbum = [];
-    this.idsArtistAlbum = [];
+    // this.idArtists = [];
+    // this.nameArtists = [];
+    // this.imageArtists = [];
+
+    // this.topAlbum = [];
+    // this.topAlbumImage = [];
+    // this.topAlbumArtist = [];
+    // this.topAlbumYear = [];
+    // this.idsAlbum = [];
+    // this.idsArtistAlbum = [];
 
     this.categoriesSearch.getCategoryId(this.categoryId).subscribe((response: Category) => {
       this.imageCategory = response.categoryInfo.icons[0].url;
       this.colorDominante(this.imageCategory)
       this.nameCategory = response.categoryInfo.name;
-      for (let playlist of response.searchs.playlists.items) 
-        {
-        this.idsPlaylist.push(playlist.id);
-        this.playListImage.push(playlist.images[0].url);
-        this.playListName.push(playlist.name)
-        this.playListAutor.push(playlist.owner.display_name)
-        }
-      for (let artist of response.searchs.artists.items)
-        {
-          this.idArtists.push(artist.id);
-          this.nameArtists.push(artist.name);
-          if (artist.images && artist.images.length > 0) 
-            {
-              this.imageArtists.push(artist.images[0].url);
-            } else {
-              this.imageArtists.push('../../assets/Artistasinfoto.png');
-            }
-        }
-      for (let album of response.searchs.albums.items)
-        {
-          this.topAlbum.push(album.name)
-          if(album.images && album.images.length > 1) {
-            this.topAlbumImage.push(album.images[0].url);
-          } else {
-            this.topAlbumImage.push('../../assets/Artistasinfoto.png')
-          }
-          this.topAlbumArtist.push(album.artists[0].name)
-          this.topAlbumYear.push(album.release_date) 
-          this.idsAlbum.push(album.id); 
-          this.idsArtistAlbum.push(album.artists[0].id)
-        }
+      this.listPlayList = response.searchs.playlists.items
+      // for (let playlist of response.searchs.playlists.items) 
+      //   {
+      //   this.idsPlaylist.push(playlist.id);
+      //   this.playListImage.push(playlist.images[0].url);
+      //   this.playListName.push(playlist.name)
+      //   this.playListAutor.push(playlist.owner.display_name)
+      //   }
+      this.listArtist = response.searchs.artists.items
+      // for (let artist of response.searchs.artists.items)
+      //   {
+      //     this.idArtists.push(artist.id);
+      //     this.nameArtists.push(artist.name);
+      //     if (artist.images && artist.images.length > 0) 
+      //       {
+      //         this.imageArtists.push(artist.images[0].url);
+      //       } else {
+      //         this.imageArtists.push('../../assets/Artistasinfoto.png');
+      //       }
+      //   }
+      this.listAlbum = response.searchs.albums.items
+      // for (let album of response.searchs.albums.items)
+      //   {
+      //     this.topAlbum.push(album.name)
+      //     if(album.images && album.images.length > 1) {
+      //       this.topAlbumImage.push(album.images[0].url);
+      //     } else {
+      //       this.topAlbumImage.push('../../assets/Artistasinfoto.png')
+      //     }
+      //     this.topAlbumArtist.push(album.artists[0].name)
+      //     this.topAlbumYear.push(album.release_date) 
+      //     this.idsAlbum.push(album.id); 
+      //     this.idsArtistAlbum.push(album.artists[0].id)
+      //   }
       for (let track of response.searchs.tracks.items.slice(0, 10))
         {
           this.topTrackList.push(track);

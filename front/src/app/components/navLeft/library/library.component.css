@@ -16,7 +16,7 @@
   flex-direction: row;
   align-items: center;
   height: 56px;
-  width: 400px;
+  width: 100%;
   color: #a09f9f;
   margin-top: 10px;
 }
@@ -148,10 +148,11 @@
 
 .legal {
   height: 200px;
-  width: 400px;
+  width: 100%;
 }
 
 .listalegal {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
@@ -240,6 +241,9 @@
 
   .icon31 {
     left: 36%;
+  }
+  .title3{
+    width: 100px;
   }
 
   .tercero {

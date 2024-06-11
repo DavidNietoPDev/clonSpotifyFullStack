@@ -32,7 +32,6 @@
 
 
 input[type="range"] {
-  /* Cambiar la longitud del input */
   width: 50px; 
 }
 
@@ -155,6 +154,9 @@ input[type="range"]::-webkit-slider-runnable-track {
   }
   input[type="range"] {
     width: 30px; 
+  }
+  .Svg-sc{
+    width: 10px;
   }
 
 }
