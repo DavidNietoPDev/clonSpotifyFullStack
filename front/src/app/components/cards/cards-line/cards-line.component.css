@@ -1,3 +1,6 @@
+@import "swiper/swiper.min.css";
+@import "swiper/modules/pagination/pagination.min.css";
+@import "swiper/modules/navigation/navigation.min.css";
 
 .swiper {
   top: 150px;
