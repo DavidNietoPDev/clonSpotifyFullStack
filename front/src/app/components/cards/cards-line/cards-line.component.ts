@@ -7,7 +7,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 
-
 @Component({
   selector: 'app-cards-line',
   templateUrl: './cards-line.component.html',

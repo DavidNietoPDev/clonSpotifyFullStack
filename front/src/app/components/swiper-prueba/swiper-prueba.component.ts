@@ -1,12 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { SwiperContainer } from 'swiper/element';
-import { SwiperOptions } from 'swiper/types';
-
-export interface Card {
-  title: string;
-  description: string;
-  url: string;
-}
+import {  Component,  Input } from '@angular/core';
 
 @Component({
   selector: 'app-swiper-prueba',
@@ -14,57 +6,62 @@ export interface Card {
   styleUrl: './swiper-prueba.component.css'
 })
 export class SwiperPruebaComponent {
+  _topTrackList: any[] = [];
 
-  @ViewChild('swiper') swiper!: ElementRef<SwiperContainer>;
-  @ViewChild('swiperThumbs') swiperThumbs!: ElementRef<SwiperContainer>;
 
-  contents: Card [] = [
-    {
-      title: 'Computer',
-      description: 'Description about computer...',
-      url: 'https://picsum.photos/id/1/640/480',
-    },
-    {
-      title: 'Building',
-      description: 'Building description...',
-      url: 'https://picsum.photos/id/101/640/480',
-    }, {
-      title: 'Glass over a computer',
-      description: 'Description of a glass over a computer',
-      url: 'https://picsum.photos/id/201/640/480',
-    }, {
-      title: 'Autumn',
-      description: 'Description about autumn leaves',
-      url: 'https://picsum.photos/id/301/640/480',
-    }, {
-      title: 'Balloon',
-      description: 'Coloured balloon',
-      url: 'https://picsum.photos/id/401/640/480',
-    },
-  ];
-
-  index = 0;
-
-   // Swiper
-   swiperConfig: SwiperOptions = {
-    spaceBetween: 10,
-    navigation: true,
+  @Input()  
+  set topTrackList(value: any[]) {
+    this._topTrackList = value ?? [];
+    this.listMethod();
+  }
+  get topTrackList(): any[] {
+    return this._topTrackList;
   }
 
-  swiperThumbsConfig: SwiperOptions = {
-    spaceBetween: 10,
-    slidesPerView: 4,
-    freeMode: true,
-    watchSlidesProgress: true,
-  }
+  id: string[] = [];
+  image: string[] = [];
+  name: string[] = [];
+  artistName: string[] = [];
+  albumYear: string[] = [];
+  idArtist: string[] = [];
 
   ngAfterViewInit() {
-    this.swiper.nativeElement.swiper.activeIndex = this.index;
-    this.swiperThumbs.nativeElement.swiper.activeIndex = this.index;
+ 
   }
 
-  slideChange(swiper: any) {
-    this.index = swiper.detail[0].activeIndex;
+  listMethod() {
+
+    this.id = [];
+    this.image = [];
+    this.name = [];
+    this.artistName= [];
+    this.albumYear = [];
+    this.idArtist = [];
+
+    for ( let card of this.topTrackList) {
+      this.id.push(card.id);
+      this.name.push(card.name);
+      if(card.release_date) {
+        this.albumYear.push(card.release_date)
+      } else {
+        this.albumYear.push('')
+      }
+      if(card.images && card.images.length > 0) {
+        this.image.push(card.images[0].url)
+      } else {
+        this.image.push('../../assets/Artistasinfoto.png')
+      }
+      if(card.artists) {
+        for(let artist of card.artists) {
+          this.idArtist.push(artist.id)
+          if(artist.name && artist.name.length > 0) {
+            this.artistName.push(artist.name)
+          } else {
+            this.artistName.push('')
+          }
+        }
+      } 
+    }
   }
 
 }

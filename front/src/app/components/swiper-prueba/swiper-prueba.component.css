@@ -1,0 +1,256 @@
+
+.swiper {
+    top: 150px;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+  }
+  .music-card {
+    background-color: transparent;
+    height: 170px;
+    width: 170px;
+    border-radius: 10px;
+    display: flex;
+    text-align: center;
+  }
+  
+  .swiper-slide {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .swiper-slide:hover {
+    background-color: rgba(112, 109, 109, 0.226);
+    border-radius: 10px;
+  }
+  
+  .image {
+    position: relative;
+    border-radius: 100%;
+    border: none;
+    width: 170px;
+    height: 170px;
+  }
+  
+  .imageC {
+    cursor: pointer;
+    position: relative;
+    border: none;
+    width: 170px;
+    height: 170px;
+  }
+  .imageC::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    background-color: #181717;
+  }
+  
+  .image::shadow {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 100%;
+    background-color: #181717;
+  }
+  .image:hover {
+    cursor: pointer;
+  }
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 100%;
+  }
+  
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 16px;
+    /* Cambiar el tamaño del icono de la flecha */
+  }
+  
+  .card-text {
+    height: 70px;
+    text-align: center;
+    color: white;
+    width: 180px;
+  }
+  
+  .textTwo {
+    position: relative;
+    font-size: 13px;
+    color: #747171;
+  }
+  
+  .linkArtist:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .music-cardTwo {
+    background-color: transparent;
+    width: 170px;
+    height: 170px;
+    border-radius: 100px;
+    text-align: center;
+  }
+  
+  .swiperTwo {
+    padding: 30px;
+    position: relative;
+    width: 100%;
+  
+  }
+  
+  .swiper-button-nextTwo,
+  .swiper-button-prevTwo {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 100%;
+  }
+  
+  .swiper-button-nextTwo::after,
+  .swiper-button-prevTwo::after {
+    font-size: 16px;
+    /* Cambiar el tamaño del icono de la flecha */
+  }
+  
+  @media screen and (max-width: 1380px) {
+    .image {
+      width: 155px;
+      height: 155px;
+    }
+    
+    .imageC {
+  
+      width: 155px;
+      height: 155px;
+    }
+    .music-card {
+      width: 155px;
+      height: 155px;
+    }
+    .music-cardTwo{
+      width: 155px;
+      height: 155px;
+    }
+    .card-text {
+      width: 155px;
+    }
+  }
+  
+  @media screen and (max-width: 1155px) {
+    .image {
+      width: 135px;
+      height: 135px;
+    }
+    .imageC {
+      width: 135px;
+      height: 135px;
+    }
+    .music-card {
+      width: 135px;
+      height: 135px;
+    }
+    .music-cardTwo{
+      width: 135px;
+      height: 135px;
+    }
+    .card-text {
+      width: 135px;
+    }
+  
+    .textOne{
+      font-size: 14px;
+    }
+  }
+  
+  
+  @media screen and (max-width: 955px) {
+  
+    .image {
+      width: 120px;
+      height: 120px;
+    }
+    .imageC {
+      width: 120px;
+      height: 120px;
+    }
+    .music-card {
+      width: 120px;
+      height: 120px;
+    }
+    .music-cardTwo{
+      width: 120px;
+      height: 120px;
+    }
+    .card-text {
+      width: 120px;
+    }
+  
+    .textOne{
+      font-size: 12px;
+    }
+  }
+  
+  
+  
+  
+  @media screen and (max-width: 400px) {
+    .image {
+      width: 100px;
+      height: 100px;
+    }
+    .imageC {
+      width: 100px;
+      height: 100px;
+    }
+    .music-card {
+      width: 100px;
+      height: 100px;
+    }
+    .music-cardTwo{
+      width: 100px;
+      height: 100px;
+    }
+    .card-text {
+      width: 100px;
+    }
+  
+    .textOne{
+      font-size: 10px;
+    }
+    .textTwo {
+      font-size: 8px;
+    }
+  }
+  
+  @media screen and (max-width: 350px) {
+    .image {
+      width: 80px;
+      height: 80px;
+    }
+    .imageC {
+      width: 80px;
+      height: 80px;
+    }
+    .music-card {
+      width: 80px;
+      height: 80px;
+    }
+    .music-cardTwo{
+      width: 80px;
+      height: 80px;
+    }
+    .card-text {
+      width: 80px;
+    }
+  
+    .textOne{
+      font-size: 9px;
+    }
+    .textTwo {
+      font-size: 8px;
+    }
+  }
