@@ -13,6 +13,7 @@ import { CategoriesComponent } from './search/categories/categories.component';
 import { MainComponent } from './components/main/main.component';
 import { SearchMainComponent } from './search/search-main/search-main.component';
 import { CardsLineComponent } from './components/cards/cards-line/cards-line.component';
+import { SwiperPruebaComponent } from './components/swiper-prueba/swiper-prueba.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,7 @@ const routes: Routes = [
   { path: 'albumDirect/:Id', component: AlbumDirectComponent},
   { path: 'songsId/:Id', component: SongsIdComponent},
   { path: 'category/:Id/:search', component: CategoriesComponent},
-  { path: 'carrousel', component: CardsLineComponent},
+  { path: 'carrousel', component: SwiperPruebaComponent},
   { path: '**', redirectTo: 'home' },
 ];
 

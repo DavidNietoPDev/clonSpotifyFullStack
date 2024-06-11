@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,9 +35,10 @@ import { SearchMainComponent } from './search/search-main/search-main.component'
 import { SpecificNavComponent } from './components/navSearch/specific-nav/specific-nav.component';
 import { ListSongsComponent } from './components/list-songs/list-songs.component';
 import { CardsLineComponent } from './components/cards/cards-line/cards-line.component';
+import { register } from 'swiper/element/bundle';
+import { SwiperPruebaComponent } from './components/swiper-prueba/swiper-prueba.component';
 
-
-
+register();
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +69,9 @@ import { CardsLineComponent } from './components/cards/cards-line/cards-line.com
     SearchMainComponent,
     SpecificNavComponent,
     ListSongsComponent,
-    CardsLineComponent
+    CardsLineComponent,
+    SwiperPruebaComponent,
+    
 
     
   ],
@@ -84,6 +87,10 @@ import { CardsLineComponent } from './components/cards/cards-line/cards-line.com
   providers: [
     provideAnimationsAsync()
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }
