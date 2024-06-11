@@ -52,11 +52,12 @@ export class ListSongsComponent {
   }
 
   checkRoute(): boolean {
-    return this.router.url.startsWith('/albumDirect/')
+    return this.router.url.startsWith('/albumDirect/') 
   }
 
   checkComponent(): boolean {
-    return this.router.url.startsWith('/songsId/')
+    if(this.router.url.startsWith('/songsId/') || this.router.url.startsWith('/artistId/'))
+      return true;
   }
 
   listMethod() {
@@ -138,6 +139,7 @@ export class ListSongsComponent {
         this.topTrackArtistTwoId.push('');
       }
     }
+    this.search = true;
     this.loading = false;
   }
 
