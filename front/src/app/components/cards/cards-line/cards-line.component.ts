@@ -62,10 +62,8 @@ export class CardsLineComponent {
   namePlayList: string[] = [];
   nameDoPlayList: string[] = [];
 
-
   loading: boolean = true;
   search: boolean = false;
-
 
   ngAfterViewInit(): void {
     new Swiper('.swiper', {

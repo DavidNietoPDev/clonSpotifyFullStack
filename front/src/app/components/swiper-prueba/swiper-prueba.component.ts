@@ -8,7 +8,6 @@ import {  Component,  Input } from '@angular/core';
 export class SwiperPruebaComponent {
   _topTrackList: any[] = [];
 
-
   @Input()  
   set topTrackList(value: any[]) {
     this._topTrackList = value ?? [];
@@ -25,12 +24,7 @@ export class SwiperPruebaComponent {
   albumYear: string[] = [];
   idArtist: string[] = [];
 
-  ngAfterViewInit() {
- 
-  }
-
   listMethod() {
-
     this.id = [];
     this.image = [];
     this.name = [];
