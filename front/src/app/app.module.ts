@@ -36,7 +36,7 @@ import { SpecificNavComponent } from './components/navSearch/specific-nav/specif
 import { ListSongsComponent } from './components/list-songs/list-songs.component';
 import { CardsLineComponent } from './components/cards/cards-line/cards-line.component';
 import { register } from 'swiper/element/bundle';
-import { SwiperPruebaComponent } from './components/swiper-prueba/swiper-prueba.component';
+
 
 register();
 @NgModule({
@@ -70,7 +70,6 @@ register();
     SpecificNavComponent,
     ListSongsComponent,
     CardsLineComponent,
-    SwiperPruebaComponent,
     
 
     

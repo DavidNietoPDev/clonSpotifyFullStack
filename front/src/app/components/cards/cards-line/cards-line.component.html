@@ -1,52 +1,71 @@
-<!-- <div class="swiper" *ngIf="topTrackList.length > 0">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide" *ngFor="let card of topTrackList.slice(0, 10); let i = index">
-            <div class="music-cardTwo">
-                <img class="image" src="{{image[i]}}" alt="imagen"  [routerLink]="['/artistId', id[i]]">
-            </div>
-            <div class="card-text">
-                <p class="textOne">{{ name[i] }}</p>
-            </div>
+<swiper-container class="swiper" 
+[slidesPerView]="5"
+  [spaceBetween]="10"
+  [breakpoints]="{
+    '100': { slidesPerView: 1, spaceBetween: 10 },
+    '250': { slidesPerView: 2, spaceBetween: 10 },
+    '640': { slidesPerView: 3, spaceBetween: 10 },
+    '1100': { slidesPerView: 4, spaceBetween: 10 },
+    '1350': { slidesPerView: 5, spaceBetween: 10 }
+  }"
+*ngIf="topTrackList.length > 0"
+>
+    <swiper-slide class="swiper-slide" *ngFor="let card of topTrackList.slice(0, 10); let i = index">
+        <div class="music-cardTwo">
+            <img class="image" src="{{image[i]}}" alt="imagen" [routerLink]="['/artistId', id[i]]">
         </div>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-</div>
-
-
-<div class="swiper" *ngIf="topAlbumList.length > 0">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide" *ngFor="let card of topAlbumList.slice(0, 10); let i = index">
-            <div class="music-card">
-                <img class="imageC" src="{{imageAlbum[i]}}" alt="imagen" [routerLink]="['/albumDirect', idAlbum[i]]">
-            </div>
-            <div class="card-text">
-                <p class="textOne">{{ nameAlbum[i] | pipeTruncate }}</p>
-                <p class="textTwo">{{ albumYearAlbum[i].split("-")[0] }} · 
-                   <span class="linkArtist" [routerLink]="['/artistId', idArtistAlbum[i]]">{{artistNameAlbum[i]}}</span> </p>
-            </div>
+        <div class="card-text">
+            <p class="textOne">{{ name[i] }}</p>
         </div>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-</div>
+    </swiper-slide>
+</swiper-container>
 
 
-<div class="swiper" *ngIf="topPlayListList.length > 0">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide" *ngFor="let card of topPlayListList.slice(0, 10); let i = index">
-            <div class="music-card">
-                <img class="imageC" src="{{imagePlayList[i]}}" alt="imagen"  [routerLink]="['/playListId', idPlayList[i]]">
-            </div>
-            <div class="card-text">
+<swiper-container class="swiper" 
+[slidesPerView]="5"
+  [spaceBetween]="10"
+  [breakpoints]="{
+    '100': { slidesPerView: 1, spaceBetween: 10 },
+    '250': { slidesPerView: 2, spaceBetween: 10 },
+    '640': { slidesPerView: 3, spaceBetween: 10 },
+    '1100': { slidesPerView: 4, spaceBetween: 10 },
+    '1350': { slidesPerView: 5, spaceBetween: 10 }
+  }"
+*ngIf="topAlbumList.length > 0"
+>
+    <swiper-slide class="swiper-slide" *ngFor="let card of topAlbumList.slice(0, 10); let i = index">
+        <div class="music-card">
+            <img class="imageC" src="{{imageAlbum[i]}}" alt="imagen" [routerLink]="['/albumDirect', idAlbum[i]]">
+        </div>
+        <div class="card-text">
+            <p class="textOne">{{ nameAlbum[i] | pipeTruncate }}</p>
+            <p class="textTwo">{{ albumYearAlbum[i].split("-")[0] }} · 
+                <span class="linkArtist" [routerLink]="['/artistId', idArtistAlbum[i]]">{{artistNameAlbum[i]}}</span> </p>
+        </div>
+    </swiper-slide>
+</swiper-container>
+
+
+<swiper-container class="swiper" 
+[slidesPerView]="5"
+  [spaceBetween]="10"
+  [breakpoints]="{
+    '100': { slidesPerView: 1, spaceBetween: 10 },
+    '250': { slidesPerView: 2, spaceBetween: 10 },
+    '640': { slidesPerView: 3, spaceBetween: 10 },
+    '1100': { slidesPerView: 4, spaceBetween: 10 },
+    '1350': { slidesPerView: 5, spaceBetween: 10 }
+  }"
+*ngIf="topPlayListList.length > 0"
+>
+    <swiper-slide class="swiper-slide" *ngFor="let card of topPlayListList.slice(0, 10); let i = index">
+        <div class="music-card">
+            <img class="imageC" src="{{imagePlayList[i]}}" alt="imagen" [routerLink]="['/playListId', idPlayList[i]]">
+        </div>
+        <div class="card-text">
             <p class="textOne">{{ namePlayList[i] | pipeTruncate}}</p>
-            <p class="textTwo">{{nameDoPlayList[i]}}</p>
+            <p class="textTwo">{{ nameDoPlayList[i] }}</p>
             </div>
-        </div>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-</div> -->
-
-
+    </swiper-slide>
+</swiper-container>
 
