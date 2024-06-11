@@ -1,12 +1,4 @@
 import { Component, Input } from '@angular/core';
-import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
-
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
 
 @Component({
   selector: 'app-cards-line',
@@ -14,7 +6,7 @@ import 'swiper/css/pagination';
   styleUrl: './cards-line.component.css'
 })
 export class CardsLineComponent {
-  swiper: Swiper;
+
   _topTrackList: any[] = [];
   _topAlbumList: any[] = [];
   _topPlayListList: any[] = [];
@@ -63,48 +55,9 @@ export class CardsLineComponent {
   namePlayList: string[] = [];
   nameDoPlayList: string[] = [];
 
-
   loading: boolean = true;
   search: boolean = false;
 
-
-  ngAfterViewInit(): void {
-    new Swiper('.swiper', {
-      modules: [Navigation, Pagination],
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      slidesPerView: 5,
-      spaceBetween: 10,
-      breakpoints: {
-        100: {
-          slidesPerView: 1,
-          spaceBetween: 0,
-        },
-        250: {
-          slidesPerView: 2, // Número de diapositivas visibles para pantallas pequeñas
-          spaceBetween: 10, // Espacio entre diapositivas para pantallas pequeñas
-        },
-        // Cuando la ventana tiene un ancho >= 640px
-        640: {
-          slidesPerView: 3, 
-          spaceBetween: 10, 
-        },
-
-        1100: {
-          slidesPerView: 4, 
-          spaceBetween: 10, 
-        },
-
-      
-        1350: {
-          slidesPerView: 5, 
-          spaceBetween: 10, 
-        },
-      },
-    });
-  }
 
   check() : boolean {
     return false;
