@@ -2,13 +2,13 @@
     color: #a09f9f;
     border-bottom:1px solid #292828;
 }
+
 .columnAll2{
   color: #a09f9f;
 }
 
 .column1 {
-  padding-left: 5px;
-    width: 2.5%;  
+  width: 2.5%;  
 
 }
 .column2 {
@@ -16,7 +16,7 @@
    
 }
 .column3 {
-    width: 45%;
+    width: 50%;
     
 }
 .column4 {
@@ -26,10 +26,6 @@
 .column5 {
     width: 5%; 
 }
-.column6 {
-    width: 5%;
-}
-
 
 input[type="range"] {
   width: 50px; 
@@ -40,30 +36,30 @@ input[type="range"]::-webkit-slider-runnable-track {
   background-color: #2b2828; /* Cambia el color de la barra de deslizamiento para navegadores webkit (Chrome, Safari, etc.) */
 }
 
-
-.filasall {
-    height: 60px;
-}
-
-.filasall:hover {
-  border-radius: 10px;
-  background-color: rgba(112, 109, 109, 0.226);
-}
-
 .Svg-sc{
   width: 17px;
 }
 
-.fila1:hover {
+.filasall {
+    width: 100%;
+    height: 60px;
+}
+
+.filasall:hover, .hover {
+  border-radius: 10px;
+  background-color: rgba(112, 109, 109, 0.226);
+}
+
+.fila1:hover, .hover .fila1 {
   cursor: pointer;
 }
 
-.filasall:hover td:first-child {
+.filasall:hover td:first-child, .hover td:first-child {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 
-.filasall:hover td:last-child {
+.filasall:hover td:last-child, .hover td:last-child {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }

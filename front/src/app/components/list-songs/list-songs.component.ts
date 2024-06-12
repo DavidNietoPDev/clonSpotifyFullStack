@@ -14,6 +14,8 @@ export class ListSongsComponent {
   router = inject(Router)
   loadingSub: Subscription;
   _topTrackList: any[] = [];
+  currentIndex: number = -1;
+  currentIndexSubscription: Subscription;
 
   @Input()  
   set topTrackList(value: Item[]) {
@@ -41,7 +43,18 @@ export class ListSongsComponent {
 
   loading: boolean = true;
   search: boolean = false;
-  globalVolume: number = 0.1;
+
+  ngOnInit() {
+    this.currentIndexSubscription = this.musicPlayer.currentIndex$.subscribe(index => {
+      this.currentIndex = index;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.currentIndexSubscription) {
+      this.currentIndexSubscription.unsubscribe();
+    }
+  }
 
   onMouseOver(index: number): void {
     this.hoveredIndex = index;
@@ -62,8 +75,6 @@ export class ListSongsComponent {
 
   listMethod() {
     this.loading = true;
-
-    this.stopMusic();
 
     this.topTrackAlbumId = [];
     this.topTrackId = [];
@@ -139,26 +150,25 @@ export class ListSongsComponent {
         this.topTrackArtistTwoId.push('');
       }
     }
+    const songs = this._topTrackList.map((track, index) => ({
+      title: this.topTrack[index],
+      artist: this.topTrackArtist[index],
+      duration: 30, // Duración fija de 30 segundos
+      url: this.topTrackUrlSong[index],
+      albumArt: this.topTrackArtistImage[index]
+    }));
+    this.musicPlayer.setSongs(songs);
+
     this.search = true;
     this.loading = false;
   }
 
 
-  stopMusic() {
-    this.musicPlayer.stopMusic();
-  }
-
-
-  togglePlayBack(previewUrl: string) {
-    this.musicPlayer.togglePlayBack(previewUrl);
-  }
-
-  setVolume(volume: number) {
-    this.musicPlayer.setVolume(volume);
-  }
-
-  ajustarVolume() {
-    this.musicPlayer.setVolume(this.globalVolume);
+  // Método para reproducir una canción
+  playTrack(index: number) {
+    this.currentIndex = index;
+    this.musicPlayer.setCurrentIndex(index); // Actualiza el índice actual en el servicio
+    this.musicPlayer.playTrack(index);
   }
 
 }

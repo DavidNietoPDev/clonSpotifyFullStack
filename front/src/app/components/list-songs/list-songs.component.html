@@ -8,7 +8,6 @@
             <th class="column4" *ngIf="!checkRoute()">Álbum</th>
             <th class="column4" *ngIf="checkRoute()"></th>
             <th class="column5"><mat-icon>av_timer</mat-icon></th>
-            <th class="column6"></th>
         </tr>
     </thead>
     <thead *ngIf="checkComponent() && !loading && search">
@@ -18,19 +17,23 @@
             <th class="column3"></th>
             <th class="column4"></th>
             <th class="column5"></th>
-            <th class="column6"></th>
         </tr>
     </thead>
     <tbody>
         <ng-container *ngFor="let track of topTrackList; let i = index">
-            <tr class="filasall" (mouseover)="onMouseOver(i)" (mouseleave)="onMouseLeave()">
-                <td (click)="togglePlayBack(topTrackUrlSong[i])" class="fila1" *ngIf="hoveredIndex === i"><svg data-encore-id="icon" role="img" aria-hidden="true" fill="white" class="Svg-sc" viewBox="0 0 24 24">
+            <tr class="filasall"
+             (mouseover)="onMouseOver(i)" 
+             (mouseleave)="onMouseLeave()" 
+             [class.hover]="hoveredIndex === i || currentIndex === i"
+             [class.filasall]="true" >
+                <td (click)="playTrack(i)" class="fila1" *ngIf="hoveredIndex === i || currentIndex === i">
+                    <svg data-encore-id="icon" role="img" aria-hidden="true" fill="white" class="Svg-sc" viewBox="0 0 24 24">
                     <path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path></svg></td>
-                <td class="fila1" *ngIf="checkRoute() && hoveredIndex !== i" (click)="togglePlayBack(topTrackUrlSong[i])">{{ i + 1 }}</td>
-                <td class="fila1" *ngIf="!checkRoute() && hoveredIndex !== i" >{{ i + 1 }}</td>
+                <td class="fila1" *ngIf="checkRoute() && hoveredIndex !== i && currentIndex !== i" (click)="playTrack(i)">{{ i + 1 }}</td>
+                <td class="fila1" *ngIf="!checkRoute() && hoveredIndex !== i && currentIndex !== i" >{{ i + 1 }}</td>
                 <td class="fila2" *ngIf="checkRoute() || topTrackArtistImage[i] === ''"></td>
                 <td class="fila2" *ngIf="!checkRoute() && topTrackArtistImage[i] !== ''"><img  class="imgCanciones" src="{{topTrackArtistImage[i]}}"
-                        (click)="togglePlayBack(topTrackUrlSong[i])">
+                    (click)="playTrack(i)">
                 </td>
                 <td>
                     <span class="fila31" 
@@ -50,10 +53,6 @@
                 <td class="fila4"  [routerLink]="['/albumDirect', topTrackAlbumId[i]]">
                     {{topTrackAlbum[i] | pipeTruncate}}</td>
                 <td class="fila4">{{topTrackDuration[i] | pipeDuracion}}</td>
-                <td class="flila5">
-                    <input type="range" min="0" max="1" step="0.05" [(ngModel)]="globalVolume"
-                        (input)="ajustarVolume()">
-                </td>
             </tr>
         </ng-container>
     </tbody>

@@ -145,9 +145,9 @@ export class SearchMainComponent implements OnInit {
   }
 
 
-  togglePlayBack(previewUrl: string) {
-    this.mediaPlayer.togglePlayBack(previewUrl);
-  }
+  // togglePlayBack(previewUrl: string) {
+  //   this.mediaPlayer.togglePlayBack(previewUrl);
+  // }
 
   setVolume(volume: number) {
     this.mediaPlayer.setVolume(volume);
