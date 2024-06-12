@@ -6,11 +6,12 @@
     '250': { slidesPerView: 2, spaceBetween: 10 },
     '640': { slidesPerView: 3, spaceBetween: 10 },
     '1100': { slidesPerView: 4, spaceBetween: 10 },
-    '1350': { slidesPerView: 5, spaceBetween: 10 }
+    '1350': { slidesPerView: 5, spaceBetween: 10 },
+    '1650': { slidesPerView: 6, spaceBetween: 10}
   }"
 *ngIf="topTrackList.length > 0"
 >
-    <swiper-slide class="swiper-slide" *ngFor="let card of topTrackList.slice(0, 10); let i = index">
+    <swiper-slide class="swiper-slide" *ngFor="let card of topTrackList.slice(0, 20); let i = index">
         <div class="music-cardTwo">
             <img class="image" src="{{image[i]}}" alt="imagen" [routerLink]="['/artistId', id[i]]">
         </div>
@@ -29,11 +30,12 @@
     '250': { slidesPerView: 2, spaceBetween: 10 },
     '640': { slidesPerView: 3, spaceBetween: 10 },
     '1100': { slidesPerView: 4, spaceBetween: 10 },
-    '1350': { slidesPerView: 5, spaceBetween: 10 }
+    '1350': { slidesPerView: 5, spaceBetween: 10 },
+    '1650': { slidesPerView: 6, spaceBetween: 10}
   }"
 *ngIf="topAlbumList.length > 0"
 >
-    <swiper-slide class="swiper-slide" *ngFor="let card of topAlbumList.slice(0, 10); let i = index">
+    <swiper-slide class="swiper-slide" *ngFor="let card of topAlbumList.slice(0, 20); let i = index">
         <div class="music-card">
             <img class="imageC" src="{{imageAlbum[i]}}" alt="imagen" [routerLink]="['/albumDirect', idAlbum[i]]">
         </div>
@@ -54,11 +56,12 @@
     '250': { slidesPerView: 2, spaceBetween: 10 },
     '640': { slidesPerView: 3, spaceBetween: 10 },
     '1100': { slidesPerView: 4, spaceBetween: 10 },
-    '1350': { slidesPerView: 5, spaceBetween: 10 }
+    '1350': { slidesPerView: 5, spaceBetween: 10 },
+    '1650': { slidesPerView: 6, spaceBetween: 10}
   }"
 *ngIf="topPlayListList.length > 0"
 >
-    <swiper-slide class="swiper-slide" *ngFor="let card of topPlayListList.slice(0, 10); let i = index">
+    <swiper-slide class="swiper-slide" *ngFor="let card of topPlayListList.slice(0, 20); let i = index">
         <div class="music-card">
             <img class="imageC" src="{{imagePlayList[i]}}" alt="imagen" [routerLink]="['/playListId', idPlayList[i]]">
         </div>
