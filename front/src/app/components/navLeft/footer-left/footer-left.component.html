@@ -15,7 +15,7 @@
 
 <div #musicPlayer class="music-player" >
   <div class="track-info">
-    <img *ngIf="audioUrl !== ''" [src]="albumArt" alt="Album Art" class="album-art">
+    <img *ngIf="audioUrl !== '' && albumArt !== ''" [src]="albumArt" alt="Album Art" class="album-art">
     <div class="track-details">
       <p class="name">{{ trackTitle | pipeTruncate }}</p>
       <p class="artist">{{ trackArtist }}</p>

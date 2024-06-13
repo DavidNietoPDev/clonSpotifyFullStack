@@ -68,10 +68,15 @@ export class MusicPlayerService {
     }
   }
 
-  setSongs(songs: any[]) {
-    this.songsSubject.next(songs);
+  clearSongs() {
+    this.songsSubject.next([]);
   }
 
+  setSongs(newSongs: any[]) {
+    const currentSongs = this.songsSubject.value;
+    const updatedSongs = currentSongs.concat(newSongs);
+    this.songsSubject.next(updatedSongs);
+  }
   setCurrentIndex(index: number) {
     this.currentIndexSubject.next(index);
   }

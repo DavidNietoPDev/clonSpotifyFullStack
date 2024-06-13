@@ -54,6 +54,7 @@ export class ListSongsComponent {
     if (this.currentIndexSubscription) {
       this.currentIndexSubscription.unsubscribe();
     }
+    this.musicPlayer.clearSongs();
   }
 
   onMouseOver(index: number): void {
@@ -150,7 +151,7 @@ export class ListSongsComponent {
         this.topTrackArtistTwoId.push('');
       }
     }
-    const songs = this._topTrackList.map((track, index) => ({
+    const songs = this.topTrackList.map((track, index) => ({
       title: this.topTrack[index],
       artist: this.topTrackArtist[index],
       duration: 30, // Duración fija de 30 segundos
@@ -162,12 +163,9 @@ export class ListSongsComponent {
     this.search = true;
     this.loading = false;
   }
-
-
-  // Método para reproducir una canción
   playTrack(index: number) {
     this.currentIndex = index;
-    this.musicPlayer.setCurrentIndex(index); // Actualiza el índice actual en el servicio
+    this.musicPlayer.setCurrentIndex(index); 
     this.musicPlayer.playTrack(index);
   }
 
