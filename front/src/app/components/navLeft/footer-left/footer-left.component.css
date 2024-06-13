@@ -60,6 +60,10 @@
     top: 500px;
     height: 70px;
   }
+  .music-player{
+    top: 500px;
+    height: 70px;
+  }
 }
 
 @media screen and (max-width: 855px) {

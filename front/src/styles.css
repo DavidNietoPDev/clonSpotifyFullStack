@@ -1,11 +1,17 @@
 :root {
   --background-color-light: #ffffff;
   --text-color-light: #000000;
+
+  /* Agrega más variables según necesites */
 }
+
 
 body {
   background-color: var(--background-color-light);
   color: var(--text-color-light);
+
+
+  /* Otros estilos */
 }
 
 body.dark-mode {
@@ -14,38 +20,16 @@ body.dark-mode {
 
   background-color: var(--background-color-dark);
   color: var(--text-color-dark);
+  /* Otros estilos */
 }
 
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+height: 100%;}
 
-html,
-body {
-  height: 100%;
-}
 
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mdc-slider__track {
   background-color:rgb(73, 73, 73) !important; /* Color de fondo de la barra */
