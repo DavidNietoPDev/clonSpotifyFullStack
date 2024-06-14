@@ -3,6 +3,7 @@ import { MusicPlayerService } from '../../services/music-player.service';
 import { Item } from '../../models/tracks.model';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { TakeIdsService } from '../../services/take-ids.service';
 
 @Component({
   selector: 'app-list-songs',
@@ -12,10 +13,18 @@ import { Subscription } from 'rxjs';
 export class ListSongsComponent {
   musicPlayer = inject(MusicPlayerService)
   router = inject(Router)
+  contServ = inject(TakeIdsService)
   loadingSub: Subscription;
+  indexListTwo: number = 5;
+  indexListThree: number = 10;
+  topTrackListOne: any[] = [];
+  topTrackListTwo: any[] = [];
+  topTrackListThree: any[] = [];
   _topTrackList: any[] = [];
+  currentIndex: number = -1;
+  currentIndexSubscription: Subscription;
 
-  @Input()  
+  @Input()
   set topTrackList(value: Item[]) {
     this._topTrackList = value;
     this.listMethod();
@@ -41,7 +50,20 @@ export class ListSongsComponent {
 
   loading: boolean = true;
   search: boolean = false;
-  globalVolume: number = 0.1;
+
+  ngOnInit() {
+    this.currentIndexSubscription = this.musicPlayer.currentIndex$.subscribe(index => {
+      this.currentIndex = index;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.currentIndexSubscription) {
+      this.currentIndexSubscription.unsubscribe();
+    }
+    this.contServ.clearCont()
+    this.musicPlayer.clearSongs();
+  }
 
   onMouseOver(index: number): void {
     this.hoveredIndex = index;
@@ -52,19 +74,20 @@ export class ListSongsComponent {
   }
 
   checkRoute(): boolean {
-    return this.router.url.startsWith('/albumDirect/') 
+    return this.router.url.startsWith('/albumDirect/')
   }
 
   checkComponent(): boolean {
-    if(this.router.url.startsWith('/songsId/') || this.router.url.startsWith('/artistId/'))
+    if (this.router.url.startsWith('/songsId/') || this.router.url.startsWith('/artistId/'))
       return true;
   }
 
   listMethod() {
     this.loading = true;
 
-    this.stopMusic();
-
+    this.topTrackListOne = [];
+    this.topTrackListTwo = [];
+    this.topTrackListThree = [];
     this.topTrackAlbumId = [];
     this.topTrackId = [];
     this.topTrackAlbum = [];
@@ -139,26 +162,72 @@ export class ListSongsComponent {
         this.topTrackArtistTwoId.push('');
       }
     }
-    this.search = true;
-    this.loading = false;
+
+    // mapea las canciones con los datos trackdetails que necesita el reproductor
+    
+    if (this.contServ.getCont() === 0) {
+      this.topTrackListOne = this.topTrackList
+      const songs = this.topTrackListOne.map((track, index) => ({
+        title: this.topTrack[index],
+        artist: this.topTrackArtist[index],
+        duration: 30,
+        url: this.topTrackUrlSong[index],
+        albumArt: this.topTrackArtistImage[index]
+      }));
+
+      this.musicPlayer.setSongs(songs);  //Agrega las canciones a la lista
+      
+      this.search = true;
+      this.loading = false;
+      this.contServ.setCont()
+
+    } else if(this.contServ.getCont() === 1) {
+      this.topTrackListTwo = this.topTrackList;
+      
+      const songs = this.topTrackListTwo.map((track, index) => {
+        const customIndex = this.indexListTwo + index; // Ajustar el índice para que comience desde startIndex
+        return {
+        title: this.topTrack[index],
+        artist: this.topTrackArtist[index],
+        duration: 30,
+        url: this.topTrackUrlSong[index],
+        albumArt: this.topTrackArtistImage[index],
+        index: customIndex
+        }
+      });
+      this.musicPlayer.setSongs(songs);  //Agrega las canciones a la lista
+
+      this.search = true;
+      this.loading = false;
+      this.contServ.setCont()
+
+    } else {
+      this.topTrackListThree = this.topTrackList
+      const songs = this.topTrackListThree.map((track, index) => {
+        const customIndex = this.indexListThree + index; // Ajustar el índice para que comience desde startIndex
+        return {
+        title: this.topTrack[index],
+        artist: this.topTrackArtist[index],
+        duration: 30,
+        url: this.topTrackUrlSong[index],
+        albumArt: this.topTrackArtistImage[index],
+        index: customIndex
+        }
+      });
+
+      this.musicPlayer.setSongs(songs);  //Agrega las canciones a la lista
+
+      this.search = true;
+      this.loading = false;
+
+    }
+    
   }
 
-
-  stopMusic() {
-    this.musicPlayer.stopMusic();
-  }
-
-
-  togglePlayBack(previewUrl: string) {
-    this.musicPlayer.togglePlayBack(previewUrl);
-  }
-
-  setVolume(volume: number) {
-    this.musicPlayer.setVolume(volume);
-  }
-
-  ajustarVolume() {
-    this.musicPlayer.setVolume(this.globalVolume);
+  playTrack(index: number) {
+    this.currentIndex = index;
+    this.musicPlayer.setCurrentIndex(index);
+    this.musicPlayer.playTrack(index);
   }
 
 }

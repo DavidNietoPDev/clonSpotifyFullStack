@@ -59,8 +59,6 @@ export class SongsComponent implements OnInit {
     }
   }
 
-
-
   searchMethod(): void {
     this.loadingService.setLoading(true);
     this.buscar = true;

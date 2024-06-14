@@ -106,9 +106,9 @@ export class ArtistIdComponent implements OnInit {
     this.musicPlayer.stopMusic();
   }
 
-  togglePlayBack(previewUrl: string) {
-    this.musicPlayer.togglePlayBack(previewUrl);
-  }
+  // togglePlayBack(previewUrl: string) {
+  //   this.musicPlayer.togglePlayBack(previewUrl);
+  // }
 
   setVolume(volume: number) {
     this.musicPlayer.setVolume(volume);

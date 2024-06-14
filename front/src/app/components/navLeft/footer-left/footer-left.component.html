@@ -1,4 +1,4 @@
-<div class="foot">
+<!-- <div class="foot" *ngIf="!isPlaying">
     <div class="registrate">
       <p class="muestra">Muestra de SearchMusics</p>
       <p class="disfruta">Regístrate para disfrutar de canciones y podcasts sin límites, con anuncios ocasionales.
@@ -9,4 +9,62 @@
     <div class="botonregistrate">
       <button class="btonr">Registrarte gratis</button>
     </div>
+  </div> -->
+
+
+
+<div #musicPlayer class="music-player" >
+  <div class="track-info">
+    <img *ngIf="audioUrl !== '' && albumArt !== ''" [src]="albumArt" alt="Album Art" class="album-art">
+    <div class="track-details">
+      <p class="name">{{ trackTitle | pipeTruncate }}</p>
+      <p class="artist">{{ trackArtist }}</p>
+    </div>
   </div>
+
+  <div class="player-container">
+    <div class="controls">
+      <span (click)="previousTrack()">
+        <svg data-encore-id="icon" width="15px" height="15px" fill="hsla(0, 0%, 100%, .7)" role="img" aria-hidden="true"
+          viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI">
+          <path
+            d="M3.3 1a.7.7 0 0 1 .7.7v5.15l9.95-5.744a.7.7 0 0 1 1.05.606v12.575a.7.7 0 0 1-1.05.607L4 9.149V14.3a.7.7 0 0 1-.7.7H1.7a.7.7 0 0 1-.7-.7V1.7a.7.7 0 0 1 .7-.7h1.6z">
+          </path>
+        </svg>
+      </span>
+
+      <span (click)="togglePlayBack()" *ngIf="!isPlaying">
+        <mat-icon class="playPause">play_circle_fill</mat-icon>
+      </span>
+
+      <span (click)="togglePlayBack()" *ngIf="isPlaying">
+        <mat-icon class="playPause">pause_circle_filled</mat-icon>
+      </span>
+
+      <span (click)="nextTrack()">
+        <svg data-encore-id="icon" role="img" fill="hsla(0, 0%, 100%, .7)" width="15px" height="15px" aria-hidden="true"
+          viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI">
+          <path
+            d="M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z">
+          </path>
+        </svg>
+      </span>
+    </div>
+
+    <div class="progress-container">
+      <span class="time">{{ formatTime(currentTime) }}</span>
+      <input #progressRange class="progress-range" type="range" min="0" max="100" step="1" [value]="currentProgress"
+        (input)="seekTo($event)">
+      <span class="time">{{ formatTime(trackDuration) }}</span>
+    </div>
+  </div>
+
+  <div class="volume-container">
+    <mat-icon *ngIf="currentVolume < 1">volume_off</mat-icon>
+    <mat-icon *ngIf="currentVolume > 0">volume_up</mat-icon>
+    <mat-slider class="volume-slider" class="volum" min="0" max="100" step="1" [value]="currentVolume"
+      (input)="setVolume($event)">
+      <input matSliderThumb>
+    </mat-slider>
+  </div>
+</div>

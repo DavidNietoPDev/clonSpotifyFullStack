@@ -8,7 +8,6 @@
             <th class="column4" *ngIf="!checkRoute()">Álbum</th>
             <th class="column4" *ngIf="checkRoute()"></th>
             <th class="column5"><mat-icon>av_timer</mat-icon></th>
-            <th class="column6"></th>
         </tr>
     </thead>
     <thead *ngIf="checkComponent() && !loading && search">
@@ -18,19 +17,22 @@
             <th class="column3"></th>
             <th class="column4"></th>
             <th class="column5"></th>
-            <th class="column6"></th>
         </tr>
     </thead>
     <tbody>
-        <ng-container *ngFor="let track of topTrackList; let i = index">
-            <tr class="filasall" (mouseover)="onMouseOver(i)" (mouseleave)="onMouseLeave()">
-                <td (click)="togglePlayBack(topTrackUrlSong[i])" class="fila1" *ngIf="hoveredIndex === i"><svg data-encore-id="icon" role="img" aria-hidden="true" fill="white" class="Svg-sc" viewBox="0 0 24 24">
+        <ng-container *ngFor="let track of topTrackListOne; let i = index">
+            <tr class="filasall" (click)="playTrack(i)"
+             (mouseover)="onMouseOver(i)" 
+             (mouseleave)="onMouseLeave()" 
+             [class.hover]="hoveredIndex === i || currentIndex === i"
+             [class.filasall]="true" >
+                <td  class="fila1" *ngIf="hoveredIndex === i || currentIndex === i">
+                    <svg data-encore-id="icon" role="img" aria-hidden="true" fill="white" class="Svg-sc" viewBox="0 0 24 24">
                     <path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path></svg></td>
-                <td class="fila1" *ngIf="checkRoute() && hoveredIndex !== i" (click)="togglePlayBack(topTrackUrlSong[i])">{{ i + 1 }}</td>
-                <td class="fila1" *ngIf="!checkRoute() && hoveredIndex !== i" >{{ i + 1 }}</td>
+                <td class="fila1" *ngIf="checkRoute() && hoveredIndex !== i && currentIndex !== i" (click)="playTrack(i)">{{ i + 1 }}</td>
+                <td class="fila1" *ngIf="!checkRoute() && hoveredIndex !== i && currentIndex !== i" >{{ i + 1 }}</td>
                 <td class="fila2" *ngIf="checkRoute() || topTrackArtistImage[i] === ''"></td>
-                <td class="fila2" *ngIf="!checkRoute() && topTrackArtistImage[i] !== ''"><img  class="imgCanciones" src="{{topTrackArtistImage[i]}}"
-                        (click)="togglePlayBack(topTrackUrlSong[i])">
+                <td class="fila2" *ngIf="!checkRoute() && topTrackArtistImage[i] !== ''"><img  class="imgCanciones" src="{{topTrackArtistImage[i]}}">
                 </td>
                 <td>
                     <span class="fila31" 
@@ -47,13 +49,81 @@
                         [routerLink]="['/artistId', topTrackArtistId[i]]">{{ topTrackArtist[i] }}</span>
                     </span>
                 </td>
-                <td class="fila4"  [routerLink]="['/albumDirect', topTrackAlbumId[i]]">
-                    {{topTrackAlbum[i] | pipeTruncate}}</td>
+                <td class="fila4" >
+                   <span class="albumLink" *ngIf="topTrackAlbum !== ''"  [routerLink]="['/albumDirect', topTrackAlbumId[i]]">{{topTrackAlbum[i] | pipeTruncate}}</span> </td>
                 <td class="fila4">{{topTrackDuration[i] | pipeDuracion}}</td>
-                <td class="flila5">
-                    <input type="range" min="0" max="1" step="0.05" [(ngModel)]="globalVolume"
-                        (input)="ajustarVolume()">
+            </tr>
+        </ng-container>
+    </tbody>
+    <tbody>
+        <ng-container *ngFor="let track of topTrackListTwo; let i = index">
+            <tr class="filasall" (click)="playTrack(indexListTwo+i)"
+             (mouseover)="onMouseOver(indexListTwo+i)" 
+             (mouseleave)="onMouseLeave()" 
+             [class.hover]="hoveredIndex === indexListTwo+i || currentIndex === indexListTwo+i"
+             [class.filasall]="true" >
+                <td  class="fila1" *ngIf="hoveredIndex === indexListTwo+i || currentIndex === indexListTwo+i">
+                    <svg data-encore-id="icon" role="img" aria-hidden="true" fill="white" class="Svg-sc" viewBox="0 0 24 24">
+                    <path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path></svg></td>
+                <td class="fila1" *ngIf="checkRoute() && hoveredIndex !== indexListTwo+i && currentIndex !== indexListTwo+i" (click)="playTrack(indexListTwo+i)">{{ i + 1 }}</td>
+                <td class="fila1" *ngIf="!checkRoute() && hoveredIndex !== indexListTwo+i && currentIndex !== indexListTwo+i" >{{ i + 1 }}</td>
+                <td class="fila2" *ngIf="checkRoute() || topTrackArtistImage[i] === ''"></td>
+                <td class="fila2" *ngIf="!checkRoute() && topTrackArtistImage[i] !== ''"><img  class="imgCanciones" src="{{topTrackArtistImage[i]}}">
                 </td>
+                <td>
+                    <span class="fila31" 
+                    [routerLink]="['/songsId', topTrackId[i]]">{{topTrack[i] | pipeTruncate}}</span> <br>
+                    <span class="fila32" *ngIf="topTrackArtistTwo[i] !== ''">
+                        <span class="artistTrackLink" 
+                            [routerLink]="['/artistId', topTrackArtistId[i]]">{{ topTrackArtist[i] }} ,
+                        </span>
+                        <span class="artistTrackLink" 
+                        [routerLink]="['/artistId', topTrackArtistTwoId[i]]">{{ topTrackArtistTwo[i] }}</span>
+                    </span>
+                    <span class="fila32" *ngIf="topTrackArtistTwo[i] === ''">
+                        <span class="artistTrackLink" 
+                        [routerLink]="['/artistId', topTrackArtistId[i]]">{{ topTrackArtist[i] }}</span>
+                    </span>
+                </td>
+                <td class="fila4" >
+                    <span class="albumLink" *ngIf="topTrackAlbum !== ''"  [routerLink]="['/albumDirect', topTrackAlbumId[i]]">{{topTrackAlbum[i] | pipeTruncate}}</span> </td>
+                <td class="fila4">{{topTrackDuration[i] | pipeDuracion}}</td>
+            </tr>
+        </ng-container>
+    </tbody>
+    <tbody>
+        <ng-container *ngFor="let track of topTrackListThree; let i = index">
+            <tr class="filasall" (click)="playTrack(indexListThree+i)"
+             (mouseover)="onMouseOver(indexListThree+i)" 
+             (mouseleave)="onMouseLeave()" 
+             [class.hover]="hoveredIndex === indexListThree+i || currentIndex === indexListThree+i"
+             [class.filasall]="true" >
+                <td  class="fila1" *ngIf="hoveredIndex === indexListThree+i || currentIndex === indexListThree+i">
+                    <svg data-encore-id="icon" role="img" aria-hidden="true" fill="white" class="Svg-sc" viewBox="0 0 24 24">
+                    <path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path></svg></td>
+                <td class="fila1" *ngIf="checkRoute() && hoveredIndex !== indexListThree+i && currentIndex !== indexListThree+i" (click)="playTrack(indexListThree+i)">{{ i + 1 }}</td>
+                <td class="fila1" *ngIf="!checkRoute() && hoveredIndex !== indexListThree+i && currentIndex !== indexListThree+i" >{{ i + 1 }}</td>
+                <td class="fila2" *ngIf="checkRoute() || topTrackArtistImage[i] === ''"></td>
+                <td class="fila2" *ngIf="!checkRoute() && topTrackArtistImage[i] !== ''"><img  class="imgCanciones" src="{{topTrackArtistImage[i]}}">
+                </td>
+                <td>
+                    <span class="fila31" 
+                    [routerLink]="['/songsId', topTrackId[i]]">{{topTrack[i] | pipeTruncate}}</span> <br>
+                    <span class="fila32" *ngIf="topTrackArtistTwo[i] !== ''">
+                        <span class="artistTrackLink" 
+                            [routerLink]="['/artistId', topTrackArtistId[i]]">{{ topTrackArtist[i] }} ,
+                        </span>
+                        <span class="artistTrackLink" 
+                        [routerLink]="['/artistId', topTrackArtistTwoId[i]]">{{ topTrackArtistTwo[i] }}</span>
+                    </span>
+                    <span class="fila32" *ngIf="topTrackArtistTwo[i] === ''">
+                        <span class="artistTrackLink" 
+                        [routerLink]="['/artistId', topTrackArtistId[i]]">{{ topTrackArtist[i] }}</span>
+                    </span>
+                </td>
+                <td class="fila4">
+                    <span class="albumLink" *ngIf="topTrackAlbum !== ''"  [routerLink]="['/albumDirect', topTrackAlbumId[i]]">{{topTrackAlbum[i] | pipeTruncate}}</span> </td>
+                <td class="fila4">{{topTrackDuration[i] | pipeDuracion}}</td>
             </tr>
         </ng-container>
     </tbody>
