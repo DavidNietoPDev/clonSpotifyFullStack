@@ -77,6 +77,7 @@ export class MusicPlayerService {
     const updatedSongs = currentSongs.concat(newSongs);
     this.songsSubject.next(updatedSongs);
   }
+
   setCurrentIndex(index: number) {
     this.currentIndexSubject.next(index);
   }

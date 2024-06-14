@@ -5,6 +5,12 @@
   position: relative;
   width: 100%;
 }
+.swiperAlbum{
+  top: 65px;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+}
 .swiper-wrapper{
   box-sizing: border-box;
 }
