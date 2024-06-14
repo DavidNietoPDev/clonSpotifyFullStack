@@ -27,7 +27,10 @@ export class ListSongsComponent {
   @Input()
   set topTrackList(value: Item[]) {
     this._topTrackList = value;
-    this.listMethod();
+    if(this.topTrackList.length > 0) {
+      this.listMethod();
+    }
+
   }
   get topTrackList(): any[] {
     return this._topTrackList;
@@ -83,8 +86,8 @@ export class ListSongsComponent {
   }
 
   listMethod() {
-    this.loading = true;
 
+    this.loading = true;
     this.topTrackListOne = [];
     this.topTrackListTwo = [];
     this.topTrackListThree = [];
@@ -164,7 +167,7 @@ export class ListSongsComponent {
     }
 
     // mapea las canciones con los datos trackdetails que necesita el reproductor
-    
+
     if (this.contServ.getCont() === 0) {
       this.topTrackListOne = this.topTrackList
       const songs = this.topTrackListOne.map((track, index) => ({
@@ -176,7 +179,6 @@ export class ListSongsComponent {
       }));
 
       this.musicPlayer.setSongs(songs);  //Agrega las canciones a la lista
-      
       this.search = true;
       this.loading = false;
       this.contServ.setCont()
