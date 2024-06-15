@@ -27,8 +27,9 @@
              [class.hover]="hoveredIndex === i || currentIndex === i"
              [class.filasall]="true" >
                 <td  class="fila1" *ngIf="hoveredIndex === i || currentIndex === i">
-                    <svg data-encore-id="icon" role="img" aria-hidden="true" fill="white" class="Svg-sc" viewBox="0 0 24 24">
-                    <path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path></svg></td>
+                    <span *ngIf="!isPlaying"><mat-icon>play_arrow</mat-icon></span>
+                    <span *ngIf="isPlaying"><mat-icon>pause</mat-icon></span>
+                </td>
                 <td class="fila1" *ngIf="checkRoute() && hoveredIndex !== i && currentIndex !== i" (click)="playTrack(i)">{{ i + 1 }}</td>
                 <td class="fila1" *ngIf="!checkRoute() && hoveredIndex !== i && currentIndex !== i" >{{ i + 1 }}</td>
                 <td class="fila2" *ngIf="checkRoute() || topTrackArtistImage[i] === ''"></td>

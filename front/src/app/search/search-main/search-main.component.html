@@ -1,11 +1,11 @@
 <app-nav-cards/>
-<div *ngIf="buscar">
+<div *ngIf="buscar && !loading">
 
   <p class="text">Resultado principal</p>
     <div class="containerCards">
     <div class="cardP" (click)="takeId(idArtist)" [routerLink]="['/artistId', idArtist]">
       <div class="cardI">
-        <img src={{imageUrl}} alt="Imagen del artista" class="card-image">
+        <img class="card-image" src={{imageUrl}} alt="Imagen del artista" >
       </div>
       <div class="cancarti">
         <p class="nombrecanc">{{artist}}</p>
@@ -14,42 +14,20 @@
     </div>
     <div class="cardC">
       <p class="text2">Canciones</p>
-      <div class="toptrack" *ngFor="let track of topTrack.slice(0, 4); let i = index">
-        <div class="cardItt">
-          <img src={{topTrackArtistImage[i]}} alt="Imagen del artista" class="card-imagett"
-            (click)="togglePlayBack(topTrackUrl[i])">
-          <div class="topTrackslist">
-            <p class="texttt1" (click)="takeId(topTrackId[i])" [routerLink]="['/songsId', topTrackId[i]]">{{ topTrack[i] | pipeTruncate}}</p>
-            <p class="artistt1" *ngIf="topTrackArtistTwo[i] !== ''">
-              <span class="artistTrackLink" (click)="takeId(idArtistTracks[i])" [routerLink]="['/artistId', idArtistTracks[i]]">{{
-                topTrackArtist[i] }}</span>,
-              <span class="artistTrackLink" (click)="takeId(idArtistTracksTwo[i])"
-              [routerLink]="['/artistId', idArtistTracksTwo[i]]">{{topTrackArtistTwo[i]}}</span>
-            </p>
-            <p class="artistt2" *ngIf="topTrackArtistTwo[i] === ''" (click)="takeId(idArtistTracks[i])"
-            [routerLink]="['/artistId', idArtistTracks[i]]">{{ topTrackArtist[i] }}</p>
-          </div>
-          <div>
-            <p class="timett">{{topTrackDuration[i] | pipeDuracion}}</p>
-          </div>
-          <div>
-            <input type="range" min="0" max="1" step="0.05" [(ngModel)]="globalVolume"
-                        (input)="ajustarVolume()">
-          </div>
-        </div>
-      </div>
+      <app-list-songs
+      [topTrackList]="topTrackList"/>
     </div>
-  </div>
+    </div>
     <p class="textArtist">Artistas</p>
     <app-cards-line
     [topTrackList]="artistSonList" />
 
     <p class="textAlbumes">Álbumes</p>
-    <app-cards-line
+    <app-cards-line class="albumList"
     [topAlbumList]="albumSonList" />
 
     <p class="textList">Listas</p>
     <app-cards-line
     [topPlayListList]="playListSonList" />
 
-  </div>
+</div>
