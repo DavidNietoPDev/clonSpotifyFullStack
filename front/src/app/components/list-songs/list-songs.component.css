@@ -1,88 +1,105 @@
 .columnall {
-    width: 100%;
-    color: #a09f9f;
-    border-bottom:1px solid #292828;
+  width: 100%;
+  color: #a09f9f;
+  border-bottom: 1px solid #292828;
 }
 
-.columnAll2{
+.columnAll2 {
   width: 100%;
   color: #a09f9f;
 }
 
 .column1 {
-  width: 5%;  
+  width: 5%;
 }
 
 .column2 {
-    width: 5%;
-   
+  width: 5%;
+
 }
+
 .column3 {
-    width: 50%;
-    
+  width: 50%;
+
 }
+
 .column4 {
-    width: 100%;
-    
+  width: 100%;
+
 }
+
 .column5 {
-    width: 100%; 
+  width: 100%;
 }
-tbody{
+
+tbody {
   width: 100%;
 }
 
 input[type="range"] {
-  width: 50px; 
+  width: 50px;
 }
 
 /* Cambiar el color de la barra de deslizamiento */
 input[type="range"]::-webkit-slider-runnable-track {
-  background-color: #2b2828; /* Cambia el color de la barra de deslizamiento para navegadores webkit (Chrome, Safari, etc.) */
+  background-color: #2b2828;
+  /* Cambia el color de la barra de deslizamiento para navegadores webkit (Chrome, Safari, etc.) */
 }
 
-.Svg-sc{
+.Svg-sc {
   width: 17px;
 }
 
 .filasall {
-    width: 100%;
-    height: 60px;
+  width: 100%;
+  height: 60px;
 }
 
-.filasall:hover, .hover {
+.filasall:hover,
+.hover {
   border-radius: 10px;
   background-color: rgba(112, 109, 109, 0.226);
 }
 
-.fila1:hover, .hover .fila1 {
+.fila1 span {
+  align-items: center;
+  display: flex;
+}
+
+.fila1:hover,
+.hover .fila1 {
   cursor: pointer;
 }
 
-.filasall:hover td:first-child, .hover td:first-child {
+.filasall:hover td:first-child,
+.hover td:first-child {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 
-.filasall:hover td:last-child, .hover td:last-child {
+.filasall:hover td:last-child,
+.hover td:last-child {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
 .fila1 {
   padding-left: 5px;
-    color: #a09f9f;  
+  color: #a09f9f;
 }
-.fila2{
+
+.fila2 {
   padding-right: 5px;
 }
+
 .imgCanciones {
-    width: 45px;
-    height: 45px;
-    border-radius: 10px;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
 }
+
 .imgCanciones::shadow {
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .imgCanciones:hover {
@@ -93,70 +110,79 @@ input[type="range"]::-webkit-slider-runnable-track {
   font-size: 15px;
   color: white !important;
 }
+
 .fila31:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
 .fila32 {
-    font-size: 14px;
-    color: #a09f9f;
+  font-size: 14px;
+  color: #a09f9f;
 }
+
 .artistTrackLink:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
 .fila4 {
-    color: #a09f9f;
-    font-size: 14px;
+  color: #a09f9f;
+  font-size: 14px;
 }
 
-.albumLink:hover{
+.albumLink:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
 @media screen and (max-width: 1150px) {
-  .fila31{
+  .fila31 {
     font-size: 13px;
   }
-  .fila32{
+
+  .fila32 {
     font-size: 12px;
   }
-  .fila4{
+
+  .fila4 {
     font-size: 12px;
   }
 }
 
 
-@media screen and (max-width: 855px) {
-
-}
+@media screen and (max-width: 855px) {}
 
 @media screen and (max-width: 755px) {
   .column5 mat-icon {
     scale: 80%;
   }
-  .columnall{
+
+  .columnall {
     font-size: 12px;
   }
-  .fila31{
+
+  .fila31 {
     font-size: 11px;
   }
-  .fila1{
+
+  .fila1 {
     font-size: 12px;
   }
-  .fila32{
+
+  .fila32 {
     font-size: 10px;
   }
-  .fila4{
+
+  .fila4 {
     font-size: 10px;
   }
+
   input[type="range"] {
-    width: 30px; 
+    width: 30px;
   }
-  .Svg-sc{
+
+  .Svg-sc {
     width: 10px;
   }
 
@@ -166,47 +192,56 @@ input[type="range"]::-webkit-slider-runnable-track {
   .column5 mat-icon {
     scale: 70%;
   }
-  .columnall{
+
+  .columnall {
     font-size: 11px;
   }
-  .fila31{
+
+  .fila31 {
     font-size: 10px;
   }
-  .fila32{
+
+  .fila32 {
     font-size: 9px;
   }
-  .fila4{
+
+  .fila4 {
     font-size: 9px;
   }
+
   input[type="range"] {
-    width: 30px; 
+    width: 30px;
   }
 
 }
 
 @media screen and (max-width: 400px) {
-  .grid-container{
+  .grid-container {
     padding: 0px;
   }
+
   .column5 mat-icon {
     scale: 70%;
   }
-  .columnall{
+
+  .columnall {
     font-size: 11px;
   }
-  .fila31{
+
+  .fila31 {
     font-size: 9px;
   }
-  .fila32{
+
+  .fila32 {
     font-size: 8px;
   }
-  .fila4{
+
+  .fila4 {
     font-size: 8px;
   }
+
   input[type="range"] {
-    width: 20px; 
+    width: 20px;
   }
 
 }
-
-

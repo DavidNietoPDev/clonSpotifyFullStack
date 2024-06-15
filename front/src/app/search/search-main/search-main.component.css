@@ -85,106 +85,6 @@
     height: 300px;
   }
 
-  .toptrack {
-    position: relative;
-    height: 25%;
-    border-radius: 5px;
-  }
-
-  .toptrack:hover {
-    background-color: rgba(112, 109, 109, 0.226);
-  }
-
-  .cardItt {
-    display: flex;
-    margin-left: 10px;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .card-imagett {
-    width: 40px;
-    height: 40px;
-  }
-
-  .card-imagett::shadow {
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-    border-radius: 5px;
-    background-color: #181717;
-  }
-
-  .card-imagett {
-    cursor: pointer;
-  }
-
-  .topTrackslist {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
-  .texttt1 {
-    position: relative;
-    font-size: 15px;
-    font-weight: bold;
-    color: white;
-    margin-left: 10px;
-  }
-
-  .texttt1:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  .artistt1 {
-    position: relative;
-    margin-top: -20px;
-    margin-left: 10px;
-    font-size: 15px;
-    color: #a09f9f;
-  }
-
-  .artistt2 {
-    position: relative;
-    margin-top: -20px;
-    margin-left: 10px;
-    font-size: 15px;
-    color: #a09f9f;
-  }
-
-  .artistt2:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  .artistTrackLink:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  .timett {
-    right: 100px;
-    top: 15px;
-    position: absolute;
-    color: #a09f9f;
-  }
-
-  input[type="range"] {
-    /* Cambiar la longitud del input */
-    width: 50px; 
-  }
-  
-  /* Cambiar el color de la barra de deslizamiento */
-  input[type="range"]::-webkit-slider-runnable-track {
-    background-color: #2b2828; /* Cambia el color de la barra de deslizamiento para navegadores webkit (Chrome, Safari, etc.) */
-  }
-  
-
-  .artista {
-    color: white;
-    margin-left: 3px;
-  }
-
   .card-image {
     width: 100%;
     height: 100%;
@@ -198,6 +98,10 @@
     font-size: 22px;
     font-weight: bold;
     color: white;
+  }
+  .albumList{
+    position: relative;
+    top: 100px;
   }
 
   .textAlbumes {
@@ -218,23 +122,6 @@
     color: white;
   }
 
-  @media screen and (max-width: 1100px) {
-
-    .texttt1{
-      font-size: 10px;
-    }
-    .artistTrackLink{
-      font-size: 9px;
-    }
-    .timett{
-      font-size: 10px;
-      right: 40px;
-    }
-    input[type="range"] {
-      width: 30px; 
-    }
-
-  }
 
   @media screen and (max-width: 850px) {
     .cardI{
@@ -302,13 +189,6 @@
     @media screen and (max-width:450px) {
       .containerCards{
         flex-direction: column;
-      }
-      input[type="range"] {
-        width: 20px; 
-      }
-      .timett{
-        font-size: 8px;
-        right: 25px;
       }
       .result{
         top: 10px;

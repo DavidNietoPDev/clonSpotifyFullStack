@@ -53,11 +53,15 @@ export class ListSongsComponent {
 
   loading: boolean = true;
   search: boolean = false;
+  isPlaying: boolean = false;
 
   ngOnInit() {
     this.currentIndexSubscription = this.musicPlayer.currentIndex$.subscribe(index => {
       this.currentIndex = index;
     });
+    this.musicPlayer.isPlaying$.subscribe(isPlaying => {
+      this.isPlaying = isPlaying
+    })
   }
 
   ngOnDestroy() {
@@ -81,7 +85,9 @@ export class ListSongsComponent {
   }
 
   checkComponent(): boolean {
-    if (this.router.url.startsWith('/songsId/') || this.router.url.startsWith('/artistId/'))
+    if (this.router.url.startsWith('/songsId/')
+       || this.router.url.startsWith('/artistId/')
+       || this.router.url.startsWith('/searchMain/'))
       return true;
   }
 

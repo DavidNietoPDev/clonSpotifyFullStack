@@ -28,30 +28,18 @@ export class SearchMainComponent implements OnInit {
   searchSubscription: Subscription;
   artistName: string = '';
   buscar: boolean = false;
-  globalVolume: number = 0.1;
+  loading: boolean = true;
 
-  topTrackId: string[] = [];
-  topTrackUrl: string[] = [];
-  topTrack: string[] = [];
-  topTrackDuration: number[] = [];
-  topTrackArtist: string[] = [];
-  topTrackArtistTwo: string[] = [];
-  topTrackArtistImage: string[] = [];
-  idArtistTracks: string [] = [];
-  idArtistTracksTwo: string [] = [];
+  topTrackList: any[] = [];
 
   artistSonList: any [] = [];
   albumSonList: any [] = [];
   playListSonList: any [] = [];
 
-  idArtists: string [] = [];
   idArtist: string = '';
   imageUrl: string = '';
-  artist: any;
+  artist: string = '';
 
-  takeId(id: string) {
-    this.takeIdPlaylist.setAlgoId(id);
-  }
 
   changeTerm(nameCategory: string) {
     this.searchService.setSearchTerm(nameCategory)
@@ -69,12 +57,12 @@ export class SearchMainComponent implements OnInit {
 
     this.searchSubscription = this.searchService.searchTerm$.subscribe(data => {
       const { id, term } = data;
-      this.artistName = term || ''; // Actualizar el valor del input
+      this.artistName = term || ''; 
     });
   }
 
   ngOnDestroy() {
-    // Desuscribirse para evitar fugas de memoria
+
     if (this.routeSubscription) {
       this.routeSubscription.unsubscribe();
     }
@@ -84,18 +72,8 @@ export class SearchMainComponent implements OnInit {
   }
 
   searchMethod(): void {
-    this.idArtistTracks = [];
-    this.idArtistTracksTwo = [];
-    this.idArtists = [];
 
-    this.topTrackId = [];
-    this.topTrackArtist = [];
-    this.topTrackArtistTwo = [];
-    this.topTrackUrl = [];
-    this.topTrack = [];
-    this.topTrackDuration = [];
-    this.topTrackArtistImage = [];
-
+    this.topTrackList = [];
     this.artistSonList = [];
     this.albumSonList = [];
     this.playListSonList = [];
@@ -114,47 +92,12 @@ export class SearchMainComponent implements OnInit {
 
         this.playListSonList = response.playlists.items
 
-        for (let tracks of response.tracks.items) {
-          this.topTrackId.push(tracks.id)
-          this.topTrackUrl.push(tracks.preview_url)
-          this.topTrack.push(tracks.name)
-          this.topTrackDuration.push(tracks.duration_ms)
-          this.idArtistTracks.push(tracks.artists[0].id)
-          this.topTrackArtist.push(tracks.artists[0].name);
-          if (tracks.artists && tracks.artists.length > 1) {
-            this.topTrackArtistTwo.push(tracks.artists[1].name);
-            this.idArtistTracksTwo.push(tracks.artists[1].id)
-        } else {
-            this.topTrackArtistTwo.push('');
-            this.idArtistTracksTwo.push('');
-        }
-          if (tracks.album.images && tracks.album.images.length > 0) {
-            this.topTrackArtistImage.push(tracks.album.images[0].url);
-          } else {
-            // Si no hay imagen disponible, puedes agregar una imagen por defecto 
-            this.topTrackArtistImage.push('../assets/Artistasinfoto.png');
-          }
-        }
+        this.topTrackList = response.tracks.items.slice(0, 4)
+
       this.loadingService.setLoading(false);
+      this.loading = false;
       });
     } 
   // }
-
-  topMusic() {
-    this.mediaPlayer.stopMusic();
-  }
-
-
-  // togglePlayBack(previewUrl: string) {
-  //   this.mediaPlayer.togglePlayBack(previewUrl);
-  // }
-
-  setVolume(volume: number) {
-    this.mediaPlayer.setVolume(volume);
-  }
-  
-  ajustarVolume() {
-    this.mediaPlayer.setVolume(this.globalVolume);
-  }
 
 }
