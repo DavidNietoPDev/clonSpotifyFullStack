@@ -109,6 +109,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 .fila31 {
   font-size: 15px;
   color: white !important;
+  white-space: nowrap;
 }
 
 .fila31:hover {
@@ -130,6 +131,9 @@ input[type="range"]::-webkit-slider-runnable-track {
   color: #a09f9f;
   font-size: 14px;
 }
+.fila41{
+  font-size: 14px;
+}
 
 .albumLink:hover {
   text-decoration: underline;
@@ -148,10 +152,10 @@ input[type="range"]::-webkit-slider-runnable-track {
   .fila4 {
     font-size: 12px;
   }
+  .fila41 {
+    font-size: 12px;
+  }
 }
-
-
-@media screen and (max-width: 855px) {}
 
 @media screen and (max-width: 755px) {
   .column5 mat-icon {
@@ -175,6 +179,9 @@ input[type="range"]::-webkit-slider-runnable-track {
   }
 
   .fila4 {
+    font-size: 10px;
+  }
+  .fila41 {
     font-size: 10px;
   }
 
@@ -206,8 +213,13 @@ input[type="range"]::-webkit-slider-runnable-track {
   }
 
   .fila4 {
-    font-size: 9px;
+    display: none;
   }
+  .fila41 {
+    font-size: 9px;
+    text-align: right;
+  }
+
 
   input[type="range"] {
     width: 30px;
@@ -236,9 +248,13 @@ input[type="range"]::-webkit-slider-runnable-track {
     font-size: 8px;
   }
 
-  .fila4 {
+  .fila41{
     font-size: 8px;
   }
+
+  /* .fila4 {
+    font-size: 8px;
+  } */
 
   input[type="range"] {
     width: 20px;
