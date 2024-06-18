@@ -62,7 +62,7 @@
   <div class="volume-container">
     <mat-icon *ngIf="currentVolume < 1">volume_off</mat-icon>
     <mat-icon *ngIf="currentVolume > 0">volume_up</mat-icon>
-    <mat-slider class="volume-slider" class="volum" min="0" max="100" step="1" [value]="currentVolume"
+    <mat-slider class="volume-slider" class="volum" min="0" max="50" step="1" [value]="currentVolume"
       (input)="setVolume($event)">
       <input matSliderThumb>
     </mat-slider>

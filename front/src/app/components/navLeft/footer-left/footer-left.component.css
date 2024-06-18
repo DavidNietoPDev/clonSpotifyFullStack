@@ -6,6 +6,7 @@
   left: 8px;
   right: 8px;
   bottom: 8px;
+  min-width: none;
   width: calc(100% - 16px);
   height: 68px;
   background: linear-gradient(to right, #af2896, #509bf5);
@@ -53,6 +54,7 @@
 .btonr:hover {
   scale: 103%;
 }
+
 
 
 @media screen and (max-height: 560px) {
@@ -152,6 +154,7 @@
 }
 
 .track-info {
+  border: 1px solid red;
   display: flex;
   position: relative;
   align-items: center;
@@ -226,7 +229,7 @@
   align-items: center;
   width: 500px;
   position: relative;
-
+  border: 1px solid yellow;
 }
 
 .volume-container {
@@ -237,13 +240,16 @@
   align-items: center;
   justify-content: right;
   height: 100%; 
+  border: 1px solid blue;
 }
 .volume-container mat-icon{
   color: hsla(0, 0%, 100%, .7);
 }
 
 .volume-slider {
-  width: 150px;
+  width: 100%;
+  border: 1px solid red;
+  min-width: none;
 }
 
 .time{
@@ -291,4 +297,63 @@ input[type="range"].progress-range::-webkit-slider-thumb {
   cursor: pointer;
   margin-top: -1px;
   border-radius: 3px;
+}
+
+
+@media screen and (max-width: 855px) {
+  .name{
+    font-size: 10px;
+  }
+  .time{
+    font-size: 10px;
+  }
+  .artist{
+    width: 9px;
+  }
+  input[type="range"].progress-range {
+    width: 200px;
+  }
+  .volume-slider{
+    width: 120px;
+  }
+  .track-info{
+    width: 150px;
+  }
+  .progress-container{
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .name{
+    display: none;
+  }
+  .artist{
+    display: none;
+  }
+  input[type="range"].progress-range {
+    width: 100px;
+  }
+  .volume-container{
+    width: 105px;
+  }
+  .progress-container{
+    width: 200px;
+  }
+  .album-art{
+    width: 40px;
+    height: 40px;
+  }
+  .track-info{
+    width: 100px;
+  }
+  .volume-container mat-icon{
+    scale: 80%;
+  }
+}
+
+@media screen and (max-width: 355px) {
+  .album-art{
+    display: none;
+  }
 }

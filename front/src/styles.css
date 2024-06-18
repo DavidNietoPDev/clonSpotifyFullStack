@@ -35,6 +35,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color:rgb(73, 73, 73) !important; /* Color de fondo de la barra */
 }
 
+.mat-mdc-slider{
+  width: 100% !important;
+  min-width: 10px !important;
+}
+
+
 :root {
   --mdc-slider-handle-color: transparent;                   /*Color handle*/
   --mdc-slider-focus-handle-color: transparent;            /*Color focus handle*/
