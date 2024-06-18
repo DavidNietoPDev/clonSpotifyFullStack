@@ -154,7 +154,6 @@
 }
 
 .track-info {
-  border: 1px solid red;
   display: flex;
   position: relative;
   align-items: center;
@@ -240,7 +239,6 @@
   align-items: center;
   justify-content: right;
   height: 100%; 
-  border: 1px solid blue;
 }
 .volume-container mat-icon{
   color: hsla(0, 0%, 100%, .7);
@@ -248,7 +246,6 @@
 
 .volume-slider {
   width: 100%;
-  border: 1px solid red;
   min-width: none;
 }
 
